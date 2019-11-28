@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1574834451530.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1356842846",
+    "id" : "F09C4916",
+    "lastKnownWriteTime" : 1574923988,
+    "last_content_update" : 1574923988348,
+    "path" : "~/Peter-Awesome-Website/config.toml",
+    "project_path" : "config.toml",
+    "properties" : {
+        "cursorPosition" : "57,0",
+        "scrollLine" : "56"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "toml"
+}
