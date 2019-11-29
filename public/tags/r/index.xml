@@ -22,6 +22,11 @@
 
 &lt;div id=&#34;lets-ball&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Let’s Ball&lt;/h2&gt;
+&lt;p&gt;As a fan of the &lt;strong&gt;NBA&lt;/strong&gt; and an enthusiastic &lt;strong&gt;R&lt;/strong&gt; user, I’ve spent some time scouring the internet for ways to obtain useable data to load into R - mainly from the popular data source &lt;a href=&#34;https://www.basketball-reference.com&#34;&gt;Basketball-Reference&lt;/a&gt;. Unsatisfied with my online data quest, I just decided to scrape the data on &lt;a href=&#34;https://www.basketball-reference.com&#34;&gt;Basketball-Reference&lt;/a&gt; myself! The process is pretty straightforward, as you will see shortly…&lt;/p&gt;
+&lt;p&gt;Firstly, as the entire contents of a &lt;a href=&#34;https://www.basketball-reference.com&#34;&gt;Basketball-Reference&lt;/a&gt;
+web page is written in HTML format, you can easily save the entire content and load it into R. However, it simplifies things greatly if we can be more selective in the contents we want to load into R. HTML files contain &lt;code&gt;tags&lt;/code&gt; that pretty much denotes different content of the HTML page. If you can find the speficic tag for the table you want to save in R, then you’re golden! Take for example this table that shows the latest (as of November 28, 2019) player boxscore stats per 36 minutes.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;bbref.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;How can we extract only the information found in the above table? To do that, we can simply use a chrome tool called &lt;a href=&#34;https://chrome.google.com/webstore/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb?hl=en&#34;&gt;SelectorGadget&lt;/a&gt;. By using this plug-in, we can simply highlight the specific content of the page we want saved, and export it into R.&lt;/p&gt;
 &lt;p&gt;First, let’s load in two R packages:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;rvest:&lt;/li&gt;
@@ -32,7 +37,7 @@ library(rvest)
 library(dplyr)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_url &amp;lt;- read_html(&amp;quot;https://www.basketball-reference.com/leagues/NBA_2020_per_game.html&amp;quot;)
 node &amp;lt;- &amp;quot;#per_game_stats a , .right , .center&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Let’s look at the first 30 elements of our compiled list:&lt;/p&gt;
+&lt;p&gt;Let’s look at the first 30 elements of our compiled data:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;scraped_data &amp;lt;- my_url %&amp;gt;%
   html_nodes(node) %&amp;gt;%
   html_text()
@@ -44,16 +49,19 @@ print(my_variable_names)&lt;/code&gt;&lt;/pre&gt;
 ##  [9] &amp;quot;FG&amp;quot;     &amp;quot;FGA&amp;quot;    &amp;quot;FG%&amp;quot;    &amp;quot;3P&amp;quot;     &amp;quot;3PA&amp;quot;    &amp;quot;3P%&amp;quot;    &amp;quot;2P&amp;quot;     &amp;quot;2PA&amp;quot;   
 ## [17] &amp;quot;2P%&amp;quot;    &amp;quot;eFG%&amp;quot;   &amp;quot;FT&amp;quot;     &amp;quot;FTA&amp;quot;    &amp;quot;FT%&amp;quot;    &amp;quot;ORB&amp;quot;    &amp;quot;DRB&amp;quot;    &amp;quot;TRB&amp;quot;   
 ## [25] &amp;quot;AST&amp;quot;    &amp;quot;STL&amp;quot;    &amp;quot;BLK&amp;quot;    &amp;quot;TOV&amp;quot;    &amp;quot;PF&amp;quot;     &amp;quot;PTS&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Just an FYI, the data is saved as a &lt;code&gt;vector&lt;/code&gt; in r, with &lt;code&gt;14,341&lt;/code&gt; entries.&lt;/p&gt;
+&lt;p&gt;These names match exactly the first 30 elements of the table we want to extract.&lt;/p&gt;
+&lt;p&gt;Just as an FYI, the data is saved as a &lt;code&gt;vector&lt;/code&gt; in r, with &lt;code&gt;14,341&lt;/code&gt; entries.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;is.vector(scraped_data)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] TRUE&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;length(scraped_data)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 14341&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Some of the variable names begin with numbers. This is a huge no-no in R, so let’s manually change these names:&lt;/p&gt;
+
+&lt;p&gt;Some of the variable names begin with numbers which is a huge &lt;strong&gt;no-no&lt;/strong&gt; in R, so let’s manually change these names:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_variable_names[12:17] &amp;lt;- c(&amp;quot;Threes_made&amp;quot;, &amp;quot;Threes_attempted&amp;quot;,
                               &amp;quot;Threes_percent&amp;quot;, &amp;quot;Twos_made&amp;quot;,
                               &amp;quot;Twos_attempted&amp;quot;, &amp;quot;Twos_percent&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We will use this vector data to fill in an empty table we create in R. We have to note though, that due to the way we’ve scraped the data there exists some garbage we must remove. I’ll illustrate below:&lt;/p&gt;
+&lt;p&gt;We will use this vector data to fill in an empty table we create in R. We have to note though, that due to the way we’ve scraped the data there exists some garbage we must remove. If you look carefully, the table repeats the variable names after every 20th player.
+I’ll illustrate below:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;scraped_data[600: 660]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;7.9&amp;quot;           &amp;quot;20&amp;quot;            &amp;quot;Marvin Bagley&amp;quot; &amp;quot;PF&amp;quot;           
 ##  [5] &amp;quot;20&amp;quot;            &amp;quot;SAC&amp;quot;           &amp;quot;1&amp;quot;             &amp;quot;1&amp;quot;            
@@ -71,6 +79,7 @@ print(my_variable_names)&lt;/code&gt;&lt;/pre&gt;
 ## [53] &amp;quot;ORB&amp;quot;           &amp;quot;DRB&amp;quot;           &amp;quot;TRB&amp;quot;           &amp;quot;AST&amp;quot;          
 ## [57] &amp;quot;STL&amp;quot;           &amp;quot;BLK&amp;quot;           &amp;quot;TOV&amp;quot;           &amp;quot;PF&amp;quot;           
 ## [61] &amp;quot;PTS&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To remove this junk, I’ll simply create a vector of indices that correspond to the junk we want removed. After some investigating skills, we can see that it’s every 600th - 630th element that we need to remove.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;to_remove &amp;lt;- 631:660
 n &amp;lt;- length(scraped_data)
 
@@ -86,6 +95,7 @@ while(to_remove[length(to_remove)] &amp;lt;= n - 601 ){
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n2 &amp;lt;- length(process_dat)
 print(n2)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 13681&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Awesome, now we’ll get to work on filling in a data-frame with this cleaned data. The way I did it was to specify the elements that should be added row-wise to a data table in R. I.e. every 30 elements makes up one row in our table:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_index &amp;lt;- seq(from = 31, to = n2, by = 30)
 
 #Initialize data frame...
@@ -102,6 +112,208 @@ for (i in 1:length(my_index)){
 
 
 colnames(my_data) &amp;lt;- my_variable_names&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let’s take a look at what our table looks like:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;knitr::kable(my_data[1:5,], caption = &amp;quot;Our data&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;caption&gt;&lt;span id=&#34;tab:A101&#34;&gt;Table 1: &lt;/span&gt;Our data&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;Rk&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Player&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Pos&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Age&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Tm&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;G&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;GS&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;MP&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;FG&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;FGA&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;FG%&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Threes_made&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Threes_attempted&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Threes_percent&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Twos_made&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Twos_attempted&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Twos_percent&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;eFG%&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;FT&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;FTA&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;FT%&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;ORB&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;DRB&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;TRB&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;AST&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;STL&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;BLK&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;TOV&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;PF&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;PTS&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Steven Adams&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;26&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;OKC&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;14&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;14&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;26.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;4.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;7.1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.560&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;4.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;7.1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.560&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.560&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.400&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;6.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;8.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.9&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.8&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.8&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;9.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Bam Adebayo&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;22&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;MIA&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;17&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;17&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;32.4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;5.2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;8.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.601&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.167&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;5.2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;8.4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.620&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.605&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3.9&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;6.1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.650&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;8.1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;10.4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;4.5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.8&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;14.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;LaMarcus Aldridge&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;C&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;34&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;SAS&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;19&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;19&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;32.9&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;7.8&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;14.9&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.523&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.367&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;7.2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;13.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.542&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.542&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.8&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3.4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.828&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;4.5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;6.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;18.9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Nickeil Alexander-Walker&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;SG&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;21&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NOP&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;16&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;14.4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;7.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.321&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3.8&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.344&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.9&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3.2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.294&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.415&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.9&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.714&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;6.4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Grayson Allen&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;SG&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;24&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;MEM&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;16.4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;6.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.304&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3.1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.227&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3.4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.375&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.359&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.833&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.9&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;6.1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;One last step required! All columns in my table are type &lt;code&gt;chr&lt;/code&gt;. We want to change the columns that are numeric into a numeric type!&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(my_data)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## &amp;#39;data.frame&amp;#39;:    456 obs. of  30 variables:
 ##  $ Rk              : chr  &amp;quot;1&amp;quot; &amp;quot;2&amp;quot; &amp;quot;3&amp;quot; &amp;quot;4&amp;quot; ...
@@ -167,33 +379,80 @@ str(my_data)&lt;/code&gt;&lt;/pre&gt;
 ##  $ TOV             : num  1.5 2.8 1.7 1.3 1.3 1.2 0.9 0.9 0.5 4.3 ...
 ##  $ PF              : num  1.8 2.5 2.2 1.6 1.7 2.4 1.6 1.8 0.5 3.6 ...
 ##  $ PTS             : num  9 14.5 18.9 6.4 6.1 11.8 4.3 7.1 2.5 31.1 ...&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Awesome! Let’s take a look at what our table looks like…&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_data &amp;lt;- as_tibble(my_data)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_data &amp;lt;- my_data %&amp;gt;%
   mutate(FP = -0.2*MP - 0.5*FGA + 
            0.75*Threes_made + PTS +
            1.5*ORB + DRB + 1.5*AST +
            2.5*STL + 2.5*BLK - TOV)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_data %&amp;gt;%
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;FP_data &amp;lt;- my_data %&amp;gt;%
   select(Player, Tm, FP) %&amp;gt;%
-  arrange(desc(FP))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 456 x 3
-##    Player                Tm       FP
-##    &amp;lt;chr&amp;gt;                 &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;
-##  1 Giannis Antetokounmpo MIL    42.7
-##  2 Luka Dončić           DAL    40.3
-##  3 James Harden          HOU    40.0
-##  4 Karl-Anthony Towns    MIN    37.1
-##  5 LeBron James          LAL    35.8
-##  6 Anthony Davis         LAL    34.6
-##  7 Andre Drummond        DET    32.3
-##  8 Kyrie Irving          BRK    30.6
-##  9 Damian Lillard        POR    30.4
-## 10 Kawhi Leonard         LAC    30.4
-## # … with 446 more rows&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_data %&amp;gt;%
-  filter(Player ==&amp;quot;Kendrick Nunn&amp;quot;) %&amp;gt;%
-  arrange(desc(FP)) %&amp;gt;%
-  View()&lt;/code&gt;&lt;/pre&gt;
+  arrange(desc(FP))
+
+knitr::kable(FP_data[1:10,], caption = &amp;quot;Fantasy Data&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;caption&gt;&lt;span id=&#34;tab:A122&#34;&gt;Table 2: &lt;/span&gt;Fantasy Data&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;Player&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Tm&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;FP&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Giannis Antetokounmpo&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;MIL&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;42.680&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Luka Dončić&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;DAL&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;40.275&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;James Harden&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;HOU&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;40.010&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Karl-Anthony Towns&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;MIN&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;37.145&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;LeBron James&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;LAL&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;35.790&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Anthony Davis&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;LAL&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;34.570&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Andre Drummond&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;DET&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;32.290&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Kyrie Irving&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;BRK&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;30.640&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Damian Lillard&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;POR&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;30.425&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Kawhi Leonard&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;LAC&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;30.415&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;/div&gt;
 </description>
     </item>

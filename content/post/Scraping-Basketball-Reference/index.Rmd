@@ -1,26 +1,29 @@
 ---
-authors:
-- admin
+title: Scraping data from Basketball-Reference
+author: Peter Tea
+date: '2019-12-01'
 categories:
-- Demo
-date: "2019-12-01T00:00:00Z"
-draft: false
-featured: false
+  - Demo
+tags:
+  - Academic
+  - Basketball
+  - Demo
+  - dplyr
+  - R
+  - rvest
+  - Web Scraping
+authors:
+  - admin
+draft: no
+featured: no
 image:
   caption: 'Image credit: [**Unsplash**](https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=2ahUKEwiOn6jIg47mAhXEu54KHQ6IBMEQjRx6BAgBEAQ&url=https%3A%2F%2Ftwitter.com%2Fbball_ref%2Fstatus%2F1134290033979121664&psig=AOvVaw1RrNasfgvMlnI4e_gkKVMD&ust=1575069020292235)'
-  focal_point: ""
+  focal_point: ''
   placement: 2
-  preview_only: false
-lastmod: "2019-04-17T00:00:00Z"
-projects: []
+  preview_only: no
+lastmod: '2019-04-17T00:00:00Z'
 subtitle: 'Exporting data online and into R in under 10 minutes :basketball: :fire:'
 summary: Scrape Baksetball-Reference tables in under 10 minutes.
-tags:
-- Academic
-- R
-- Demo
-- Web Scraping
-title: 'Scraping data from Basketball-Reference'
 geometry: margin = 1.75 cm
 ---
 
@@ -30,6 +33,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Let's Ball
 
+As a fan of the **NBA** and an enthusiastic **R** user, I've spent some time scouring the internet for ways to obtain useable data to load into R - mainly from the popular data source [Basketball-Reference](https://www.basketball-reference.com). Unsatisfied with my online data quest, I just decided to scrape the data on [Basketball-Reference](https://www.basketball-reference.com) myself! The process is pretty straightforward, as you will see shortly...
+
+Firstly, as the entire contents of a [Basketball-Reference](https://www.basketball-reference.com)
+web page is written in HTML format, you can easily save the entire content and load it into R. However, it simplifies things greatly if we can be more selective in the contents we want to load into R. HTML files contain ``tags`` that pretty much denotes different content of the HTML page. If you can find the speficic tag for the table you want to save in R, then you're golden! Take for example this table that shows the latest (as of November 28, 2019) player boxscore stats per 36 minutes.
+
+![](bbref.png)
+
+How can we extract only the information found in the above table? To do that, we can simply use a chrome tool called [SelectorGadget](https://chrome.google.com/webstore/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb?hl=en). By using this plug-in, we can simply highlight the specific content of the page we want saved, and export it into R.
 
 First, let's load in two R packages:
 
@@ -48,7 +59,7 @@ node <- "#per_game_stats a , .right , .center"
 
 ```
 
-Let's look at the first 30 elements of our compiled list:
+Let's look at the first 30 elements of our compiled data:
 ```{r, A2}
 scraped_data <- my_url %>%
   html_nodes(node) %>%
@@ -59,8 +70,9 @@ my_variable_names <- scraped_data[1:30]
 print(my_variable_names)
 
 ```
+These names match exactly the first 30 elements of the table we want to extract.
 
-Just an FYI, the data is saved as a ``vector`` in r, with ``14,341`` entries.
+Just as an FYI, the data is saved as a ``vector`` in r, with ``14,341`` entries.
 ```{r, A3}
 is.vector(scraped_data)
 ```
@@ -69,7 +81,9 @@ is.vector(scraped_data)
 length(scraped_data)
 ```
 
-Some of the variable names begin with numbers. This is a huge no-no in R, so let's manually change these names:
+\vspace{50pt}
+
+Some of the variable names begin with numbers which is a huge **no-no** in R, so let's manually change these names:
 ```{r, A4}
 my_variable_names[12:17] <- c("Threes_made", "Threes_attempted",
                               "Threes_percent", "Twos_made",
@@ -77,12 +91,15 @@ my_variable_names[12:17] <- c("Threes_made", "Threes_attempted",
 ```
 
 
-We will use this vector data to fill in an empty table we create in R. We have to note though, that due to the way we've scraped the data there exists some garbage we must remove. I'll illustrate below: 
+We will use this vector data to fill in an empty table we create in R. We have to note though, that due to the way we've scraped the data there exists some garbage we must remove. If you look carefully, the table repeats the variable names after every 20th player.
+I'll illustrate below: 
 
 ```{r, A5}
 scraped_data[600: 660]
 ```
 
+
+To remove this junk, I'll simply create a vector of indices that correspond to the junk we want removed. After some investigating skills, we can see that it's every 600th - 630th element that we need to remove.
 ```{r, A6}
 to_remove <- 631:660
 n <- length(scraped_data)
@@ -94,8 +111,6 @@ while(to_remove[length(to_remove)] <= n - 601 ){
   to_remove <- c(to_remove, to_add)
   
 }
-
-
 ```
 
 ```{r, A7}
@@ -108,6 +123,7 @@ n2 <- length(process_dat)
 print(n2)
 ```
 
+Awesome, now we'll get to work on filling in a data-frame with this cleaned data. The way I did it was to specify the elements that should be added row-wise to a data table in R. I.e. every 30 elements makes up one row in our table:
 ```{r, A9, warning=FALSE}
 my_index <- seq(from = 31, to = n2, by = 30)
 
@@ -127,6 +143,13 @@ for (i in 1:length(my_index)){
 colnames(my_data) <- my_variable_names
 ```
 
+Let's take a look at what our table looks like:
+```{r, A101}
+knitr::kable(my_data[1:5,], caption = "Our data")
+```
+
+
+One last step required! All columns in my table are type ``chr``. We want to change the columns that are numeric into a numeric type!
 ```{r, A10}
 str(my_data)
 ```
@@ -138,7 +161,7 @@ str(my_data)
 ```
 
 
-
+Awesome! Let's take a look at what our table looks like...
 ```{r, A111}
 my_data <- as_tibble(my_data)
 
@@ -154,15 +177,14 @@ my_data <- my_data %>%
 ```
 
 ```{r, A122}
-my_data %>%
+FP_data <- my_data %>%
   select(Player, Tm, FP) %>%
   arrange(desc(FP))
+
+knitr::kable(FP_data[1:10,], caption = "Fantasy Data")
 ```
 
 ```{r, A13}
-my_data %>%
-  filter(Player =="Kendrick Nunn") %>%
-  arrange(desc(FP)) %>%
-  View()
+
 ```
 
