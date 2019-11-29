@@ -25,6 +25,9 @@ lastmod: '2019-04-17T00:00:00Z'
 subtitle: 'Exporting data online and into R in under 10 minutes :basketball: :fire:'
 summary: Scrape Baksetball-Reference tables in under 10 minutes.
 geometry: margin = 1.75 cm
+output:
+  html_document:
+    keep_md:true
 ---
 
 ```{r setup, include=FALSE}

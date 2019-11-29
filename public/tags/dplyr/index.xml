@@ -5,7 +5,7 @@
     <link>/tags/dplyr/</link>
       <atom:link href="/tags/dplyr/index.xml" rel="self" type="application/rss+xml" />
     <description>dplyr</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Sun, 01 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Thu, 28 Nov 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>dplyr</title>
@@ -15,7 +15,7 @@
     <item>
       <title>Scraping data from Basketball-Reference</title>
       <link>/post/scraping-basketball-reference/</link>
-      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
       <guid>/post/scraping-basketball-reference/</guid>
       <description>
 
