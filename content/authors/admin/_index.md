@@ -4,16 +4,19 @@ authors:
 bio: My research interests include ?
 education:
   courses:
-  - course: Msc in Statistics
+  - course: Msc Statistics
     institution: Simon Fraser University
-    year: Current
-  - course: Bsc in Biostatistics
+    year: 2019 - 2021
+  - course: Bsc Biostatistics
     institution: University of Ottawa
-    year: 2019
+    url: "https://www.stat.sfu.ca/people/grads.html"
+    year: 2014 - 2019
 email: "petertea96@gmail.com"
 interests:
 - Sports Analytics (Tennis, Basketball)
-- ?
+- Statistics
+- Computation
+
 name: Peter Tea
 organizations:
 - name: Simon Fraser University
@@ -41,4 +44,7 @@ user_groups:
 - Visitors
 ---
 
-Peter this is your bio...
+Welcome to this awesome website! This is where I will be posting some fun data projects. Please stay tuned for things to come...
+
+I am currently completing my Master's degree under the supervision of [Tim Swartz](http://people.stat.sfu.ca/~tim/) with a [Natural Sciences and Engineering Research Council of Canada’s](https://www.nserc-crsng.gc.ca/index_eng.asp) (NSERC) Alexander Graham Bell Canada Graduate Scholarship. In the past, I've been fortunate to hold positions as a Statistical Genetics researcher under the supervision of [Kelly Burkett](https://mysite.science.uottawa.ca/kburkett/), as well as a Data Scientist at the [Canada Revenue Agency](https://www.canada.ca/en/revenue-agency.html).
+

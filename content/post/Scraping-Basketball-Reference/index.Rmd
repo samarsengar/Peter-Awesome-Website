@@ -1,0 +1,168 @@
+---
+authors:
+- admin
+categories:
+- Demo
+date: "2019-12-01T00:00:00Z"
+draft: false
+featured: false
+image:
+  caption: 'Image credit: [**Unsplash**](https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=2ahUKEwiOn6jIg47mAhXEu54KHQ6IBMEQjRx6BAgBEAQ&url=https%3A%2F%2Ftwitter.com%2Fbball_ref%2Fstatus%2F1134290033979121664&psig=AOvVaw1RrNasfgvMlnI4e_gkKVMD&ust=1575069020292235)'
+  focal_point: ""
+  placement: 2
+  preview_only: false
+lastmod: "2019-04-17T00:00:00Z"
+projects: []
+subtitle: 'Exporting data online and into R in under 10 minutes :basketball: :fire:'
+summary: Scrape Baksetball-Reference tables in under 10 minutes.
+tags:
+- Academic
+- R
+- Demo
+- Web Scraping
+title: 'Scraping data from Basketball-Reference'
+geometry: margin = 1.75 cm
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Let's Ball
+
+
+First, let's load in two R packages:
+
+ - rvest:
+ - dplyr:
+```{r, load, message=FALSE}
+#install.packages("rvest")
+library(rvest)
+library(dplyr)
+```
+
+
+```{r, A1, tidy.opts=list(width.cutoff=65)}
+my_url <- read_html("https://www.basketball-reference.com/leagues/NBA_2020_per_game.html")
+node <- "#per_game_stats a , .right , .center"
+
+```
+
+Let's look at the first 30 elements of our compiled list:
+```{r, A2}
+scraped_data <- my_url %>%
+  html_nodes(node) %>%
+  html_text()
+
+my_variable_names <- scraped_data[1:30]
+
+print(my_variable_names)
+
+```
+
+Just an FYI, the data is saved as a ``vector`` in r, with ``14,341`` entries.
+```{r, A3}
+is.vector(scraped_data)
+```
+
+```{r, A33}
+length(scraped_data)
+```
+
+Some of the variable names begin with numbers. This is a huge no-no in R, so let's manually change these names:
+```{r, A4}
+my_variable_names[12:17] <- c("Threes_made", "Threes_attempted",
+                              "Threes_percent", "Twos_made",
+                              "Twos_attempted", "Twos_percent")
+```
+
+
+We will use this vector data to fill in an empty table we create in R. We have to note though, that due to the way we've scraped the data there exists some garbage we must remove. I'll illustrate below: 
+
+```{r, A5}
+scraped_data[600: 660]
+```
+
+```{r, A6}
+to_remove <- 631:660
+n <- length(scraped_data)
+
+while(to_remove[length(to_remove)] <= n - 601 ){
+  
+  A <- to_remove[length(to_remove)] + 601
+  to_add <- A:(A+29)
+  to_remove <- c(to_remove, to_add)
+  
+}
+
+
+```
+
+```{r, A7}
+process_dat <- scraped_data[-to_remove]
+```
+
+We can check that we have reduced our data vector:
+```{r, A8}
+n2 <- length(process_dat)
+print(n2)
+```
+
+```{r, A9, warning=FALSE}
+my_index <- seq(from = 31, to = n2, by = 30)
+
+#Initialize data frame...
+my_data <- data.frame(matrix(ncol = 30, nrow = 452))
+# Note the dimensions here are found by looking at the table on basketball-
+# reference.
+
+
+# Loop to add each row to the data frame
+for (i in 1:length(my_index)){
+  current_ind <- my_index[i]
+  my_data[i,] <- process_dat[current_ind:(current_ind+30)]
+}
+
+
+colnames(my_data) <- my_variable_names
+```
+
+```{r, A10}
+str(my_data)
+```
+
+
+```{r, A11}
+my_data[, c(4, 6:30)] <- sapply(my_data[, c(4,6:30)], as.numeric)
+str(my_data)
+```
+
+
+
+```{r, A111}
+my_data <- as_tibble(my_data)
+
+```
+
+```{r, A12}
+my_data <- my_data %>%
+  mutate(FP = -0.2*MP - 0.5*FGA + 
+           0.75*Threes_made + PTS +
+           1.5*ORB + DRB + 1.5*AST +
+           2.5*STL + 2.5*BLK - TOV)
+
+```
+
+```{r, A122}
+my_data %>%
+  select(Player, Tm, FP) %>%
+  arrange(desc(FP))
+```
+
+```{r, A13}
+my_data %>%
+  filter(Player =="Kendrick Nunn") %>%
+  arrange(desc(FP)) %>%
+  View()
+```
+

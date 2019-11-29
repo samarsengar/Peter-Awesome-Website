@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R | Peter Tea</title>
+    <link>/tags/r/</link>
+      <atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <description>R</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Sun, 01 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title>R</title>
+      <link>/tags/r/</link>
+    </image>
+    
+    <item>
+      <title>Scraping data from Basketball-Reference</title>
+      <link>/post/scraping-basketball-reference/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/post/scraping-basketball-reference/</guid>
+      <description>
+
+
+&lt;div id=&#34;lets-ball&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Let’s Ball&lt;/h2&gt;
+&lt;p&gt;First, let’s load in two R packages:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;rvest:&lt;/li&gt;
+&lt;li&gt;dplyr:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#install.packages(&amp;quot;rvest&amp;quot;)
+library(rvest)
+library(dplyr)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_url &amp;lt;- read_html(&amp;quot;https://www.basketball-reference.com/leagues/NBA_2020_per_game.html&amp;quot;)
+node &amp;lt;- &amp;quot;#per_game_stats a , .right , .center&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let’s look at the first 30 elements of our compiled list:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;scraped_data &amp;lt;- my_url %&amp;gt;%
+  html_nodes(node) %&amp;gt;%
+  html_text()
+
+my_variable_names &amp;lt;- scraped_data[1:30]
+
+print(my_variable_names)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;Rk&amp;quot;     &amp;quot;Player&amp;quot; &amp;quot;Pos&amp;quot;    &amp;quot;Age&amp;quot;    &amp;quot;Tm&amp;quot;     &amp;quot;G&amp;quot;      &amp;quot;GS&amp;quot;     &amp;quot;MP&amp;quot;    
+##  [9] &amp;quot;FG&amp;quot;     &amp;quot;FGA&amp;quot;    &amp;quot;FG%&amp;quot;    &amp;quot;3P&amp;quot;     &amp;quot;3PA&amp;quot;    &amp;quot;3P%&amp;quot;    &amp;quot;2P&amp;quot;     &amp;quot;2PA&amp;quot;   
+## [17] &amp;quot;2P%&amp;quot;    &amp;quot;eFG%&amp;quot;   &amp;quot;FT&amp;quot;     &amp;quot;FTA&amp;quot;    &amp;quot;FT%&amp;quot;    &amp;quot;ORB&amp;quot;    &amp;quot;DRB&amp;quot;    &amp;quot;TRB&amp;quot;   
+## [25] &amp;quot;AST&amp;quot;    &amp;quot;STL&amp;quot;    &amp;quot;BLK&amp;quot;    &amp;quot;TOV&amp;quot;    &amp;quot;PF&amp;quot;     &amp;quot;PTS&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Just an FYI, the data is saved as a &lt;code&gt;vector&lt;/code&gt; in r, with &lt;code&gt;14,341&lt;/code&gt; entries.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;is.vector(scraped_data)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] TRUE&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;length(scraped_data)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 14341&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Some of the variable names begin with numbers. This is a huge no-no in R, so let’s manually change these names:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_variable_names[12:17] &amp;lt;- c(&amp;quot;Threes_made&amp;quot;, &amp;quot;Threes_attempted&amp;quot;,
+                              &amp;quot;Threes_percent&amp;quot;, &amp;quot;Twos_made&amp;quot;,
+                              &amp;quot;Twos_attempted&amp;quot;, &amp;quot;Twos_percent&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We will use this vector data to fill in an empty table we create in R. We have to note though, that due to the way we’ve scraped the data there exists some garbage we must remove. I’ll illustrate below:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;scraped_data[600: 660]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;7.9&amp;quot;           &amp;quot;20&amp;quot;            &amp;quot;Marvin Bagley&amp;quot; &amp;quot;PF&amp;quot;           
+##  [5] &amp;quot;20&amp;quot;            &amp;quot;SAC&amp;quot;           &amp;quot;1&amp;quot;             &amp;quot;1&amp;quot;            
+##  [9] &amp;quot;28.0&amp;quot;          &amp;quot;6.0&amp;quot;           &amp;quot;16.0&amp;quot;          &amp;quot;.375&amp;quot;         
+## [13] &amp;quot;0.0&amp;quot;           &amp;quot;0.0&amp;quot;           &amp;quot;&amp;quot;              &amp;quot;6.0&amp;quot;          
+## [17] &amp;quot;16.0&amp;quot;          &amp;quot;.375&amp;quot;          &amp;quot;.375&amp;quot;          &amp;quot;2.0&amp;quot;          
+## [21] &amp;quot;4.0&amp;quot;           &amp;quot;.500&amp;quot;          &amp;quot;4.0&amp;quot;           &amp;quot;6.0&amp;quot;          
+## [25] &amp;quot;10.0&amp;quot;          &amp;quot;0.0&amp;quot;           &amp;quot;1.0&amp;quot;           &amp;quot;1.0&amp;quot;          
+## [29] &amp;quot;1.0&amp;quot;           &amp;quot;1.0&amp;quot;           &amp;quot;14.0&amp;quot;          &amp;quot;Rk&amp;quot;           
+## [33] &amp;quot;Player&amp;quot;        &amp;quot;Pos&amp;quot;           &amp;quot;Age&amp;quot;           &amp;quot;Tm&amp;quot;           
+## [37] &amp;quot;G&amp;quot;             &amp;quot;GS&amp;quot;            &amp;quot;MP&amp;quot;            &amp;quot;FG&amp;quot;           
+## [41] &amp;quot;FGA&amp;quot;           &amp;quot;FG%&amp;quot;           &amp;quot;3P&amp;quot;            &amp;quot;3PA&amp;quot;          
+## [45] &amp;quot;3P%&amp;quot;           &amp;quot;2P&amp;quot;            &amp;quot;2PA&amp;quot;           &amp;quot;2P%&amp;quot;          
+## [49] &amp;quot;eFG%&amp;quot;          &amp;quot;FT&amp;quot;            &amp;quot;FTA&amp;quot;           &amp;quot;FT%&amp;quot;          
+## [53] &amp;quot;ORB&amp;quot;           &amp;quot;DRB&amp;quot;           &amp;quot;TRB&amp;quot;           &amp;quot;AST&amp;quot;          
+## [57] &amp;quot;STL&amp;quot;           &amp;quot;BLK&amp;quot;           &amp;quot;TOV&amp;quot;           &amp;quot;PF&amp;quot;           
+## [61] &amp;quot;PTS&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;to_remove &amp;lt;- 631:660
+n &amp;lt;- length(scraped_data)
+
+while(to_remove[length(to_remove)] &amp;lt;= n - 601 ){
+  
+  A &amp;lt;- to_remove[length(to_remove)] + 601
+  to_add &amp;lt;- A:(A+29)
+  to_remove &amp;lt;- c(to_remove, to_add)
+  
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;process_dat &amp;lt;- scraped_data[-to_remove]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can check that we have reduced our data vector:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n2 &amp;lt;- length(process_dat)
+print(n2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 13681&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_index &amp;lt;- seq(from = 31, to = n2, by = 30)
+
+#Initialize data frame...
+my_data &amp;lt;- data.frame(matrix(ncol = 30, nrow = 452))
+# Note the dimensions here are found by looking at the table on basketball-
+# reference.
+
+
+# Loop to add each row to the data frame
+for (i in 1:length(my_index)){
+  current_ind &amp;lt;- my_index[i]
+  my_data[i,] &amp;lt;- process_dat[current_ind:(current_ind+30)]
+}
+
+
+colnames(my_data) &amp;lt;- my_variable_names&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(my_data)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;data.frame&amp;#39;:    456 obs. of  30 variables:
+##  $ Rk              : chr  &amp;quot;1&amp;quot; &amp;quot;2&amp;quot; &amp;quot;3&amp;quot; &amp;quot;4&amp;quot; ...
+##  $ Player          : chr  &amp;quot;Steven Adams&amp;quot; &amp;quot;Bam Adebayo&amp;quot; &amp;quot;LaMarcus Aldridge&amp;quot; &amp;quot;Nickeil Alexander-Walker&amp;quot; ...
+##  $ Pos             : chr  &amp;quot;C&amp;quot; &amp;quot;C&amp;quot; &amp;quot;C&amp;quot; &amp;quot;SG&amp;quot; ...
+##  $ Age             : chr  &amp;quot;26&amp;quot; &amp;quot;22&amp;quot; &amp;quot;34&amp;quot; &amp;quot;21&amp;quot; ...
+##  $ Tm              : chr  &amp;quot;OKC&amp;quot; &amp;quot;MIA&amp;quot; &amp;quot;SAS&amp;quot; &amp;quot;NOP&amp;quot; ...
+##  $ G               : chr  &amp;quot;14&amp;quot; &amp;quot;17&amp;quot; &amp;quot;19&amp;quot; &amp;quot;16&amp;quot; ...
+##  $ GS              : chr  &amp;quot;14&amp;quot; &amp;quot;17&amp;quot; &amp;quot;19&amp;quot; &amp;quot;0&amp;quot; ...
+##  $ MP              : chr  &amp;quot;26.3&amp;quot; &amp;quot;32.4&amp;quot; &amp;quot;32.9&amp;quot; &amp;quot;14.4&amp;quot; ...
+##  $ FG              : chr  &amp;quot;4.0&amp;quot; &amp;quot;5.2&amp;quot; &amp;quot;7.8&amp;quot; &amp;quot;2.3&amp;quot; ...
+##  $ FGA             : chr  &amp;quot;7.1&amp;quot; &amp;quot;8.7&amp;quot; &amp;quot;14.9&amp;quot; &amp;quot;7.0&amp;quot; ...
+##  $ FG%             : chr  &amp;quot;.560&amp;quot; &amp;quot;.601&amp;quot; &amp;quot;.523&amp;quot; &amp;quot;.321&amp;quot; ...
+##  $ Threes_made     : chr  &amp;quot;0.0&amp;quot; &amp;quot;0.1&amp;quot; &amp;quot;0.6&amp;quot; &amp;quot;1.3&amp;quot; ...
+##  $ Threes_attempted: chr  &amp;quot;0.0&amp;quot; &amp;quot;0.4&amp;quot; &amp;quot;1.6&amp;quot; &amp;quot;3.8&amp;quot; ...
+##  $ Threes_percent  : chr  &amp;quot;&amp;quot; &amp;quot;.167&amp;quot; &amp;quot;.367&amp;quot; &amp;quot;.344&amp;quot; ...
+##  $ Twos_made       : chr  &amp;quot;4.0&amp;quot; &amp;quot;5.2&amp;quot; &amp;quot;7.2&amp;quot; &amp;quot;0.9&amp;quot; ...
+##  $ Twos_attempted  : chr  &amp;quot;7.1&amp;quot; &amp;quot;8.4&amp;quot; &amp;quot;13.3&amp;quot; &amp;quot;3.2&amp;quot; ...
+##  $ Twos_percent    : chr  &amp;quot;.560&amp;quot; &amp;quot;.620&amp;quot; &amp;quot;.542&amp;quot; &amp;quot;.294&amp;quot; ...
+##  $ eFG%            : chr  &amp;quot;.560&amp;quot; &amp;quot;.605&amp;quot; &amp;quot;.542&amp;quot; &amp;quot;.415&amp;quot; ...
+##  $ FT              : chr  &amp;quot;1.0&amp;quot; &amp;quot;3.9&amp;quot; &amp;quot;2.8&amp;quot; &amp;quot;0.6&amp;quot; ...
+##  $ FTA             : chr  &amp;quot;2.5&amp;quot; &amp;quot;6.1&amp;quot; &amp;quot;3.4&amp;quot; &amp;quot;0.9&amp;quot; ...
+##  $ FT%             : chr  &amp;quot;.400&amp;quot; &amp;quot;.650&amp;quot; &amp;quot;.828&amp;quot; &amp;quot;.714&amp;quot; ...
+##  $ ORB             : chr  &amp;quot;2.7&amp;quot; &amp;quot;2.2&amp;quot; &amp;quot;2.1&amp;quot; &amp;quot;0.1&amp;quot; ...
+##  $ DRB             : chr  &amp;quot;6.0&amp;quot; &amp;quot;8.1&amp;quot; &amp;quot;4.5&amp;quot; &amp;quot;2.1&amp;quot; ...
+##  $ TRB             : chr  &amp;quot;8.7&amp;quot; &amp;quot;10.4&amp;quot; &amp;quot;6.6&amp;quot; &amp;quot;2.3&amp;quot; ...
+##  $ AST             : chr  &amp;quot;2.9&amp;quot; &amp;quot;4.5&amp;quot; &amp;quot;2.3&amp;quot; &amp;quot;2.3&amp;quot; ...
+##  $ STL             : chr  &amp;quot;0.4&amp;quot; &amp;quot;1.6&amp;quot; &amp;quot;0.6&amp;quot; &amp;quot;0.3&amp;quot; ...
+##  $ BLK             : chr  &amp;quot;0.8&amp;quot; &amp;quot;1.2&amp;quot; &amp;quot;1.7&amp;quot; &amp;quot;0.1&amp;quot; ...
+##  $ TOV             : chr  &amp;quot;1.5&amp;quot; &amp;quot;2.8&amp;quot; &amp;quot;1.7&amp;quot; &amp;quot;1.3&amp;quot; ...
+##  $ PF              : chr  &amp;quot;1.8&amp;quot; &amp;quot;2.5&amp;quot; &amp;quot;2.2&amp;quot; &amp;quot;1.6&amp;quot; ...
+##  $ PTS             : chr  &amp;quot;9.0&amp;quot; &amp;quot;14.5&amp;quot; &amp;quot;18.9&amp;quot; &amp;quot;6.4&amp;quot; ...&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_data[, c(4, 6:30)] &amp;lt;- sapply(my_data[, c(4,6:30)], as.numeric)
+str(my_data)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;data.frame&amp;#39;:    456 obs. of  30 variables:
+##  $ Rk              : chr  &amp;quot;1&amp;quot; &amp;quot;2&amp;quot; &amp;quot;3&amp;quot; &amp;quot;4&amp;quot; ...
+##  $ Player          : chr  &amp;quot;Steven Adams&amp;quot; &amp;quot;Bam Adebayo&amp;quot; &amp;quot;LaMarcus Aldridge&amp;quot; &amp;quot;Nickeil Alexander-Walker&amp;quot; ...
+##  $ Pos             : chr  &amp;quot;C&amp;quot; &amp;quot;C&amp;quot; &amp;quot;C&amp;quot; &amp;quot;SG&amp;quot; ...
+##  $ Age             : num  26 22 34 21 24 21 29 26 31 25 ...
+##  $ Tm              : chr  &amp;quot;OKC&amp;quot; &amp;quot;MIA&amp;quot; &amp;quot;SAS&amp;quot; &amp;quot;NOP&amp;quot; ...
+##  $ G               : num  14 17 19 16 7 18 17 16 2 18 ...
+##  $ GS              : num  14 17 19 0 0 15 2 0 0 18 ...
+##  $ MP              : num  26.3 32.4 32.9 14.4 16.4 26.6 21.3 20.9 7 33.1 ...
+##  $ FG              : num  4 5.2 7.8 2.3 2 4.6 1.4 2.9 1 11.4 ...
+##  $ FGA             : num  7.1 8.7 14.9 7 6.6 6.7 4.6 5.7 3.5 20.3 ...
+##  $ FG%             : num  0.56 0.601 0.523 0.321 0.304 0.683 0.291 0.516 0.286 0.56 ...
+##  $ Threes_made     : num  0 0.1 0.6 1.3 0.7 0 0.5 0.3 0.5 1.4 ...
+##  $ Threes_attempted: num  0 0.4 1.6 3.8 3.1 0.1 1.9 1 2.5 4.7 ...
+##  $ Threes_percent  : num  NA 0.167 0.367 0.344 0.227 0 0.242 0.25 0.2 0.294 ...
+##  $ Twos_made       : num  4 5.2 7.2 0.9 1.3 4.6 0.9 2.7 0.5 10 ...
+##  $ Twos_attempted  : num  7.1 8.4 13.3 3.2 3.4 6.6 2.7 4.7 1 15.6 ...
+##  $ Twos_percent    : num  0.56 0.62 0.542 0.294 0.375 0.689 0.326 0.573 0.5 0.641 ...
+##  $ eFG%            : num  0.56 0.605 0.542 0.415 0.359 0.683 0.342 0.538 0.357 0.594 ...
+##  $ FT              : num  1 3.9 2.8 0.6 1.4 2.7 1.1 1 0 6.9 ...
+##  $ FTA             : num  2.5 6.1 3.4 0.9 1.7 4.7 1.7 1.8 0 11.7 ...
+##  $ FT%             : num  0.4 0.65 0.828 0.714 0.833 0.583 0.655 0.571 NA 0.588 ...
+##  $ ORB             : num  2.7 2.2 2.1 0.1 0.1 3.4 1.4 0.9 0 2.7 ...
+##  $ DRB             : num  6 8.1 4.5 2.1 2.3 6.9 3.6 3.6 3.5 11 ...
+##  $ TRB             : num  8.7 10.4 6.6 2.3 2.4 10.3 5 4.6 3.5 13.7 ...
+##  $ AST             : num  2.9 4.5 2.3 2.3 1.9 1.1 1.2 2.6 1 6.2 ...
+##  $ STL             : num  0.4 1.6 0.6 0.3 0.3 0.7 0.9 0.8 0.5 1.5 ...
+##  $ BLK             : num  0.8 1.2 1.7 0.1 0 1.3 0.5 0.8 0 1.4 ...
+##  $ TOV             : num  1.5 2.8 1.7 1.3 1.3 1.2 0.9 0.9 0.5 4.3 ...
+##  $ PF              : num  1.8 2.5 2.2 1.6 1.7 2.4 1.6 1.8 0.5 3.6 ...
+##  $ PTS             : num  9 14.5 18.9 6.4 6.1 11.8 4.3 7.1 2.5 31.1 ...&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_data &amp;lt;- as_tibble(my_data)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_data &amp;lt;- my_data %&amp;gt;%
+  mutate(FP = -0.2*MP - 0.5*FGA + 
+           0.75*Threes_made + PTS +
+           1.5*ORB + DRB + 1.5*AST +
+           2.5*STL + 2.5*BLK - TOV)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_data %&amp;gt;%
+  select(Player, Tm, FP) %&amp;gt;%
+  arrange(desc(FP))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 456 x 3
+##    Player                Tm       FP
+##    &amp;lt;chr&amp;gt;                 &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt;
+##  1 Giannis Antetokounmpo MIL    42.7
+##  2 Luka Dončić           DAL    40.3
+##  3 James Harden          HOU    40.0
+##  4 Karl-Anthony Towns    MIN    37.1
+##  5 LeBron James          LAL    35.8
+##  6 Anthony Davis         LAL    34.6
+##  7 Andre Drummond        DET    32.3
+##  8 Kyrie Irving          BRK    30.6
+##  9 Damian Lillard        POR    30.4
+## 10 Kawhi Leonard         LAC    30.4
+## # … with 446 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_data %&amp;gt;%
+  filter(Player ==&amp;quot;Kendrick Nunn&amp;quot;) %&amp;gt;%
+  arrange(desc(FP)) %&amp;gt;%
+  View()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
