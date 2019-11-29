@@ -1,7 +1,7 @@
 ---
 title: Scraping data from Basketball-Reference
 author: Peter Tea
-date: '2019-12-01'
+date: '2019-11-28'
 categories:
   - Demo
 tags:
