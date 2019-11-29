@@ -33,11 +33,12 @@ social:
 #  icon_pack: ai
 #  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
 - icon: linkedin
-  icon_pack: fa
+  icon_pack: fab
   link: https://www.linkedin.com/in/petertea/
 - icon: github
   icon_pack: fab
   link: https://github.com/petertea96
+
 superuser: true
 user_groups:
 - Researchers
