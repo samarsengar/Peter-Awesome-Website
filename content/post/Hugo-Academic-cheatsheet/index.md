@@ -43,3 +43,13 @@ On the top left of the image (the browser tab), I've added a customized image of
 Themes --> hugo-academic --> static --> img 
 ```
 You will see in this folder, there are three ``.png`` files named: ``icon-32.png``, ``icon-192.png``, and ``icon-512.png``. Go ahead and upload the same image 3x to this folder, and change their names to the above.
+
+## Quick links to your slides, poster, code, dataset,...
+In your preamble, you can specify the options:
+``url_slides:``, ``url_poster:``, ``url_cite:``, ``url_code:``, ``url_video:``, ``url_Dataset:``, ``url_PDF:`` and ``url_project:`` if you wanted to add quick links to these documents on your posts. Just make sure these files are in the same directory as your post directory.
+
+-- Peter you should add an image of this here.
+
+
+
+
