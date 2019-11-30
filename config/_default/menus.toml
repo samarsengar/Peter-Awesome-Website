@@ -40,3 +40,9 @@
     url = "Final_Resume.pdf"
     weight = 10
 
+
+[[main]]
+    name = "Presentations"
+    url = "talk"
+    weight = 40
+

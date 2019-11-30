@@ -1,7 +1,7 @@
 ---
 authors:
 - admin
-bio: My research interests include ?
+bio: My research interests include everything sports.
 education:
   courses:
   - course: Msc Statistics

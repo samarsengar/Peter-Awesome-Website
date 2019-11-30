@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Simulation | Peter Tea</title>
+    <link>/tags/simulation/</link>
+      <atom:link href="/tags/simulation/index.xml" rel="self" type="application/rss+xml" />
+    <description>Simulation</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Fri, 09 Nov 2018 13:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon.png</url>
+      <title>Simulation</title>
+      <link>/tags/simulation/</link>
+    </image>
+    
+    <item>
+      <title>A Genetic Association Study Comparing Kernel-based Methods, with Application to Crohn&#39;s Disease</title>
+      <link>/talk/cucoh/</link>
+      <pubDate>Fri, 09 Nov 2018 13:00:00 +0000</pubDate>
+      <guid>/talk/cucoh/</guid>
+      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    This is an awesome warning feature.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I was a research poster presenter at the 2018 Canadian Undergraduate Conference on Healthcare (&lt;a href=&#34;https://www.cucoh.com&#34; target=&#34;_blank&#34;&gt;CUCOH&lt;/a&gt;) - &amp;ldquo;The Future of Healthcare: A Multidisciplinary Approach&amp;rdquo;. Here is a &lt;a href=&#34;Peter_Poster.pdf&#34; target=&#34;_blank&#34;&gt;link to my poster&lt;/a&gt;, which was presented to a group of Queen&amp;rsquo;s medical students as well as undergraduate science students across Canada. I unfortunately did not win the poster research competition (some musician won), but had a blast presenting and hearing about other research topics! I&amp;rsquo;ve also presented this topic in a lab meeting, using &lt;a href=&#34;Peter_Presentation.pdf&#34; target=&#34;_blank&#34;&gt;these prepared slides&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
