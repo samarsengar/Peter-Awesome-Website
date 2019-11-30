@@ -1,7 +1,7 @@
 ---
 title: Scraping data from Basketball-Reference
 author: Peter Tea
-date: '2019-11-28'
+date: "2019-11-28T13:00:00Z"
 categories:
   - Demo
 tags:
@@ -21,7 +21,7 @@ image:
   focal_point: ''
   placement: 2
   preview_only: no
-lastmod: '2019-04-17T00:00:00Z'
+lastmod: '2019-11-28T13:00:00Z'
 subtitle: 'Exporting data online and into R in under 10 minutes :basketball: :fire:'
 summary: Scrape Baksetball-Reference tables in under 10 minutes.
 geometry: margin = 1.75 cm
@@ -66,7 +66,7 @@ print(my_variable_names)</code></pre>
 <pre class="r"><code>is.vector(scraped_data)</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <pre class="r"><code>length(scraped_data)</code></pre>
-<pre><code>## [1] 14341</code></pre>
+<pre><code>## [1] 14401</code></pre>
 
 <p>Some of the variable names begin with numbers which is a huge <strong>no-no</strong> in R, so let’s manually change these names:</p>
 <pre class="r"><code>my_variable_names[12:17] &lt;- c(&quot;Threes_made&quot;, &quot;Threes_attempted&quot;,
@@ -106,7 +106,7 @@ while(to_remove[length(to_remove)] &lt;= n - 601 ){
 <p>We can check that we have reduced our data vector:</p>
 <pre class="r"><code>n2 &lt;- length(process_dat)
 print(n2)</code></pre>
-<pre><code>## [1] 13681</code></pre>
+<pre><code>## [1] 13741</code></pre>
 <p>Awesome, now we’ll get to work on filling in a data-frame with this cleaned data. The way I did it was to specify the elements that should be added row-wise to a data table in R. I.e. every 30 elements makes up one row in our table:</p>
 <pre class="r"><code>my_index &lt;- seq(from = 31, to = n2, by = 30)
 
@@ -169,31 +169,31 @@ colnames(my_data) &lt;- my_variable_names</code></pre>
 <td align="left">C</td>
 <td align="left">26</td>
 <td align="left">OKC</td>
-<td align="left">14</td>
-<td align="left">14</td>
-<td align="left">26.3</td>
-<td align="left">4.0</td>
-<td align="left">7.1</td>
-<td align="left">.560</td>
+<td align="left">15</td>
+<td align="left">15</td>
+<td align="left">26.1</td>
+<td align="left">4.2</td>
+<td align="left">7.4</td>
+<td align="left">.568</td>
 <td align="left">0.0</td>
 <td align="left">0.0</td>
 <td align="left"></td>
-<td align="left">4.0</td>
-<td align="left">7.1</td>
-<td align="left">.560</td>
-<td align="left">.560</td>
-<td align="left">1.0</td>
-<td align="left">2.5</td>
+<td align="left">4.2</td>
+<td align="left">7.4</td>
+<td align="left">.568</td>
+<td align="left">.568</td>
+<td align="left">0.9</td>
+<td align="left">2.3</td>
 <td align="left">.400</td>
 <td align="left">2.7</td>
-<td align="left">6.0</td>
-<td align="left">8.7</td>
+<td align="left">6.2</td>
+<td align="left">8.9</td>
 <td align="left">2.9</td>
-<td align="left">0.4</td>
-<td align="left">0.8</td>
-<td align="left">1.5</td>
+<td align="left">0.5</td>
+<td align="left">0.9</td>
+<td align="left">1.4</td>
 <td align="left">1.8</td>
-<td align="left">9.0</td>
+<td align="left">9.3</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
@@ -201,31 +201,31 @@ colnames(my_data) &lt;- my_variable_names</code></pre>
 <td align="left">C</td>
 <td align="left">22</td>
 <td align="left">MIA</td>
-<td align="left">17</td>
-<td align="left">17</td>
-<td align="left">32.4</td>
-<td align="left">5.2</td>
-<td align="left">8.7</td>
-<td align="left">.601</td>
+<td align="left">18</td>
+<td align="left">18</td>
+<td align="left">31.9</td>
+<td align="left">5.0</td>
+<td align="left">8.5</td>
+<td align="left">.588</td>
 <td align="left">0.1</td>
-<td align="left">0.4</td>
+<td align="left">0.3</td>
 <td align="left">.167</td>
-<td align="left">5.2</td>
-<td align="left">8.4</td>
-<td align="left">.620</td>
+<td align="left">4.9</td>
+<td align="left">8.2</td>
 <td align="left">.605</td>
-<td align="left">3.9</td>
-<td align="left">6.1</td>
+<td align="left">.592</td>
+<td align="left">3.7</td>
+<td align="left">5.7</td>
 <td align="left">.650</td>
 <td align="left">2.2</td>
 <td align="left">8.1</td>
-<td align="left">10.4</td>
-<td align="left">4.5</td>
+<td align="left">10.3</td>
+<td align="left">4.4</td>
 <td align="left">1.6</td>
 <td align="left">1.2</td>
-<td align="left">2.8</td>
+<td align="left">2.7</td>
 <td align="left">2.5</td>
-<td align="left">14.5</td>
+<td align="left">13.8</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
@@ -233,28 +233,28 @@ colnames(my_data) &lt;- my_variable_names</code></pre>
 <td align="left">C</td>
 <td align="left">34</td>
 <td align="left">SAS</td>
-<td align="left">19</td>
-<td align="left">19</td>
-<td align="left">32.9</td>
-<td align="left">7.8</td>
-<td align="left">14.9</td>
-<td align="left">.523</td>
+<td align="left">20</td>
+<td align="left">20</td>
+<td align="left">32.8</td>
+<td align="left">7.7</td>
+<td align="left">14.8</td>
+<td align="left">.517</td>
 <td align="left">0.6</td>
 <td align="left">1.6</td>
-<td align="left">.367</td>
-<td align="left">7.2</td>
+<td align="left">.355</td>
+<td align="left">7.1</td>
 <td align="left">13.3</td>
-<td align="left">.542</td>
-<td align="left">.542</td>
-<td align="left">2.8</td>
-<td align="left">3.4</td>
-<td align="left">.828</td>
+<td align="left">.536</td>
+<td align="left">.535</td>
+<td align="left">3.0</td>
+<td align="left">3.6</td>
+<td align="left">.833</td>
 <td align="left">2.1</td>
-<td align="left">4.5</td>
-<td align="left">6.6</td>
-<td align="left">2.3</td>
-<td align="left">0.6</td>
-<td align="left">1.7</td>
+<td align="left">4.7</td>
+<td align="left">6.7</td>
+<td align="left">2.5</td>
+<td align="left">0.7</td>
+<td align="left">1.8</td>
 <td align="left">1.7</td>
 <td align="left">2.2</td>
 <td align="left">18.9</td>
@@ -297,100 +297,100 @@ colnames(my_data) &lt;- my_variable_names</code></pre>
 <td align="left">SG</td>
 <td align="left">24</td>
 <td align="left">MEM</td>
-<td align="left">7</td>
+<td align="left">8</td>
 <td align="left">0</td>
-<td align="left">16.4</td>
-<td align="left">2.0</td>
-<td align="left">6.6</td>
-<td align="left">.304</td>
-<td align="left">0.7</td>
-<td align="left">3.1</td>
-<td align="left">.227</td>
-<td align="left">1.3</td>
-<td align="left">3.4</td>
-<td align="left">.375</td>
-<td align="left">.359</td>
-<td align="left">1.4</td>
-<td align="left">1.7</td>
-<td align="left">.833</td>
-<td align="left">0.1</td>
-<td align="left">2.3</td>
-<td align="left">2.4</td>
+<td align="left">15.9</td>
 <td align="left">1.9</td>
+<td align="left">6.6</td>
+<td align="left">.283</td>
+<td align="left">0.8</td>
+<td align="left">3.3</td>
+<td align="left">.231</td>
+<td align="left">1.1</td>
+<td align="left">3.4</td>
+<td align="left">.333</td>
+<td align="left">.340</td>
+<td align="left">1.4</td>
+<td align="left">1.6</td>
+<td align="left">.846</td>
+<td align="left">0.3</td>
+<td align="left">2.3</td>
+<td align="left">2.5</td>
+<td align="left">1.8</td>
 <td align="left">0.3</td>
 <td align="left">0.0</td>
 <td align="left">1.3</td>
-<td align="left">1.7</td>
-<td align="left">6.1</td>
+<td align="left">1.6</td>
+<td align="left">5.9</td>
 </tr>
 </tbody>
 </table>
 <p>One last step required! All columns in my table are type <code>chr</code>. We want to change the columns that are numeric into a numeric type!</p>
 <pre class="r"><code>str(my_data)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    456 obs. of  30 variables:
+<pre><code>## &#39;data.frame&#39;:    458 obs. of  30 variables:
 ##  $ Rk              : chr  &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
 ##  $ Player          : chr  &quot;Steven Adams&quot; &quot;Bam Adebayo&quot; &quot;LaMarcus Aldridge&quot; &quot;Nickeil Alexander-Walker&quot; ...
 ##  $ Pos             : chr  &quot;C&quot; &quot;C&quot; &quot;C&quot; &quot;SG&quot; ...
 ##  $ Age             : chr  &quot;26&quot; &quot;22&quot; &quot;34&quot; &quot;21&quot; ...
 ##  $ Tm              : chr  &quot;OKC&quot; &quot;MIA&quot; &quot;SAS&quot; &quot;NOP&quot; ...
-##  $ G               : chr  &quot;14&quot; &quot;17&quot; &quot;19&quot; &quot;16&quot; ...
-##  $ GS              : chr  &quot;14&quot; &quot;17&quot; &quot;19&quot; &quot;0&quot; ...
-##  $ MP              : chr  &quot;26.3&quot; &quot;32.4&quot; &quot;32.9&quot; &quot;14.4&quot; ...
-##  $ FG              : chr  &quot;4.0&quot; &quot;5.2&quot; &quot;7.8&quot; &quot;2.3&quot; ...
-##  $ FGA             : chr  &quot;7.1&quot; &quot;8.7&quot; &quot;14.9&quot; &quot;7.0&quot; ...
-##  $ FG%             : chr  &quot;.560&quot; &quot;.601&quot; &quot;.523&quot; &quot;.321&quot; ...
+##  $ G               : chr  &quot;15&quot; &quot;18&quot; &quot;20&quot; &quot;16&quot; ...
+##  $ GS              : chr  &quot;15&quot; &quot;18&quot; &quot;20&quot; &quot;0&quot; ...
+##  $ MP              : chr  &quot;26.1&quot; &quot;31.9&quot; &quot;32.8&quot; &quot;14.4&quot; ...
+##  $ FG              : chr  &quot;4.2&quot; &quot;5.0&quot; &quot;7.7&quot; &quot;2.3&quot; ...
+##  $ FGA             : chr  &quot;7.4&quot; &quot;8.5&quot; &quot;14.8&quot; &quot;7.0&quot; ...
+##  $ FG%             : chr  &quot;.568&quot; &quot;.588&quot; &quot;.517&quot; &quot;.321&quot; ...
 ##  $ Threes_made     : chr  &quot;0.0&quot; &quot;0.1&quot; &quot;0.6&quot; &quot;1.3&quot; ...
-##  $ Threes_attempted: chr  &quot;0.0&quot; &quot;0.4&quot; &quot;1.6&quot; &quot;3.8&quot; ...
-##  $ Threes_percent  : chr  &quot;&quot; &quot;.167&quot; &quot;.367&quot; &quot;.344&quot; ...
-##  $ Twos_made       : chr  &quot;4.0&quot; &quot;5.2&quot; &quot;7.2&quot; &quot;0.9&quot; ...
-##  $ Twos_attempted  : chr  &quot;7.1&quot; &quot;8.4&quot; &quot;13.3&quot; &quot;3.2&quot; ...
-##  $ Twos_percent    : chr  &quot;.560&quot; &quot;.620&quot; &quot;.542&quot; &quot;.294&quot; ...
-##  $ eFG%            : chr  &quot;.560&quot; &quot;.605&quot; &quot;.542&quot; &quot;.415&quot; ...
-##  $ FT              : chr  &quot;1.0&quot; &quot;3.9&quot; &quot;2.8&quot; &quot;0.6&quot; ...
-##  $ FTA             : chr  &quot;2.5&quot; &quot;6.1&quot; &quot;3.4&quot; &quot;0.9&quot; ...
-##  $ FT%             : chr  &quot;.400&quot; &quot;.650&quot; &quot;.828&quot; &quot;.714&quot; ...
+##  $ Threes_attempted: chr  &quot;0.0&quot; &quot;0.3&quot; &quot;1.6&quot; &quot;3.8&quot; ...
+##  $ Threes_percent  : chr  &quot;&quot; &quot;.167&quot; &quot;.355&quot; &quot;.344&quot; ...
+##  $ Twos_made       : chr  &quot;4.2&quot; &quot;4.9&quot; &quot;7.1&quot; &quot;0.9&quot; ...
+##  $ Twos_attempted  : chr  &quot;7.4&quot; &quot;8.2&quot; &quot;13.3&quot; &quot;3.2&quot; ...
+##  $ Twos_percent    : chr  &quot;.568&quot; &quot;.605&quot; &quot;.536&quot; &quot;.294&quot; ...
+##  $ eFG%            : chr  &quot;.568&quot; &quot;.592&quot; &quot;.535&quot; &quot;.415&quot; ...
+##  $ FT              : chr  &quot;0.9&quot; &quot;3.7&quot; &quot;3.0&quot; &quot;0.6&quot; ...
+##  $ FTA             : chr  &quot;2.3&quot; &quot;5.7&quot; &quot;3.6&quot; &quot;0.9&quot; ...
+##  $ FT%             : chr  &quot;.400&quot; &quot;.650&quot; &quot;.833&quot; &quot;.714&quot; ...
 ##  $ ORB             : chr  &quot;2.7&quot; &quot;2.2&quot; &quot;2.1&quot; &quot;0.1&quot; ...
-##  $ DRB             : chr  &quot;6.0&quot; &quot;8.1&quot; &quot;4.5&quot; &quot;2.1&quot; ...
-##  $ TRB             : chr  &quot;8.7&quot; &quot;10.4&quot; &quot;6.6&quot; &quot;2.3&quot; ...
-##  $ AST             : chr  &quot;2.9&quot; &quot;4.5&quot; &quot;2.3&quot; &quot;2.3&quot; ...
-##  $ STL             : chr  &quot;0.4&quot; &quot;1.6&quot; &quot;0.6&quot; &quot;0.3&quot; ...
-##  $ BLK             : chr  &quot;0.8&quot; &quot;1.2&quot; &quot;1.7&quot; &quot;0.1&quot; ...
-##  $ TOV             : chr  &quot;1.5&quot; &quot;2.8&quot; &quot;1.7&quot; &quot;1.3&quot; ...
+##  $ DRB             : chr  &quot;6.2&quot; &quot;8.1&quot; &quot;4.7&quot; &quot;2.1&quot; ...
+##  $ TRB             : chr  &quot;8.9&quot; &quot;10.3&quot; &quot;6.7&quot; &quot;2.3&quot; ...
+##  $ AST             : chr  &quot;2.9&quot; &quot;4.4&quot; &quot;2.5&quot; &quot;2.3&quot; ...
+##  $ STL             : chr  &quot;0.5&quot; &quot;1.6&quot; &quot;0.7&quot; &quot;0.3&quot; ...
+##  $ BLK             : chr  &quot;0.9&quot; &quot;1.2&quot; &quot;1.8&quot; &quot;0.1&quot; ...
+##  $ TOV             : chr  &quot;1.4&quot; &quot;2.7&quot; &quot;1.7&quot; &quot;1.3&quot; ...
 ##  $ PF              : chr  &quot;1.8&quot; &quot;2.5&quot; &quot;2.2&quot; &quot;1.6&quot; ...
-##  $ PTS             : chr  &quot;9.0&quot; &quot;14.5&quot; &quot;18.9&quot; &quot;6.4&quot; ...</code></pre>
+##  $ PTS             : chr  &quot;9.3&quot; &quot;13.8&quot; &quot;18.9&quot; &quot;6.4&quot; ...</code></pre>
 <pre class="r"><code>my_data[, c(4, 6:30)] &lt;- sapply(my_data[, c(4,6:30)], as.numeric)
 str(my_data)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    456 obs. of  30 variables:
+<pre><code>## &#39;data.frame&#39;:    458 obs. of  30 variables:
 ##  $ Rk              : chr  &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
 ##  $ Player          : chr  &quot;Steven Adams&quot; &quot;Bam Adebayo&quot; &quot;LaMarcus Aldridge&quot; &quot;Nickeil Alexander-Walker&quot; ...
 ##  $ Pos             : chr  &quot;C&quot; &quot;C&quot; &quot;C&quot; &quot;SG&quot; ...
 ##  $ Age             : num  26 22 34 21 24 21 29 26 31 25 ...
 ##  $ Tm              : chr  &quot;OKC&quot; &quot;MIA&quot; &quot;SAS&quot; &quot;NOP&quot; ...
-##  $ G               : num  14 17 19 16 7 18 17 16 2 18 ...
-##  $ GS              : num  14 17 19 0 0 15 2 0 0 18 ...
-##  $ MP              : num  26.3 32.4 32.9 14.4 16.4 26.6 21.3 20.9 7 33.1 ...
-##  $ FG              : num  4 5.2 7.8 2.3 2 4.6 1.4 2.9 1 11.4 ...
-##  $ FGA             : num  7.1 8.7 14.9 7 6.6 6.7 4.6 5.7 3.5 20.3 ...
-##  $ FG%             : num  0.56 0.601 0.523 0.321 0.304 0.683 0.291 0.516 0.286 0.56 ...
-##  $ Threes_made     : num  0 0.1 0.6 1.3 0.7 0 0.5 0.3 0.5 1.4 ...
-##  $ Threes_attempted: num  0 0.4 1.6 3.8 3.1 0.1 1.9 1 2.5 4.7 ...
-##  $ Threes_percent  : num  NA 0.167 0.367 0.344 0.227 0 0.242 0.25 0.2 0.294 ...
-##  $ Twos_made       : num  4 5.2 7.2 0.9 1.3 4.6 0.9 2.7 0.5 10 ...
-##  $ Twos_attempted  : num  7.1 8.4 13.3 3.2 3.4 6.6 2.7 4.7 1 15.6 ...
-##  $ Twos_percent    : num  0.56 0.62 0.542 0.294 0.375 0.689 0.326 0.573 0.5 0.641 ...
-##  $ eFG%            : num  0.56 0.605 0.542 0.415 0.359 0.683 0.342 0.538 0.357 0.594 ...
-##  $ FT              : num  1 3.9 2.8 0.6 1.4 2.7 1.1 1 0 6.9 ...
-##  $ FTA             : num  2.5 6.1 3.4 0.9 1.7 4.7 1.7 1.8 0 11.7 ...
-##  $ FT%             : num  0.4 0.65 0.828 0.714 0.833 0.583 0.655 0.571 NA 0.588 ...
-##  $ ORB             : num  2.7 2.2 2.1 0.1 0.1 3.4 1.4 0.9 0 2.7 ...
-##  $ DRB             : num  6 8.1 4.5 2.1 2.3 6.9 3.6 3.6 3.5 11 ...
-##  $ TRB             : num  8.7 10.4 6.6 2.3 2.4 10.3 5 4.6 3.5 13.7 ...
-##  $ AST             : num  2.9 4.5 2.3 2.3 1.9 1.1 1.2 2.6 1 6.2 ...
-##  $ STL             : num  0.4 1.6 0.6 0.3 0.3 0.7 0.9 0.8 0.5 1.5 ...
-##  $ BLK             : num  0.8 1.2 1.7 0.1 0 1.3 0.5 0.8 0 1.4 ...
-##  $ TOV             : num  1.5 2.8 1.7 1.3 1.3 1.2 0.9 0.9 0.5 4.3 ...
-##  $ PF              : num  1.8 2.5 2.2 1.6 1.7 2.4 1.6 1.8 0.5 3.6 ...
-##  $ PTS             : num  9 14.5 18.9 6.4 6.1 11.8 4.3 7.1 2.5 31.1 ...</code></pre>
+##  $ G               : num  15 18 20 16 8 19 18 17 2 19 ...
+##  $ GS              : num  15 18 20 0 0 16 2 0 0 19 ...
+##  $ MP              : num  26.1 31.9 32.8 14.4 15.9 26.6 21.1 20.5 7 33 ...
+##  $ FG              : num  4.2 5 7.7 2.3 1.9 4.7 1.4 2.8 1 11.5 ...
+##  $ FGA             : num  7.4 8.5 14.8 7 6.6 6.9 4.8 5.5 3.5 20.6 ...
+##  $ FG%             : num  0.568 0.588 0.517 0.321 0.283 0.674 0.291 0.505 0.286 0.559 ...
+##  $ Threes_made     : num  0 0.1 0.6 1.3 0.8 0 0.5 0.2 0.5 1.4 ...
+##  $ Threes_attempted: num  0 0.3 1.6 3.8 3.3 0.1 2 0.9 2.5 4.9 ...
+##  $ Threes_percent  : num  NA 0.167 0.355 0.344 0.231 0 0.25 0.25 0.2 0.29 ...
+##  $ Twos_made       : num  4.2 4.9 7.1 0.9 1.1 4.7 0.9 2.5 0.5 10.1 ...
+##  $ Twos_attempted  : num  7.4 8.2 13.3 3.2 3.4 6.9 2.8 4.5 1 15.7 ...
+##  $ Twos_percent    : num  0.568 0.605 0.536 0.294 0.333 0.679 0.32 0.558 0.5 0.642 ...
+##  $ eFG%            : num  0.568 0.592 0.535 0.415 0.34 0.674 0.343 0.527 0.357 0.593 ...
+##  $ FT              : num  0.9 3.7 3 0.6 1.4 2.6 1.1 0.9 0 6.7 ...
+##  $ FTA             : num  2.3 5.7 3.6 0.9 1.6 4.5 1.6 1.6 0 11.3 ...
+##  $ FT%             : num  0.4 0.65 0.833 0.714 0.846 0.57 0.655 0.571 NA 0.591 ...
+##  $ ORB             : num  2.7 2.2 2.1 0.1 0.3 3.4 1.3 0.9 0 2.7 ...
+##  $ DRB             : num  6.2 8.1 4.7 2.1 2.3 6.9 3.5 3.5 3.5 10.9 ...
+##  $ TRB             : num  8.9 10.3 6.7 2.3 2.5 10.4 4.8 4.4 3.5 13.6 ...
+##  $ AST             : num  2.9 4.4 2.5 2.3 1.8 1.1 1.2 2.6 1 6 ...
+##  $ STL             : num  0.5 1.6 0.7 0.3 0.3 0.7 1 0.7 0.5 1.5 ...
+##  $ BLK             : num  0.9 1.2 1.8 0.1 0 1.3 0.4 0.7 0 1.5 ...
+##  $ TOV             : num  1.4 2.7 1.7 1.3 1.3 1.2 0.9 0.9 0.5 4.2 ...
+##  $ PF              : num  1.8 2.5 2.2 1.6 1.6 2.5 1.5 1.7 0.5 3.4 ...
+##  $ PTS             : num  9.3 13.8 18.9 6.4 5.9 11.9 4.3 6.7 2.5 31.2 ...</code></pre>
 <p>Awesome! Let’s take a look at what our table looks like…</p>
 <pre class="r"><code>my_data &lt;- as_tibble(my_data)</code></pre>
 <pre class="r"><code>my_data &lt;- my_data %&gt;%
@@ -416,12 +416,12 @@ knitr::kable(FP_data[1:10,], caption = &quot;Fantasy Data&quot;)</code></pre>
 <tr class="odd">
 <td align="left">Giannis Antetokounmpo</td>
 <td align="left">MIL</td>
-<td align="right">42.680</td>
+<td align="right">42.600</td>
 </tr>
 <tr class="even">
 <td align="left">Luka Dončić</td>
 <td align="left">DAL</td>
-<td align="right">40.275</td>
+<td align="right">40.735</td>
 </tr>
 <tr class="odd">
 <td align="left">James Harden</td>
@@ -436,17 +436,17 @@ knitr::kable(FP_data[1:10,], caption = &quot;Fantasy Data&quot;)</code></pre>
 <tr class="odd">
 <td align="left">LeBron James</td>
 <td align="left">LAL</td>
-<td align="right">35.790</td>
+<td align="right">35.615</td>
 </tr>
 <tr class="even">
 <td align="left">Anthony Davis</td>
 <td align="left">LAL</td>
-<td align="right">34.570</td>
+<td align="right">34.700</td>
 </tr>
 <tr class="odd">
 <td align="left">Andre Drummond</td>
 <td align="left">DET</td>
-<td align="right">32.290</td>
+<td align="right">32.150</td>
 </tr>
 <tr class="even">
 <td align="left">Kyrie Irving</td>
@@ -454,14 +454,14 @@ knitr::kable(FP_data[1:10,], caption = &quot;Fantasy Data&quot;)</code></pre>
 <td align="right">30.640</td>
 </tr>
 <tr class="odd">
-<td align="left">Damian Lillard</td>
-<td align="left">POR</td>
-<td align="right">30.425</td>
-</tr>
-<tr class="even">
 <td align="left">Kawhi Leonard</td>
 <td align="left">LAC</td>
-<td align="right">30.415</td>
+<td align="right">30.240</td>
+</tr>
+<tr class="even">
+<td align="left">Damian Lillard</td>
+<td align="left">POR</td>
+<td align="right">30.125</td>
 </tr>
 </tbody>
 </table>

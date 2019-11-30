@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fun | Peter Tea</title>
+    <link>/tags/fun/</link>
+      <atom:link href="/tags/fun/index.xml" rel="self" type="application/rss+xml" />
+    <description>Fun</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Thu, 28 Nov 2019 13:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon.png</url>
+      <title>Fun</title>
+      <link>/tags/fun/</link>
+    </image>
+    
+    <item>
+      <title>Hugo-Academic CheatSheet</title>
+      <link>/post/hugo-academic-cheatsheet/</link>
+      <pubDate>Thu, 28 Nov 2019 13:00:00 +0000</pubDate>
+      <guid>/post/hugo-academic-cheatsheet/</guid>
+      <description>
+
+&lt;h2 id=&#34;the-lazy-way-to-hugo-academic&#34;&gt;The lazy way to hugo-academic&lt;/h2&gt;
+
+&lt;p&gt;This post is currently under construction. Here, I&amp;rsquo;ll post some quick tips with navigating through using hugo-academic on &lt;code&gt;R blogdown&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;emoticons&#34;&gt;Emoticons&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.webfx.com/tools/emoji-cheat-sheet/&#34; target=&#34;_blank&#34;&gt;This site&lt;/a&gt; provides a cheatsheet on available emoticons you can use like 😌 or 🙈.&lt;/p&gt;
+
+&lt;h2 id=&#34;adding-icon-on-browser-tab&#34;&gt;Adding icon on browser tab&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;tennis_icon.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On the top left of the image (the browser tab), I&amp;rsquo;ve added a customized image of a tennis ball. You can do the same with any image by going to this folder:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Themes --&amp;gt; hugo-academic --&amp;gt; static --&amp;gt; img 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You will see in this folder, there are three &lt;code&gt;.png&lt;/code&gt; files named: &lt;code&gt;icon-32.png&lt;/code&gt;, &lt;code&gt;icon-192.png&lt;/code&gt;, and &lt;code&gt;icon-512.png&lt;/code&gt;. Go ahead and upload the same image 3x to this folder, and change their names to the above.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

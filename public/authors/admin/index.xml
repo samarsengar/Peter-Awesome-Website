@@ -5,7 +5,7 @@
     <link>/authors/admin/</link>
       <atom:link href="/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     <description>Peter Tea</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Thu, 28 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Thu, 28 Nov 2019 13:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon.png</url>
       <title>Peter Tea</title>
@@ -13,9 +13,37 @@
     </image>
     
     <item>
+      <title>Hugo-Academic CheatSheet</title>
+      <link>/post/hugo-academic-cheatsheet/</link>
+      <pubDate>Thu, 28 Nov 2019 13:00:00 +0000</pubDate>
+      <guid>/post/hugo-academic-cheatsheet/</guid>
+      <description>
+
+&lt;h2 id=&#34;the-lazy-way-to-hugo-academic&#34;&gt;The lazy way to hugo-academic&lt;/h2&gt;
+
+&lt;p&gt;This post is currently under construction. Here, I&amp;rsquo;ll post some quick tips with navigating through using hugo-academic on &lt;code&gt;R blogdown&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;emoticons&#34;&gt;Emoticons&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.webfx.com/tools/emoji-cheat-sheet/&#34; target=&#34;_blank&#34;&gt;This site&lt;/a&gt; provides a cheatsheet on available emoticons you can use like 😌 or 🙈.&lt;/p&gt;
+
+&lt;h2 id=&#34;adding-icon-on-browser-tab&#34;&gt;Adding icon on browser tab&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;tennis_icon.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On the top left of the image (the browser tab), I&amp;rsquo;ve added a customized image of a tennis ball. You can do the same with any image by going to this folder:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Themes --&amp;gt; hugo-academic --&amp;gt; static --&amp;gt; img 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You will see in this folder, there are three &lt;code&gt;.png&lt;/code&gt; files named: &lt;code&gt;icon-32.png&lt;/code&gt;, &lt;code&gt;icon-192.png&lt;/code&gt;, and &lt;code&gt;icon-512.png&lt;/code&gt;. Go ahead and upload the same image 3x to this folder, and change their names to the above.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Scraping data from Basketball-Reference</title>
       <link>/post/scraping-basketball-reference/</link>
-      <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 28 Nov 2019 13:00:00 +0000</pubDate>
       <guid>/post/scraping-basketball-reference/</guid>
       <description>
 
@@ -54,7 +82,7 @@ print(my_variable_names)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;is.vector(scraped_data)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] TRUE&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;length(scraped_data)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 14341&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 14401&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Some of the variable names begin with numbers which is a huge &lt;strong&gt;no-no&lt;/strong&gt; in R, so let’s manually change these names:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_variable_names[12:17] &amp;lt;- c(&amp;quot;Threes_made&amp;quot;, &amp;quot;Threes_attempted&amp;quot;,
@@ -94,7 +122,7 @@ while(to_remove[length(to_remove)] &amp;lt;= n - 601 ){
 &lt;p&gt;We can check that we have reduced our data vector:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n2 &amp;lt;- length(process_dat)
 print(n2)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 13681&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 13741&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Awesome, now we’ll get to work on filling in a data-frame with this cleaned data. The way I did it was to specify the elements that should be added row-wise to a data table in R. I.e. every 30 elements makes up one row in our table:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_index &amp;lt;- seq(from = 31, to = n2, by = 30)
 
@@ -157,31 +185,31 @@ colnames(my_data) &amp;lt;- my_variable_names&lt;/code&gt;&lt;/pre&gt;
 &lt;td align=&#34;left&#34;&gt;C&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;26&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;OKC&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;14&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;14&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;26.3&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;4.0&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;7.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.560&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;15&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;15&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;26.1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;4.2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;7.4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.568&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;0.0&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;0.0&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;4.0&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;7.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.560&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.560&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;4.2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;7.4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.568&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.568&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.9&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.3&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;.400&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;2.7&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;6.0&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;8.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;6.2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;8.9&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;2.9&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.4&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.8&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.9&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.4&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;1.8&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;9.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;9.3&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;even&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;2&lt;/td&gt;
@@ -189,31 +217,31 @@ colnames(my_data) &amp;lt;- my_variable_names&lt;/code&gt;&lt;/pre&gt;
 &lt;td align=&#34;left&#34;&gt;C&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;22&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;MIA&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;17&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;17&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;32.4&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;5.2&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;8.7&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.601&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;18&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;18&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;31.9&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;5.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;8.5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.588&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;0.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.3&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;.167&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;5.2&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;8.4&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.620&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;4.9&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;8.2&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;.605&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;3.9&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;6.1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.592&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;5.7&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;.650&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;2.2&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;8.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;10.4&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;4.5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;10.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;4.4&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;1.6&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;1.2&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.8&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.7&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;2.5&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;14.5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;13.8&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;odd&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;3&lt;/td&gt;
@@ -221,28 +249,28 @@ colnames(my_data) &amp;lt;- my_variable_names&lt;/code&gt;&lt;/pre&gt;
 &lt;td align=&#34;left&#34;&gt;C&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;34&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;SAS&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;19&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;19&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;32.9&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;7.8&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;14.9&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.523&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;20&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;20&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;32.8&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;7.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;14.8&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.517&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;0.6&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;1.6&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.367&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;7.2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.355&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;7.1&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;13.3&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.542&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.542&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.8&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;3.4&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.828&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.536&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.535&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.833&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;2.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;4.5&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;6.6&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.3&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.6&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;4.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;6.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.8&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;1.7&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;2.2&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;18.9&lt;/td&gt;
@@ -285,100 +313,100 @@ colnames(my_data) &amp;lt;- my_variable_names&lt;/code&gt;&lt;/pre&gt;
 &lt;td align=&#34;left&#34;&gt;SG&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;24&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;MEM&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;8&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;0&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;16.4&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.0&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;6.6&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.304&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.7&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;3.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.227&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.3&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;3.4&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.375&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.359&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.4&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.7&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.833&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.3&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;15.9&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;1.9&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;6.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.283&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.8&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.231&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3.4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.333&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.340&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.846&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.8&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;0.3&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;0.0&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;1.3&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.7&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;6.1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;5.9&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;One last step required! All columns in my table are type &lt;code&gt;chr&lt;/code&gt;. We want to change the columns that are numeric into a numeric type!&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(my_data)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## &amp;#39;data.frame&amp;#39;:    456 obs. of  30 variables:
+&lt;pre&gt;&lt;code&gt;## &amp;#39;data.frame&amp;#39;:    458 obs. of  30 variables:
 ##  $ Rk              : chr  &amp;quot;1&amp;quot; &amp;quot;2&amp;quot; &amp;quot;3&amp;quot; &amp;quot;4&amp;quot; ...
 ##  $ Player          : chr  &amp;quot;Steven Adams&amp;quot; &amp;quot;Bam Adebayo&amp;quot; &amp;quot;LaMarcus Aldridge&amp;quot; &amp;quot;Nickeil Alexander-Walker&amp;quot; ...
 ##  $ Pos             : chr  &amp;quot;C&amp;quot; &amp;quot;C&amp;quot; &amp;quot;C&amp;quot; &amp;quot;SG&amp;quot; ...
 ##  $ Age             : chr  &amp;quot;26&amp;quot; &amp;quot;22&amp;quot; &amp;quot;34&amp;quot; &amp;quot;21&amp;quot; ...
 ##  $ Tm              : chr  &amp;quot;OKC&amp;quot; &amp;quot;MIA&amp;quot; &amp;quot;SAS&amp;quot; &amp;quot;NOP&amp;quot; ...
-##  $ G               : chr  &amp;quot;14&amp;quot; &amp;quot;17&amp;quot; &amp;quot;19&amp;quot; &amp;quot;16&amp;quot; ...
-##  $ GS              : chr  &amp;quot;14&amp;quot; &amp;quot;17&amp;quot; &amp;quot;19&amp;quot; &amp;quot;0&amp;quot; ...
-##  $ MP              : chr  &amp;quot;26.3&amp;quot; &amp;quot;32.4&amp;quot; &amp;quot;32.9&amp;quot; &amp;quot;14.4&amp;quot; ...
-##  $ FG              : chr  &amp;quot;4.0&amp;quot; &amp;quot;5.2&amp;quot; &amp;quot;7.8&amp;quot; &amp;quot;2.3&amp;quot; ...
-##  $ FGA             : chr  &amp;quot;7.1&amp;quot; &amp;quot;8.7&amp;quot; &amp;quot;14.9&amp;quot; &amp;quot;7.0&amp;quot; ...
-##  $ FG%             : chr  &amp;quot;.560&amp;quot; &amp;quot;.601&amp;quot; &amp;quot;.523&amp;quot; &amp;quot;.321&amp;quot; ...
+##  $ G               : chr  &amp;quot;15&amp;quot; &amp;quot;18&amp;quot; &amp;quot;20&amp;quot; &amp;quot;16&amp;quot; ...
+##  $ GS              : chr  &amp;quot;15&amp;quot; &amp;quot;18&amp;quot; &amp;quot;20&amp;quot; &amp;quot;0&amp;quot; ...
+##  $ MP              : chr  &amp;quot;26.1&amp;quot; &amp;quot;31.9&amp;quot; &amp;quot;32.8&amp;quot; &amp;quot;14.4&amp;quot; ...
+##  $ FG              : chr  &amp;quot;4.2&amp;quot; &amp;quot;5.0&amp;quot; &amp;quot;7.7&amp;quot; &amp;quot;2.3&amp;quot; ...
+##  $ FGA             : chr  &amp;quot;7.4&amp;quot; &amp;quot;8.5&amp;quot; &amp;quot;14.8&amp;quot; &amp;quot;7.0&amp;quot; ...
+##  $ FG%             : chr  &amp;quot;.568&amp;quot; &amp;quot;.588&amp;quot; &amp;quot;.517&amp;quot; &amp;quot;.321&amp;quot; ...
 ##  $ Threes_made     : chr  &amp;quot;0.0&amp;quot; &amp;quot;0.1&amp;quot; &amp;quot;0.6&amp;quot; &amp;quot;1.3&amp;quot; ...
-##  $ Threes_attempted: chr  &amp;quot;0.0&amp;quot; &amp;quot;0.4&amp;quot; &amp;quot;1.6&amp;quot; &amp;quot;3.8&amp;quot; ...
-##  $ Threes_percent  : chr  &amp;quot;&amp;quot; &amp;quot;.167&amp;quot; &amp;quot;.367&amp;quot; &amp;quot;.344&amp;quot; ...
-##  $ Twos_made       : chr  &amp;quot;4.0&amp;quot; &amp;quot;5.2&amp;quot; &amp;quot;7.2&amp;quot; &amp;quot;0.9&amp;quot; ...
-##  $ Twos_attempted  : chr  &amp;quot;7.1&amp;quot; &amp;quot;8.4&amp;quot; &amp;quot;13.3&amp;quot; &amp;quot;3.2&amp;quot; ...
-##  $ Twos_percent    : chr  &amp;quot;.560&amp;quot; &amp;quot;.620&amp;quot; &amp;quot;.542&amp;quot; &amp;quot;.294&amp;quot; ...
-##  $ eFG%            : chr  &amp;quot;.560&amp;quot; &amp;quot;.605&amp;quot; &amp;quot;.542&amp;quot; &amp;quot;.415&amp;quot; ...
-##  $ FT              : chr  &amp;quot;1.0&amp;quot; &amp;quot;3.9&amp;quot; &amp;quot;2.8&amp;quot; &amp;quot;0.6&amp;quot; ...
-##  $ FTA             : chr  &amp;quot;2.5&amp;quot; &amp;quot;6.1&amp;quot; &amp;quot;3.4&amp;quot; &amp;quot;0.9&amp;quot; ...
-##  $ FT%             : chr  &amp;quot;.400&amp;quot; &amp;quot;.650&amp;quot; &amp;quot;.828&amp;quot; &amp;quot;.714&amp;quot; ...
+##  $ Threes_attempted: chr  &amp;quot;0.0&amp;quot; &amp;quot;0.3&amp;quot; &amp;quot;1.6&amp;quot; &amp;quot;3.8&amp;quot; ...
+##  $ Threes_percent  : chr  &amp;quot;&amp;quot; &amp;quot;.167&amp;quot; &amp;quot;.355&amp;quot; &amp;quot;.344&amp;quot; ...
+##  $ Twos_made       : chr  &amp;quot;4.2&amp;quot; &amp;quot;4.9&amp;quot; &amp;quot;7.1&amp;quot; &amp;quot;0.9&amp;quot; ...
+##  $ Twos_attempted  : chr  &amp;quot;7.4&amp;quot; &amp;quot;8.2&amp;quot; &amp;quot;13.3&amp;quot; &amp;quot;3.2&amp;quot; ...
+##  $ Twos_percent    : chr  &amp;quot;.568&amp;quot; &amp;quot;.605&amp;quot; &amp;quot;.536&amp;quot; &amp;quot;.294&amp;quot; ...
+##  $ eFG%            : chr  &amp;quot;.568&amp;quot; &amp;quot;.592&amp;quot; &amp;quot;.535&amp;quot; &amp;quot;.415&amp;quot; ...
+##  $ FT              : chr  &amp;quot;0.9&amp;quot; &amp;quot;3.7&amp;quot; &amp;quot;3.0&amp;quot; &amp;quot;0.6&amp;quot; ...
+##  $ FTA             : chr  &amp;quot;2.3&amp;quot; &amp;quot;5.7&amp;quot; &amp;quot;3.6&amp;quot; &amp;quot;0.9&amp;quot; ...
+##  $ FT%             : chr  &amp;quot;.400&amp;quot; &amp;quot;.650&amp;quot; &amp;quot;.833&amp;quot; &amp;quot;.714&amp;quot; ...
 ##  $ ORB             : chr  &amp;quot;2.7&amp;quot; &amp;quot;2.2&amp;quot; &amp;quot;2.1&amp;quot; &amp;quot;0.1&amp;quot; ...
-##  $ DRB             : chr  &amp;quot;6.0&amp;quot; &amp;quot;8.1&amp;quot; &amp;quot;4.5&amp;quot; &amp;quot;2.1&amp;quot; ...
-##  $ TRB             : chr  &amp;quot;8.7&amp;quot; &amp;quot;10.4&amp;quot; &amp;quot;6.6&amp;quot; &amp;quot;2.3&amp;quot; ...
-##  $ AST             : chr  &amp;quot;2.9&amp;quot; &amp;quot;4.5&amp;quot; &amp;quot;2.3&amp;quot; &amp;quot;2.3&amp;quot; ...
-##  $ STL             : chr  &amp;quot;0.4&amp;quot; &amp;quot;1.6&amp;quot; &amp;quot;0.6&amp;quot; &amp;quot;0.3&amp;quot; ...
-##  $ BLK             : chr  &amp;quot;0.8&amp;quot; &amp;quot;1.2&amp;quot; &amp;quot;1.7&amp;quot; &amp;quot;0.1&amp;quot; ...
-##  $ TOV             : chr  &amp;quot;1.5&amp;quot; &amp;quot;2.8&amp;quot; &amp;quot;1.7&amp;quot; &amp;quot;1.3&amp;quot; ...
+##  $ DRB             : chr  &amp;quot;6.2&amp;quot; &amp;quot;8.1&amp;quot; &amp;quot;4.7&amp;quot; &amp;quot;2.1&amp;quot; ...
+##  $ TRB             : chr  &amp;quot;8.9&amp;quot; &amp;quot;10.3&amp;quot; &amp;quot;6.7&amp;quot; &amp;quot;2.3&amp;quot; ...
+##  $ AST             : chr  &amp;quot;2.9&amp;quot; &amp;quot;4.4&amp;quot; &amp;quot;2.5&amp;quot; &amp;quot;2.3&amp;quot; ...
+##  $ STL             : chr  &amp;quot;0.5&amp;quot; &amp;quot;1.6&amp;quot; &amp;quot;0.7&amp;quot; &amp;quot;0.3&amp;quot; ...
+##  $ BLK             : chr  &amp;quot;0.9&amp;quot; &amp;quot;1.2&amp;quot; &amp;quot;1.8&amp;quot; &amp;quot;0.1&amp;quot; ...
+##  $ TOV             : chr  &amp;quot;1.4&amp;quot; &amp;quot;2.7&amp;quot; &amp;quot;1.7&amp;quot; &amp;quot;1.3&amp;quot; ...
 ##  $ PF              : chr  &amp;quot;1.8&amp;quot; &amp;quot;2.5&amp;quot; &amp;quot;2.2&amp;quot; &amp;quot;1.6&amp;quot; ...
-##  $ PTS             : chr  &amp;quot;9.0&amp;quot; &amp;quot;14.5&amp;quot; &amp;quot;18.9&amp;quot; &amp;quot;6.4&amp;quot; ...&lt;/code&gt;&lt;/pre&gt;
+##  $ PTS             : chr  &amp;quot;9.3&amp;quot; &amp;quot;13.8&amp;quot; &amp;quot;18.9&amp;quot; &amp;quot;6.4&amp;quot; ...&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_data[, c(4, 6:30)] &amp;lt;- sapply(my_data[, c(4,6:30)], as.numeric)
 str(my_data)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## &amp;#39;data.frame&amp;#39;:    456 obs. of  30 variables:
+&lt;pre&gt;&lt;code&gt;## &amp;#39;data.frame&amp;#39;:    458 obs. of  30 variables:
 ##  $ Rk              : chr  &amp;quot;1&amp;quot; &amp;quot;2&amp;quot; &amp;quot;3&amp;quot; &amp;quot;4&amp;quot; ...
 ##  $ Player          : chr  &amp;quot;Steven Adams&amp;quot; &amp;quot;Bam Adebayo&amp;quot; &amp;quot;LaMarcus Aldridge&amp;quot; &amp;quot;Nickeil Alexander-Walker&amp;quot; ...
 ##  $ Pos             : chr  &amp;quot;C&amp;quot; &amp;quot;C&amp;quot; &amp;quot;C&amp;quot; &amp;quot;SG&amp;quot; ...
 ##  $ Age             : num  26 22 34 21 24 21 29 26 31 25 ...
 ##  $ Tm              : chr  &amp;quot;OKC&amp;quot; &amp;quot;MIA&amp;quot; &amp;quot;SAS&amp;quot; &amp;quot;NOP&amp;quot; ...
-##  $ G               : num  14 17 19 16 7 18 17 16 2 18 ...
-##  $ GS              : num  14 17 19 0 0 15 2 0 0 18 ...
-##  $ MP              : num  26.3 32.4 32.9 14.4 16.4 26.6 21.3 20.9 7 33.1 ...
-##  $ FG              : num  4 5.2 7.8 2.3 2 4.6 1.4 2.9 1 11.4 ...
-##  $ FGA             : num  7.1 8.7 14.9 7 6.6 6.7 4.6 5.7 3.5 20.3 ...
-##  $ FG%             : num  0.56 0.601 0.523 0.321 0.304 0.683 0.291 0.516 0.286 0.56 ...
-##  $ Threes_made     : num  0 0.1 0.6 1.3 0.7 0 0.5 0.3 0.5 1.4 ...
-##  $ Threes_attempted: num  0 0.4 1.6 3.8 3.1 0.1 1.9 1 2.5 4.7 ...
-##  $ Threes_percent  : num  NA 0.167 0.367 0.344 0.227 0 0.242 0.25 0.2 0.294 ...
-##  $ Twos_made       : num  4 5.2 7.2 0.9 1.3 4.6 0.9 2.7 0.5 10 ...
-##  $ Twos_attempted  : num  7.1 8.4 13.3 3.2 3.4 6.6 2.7 4.7 1 15.6 ...
-##  $ Twos_percent    : num  0.56 0.62 0.542 0.294 0.375 0.689 0.326 0.573 0.5 0.641 ...
-##  $ eFG%            : num  0.56 0.605 0.542 0.415 0.359 0.683 0.342 0.538 0.357 0.594 ...
-##  $ FT              : num  1 3.9 2.8 0.6 1.4 2.7 1.1 1 0 6.9 ...
-##  $ FTA             : num  2.5 6.1 3.4 0.9 1.7 4.7 1.7 1.8 0 11.7 ...
-##  $ FT%             : num  0.4 0.65 0.828 0.714 0.833 0.583 0.655 0.571 NA 0.588 ...
-##  $ ORB             : num  2.7 2.2 2.1 0.1 0.1 3.4 1.4 0.9 0 2.7 ...
-##  $ DRB             : num  6 8.1 4.5 2.1 2.3 6.9 3.6 3.6 3.5 11 ...
-##  $ TRB             : num  8.7 10.4 6.6 2.3 2.4 10.3 5 4.6 3.5 13.7 ...
-##  $ AST             : num  2.9 4.5 2.3 2.3 1.9 1.1 1.2 2.6 1 6.2 ...
-##  $ STL             : num  0.4 1.6 0.6 0.3 0.3 0.7 0.9 0.8 0.5 1.5 ...
-##  $ BLK             : num  0.8 1.2 1.7 0.1 0 1.3 0.5 0.8 0 1.4 ...
-##  $ TOV             : num  1.5 2.8 1.7 1.3 1.3 1.2 0.9 0.9 0.5 4.3 ...
-##  $ PF              : num  1.8 2.5 2.2 1.6 1.7 2.4 1.6 1.8 0.5 3.6 ...
-##  $ PTS             : num  9 14.5 18.9 6.4 6.1 11.8 4.3 7.1 2.5 31.1 ...&lt;/code&gt;&lt;/pre&gt;
+##  $ G               : num  15 18 20 16 8 19 18 17 2 19 ...
+##  $ GS              : num  15 18 20 0 0 16 2 0 0 19 ...
+##  $ MP              : num  26.1 31.9 32.8 14.4 15.9 26.6 21.1 20.5 7 33 ...
+##  $ FG              : num  4.2 5 7.7 2.3 1.9 4.7 1.4 2.8 1 11.5 ...
+##  $ FGA             : num  7.4 8.5 14.8 7 6.6 6.9 4.8 5.5 3.5 20.6 ...
+##  $ FG%             : num  0.568 0.588 0.517 0.321 0.283 0.674 0.291 0.505 0.286 0.559 ...
+##  $ Threes_made     : num  0 0.1 0.6 1.3 0.8 0 0.5 0.2 0.5 1.4 ...
+##  $ Threes_attempted: num  0 0.3 1.6 3.8 3.3 0.1 2 0.9 2.5 4.9 ...
+##  $ Threes_percent  : num  NA 0.167 0.355 0.344 0.231 0 0.25 0.25 0.2 0.29 ...
+##  $ Twos_made       : num  4.2 4.9 7.1 0.9 1.1 4.7 0.9 2.5 0.5 10.1 ...
+##  $ Twos_attempted  : num  7.4 8.2 13.3 3.2 3.4 6.9 2.8 4.5 1 15.7 ...
+##  $ Twos_percent    : num  0.568 0.605 0.536 0.294 0.333 0.679 0.32 0.558 0.5 0.642 ...
+##  $ eFG%            : num  0.568 0.592 0.535 0.415 0.34 0.674 0.343 0.527 0.357 0.593 ...
+##  $ FT              : num  0.9 3.7 3 0.6 1.4 2.6 1.1 0.9 0 6.7 ...
+##  $ FTA             : num  2.3 5.7 3.6 0.9 1.6 4.5 1.6 1.6 0 11.3 ...
+##  $ FT%             : num  0.4 0.65 0.833 0.714 0.846 0.57 0.655 0.571 NA 0.591 ...
+##  $ ORB             : num  2.7 2.2 2.1 0.1 0.3 3.4 1.3 0.9 0 2.7 ...
+##  $ DRB             : num  6.2 8.1 4.7 2.1 2.3 6.9 3.5 3.5 3.5 10.9 ...
+##  $ TRB             : num  8.9 10.3 6.7 2.3 2.5 10.4 4.8 4.4 3.5 13.6 ...
+##  $ AST             : num  2.9 4.4 2.5 2.3 1.8 1.1 1.2 2.6 1 6 ...
+##  $ STL             : num  0.5 1.6 0.7 0.3 0.3 0.7 1 0.7 0.5 1.5 ...
+##  $ BLK             : num  0.9 1.2 1.8 0.1 0 1.3 0.4 0.7 0 1.5 ...
+##  $ TOV             : num  1.4 2.7 1.7 1.3 1.3 1.2 0.9 0.9 0.5 4.2 ...
+##  $ PF              : num  1.8 2.5 2.2 1.6 1.6 2.5 1.5 1.7 0.5 3.4 ...
+##  $ PTS             : num  9.3 13.8 18.9 6.4 5.9 11.9 4.3 6.7 2.5 31.2 ...&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Awesome! Let’s take a look at what our table looks like…&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_data &amp;lt;- as_tibble(my_data)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_data &amp;lt;- my_data %&amp;gt;%
@@ -404,12 +432,12 @@ knitr::kable(FP_data[1:10,], caption = &amp;quot;Fantasy Data&amp;quot;)&lt;/cod
 &lt;tr class=&#34;odd&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Giannis Antetokounmpo&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;MIL&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;42.680&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;42.600&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;even&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Luka Dončić&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;DAL&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;40.275&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;40.735&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;odd&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;James Harden&lt;/td&gt;
@@ -424,17 +452,17 @@ knitr::kable(FP_data[1:10,], caption = &amp;quot;Fantasy Data&amp;quot;)&lt;/cod
 &lt;tr class=&#34;odd&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;LeBron James&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;LAL&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;35.790&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;35.615&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;even&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Anthony Davis&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;LAL&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;34.570&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;34.700&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;odd&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Andre Drummond&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;DET&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;32.290&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;32.150&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;even&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Kyrie Irving&lt;/td&gt;
@@ -442,14 +470,14 @@ knitr::kable(FP_data[1:10,], caption = &amp;quot;Fantasy Data&amp;quot;)&lt;/cod
 &lt;td align=&#34;right&#34;&gt;30.640&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Damian Lillard&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;POR&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;30.425&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Kawhi Leonard&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;LAC&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;30.415&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;30.240&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Damian Lillard&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;POR&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;30.125&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;

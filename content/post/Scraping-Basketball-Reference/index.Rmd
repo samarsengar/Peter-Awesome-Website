@@ -1,7 +1,7 @@
 ---
 title: Scraping data from Basketball-Reference
 author: Peter Tea
-date: '2019-11-28'
+date: "2019-11-28T13:00:00Z"
 categories:
   - Demo
 tags:
@@ -21,7 +21,7 @@ image:
   focal_point: ''
   placement: 2
   preview_only: no
-lastmod: '2019-04-17T00:00:00Z'
+lastmod: '2019-11-28T13:00:00Z'
 subtitle: 'Exporting data online and into R in under 10 minutes :basketball: :fire:'
 summary: Scrape Baksetball-Reference tables in under 10 minutes.
 geometry: margin = 1.75 cm

@@ -23,17 +23,15 @@ links:
 #  url: https://twitter.com/georgecushen
 location: Queen's University
 math: true
-projects:
-- internal-project
 publishDate: "2017-01-01T00:00:00Z"
-slides: example
+slides:
 summary: Investigation on Kernel-Based Methods.
 tags: [Kernel Methods, Simulation, Statistical Genetics, Academic, Uottawa, Queen's]
 title: A Genetic Association Study Comparing Kernel-based Methods, with Application to Crohn's Disease
-url_code: ""
-url_pdf: "Peter_Poster.pdf"
+url_code: "Peter_Poster.pdf"
+#url_pdf: "Peter_Poster.pdf"
 url_slides: "Peter_Presentation.pdf"
-url_video: ""
+url_video: 
 ---
 
 {{% alert note %}}

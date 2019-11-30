@@ -1,0 +1,45 @@
+---
+title: Hugo-Academic CheatSheet
+author: Peter Tea
+date: "2019-11-28T13:00:00Z"
+categories:
+  - Demo
+tags:
+  - Academic
+  - Demo
+  - Fun
+authors:
+  - admin
+draft: no
+featured: no
+image:
+  caption: 
+  focal_point: ''
+  placement: 2
+  preview_only: no
+lastmod: '2019-11-30T13:00:00Z'
+subtitle: 'The basics of Hugo-Academic :boom:'
+summary: The sparknotes for some awesome aesthetics.
+geometry: margin = 1.75 cm
+output:
+  html_document:
+    keep_md:true
+---
+
+## The lazy way to hugo-academic
+
+This post is currently under construction. Here, I'll post some quick tips with navigating through using hugo-academic on ``R blogdown``.
+
+
+## Emoticons
+[This site](https://www.webfx.com/tools/emoji-cheat-sheet/) provides a cheatsheet on available emoticons you can use like :relieved: or :see_no_evil:.
+
+## Adding icon on browser tab
+![](tennis_icon.png)
+
+On the top left of the image (the browser tab), I've added a customized image of a tennis ball. You can do the same with any image by going to this folder:
+
+```
+Themes --> hugo-academic --> static --> img 
+```
+You will see in this folder, there are three ``.png`` files named: ``icon-32.png``, ``icon-192.png``, and ``icon-512.png``. Go ahead and upload the same image 3x to this folder, and change their names to the above.
