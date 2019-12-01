@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Web Scraping | Peter Tea</title>
+    <title>Web Scraping | Home</title>
     <link>/tags/web-scraping/</link>
       <atom:link href="/tags/web-scraping/index.xml" rel="self" type="application/rss+xml" />
     <description>Web Scraping</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Thu, 28 Nov 2019 13:00:00 +0000</lastBuildDate>
     <image>
-      <url>/img/icon.png</url>
+      <url>/img/icon-192.png</url>
       <title>Web Scraping</title>
       <link>/tags/web-scraping/</link>
     </image>

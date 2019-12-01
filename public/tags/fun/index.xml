@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Fun | Peter Tea</title>
+    <title>Fun | Home</title>
     <link>/tags/fun/</link>
       <atom:link href="/tags/fun/index.xml" rel="self" type="application/rss+xml" />
     <description>Fun</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Thu, 28 Nov 2019 13:00:00 +0000</lastBuildDate>
     <image>
-      <url>/img/icon.png</url>
+      <url>/img/icon-192.png</url>
       <title>Fun</title>
       <link>/tags/fun/</link>
     </image>
@@ -44,6 +44,28 @@
 &lt;code&gt;url_slides:&lt;/code&gt;, &lt;code&gt;url_poster:&lt;/code&gt;, &lt;code&gt;url_cite:&lt;/code&gt;, &lt;code&gt;url_code:&lt;/code&gt;, &lt;code&gt;url_video:&lt;/code&gt;, &lt;code&gt;url_Dataset:&lt;/code&gt;, &lt;code&gt;url_PDF:&lt;/code&gt; and &lt;code&gt;url_project:&lt;/code&gt; if you wanted to add quick links to these documents on your posts. Just make sure these files are in the same directory as your post directory.&lt;/p&gt;
 
 &lt;p&gt;&amp;ndash; Peter you should add an image of this here.&lt;/p&gt;
+
+&lt;h2 id=&#34;adding-icons-to-your-about-me-page&#34;&gt;Adding icons to your &amp;ldquo;About Me&amp;rdquo; page&lt;/h2&gt;
+
+&lt;p&gt;You can add cool icons that links to your email or other social media. In the image below, I have icons set up to my email, linkedin, github and instagram accounts.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s how to do it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Content --&amp;gt; authors --&amp;gt; admin --&amp;gt; _index.md
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the preamble of this &lt;code&gt;-index.md&lt;/code&gt; file, you will need to add an &amp;ldquo;icon&amp;rdquo; section that looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;- icon: linkedin
+  icon_pack: fab
+  link: URL link
+- icon: github
+  icon_pack: fab
+  link: URL link
+- icon: instagram
+  icon_pack: fab
+  link: URL link
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     

@@ -17,7 +17,7 @@ image:
   focal_point: ''
   placement: 2
   preview_only: no
-lastmod: '2019-11-30T13:00:00Z'
+lastmod: '2019-12-01T13:00:00Z'
 subtitle: 'The basics of Hugo-Academic :boom:'
 summary: The sparknotes for some awesome aesthetics.
 geometry: margin = 1.75 cm
@@ -49,6 +49,29 @@ In your preamble, you can specify the options:
 ``url_slides:``, ``url_poster:``, ``url_cite:``, ``url_code:``, ``url_video:``, ``url_Dataset:``, ``url_PDF:`` and ``url_project:`` if you wanted to add quick links to these documents on your posts. Just make sure these files are in the same directory as your post directory.
 
 -- Peter you should add an image of this here.
+
+## Adding icons to your "About Me" page
+
+You can add cool icons that links to your email or other social media. In the image below, I have icons set up to my email, linkedin, github and instagram accounts.
+
+Here's how to do it:
+```
+Content --> authors --> admin --> _index.md
+```
+
+In the preamble of this ``-index.md`` file, you will need to add an "icon" section that looks like this:
+
+```
+- icon: linkedin
+  icon_pack: fab
+  link: URL link
+- icon: github
+  icon_pack: fab
+  link: URL link
+- icon: instagram
+  icon_pack: fab
+  link: URL link
+```
 
 
 

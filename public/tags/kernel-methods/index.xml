@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kernel Methods | Peter Tea</title>
+    <title>Kernel Methods | Home</title>
     <link>/tags/kernel-methods/</link>
       <atom:link href="/tags/kernel-methods/index.xml" rel="self" type="application/rss+xml" />
     <description>Kernel Methods</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Fri, 09 Nov 2018 13:00:00 +0000</lastBuildDate>
     <image>
-      <url>/img/icon.png</url>
+      <url>/img/icon-192.png</url>
       <title>Kernel Methods</title>
       <link>/tags/kernel-methods/</link>
     </image>
