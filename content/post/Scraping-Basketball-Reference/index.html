@@ -22,7 +22,7 @@ image:
   placement: 2
   preview_only: no
 lastmod: '2019-12-02T13:00:00Z'
-subtitle: 'Exporting data online and into R in under 10 minutes :basketball: :fire:'
+subtitle: 'Exporting data online and into R in under 12 minutes :basketball: :fire:'
 summary: Scrape Baksetball-Reference tables in under 12 minutes.
 geometry: margin = 1.75 cm
 output:
@@ -438,7 +438,7 @@ my_data &lt;- my_data %&gt;%
 <pre class="r"><code># Which players add most fantasy point value? 
 FP_data &lt;- my_data %&gt;%
   select(Player, Tm, FP,G) %&gt;%
-  filter(G &gt; 12) %&gt;%
+  filter(G &gt; 5) %&gt;%
   arrange(desc(FP))
 
 knitr::kable(FP_data[1:10,], caption = &quot;Fantasy Data&quot;)</code></pre>
@@ -454,64 +454,64 @@ knitr::kable(FP_data[1:10,], caption = &quot;Fantasy Data&quot;)</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
+<td align="left">Chimezie Metu</td>
+<td align="left">SAS</td>
+<td align="right">55.600</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
 <td align="left">Giannis Antetokounmpo</td>
 <td align="left">MIL</td>
 <td align="right">54.200</td>
 <td align="right">20</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Luka Dončić</td>
 <td align="left">DAL</td>
 <td align="right">50.125</td>
 <td align="right">19</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">James Harden</td>
 <td align="left">HOU</td>
 <td align="right">47.800</td>
 <td align="right">19</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Karl-Anthony Towns</td>
 <td align="left">MIN</td>
 <td align="right">46.425</td>
 <td align="right">17</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">LeBron James</td>
 <td align="left">LAL</td>
 <td align="right">43.925</td>
 <td align="right">20</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Joel Embiid</td>
 <td align="left">PHI</td>
 <td align="right">43.350</td>
 <td align="right">16</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Anthony Davis</td>
 <td align="left">LAL</td>
 <td align="right">43.100</td>
 <td align="right">19</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Kawhi Leonard</td>
 <td align="left">LAC</td>
 <td align="right">41.650</td>
 <td align="right">15</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Gorgui Dieng</td>
 <td align="left">MIN</td>
 <td align="right">41.025</td>
 <td align="right">15</td>
-</tr>
-<tr class="even">
-<td align="left">Andre Drummond</td>
-<td align="left">DET</td>
-<td align="right">40.950</td>
-<td align="right">20</td>
 </tr>
 </tbody>
 </table>

@@ -22,7 +22,7 @@ image:
   placement: 2
   preview_only: no
 lastmod: '2019-12-02T13:00:00Z'
-subtitle: 'Exporting data online and into R in under 10 minutes :basketball: :fire:'
+subtitle: 'Exporting data online and into R in under 12 minutes :basketball: :fire:'
 summary: Scrape Baksetball-Reference tables in under 12 minutes.
 geometry: margin = 1.75 cm
 output:
@@ -212,7 +212,7 @@ my_data <- my_data %>%
 # Which players add most fantasy point value? 
 FP_data <- my_data %>%
   select(Player, Tm, FP,G) %>%
-  filter(G > 12) %>%
+  filter(G > 5) %>%
   arrange(desc(FP))
 
 knitr::kable(FP_data[1:10,], caption = "Fantasy Data")

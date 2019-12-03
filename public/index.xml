@@ -553,7 +553,7 @@ my_data &amp;lt;- my_data %&amp;gt;%
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Which players add most fantasy point value? 
 FP_data &amp;lt;- my_data %&amp;gt;%
   select(Player, Tm, FP,G) %&amp;gt;%
-  filter(G &amp;gt; 12) %&amp;gt;%
+  filter(G &amp;gt; 5) %&amp;gt;%
   arrange(desc(FP))
 
 knitr::kable(FP_data[1:10,], caption = &amp;quot;Fantasy Data&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
@@ -569,64 +569,64 @@ knitr::kable(FP_data[1:10,], caption = &amp;quot;Fantasy Data&amp;quot;)&lt;/cod
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Chimezie Metu&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;SAS&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;55.600&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;6&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Giannis Antetokounmpo&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;MIL&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;54.200&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;20&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
+&lt;tr class=&#34;odd&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Luka Dončić&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;DAL&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;50.125&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;19&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
+&lt;tr class=&#34;even&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;James Harden&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;HOU&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;47.800&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;19&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
+&lt;tr class=&#34;odd&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Karl-Anthony Towns&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;MIN&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;46.425&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;17&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
+&lt;tr class=&#34;even&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;LeBron James&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;LAL&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;43.925&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;20&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
+&lt;tr class=&#34;odd&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Joel Embiid&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;PHI&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;43.350&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;16&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
+&lt;tr class=&#34;even&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Anthony Davis&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;LAL&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;43.100&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;19&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
+&lt;tr class=&#34;odd&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Kawhi Leonard&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;LAC&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;41.650&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;15&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
+&lt;tr class=&#34;even&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Gorgui Dieng&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;MIN&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;41.025&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;15&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Andre Drummond&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;DET&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;40.950&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;20&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
