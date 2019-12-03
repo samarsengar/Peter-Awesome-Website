@@ -28,7 +28,7 @@
   
     
   
-  <meta name="description" content="Scrape Baksetball-Reference tables in under 10 minutes.">
+  <meta name="description" content="Scrape Baksetball-Reference tables in under 12 minutes.">
 
   
   <link rel="alternate" hreflang="en-us" href="/post/scraping-basketball-reference/">
@@ -114,13 +114,13 @@
   <meta property="og:site_name" content="Home">
   <meta property="og:url" content="/post/scraping-basketball-reference/">
   <meta property="og:title" content="Scraping data from Basketball-Reference | Home">
-  <meta property="og:description" content="Scrape Baksetball-Reference tables in under 10 minutes."><meta property="og:image" content="/post/scraping-basketball-reference/featured.jpg">
+  <meta property="og:description" content="Scrape Baksetball-Reference tables in under 12 minutes."><meta property="og:image" content="/post/scraping-basketball-reference/featured.jpg">
   <meta property="twitter:image" content="/post/scraping-basketball-reference/featured.jpg"><meta property="og:locale" content="en-us">
   
     
       <meta property="article:published_time" content="2019-11-28T13:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2019-11-28T13:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2019-12-02T13:00:00&#43;00:00">
   
 
   
@@ -155,7 +155,7 @@
   ],
   
   "datePublished": "2019-11-28T13:00:00Z",
-  "dateModified": "2019-11-28T13:00:00Z",
+  "dateModified": "2019-12-02T13:00:00Z",
   
   "author": {
     "@type": "Person",
@@ -170,7 +170,7 @@
       "url": "/img/icon-512.png"
     }
   },
-  "description": "Scrape Baksetball-Reference tables in under 10 minutes."
+  "description": "Scrape Baksetball-Reference tables in under 12 minutes."
 }
 </script>
 
@@ -438,8 +438,10 @@
     
     
       
+          Last updated on
+      
     
-    Nov 28, 2019
+    Dec 2, 2019
   </span>
   
 
@@ -448,7 +450,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    9 min read
+    11 min read
   </span>
   
 
@@ -483,10 +485,10 @@
 </div>
 
 
-<div class="article-header container featured-image-wrapper mt-4 mb-4" style="max-width: 1200px; max-height: 799px;">
+<div class="article-header container featured-image-wrapper mt-4 mb-4" style="max-width: 900px; max-height: 506px;">
   <div style="position: relative">
     <img src="/post/scraping-basketball-reference/featured.jpg" alt="" class="featured-image">
-    <span class="article-header-caption">Image credit: <a href="https://www.google.com/url?sa=i&amp;rct=j&amp;q=&amp;esrc=s&amp;source=images&amp;cd=&amp;ved=2ahUKEwiOn6jIg47mAhXEu54KHQ6IBMEQjRx6BAgBEAQ&amp;url=https%3A%2F%2Ftwitter.com%2Fbball_ref%2Fstatus%2F1134290033979121664&amp;psig=AOvVaw1RrNasfgvMlnI4e_gkKVMD&amp;ust=1575069020292235" target="_blank"><strong>Unsplash</strong></a></span>
+    <span class="article-header-caption">Image credit: <a href="https://i1.wp.com/www.raptorscage.ca/wp-content/uploads/2019/04/pascal-siakam-ftrjpg_id4alr64p7z81jzrz9q3hwh5z.jpg?w=1800" target="_blank"><strong>Unsplash</strong></a></span>
   </div>
 </div>
 
@@ -498,13 +500,20 @@
       
 
 
-<div id="lets-ball" class="section level2">
-<h2>Let’s Ball</h2>
+<div id="lets-ball" class="section level1">
+<h1>Let’s Ball</h1>
 <p>As a fan of the <strong>NBA</strong> and an enthusiastic <strong>R</strong> user, I’ve spent some time scouring the internet for ways to obtain useable data to load into R - mainly from the popular data source <a href="https://www.basketball-reference.com">Basketball-Reference</a>. Unsatisfied with my online data quest, I just decided to scrape the data on <a href="https://www.basketball-reference.com">Basketball-Reference</a> myself! The process is pretty straightforward, as you will see shortly…</p>
+<div id="html-and-selectorgadget" class="section level2">
+<h2>HTML and SelectorGadget</h2>
 <p>Firstly, as the entire contents of a <a href="https://www.basketball-reference.com">Basketball-Reference</a>
-web page is written in HTML format, you can easily save the entire content and load it into R. However, it simplifies things greatly if we can be more selective in the contents we want to load into R. HTML files contain <code>tags</code> that pretty much denotes different content of the HTML page. If you can find the speficic tag for the table you want to save in R, then you’re golden! Take for example this table that shows the latest (as of November 28, 2019) player boxscore stats per 36 minutes.</p>
+web page is written in HTML format, you can easily save the entire content and load it into R. However, it simplifies things greatly if we can be more selective in the contents we want to load into R. HTML files contain <code>tags</code> that pretty much denotes different content of the HTML page. If you can find the speficic tag for the table you want to save in R, then you’re golden! Take for example this <a href="https://www.basketball-reference.com/leagues/NBA_2020_per_minute.html">table</a> that shows the latest (as of December 2nd, 2019) player boxscore stats per 36 minutes.:</p>
 <p><img src="bbref.png" /></p>
-<p>How can we extract only the information found in the above table? To do that, we can simply use a chrome tool called <a href="https://chrome.google.com/webstore/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb?hl=en">SelectorGadget</a>. By using this plug-in, we can simply highlight the specific content of the page we want saved, and export it into R.</p>
+<p>How can we extract only the information found in the above table? To do that, we can simply use a chrome tool called <a href="https://chrome.google.com/webstore/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb?hl=en">SelectorGadget</a>. By using this plug-in, we can simply highlight the specific content of the page we want saved, and export it into R. For those unfamiliar with selectorgadget, I’d refer them to <a href="https://www.youtube.com/watch?v=oqNTfWrGdbk">this helpful video</a>. Below is a screenshot of my selectorgadget screen.</p>
+<p><img src="selector_gadget.png" /></p>
+<p>You’ll note that the plug-in produces a <code>node</code> as we select elements of the html page (this will be useful in our R code). Make sure to only highlight elements of the table and nothing else on the page!</p>
+</div>
+<div id="using-r" class="section level2">
+<h2>Using R</h2>
 <p>First, let’s load in two R packages:</p>
 <ul>
 <li>rvest:</li>
@@ -513,71 +522,102 @@ web page is written in HTML format, you can easily save the entire content and l
 <pre class="r"><code>#install.packages(&quot;rvest&quot;)
 library(rvest)
 library(dplyr)</code></pre>
-<pre class="r"><code>my_url &lt;- read_html(&quot;https://www.basketball-reference.com/leagues/NBA_2020_per_game.html&quot;)
-node &lt;- &quot;#per_game_stats a , .right , .center&quot;</code></pre>
-<p>Let’s look at the first 30 elements of our compiled data:</p>
+<p>Now, we read in our dataset by specifying the <code>url</code> and the <code>node</code>.</p>
+<pre class="r"><code>my_url &lt;- read_html(&quot;https://www.basketball-reference.com/leagues/NBA_2020_per_minute.html&quot;)
+node &lt;- &quot;.left , .center , .right&quot;</code></pre>
+<p>Let’s look at the first 29 elements of our compiled data:</p>
 <pre class="r"><code>scraped_data &lt;- my_url %&gt;%
   html_nodes(node) %&gt;%
   html_text()
 
-my_variable_names &lt;- scraped_data[1:30]
+my_variable_names &lt;- scraped_data[1:29]
 
 print(my_variable_names)</code></pre>
 <pre><code>##  [1] &quot;Rk&quot;     &quot;Player&quot; &quot;Pos&quot;    &quot;Age&quot;    &quot;Tm&quot;     &quot;G&quot;      &quot;GS&quot;     &quot;MP&quot;    
 ##  [9] &quot;FG&quot;     &quot;FGA&quot;    &quot;FG%&quot;    &quot;3P&quot;     &quot;3PA&quot;    &quot;3P%&quot;    &quot;2P&quot;     &quot;2PA&quot;   
-## [17] &quot;2P%&quot;    &quot;eFG%&quot;   &quot;FT&quot;     &quot;FTA&quot;    &quot;FT%&quot;    &quot;ORB&quot;    &quot;DRB&quot;    &quot;TRB&quot;   
-## [25] &quot;AST&quot;    &quot;STL&quot;    &quot;BLK&quot;    &quot;TOV&quot;    &quot;PF&quot;     &quot;PTS&quot;</code></pre>
-<p>These names match exactly the first 30 elements of the table we want to extract.</p>
-<p>Just as an FYI, the data is saved as a <code>vector</code> in r, with <code>14,341</code> entries.</p>
+## [17] &quot;2P%&quot;    &quot;FT&quot;     &quot;FTA&quot;    &quot;FT%&quot;    &quot;ORB&quot;    &quot;DRB&quot;    &quot;TRB&quot;    &quot;AST&quot;   
+## [25] &quot;STL&quot;    &quot;BLK&quot;    &quot;TOV&quot;    &quot;PF&quot;     &quot;PTS&quot;</code></pre>
+<p>These names match exactly the first 29 elements of the table we want to extract.</p>
+<p>Just as an FYI, the data is saved as a <code>vector</code> in R, with <code>13,922</code> entries.</p>
 <pre class="r"><code>is.vector(scraped_data)</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <pre class="r"><code>length(scraped_data)</code></pre>
-<pre><code>## [1] 14401</code></pre>
+<pre><code>## [1] 13922</code></pre>
 
 <p>Some of the variable names begin with numbers which is a huge <strong>no-no</strong> in R, so let’s manually change these names:</p>
 <pre class="r"><code>my_variable_names[12:17] &lt;- c(&quot;Threes_made&quot;, &quot;Threes_attempted&quot;,
                               &quot;Threes_percent&quot;, &quot;Twos_made&quot;,
-                              &quot;Twos_attempted&quot;, &quot;Twos_percent&quot;)</code></pre>
+                              &quot;Twos_attempted&quot;, &quot;Twos_percent&quot;)
+
+print(my_variable_names)</code></pre>
+<pre><code>##  [1] &quot;Rk&quot;               &quot;Player&quot;           &quot;Pos&quot;              &quot;Age&quot;             
+##  [5] &quot;Tm&quot;               &quot;G&quot;                &quot;GS&quot;               &quot;MP&quot;              
+##  [9] &quot;FG&quot;               &quot;FGA&quot;              &quot;FG%&quot;              &quot;Threes_made&quot;     
+## [13] &quot;Threes_attempted&quot; &quot;Threes_percent&quot;   &quot;Twos_made&quot;        &quot;Twos_attempted&quot;  
+## [17] &quot;Twos_percent&quot;     &quot;FT&quot;               &quot;FTA&quot;              &quot;FT%&quot;             
+## [21] &quot;ORB&quot;              &quot;DRB&quot;              &quot;TRB&quot;              &quot;AST&quot;             
+## [25] &quot;STL&quot;              &quot;BLK&quot;              &quot;TOV&quot;              &quot;PF&quot;              
+## [29] &quot;PTS&quot;</code></pre>
 <p>We will use this vector data to fill in an empty table we create in R. We have to note though, that due to the way we’ve scraped the data there exists some garbage we must remove. If you look carefully, the table repeats the variable names after every 20th player.
 I’ll illustrate below:</p>
-<pre class="r"><code>scraped_data[600: 660]</code></pre>
-<pre><code>##  [1] &quot;7.9&quot;           &quot;20&quot;            &quot;Marvin Bagley&quot; &quot;PF&quot;           
-##  [5] &quot;20&quot;            &quot;SAC&quot;           &quot;1&quot;             &quot;1&quot;            
-##  [9] &quot;28.0&quot;          &quot;6.0&quot;           &quot;16.0&quot;          &quot;.375&quot;         
-## [13] &quot;0.0&quot;           &quot;0.0&quot;           &quot;&quot;              &quot;6.0&quot;          
-## [17] &quot;16.0&quot;          &quot;.375&quot;          &quot;.375&quot;          &quot;2.0&quot;          
-## [21] &quot;4.0&quot;           &quot;.500&quot;          &quot;4.0&quot;           &quot;6.0&quot;          
-## [25] &quot;10.0&quot;          &quot;0.0&quot;           &quot;1.0&quot;           &quot;1.0&quot;          
-## [29] &quot;1.0&quot;           &quot;1.0&quot;           &quot;14.0&quot;          &quot;Rk&quot;           
-## [33] &quot;Player&quot;        &quot;Pos&quot;           &quot;Age&quot;           &quot;Tm&quot;           
-## [37] &quot;G&quot;             &quot;GS&quot;            &quot;MP&quot;            &quot;FG&quot;           
-## [41] &quot;FGA&quot;           &quot;FG%&quot;           &quot;3P&quot;            &quot;3PA&quot;          
-## [45] &quot;3P%&quot;           &quot;2P&quot;            &quot;2PA&quot;           &quot;2P%&quot;          
-## [49] &quot;eFG%&quot;          &quot;FT&quot;            &quot;FTA&quot;           &quot;FT%&quot;          
-## [53] &quot;ORB&quot;           &quot;DRB&quot;           &quot;TRB&quot;           &quot;AST&quot;          
-## [57] &quot;STL&quot;           &quot;BLK&quot;           &quot;TOV&quot;           &quot;PF&quot;           
-## [61] &quot;PTS&quot;</code></pre>
-<p>To remove this junk, I’ll simply create a vector of indices that correspond to the junk we want removed. After some investigating skills, we can see that it’s every 600th - 630th element that we need to remove.</p>
-<pre class="r"><code>to_remove &lt;- 631:660
+<pre class="r"><code>scraped_data[582: 660]</code></pre>
+<pre><code>##  [1] &quot;Marvin Bagley&quot; &quot;PF&quot;            &quot;20&quot;            &quot;SAC&quot;          
+##  [5] &quot;1&quot;             &quot;1&quot;             &quot;28&quot;            &quot;7.7&quot;          
+##  [9] &quot;20.6&quot;          &quot;.375&quot;          &quot;0.0&quot;           &quot;0.0&quot;          
+## [13] &quot;&quot;              &quot;7.7&quot;           &quot;20.6&quot;          &quot;.375&quot;         
+## [17] &quot;2.6&quot;           &quot;5.1&quot;           &quot;.500&quot;          &quot;5.1&quot;          
+## [21] &quot;7.7&quot;           &quot;12.9&quot;          &quot;0.0&quot;           &quot;1.3&quot;          
+## [25] &quot;1.3&quot;           &quot;1.3&quot;           &quot;1.3&quot;           &quot;18.0&quot;         
+## [29] &quot;Rk&quot;            &quot;Player&quot;        &quot;Pos&quot;           &quot;Age&quot;          
+## [33] &quot;Tm&quot;            &quot;G&quot;             &quot;GS&quot;            &quot;MP&quot;           
+## [37] &quot;FG&quot;            &quot;FGA&quot;           &quot;FG%&quot;           &quot;3P&quot;           
+## [41] &quot;3PA&quot;           &quot;3P%&quot;           &quot;2P&quot;            &quot;2PA&quot;          
+## [45] &quot;2P%&quot;           &quot;FT&quot;            &quot;FTA&quot;           &quot;FT%&quot;          
+## [49] &quot;ORB&quot;           &quot;DRB&quot;           &quot;TRB&quot;           &quot;AST&quot;          
+## [53] &quot;STL&quot;           &quot;BLK&quot;           &quot;TOV&quot;           &quot;PF&quot;           
+## [57] &quot;PTS&quot;           &quot;21&quot;            &quot;Lonzo Ball&quot;    &quot;PG&quot;           
+## [61] &quot;22&quot;            &quot;NOP&quot;           &quot;12&quot;            &quot;9&quot;            
+## [65] &quot;330&quot;           &quot;5.6&quot;           &quot;14.2&quot;          &quot;.392&quot;         
+## [69] &quot;3.1&quot;           &quot;8.5&quot;           &quot;.359&quot;          &quot;2.5&quot;          
+## [73] &quot;5.7&quot;           &quot;.442&quot;          &quot;0.7&quot;           &quot;1.1&quot;          
+## [77] &quot;.600&quot;          &quot;1.1&quot;           &quot;4.3&quot;</code></pre>
+<p>The first instance of this <code>junk</code> is indexed here:</p>
+<pre class="r"><code>scraped_data[610: 638]</code></pre>
+<pre><code>##  [1] &quot;Rk&quot;     &quot;Player&quot; &quot;Pos&quot;    &quot;Age&quot;    &quot;Tm&quot;     &quot;G&quot;      &quot;GS&quot;     &quot;MP&quot;    
+##  [9] &quot;FG&quot;     &quot;FGA&quot;    &quot;FG%&quot;    &quot;3P&quot;     &quot;3PA&quot;    &quot;3P%&quot;    &quot;2P&quot;     &quot;2PA&quot;   
+## [17] &quot;2P%&quot;    &quot;FT&quot;     &quot;FTA&quot;    &quot;FT%&quot;    &quot;ORB&quot;    &quot;DRB&quot;    &quot;TRB&quot;    &quot;AST&quot;   
+## [25] &quot;STL&quot;    &quot;BLK&quot;    &quot;TOV&quot;    &quot;PF&quot;     &quot;PTS&quot;</code></pre>
+<p>The second instance of this <code>junk</code> is indexed here:</p>
+<pre class="r"><code>scraped_data[1219: 1247]</code></pre>
+<pre><code>##  [1] &quot;Rk&quot;     &quot;Player&quot; &quot;Pos&quot;    &quot;Age&quot;    &quot;Tm&quot;     &quot;G&quot;      &quot;GS&quot;     &quot;MP&quot;    
+##  [9] &quot;FG&quot;     &quot;FGA&quot;    &quot;FG%&quot;    &quot;3P&quot;     &quot;3PA&quot;    &quot;3P%&quot;    &quot;2P&quot;     &quot;2PA&quot;   
+## [17] &quot;2P%&quot;    &quot;FT&quot;     &quot;FTA&quot;    &quot;FT%&quot;    &quot;ORB&quot;    &quot;DRB&quot;    &quot;TRB&quot;    &quot;AST&quot;   
+## [25] &quot;STL&quot;    &quot;BLK&quot;    &quot;TOV&quot;    &quot;PF&quot;     &quot;PTS&quot;</code></pre>
+<p>It seems like this junk repeats every 609th element (1219 - 610 = 609). To remove this junk, I’ll simply create a vector of indices that correspond to the junk we want removed.</p>
+<pre class="r"><code>to_remove &lt;- 610:638
 n &lt;- length(scraped_data)
 
-while(to_remove[length(to_remove)] &lt;= n - 601 ){
+while(to_remove[length(to_remove)] &lt;= n - 609 ){
   
-  A &lt;- to_remove[length(to_remove)] + 601
-  to_add &lt;- A:(A+29)
+  A &lt;- to_remove[length(to_remove)] + 581
+  #Note: 1219 - 638 = 581
+  
+  to_add &lt;- A:(A+28)
   to_remove &lt;- c(to_remove, to_add)
   
 }</code></pre>
+<p>Now we remove all the junk as follows:</p>
 <pre class="r"><code>process_dat &lt;- scraped_data[-to_remove]</code></pre>
 <p>We can check that we have reduced our data vector:</p>
 <pre class="r"><code>n2 &lt;- length(process_dat)
 print(n2)</code></pre>
-<pre><code>## [1] 13741</code></pre>
-<p>Awesome, now we’ll get to work on filling in a data-frame with this cleaned data. The way I did it was to specify the elements that should be added row-wise to a data table in R. I.e. every 30 elements makes up one row in our table:</p>
-<pre class="r"><code>my_index &lt;- seq(from = 31, to = n2, by = 30)
+<pre><code>## [1] 13284</code></pre>
+<p>Great! Now we’ll get to work on filling in a data-frame with this cleaned data. The way I did it was to specify the elements that should be added row-wise to a data table in R. I.e. every 29 elements makes up one row in our table:</p>
+<pre class="r"><code>my_index &lt;- seq(from = 30, to = n2-2, by = 29)
+# Seems to be a glitch where the last 2 elements of scraped_data are not from the table we want to extract.
 
 #Initialize data frame...
-my_data &lt;- data.frame(matrix(ncol = 30, nrow = 452))
+my_data &lt;- data.frame(matrix(ncol = 29, nrow = 457))
 # Note the dimensions here are found by looking at the table on basketball-
 # reference.
 
@@ -613,7 +653,6 @@ colnames(my_data) &lt;- my_variable_names</code></pre>
 <th align="left">Twos_made</th>
 <th align="left">Twos_attempted</th>
 <th align="left">Twos_percent</th>
-<th align="left">eFG%</th>
 <th align="left">FT</th>
 <th align="left">FTA</th>
 <th align="left">FT%</th>
@@ -635,31 +674,30 @@ colnames(my_data) &lt;- my_variable_names</code></pre>
 <td align="left">C</td>
 <td align="left">26</td>
 <td align="left">OKC</td>
-<td align="left">15</td>
-<td align="left">15</td>
-<td align="left">26.1</td>
-<td align="left">4.2</td>
-<td align="left">7.4</td>
-<td align="left">.568</td>
+<td align="left">16</td>
+<td align="left">16</td>
+<td align="left">420</td>
+<td align="left">5.9</td>
+<td align="left">10.1</td>
+<td align="left">.585</td>
 <td align="left">0.0</td>
 <td align="left">0.0</td>
 <td align="left"></td>
-<td align="left">4.2</td>
-<td align="left">7.4</td>
-<td align="left">.568</td>
-<td align="left">.568</td>
-<td align="left">0.9</td>
-<td align="left">2.3</td>
-<td align="left">.400</td>
-<td align="left">2.7</td>
-<td align="left">6.2</td>
-<td align="left">8.9</td>
-<td align="left">2.9</td>
-<td align="left">0.5</td>
-<td align="left">0.9</td>
-<td align="left">1.4</td>
-<td align="left">1.8</td>
-<td align="left">9.3</td>
+<td align="left">5.9</td>
+<td align="left">10.1</td>
+<td align="left">.585</td>
+<td align="left">1.6</td>
+<td align="left">3.5</td>
+<td align="left">.463</td>
+<td align="left">3.7</td>
+<td align="left">8.7</td>
+<td align="left">12.3</td>
+<td align="left">3.9</td>
+<td align="left">0.7</td>
+<td align="left">1.3</td>
+<td align="left">1.9</td>
+<td align="left">2.6</td>
+<td align="left">13.5</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
@@ -667,31 +705,30 @@ colnames(my_data) &lt;- my_variable_names</code></pre>
 <td align="left">C</td>
 <td align="left">22</td>
 <td align="left">MIA</td>
-<td align="left">18</td>
-<td align="left">18</td>
-<td align="left">31.9</td>
-<td align="left">5.0</td>
-<td align="left">8.5</td>
-<td align="left">.588</td>
-<td align="left">0.1</td>
-<td align="left">0.3</td>
-<td align="left">.167</td>
-<td align="left">4.9</td>
-<td align="left">8.2</td>
-<td align="left">.605</td>
-<td align="left">.592</td>
-<td align="left">3.7</td>
+<td align="left">19</td>
+<td align="left">19</td>
+<td align="left">609</td>
 <td align="left">5.7</td>
-<td align="left">.650</td>
-<td align="left">2.2</td>
-<td align="left">8.1</td>
-<td align="left">10.3</td>
-<td align="left">4.4</td>
-<td align="left">1.6</td>
-<td align="left">1.2</td>
+<td align="left">9.9</td>
+<td align="left">.575</td>
+<td align="left">0.1</td>
+<td align="left">0.4</td>
+<td align="left">.167</td>
+<td align="left">5.6</td>
+<td align="left">9.5</td>
+<td align="left">.590</td>
+<td align="left">4.3</td>
+<td align="left">6.5</td>
+<td align="left">.655</td>
 <td align="left">2.7</td>
-<td align="left">2.5</td>
-<td align="left">13.8</td>
+<td align="left">9.2</td>
+<td align="left">11.9</td>
+<td align="left">4.7</td>
+<td align="left">1.7</td>
+<td align="left">1.4</td>
+<td align="left">3.1</td>
+<td align="left">2.8</td>
+<td align="left">15.7</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
@@ -701,29 +738,28 @@ colnames(my_data) &lt;- my_variable_names</code></pre>
 <td align="left">SAS</td>
 <td align="left">20</td>
 <td align="left">20</td>
-<td align="left">32.8</td>
-<td align="left">7.7</td>
-<td align="left">14.8</td>
+<td align="left">656</td>
+<td align="left">8.4</td>
+<td align="left">16.2</td>
 <td align="left">.517</td>
 <td align="left">0.6</td>
-<td align="left">1.6</td>
-<td align="left">.355</td>
-<td align="left">7.1</td>
-<td align="left">13.3</td>
-<td align="left">.536</td>
-<td align="left">.535</td>
-<td align="left">3.0</td>
-<td align="left">3.6</td>
-<td align="left">.833</td>
-<td align="left">2.1</td>
-<td align="left">4.7</td>
-<td align="left">6.7</td>
-<td align="left">2.5</td>
-<td align="left">0.7</td>
-<td align="left">1.8</td>
 <td align="left">1.7</td>
-<td align="left">2.2</td>
-<td align="left">18.9</td>
+<td align="left">.355</td>
+<td align="left">7.8</td>
+<td align="left">14.5</td>
+<td align="left">.536</td>
+<td align="left">3.3</td>
+<td align="left">4.0</td>
+<td align="left">.833</td>
+<td align="left">2.3</td>
+<td align="left">5.1</td>
+<td align="left">7.4</td>
+<td align="left">2.7</td>
+<td align="left">0.7</td>
+<td align="left">2.0</td>
+<td align="left">1.8</td>
+<td align="left">2.4</td>
+<td align="left">20.7</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
@@ -733,29 +769,28 @@ colnames(my_data) &lt;- my_variable_names</code></pre>
 <td align="left">NOP</td>
 <td align="left">16</td>
 <td align="left">0</td>
-<td align="left">14.4</td>
-<td align="left">2.3</td>
-<td align="left">7.0</td>
+<td align="left">230</td>
+<td align="left">5.6</td>
+<td align="left">17.5</td>
 <td align="left">.321</td>
-<td align="left">1.3</td>
-<td align="left">3.8</td>
+<td align="left">3.3</td>
+<td align="left">9.5</td>
 <td align="left">.344</td>
-<td align="left">0.9</td>
-<td align="left">3.2</td>
+<td align="left">2.3</td>
+<td align="left">8.0</td>
 <td align="left">.294</td>
-<td align="left">.415</td>
-<td align="left">0.6</td>
-<td align="left">0.9</td>
-<td align="left">.714</td>
-<td align="left">0.1</td>
-<td align="left">2.1</td>
-<td align="left">2.3</td>
-<td align="left">2.3</td>
-<td align="left">0.3</td>
-<td align="left">0.1</td>
-<td align="left">1.3</td>
 <td align="left">1.6</td>
-<td align="left">6.4</td>
+<td align="left">2.2</td>
+<td align="left">.714</td>
+<td align="left">0.3</td>
+<td align="left">5.3</td>
+<td align="left">5.6</td>
+<td align="left">5.6</td>
+<td align="left">0.8</td>
+<td align="left">0.3</td>
+<td align="left">3.1</td>
+<td align="left">4.1</td>
+<td align="left">16.1</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
@@ -763,109 +798,115 @@ colnames(my_data) &lt;- my_variable_names</code></pre>
 <td align="left">SG</td>
 <td align="left">24</td>
 <td align="left">MEM</td>
-<td align="left">8</td>
+<td align="left">9</td>
 <td align="left">0</td>
-<td align="left">15.9</td>
-<td align="left">1.9</td>
-<td align="left">6.6</td>
-<td align="left">.283</td>
-<td align="left">0.8</td>
-<td align="left">3.3</td>
-<td align="left">.231</td>
-<td align="left">1.1</td>
-<td align="left">3.4</td>
-<td align="left">.333</td>
-<td align="left">.340</td>
-<td align="left">1.4</td>
-<td align="left">1.6</td>
-<td align="left">.846</td>
-<td align="left">0.3</td>
+<td align="left">157</td>
+<td align="left">4.4</td>
+<td align="left">14.2</td>
+<td align="left">.306</td>
+<td align="left">2.1</td>
+<td align="left">7.3</td>
+<td align="left">.281</td>
 <td align="left">2.3</td>
-<td align="left">2.5</td>
-<td align="left">1.8</td>
-<td align="left">0.3</td>
+<td align="left">6.9</td>
+<td align="left">.333</td>
+<td align="left">3.0</td>
+<td align="left">3.4</td>
+<td align="left">.867</td>
+<td align="left">0.5</td>
+<td align="left">5.3</td>
+<td align="left">5.7</td>
+<td align="left">3.2</td>
+<td align="left">0.7</td>
 <td align="left">0.0</td>
-<td align="left">1.3</td>
-<td align="left">1.6</td>
-<td align="left">5.9</td>
+<td align="left">2.3</td>
+<td align="left">3.7</td>
+<td align="left">13.8</td>
 </tr>
 </tbody>
 </table>
 <p>One last step required! All columns in my table are type <code>chr</code>. We want to change the columns that are numeric into a numeric type!</p>
 <pre class="r"><code>str(my_data)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    458 obs. of  30 variables:
+<pre><code>## &#39;data.frame&#39;:    457 obs. of  29 variables:
 ##  $ Rk              : chr  &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
 ##  $ Player          : chr  &quot;Steven Adams&quot; &quot;Bam Adebayo&quot; &quot;LaMarcus Aldridge&quot; &quot;Nickeil Alexander-Walker&quot; ...
 ##  $ Pos             : chr  &quot;C&quot; &quot;C&quot; &quot;C&quot; &quot;SG&quot; ...
 ##  $ Age             : chr  &quot;26&quot; &quot;22&quot; &quot;34&quot; &quot;21&quot; ...
 ##  $ Tm              : chr  &quot;OKC&quot; &quot;MIA&quot; &quot;SAS&quot; &quot;NOP&quot; ...
-##  $ G               : chr  &quot;15&quot; &quot;18&quot; &quot;20&quot; &quot;16&quot; ...
-##  $ GS              : chr  &quot;15&quot; &quot;18&quot; &quot;20&quot; &quot;0&quot; ...
-##  $ MP              : chr  &quot;26.1&quot; &quot;31.9&quot; &quot;32.8&quot; &quot;14.4&quot; ...
-##  $ FG              : chr  &quot;4.2&quot; &quot;5.0&quot; &quot;7.7&quot; &quot;2.3&quot; ...
-##  $ FGA             : chr  &quot;7.4&quot; &quot;8.5&quot; &quot;14.8&quot; &quot;7.0&quot; ...
-##  $ FG%             : chr  &quot;.568&quot; &quot;.588&quot; &quot;.517&quot; &quot;.321&quot; ...
-##  $ Threes_made     : chr  &quot;0.0&quot; &quot;0.1&quot; &quot;0.6&quot; &quot;1.3&quot; ...
-##  $ Threes_attempted: chr  &quot;0.0&quot; &quot;0.3&quot; &quot;1.6&quot; &quot;3.8&quot; ...
+##  $ G               : chr  &quot;16&quot; &quot;19&quot; &quot;20&quot; &quot;16&quot; ...
+##  $ GS              : chr  &quot;16&quot; &quot;19&quot; &quot;20&quot; &quot;0&quot; ...
+##  $ MP              : chr  &quot;420&quot; &quot;609&quot; &quot;656&quot; &quot;230&quot; ...
+##  $ FG              : chr  &quot;5.9&quot; &quot;5.7&quot; &quot;8.4&quot; &quot;5.6&quot; ...
+##  $ FGA             : chr  &quot;10.1&quot; &quot;9.9&quot; &quot;16.2&quot; &quot;17.5&quot; ...
+##  $ FG%             : chr  &quot;.585&quot; &quot;.575&quot; &quot;.517&quot; &quot;.321&quot; ...
+##  $ Threes_made     : chr  &quot;0.0&quot; &quot;0.1&quot; &quot;0.6&quot; &quot;3.3&quot; ...
+##  $ Threes_attempted: chr  &quot;0.0&quot; &quot;0.4&quot; &quot;1.7&quot; &quot;9.5&quot; ...
 ##  $ Threes_percent  : chr  &quot;&quot; &quot;.167&quot; &quot;.355&quot; &quot;.344&quot; ...
-##  $ Twos_made       : chr  &quot;4.2&quot; &quot;4.9&quot; &quot;7.1&quot; &quot;0.9&quot; ...
-##  $ Twos_attempted  : chr  &quot;7.4&quot; &quot;8.2&quot; &quot;13.3&quot; &quot;3.2&quot; ...
-##  $ Twos_percent    : chr  &quot;.568&quot; &quot;.605&quot; &quot;.536&quot; &quot;.294&quot; ...
-##  $ eFG%            : chr  &quot;.568&quot; &quot;.592&quot; &quot;.535&quot; &quot;.415&quot; ...
-##  $ FT              : chr  &quot;0.9&quot; &quot;3.7&quot; &quot;3.0&quot; &quot;0.6&quot; ...
-##  $ FTA             : chr  &quot;2.3&quot; &quot;5.7&quot; &quot;3.6&quot; &quot;0.9&quot; ...
-##  $ FT%             : chr  &quot;.400&quot; &quot;.650&quot; &quot;.833&quot; &quot;.714&quot; ...
-##  $ ORB             : chr  &quot;2.7&quot; &quot;2.2&quot; &quot;2.1&quot; &quot;0.1&quot; ...
-##  $ DRB             : chr  &quot;6.2&quot; &quot;8.1&quot; &quot;4.7&quot; &quot;2.1&quot; ...
-##  $ TRB             : chr  &quot;8.9&quot; &quot;10.3&quot; &quot;6.7&quot; &quot;2.3&quot; ...
-##  $ AST             : chr  &quot;2.9&quot; &quot;4.4&quot; &quot;2.5&quot; &quot;2.3&quot; ...
-##  $ STL             : chr  &quot;0.5&quot; &quot;1.6&quot; &quot;0.7&quot; &quot;0.3&quot; ...
-##  $ BLK             : chr  &quot;0.9&quot; &quot;1.2&quot; &quot;1.8&quot; &quot;0.1&quot; ...
-##  $ TOV             : chr  &quot;1.4&quot; &quot;2.7&quot; &quot;1.7&quot; &quot;1.3&quot; ...
-##  $ PF              : chr  &quot;1.8&quot; &quot;2.5&quot; &quot;2.2&quot; &quot;1.6&quot; ...
-##  $ PTS             : chr  &quot;9.3&quot; &quot;13.8&quot; &quot;18.9&quot; &quot;6.4&quot; ...</code></pre>
-<pre class="r"><code>my_data[, c(4, 6:30)] &lt;- sapply(my_data[, c(4,6:30)], as.numeric)
+##  $ Twos_made       : chr  &quot;5.9&quot; &quot;5.6&quot; &quot;7.8&quot; &quot;2.3&quot; ...
+##  $ Twos_attempted  : chr  &quot;10.1&quot; &quot;9.5&quot; &quot;14.5&quot; &quot;8.0&quot; ...
+##  $ Twos_percent    : chr  &quot;.585&quot; &quot;.590&quot; &quot;.536&quot; &quot;.294&quot; ...
+##  $ FT              : chr  &quot;1.6&quot; &quot;4.3&quot; &quot;3.3&quot; &quot;1.6&quot; ...
+##  $ FTA             : chr  &quot;3.5&quot; &quot;6.5&quot; &quot;4.0&quot; &quot;2.2&quot; ...
+##  $ FT%             : chr  &quot;.463&quot; &quot;.655&quot; &quot;.833&quot; &quot;.714&quot; ...
+##  $ ORB             : chr  &quot;3.7&quot; &quot;2.7&quot; &quot;2.3&quot; &quot;0.3&quot; ...
+##  $ DRB             : chr  &quot;8.7&quot; &quot;9.2&quot; &quot;5.1&quot; &quot;5.3&quot; ...
+##  $ TRB             : chr  &quot;12.3&quot; &quot;11.9&quot; &quot;7.4&quot; &quot;5.6&quot; ...
+##  $ AST             : chr  &quot;3.9&quot; &quot;4.7&quot; &quot;2.7&quot; &quot;5.6&quot; ...
+##  $ STL             : chr  &quot;0.7&quot; &quot;1.7&quot; &quot;0.7&quot; &quot;0.8&quot; ...
+##  $ BLK             : chr  &quot;1.3&quot; &quot;1.4&quot; &quot;2.0&quot; &quot;0.3&quot; ...
+##  $ TOV             : chr  &quot;1.9&quot; &quot;3.1&quot; &quot;1.8&quot; &quot;3.1&quot; ...
+##  $ PF              : chr  &quot;2.6&quot; &quot;2.8&quot; &quot;2.4&quot; &quot;4.1&quot; ...
+##  $ PTS             : chr  &quot;13.5&quot; &quot;15.7&quot; &quot;20.7&quot; &quot;16.1&quot; ...</code></pre>
+<pre class="r"><code>my_data[, c(4, 6:29)] &lt;- sapply(my_data[, c(4,6:29)], as.numeric)
 str(my_data)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    458 obs. of  30 variables:
+<pre><code>## &#39;data.frame&#39;:    457 obs. of  29 variables:
 ##  $ Rk              : chr  &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
 ##  $ Player          : chr  &quot;Steven Adams&quot; &quot;Bam Adebayo&quot; &quot;LaMarcus Aldridge&quot; &quot;Nickeil Alexander-Walker&quot; ...
 ##  $ Pos             : chr  &quot;C&quot; &quot;C&quot; &quot;C&quot; &quot;SG&quot; ...
 ##  $ Age             : num  26 22 34 21 24 21 29 26 31 25 ...
 ##  $ Tm              : chr  &quot;OKC&quot; &quot;MIA&quot; &quot;SAS&quot; &quot;NOP&quot; ...
-##  $ G               : num  15 18 20 16 8 19 18 17 2 19 ...
-##  $ GS              : num  15 18 20 0 0 16 2 0 0 19 ...
-##  $ MP              : num  26.1 31.9 32.8 14.4 15.9 26.6 21.1 20.5 7 33 ...
-##  $ FG              : num  4.2 5 7.7 2.3 1.9 4.7 1.4 2.8 1 11.5 ...
-##  $ FGA             : num  7.4 8.5 14.8 7 6.6 6.9 4.8 5.5 3.5 20.6 ...
-##  $ FG%             : num  0.568 0.588 0.517 0.321 0.283 0.674 0.291 0.505 0.286 0.559 ...
-##  $ Threes_made     : num  0 0.1 0.6 1.3 0.8 0 0.5 0.2 0.5 1.4 ...
-##  $ Threes_attempted: num  0 0.3 1.6 3.8 3.3 0.1 2 0.9 2.5 4.9 ...
-##  $ Threes_percent  : num  NA 0.167 0.355 0.344 0.231 0 0.25 0.25 0.2 0.29 ...
-##  $ Twos_made       : num  4.2 4.9 7.1 0.9 1.1 4.7 0.9 2.5 0.5 10.1 ...
-##  $ Twos_attempted  : num  7.4 8.2 13.3 3.2 3.4 6.9 2.8 4.5 1 15.7 ...
-##  $ Twos_percent    : num  0.568 0.605 0.536 0.294 0.333 0.679 0.32 0.558 0.5 0.642 ...
-##  $ eFG%            : num  0.568 0.592 0.535 0.415 0.34 0.674 0.343 0.527 0.357 0.593 ...
-##  $ FT              : num  0.9 3.7 3 0.6 1.4 2.6 1.1 0.9 0 6.7 ...
-##  $ FTA             : num  2.3 5.7 3.6 0.9 1.6 4.5 1.6 1.6 0 11.3 ...
-##  $ FT%             : num  0.4 0.65 0.833 0.714 0.846 0.57 0.655 0.571 NA 0.591 ...
-##  $ ORB             : num  2.7 2.2 2.1 0.1 0.3 3.4 1.3 0.9 0 2.7 ...
-##  $ DRB             : num  6.2 8.1 4.7 2.1 2.3 6.9 3.5 3.5 3.5 10.9 ...
-##  $ TRB             : num  8.9 10.3 6.7 2.3 2.5 10.4 4.8 4.4 3.5 13.6 ...
-##  $ AST             : num  2.9 4.4 2.5 2.3 1.8 1.1 1.2 2.6 1 6 ...
-##  $ STL             : num  0.5 1.6 0.7 0.3 0.3 0.7 1 0.7 0.5 1.5 ...
-##  $ BLK             : num  0.9 1.2 1.8 0.1 0 1.3 0.4 0.7 0 1.5 ...
-##  $ TOV             : num  1.4 2.7 1.7 1.3 1.3 1.2 0.9 0.9 0.5 4.2 ...
-##  $ PF              : num  1.8 2.5 2.2 1.6 1.6 2.5 1.5 1.7 0.5 3.4 ...
-##  $ PTS             : num  9.3 13.8 18.9 6.4 5.9 11.9 4.3 6.7 2.5 31.2 ...</code></pre>
-<p>Awesome! Let’s take a look at what our table looks like…</p>
-<pre class="r"><code>my_data &lt;- as_tibble(my_data)</code></pre>
-<pre class="r"><code>my_data &lt;- my_data %&gt;%
-  mutate(FP = -0.2*MP - 0.5*FGA + 
+##  $ G               : num  16 19 20 16 9 20 18 17 2 20 ...
+##  $ GS              : num  16 19 20 0 0 17 2 0 0 20 ...
+##  $ MP              : num  420 609 656 230 157 529 380 348 14 647 ...
+##  $ FG              : num  5.9 5.7 8.4 5.6 4.4 6.1 2.4 4.9 5.1 12.8 ...
+##  $ FGA             : num  10.1 9.9 16.2 17.5 14.2 9.2 8.1 9.6 18 22.9 ...
+##  $ FG%             : num  0.585 0.575 0.517 0.321 0.306 0.667 0.291 0.505 0.286 0.56 ...
+##  $ Threes_made     : num  0 0.1 0.6 3.3 2.1 0 0.9 0.4 2.6 1.6 ...
+##  $ Threes_attempted: num  0 0.4 1.7 9.5 7.3 0.1 3.4 1.7 12.9 5.5 ...
+##  $ Threes_percent  : num  NA 0.167 0.355 0.344 0.281 0 0.25 0.25 0.2 0.286 ...
+##  $ Twos_made       : num  5.9 5.6 7.8 2.3 2.3 6.1 1.5 4.4 2.6 11.2 ...
+##  $ Twos_attempted  : num  10.1 9.5 14.5 8 6.9 9.1 4.7 8 5.1 17.4 ...
+##  $ Twos_percent    : num  0.585 0.59 0.536 0.294 0.333 0.672 0.32 0.558 0.5 0.645 ...
+##  $ FT              : num  1.6 4.3 3.3 1.6 3 3.5 1.8 1.7 0 7.2 ...
+##  $ FTA             : num  3.5 6.5 4 2.2 3.4 6 2.7 2.9 0 12.4 ...
+##  $ FT%             : num  0.463 0.655 0.833 0.714 0.867 0.58 0.655 0.571 NA 0.586 ...
+##  $ ORB             : num  3.7 2.7 2.3 0.3 0.5 4.6 2.3 1.7 0 3 ...
+##  $ DRB             : num  8.7 9.2 5.1 5.3 5.3 9.6 6 6.1 18 11.9 ...
+##  $ TRB             : num  12.3 11.9 7.4 5.6 5.7 14.2 8.2 7.8 18 14.9 ...
+##  $ AST             : num  3.9 4.7 2.7 5.6 3.2 1.6 2 4.6 5.1 6.6 ...
+##  $ STL             : num  0.7 1.7 0.7 0.8 0.7 0.9 1.7 1.2 2.6 1.7 ...
+##  $ BLK             : num  1.3 1.4 2 0.3 0 1.7 0.8 1.2 0 1.6 ...
+##  $ TOV             : num  1.9 3.1 1.8 3.1 2.3 1.6 1.6 1.6 2.6 4.5 ...
+##  $ PF              : num  2.6 2.8 2.4 4.1 3.7 3.5 2.6 3 2.6 3.7 ...
+##  $ PTS             : num  13.5 15.7 20.7 16.1 13.8 15.7 7.4 11.8 12.9 34.4 ...</code></pre>
+<p>Awesome! Now we’re done. The data is now saved into R.</p>
+</div>
+<div id="illustration" class="section level2">
+<h2>Illustration</h2>
+<p>To illustrate how we might use this data, I’ll go through an excercise of data manipulation. Currently on my Fantasy League, we have defined a metric that takes some weighted average of a player’s box scofe output. Using the data we’ve just compiled, I’ve gone ahead and calculated this metric to see which players perform fantasy league-wise per 36 minutes.</p>
+<pre class="r"><code>my_data &lt;- as_tibble(my_data)
+#I like tibbles over data frames
+
+#Compute new column of Fantasy points
+my_data &lt;- my_data %&gt;%
+  mutate(FP = - 0.5*FGA + 
            0.75*Threes_made + PTS +
            1.5*ORB + DRB + 1.5*AST +
            2.5*STL + 2.5*BLK - TOV)</code></pre>
-<pre class="r"><code>FP_data &lt;- my_data %&gt;%
-  select(Player, Tm, FP) %&gt;%
+<pre class="r"><code># Which players add most fantasy point value? 
+FP_data &lt;- my_data %&gt;%
+  select(Player, Tm, FP,G) %&gt;%
+  filter(G &gt; 12) %&gt;%
   arrange(desc(FP))
 
 knitr::kable(FP_data[1:10,], caption = &quot;Fantasy Data&quot;)</code></pre>
@@ -876,61 +917,73 @@ knitr::kable(FP_data[1:10,], caption = &quot;Fantasy Data&quot;)</code></pre>
 <th align="left">Player</th>
 <th align="left">Tm</th>
 <th align="right">FP</th>
+<th align="right">G</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="left">Giannis Antetokounmpo</td>
 <td align="left">MIL</td>
-<td align="right">42.600</td>
+<td align="right">54.200</td>
+<td align="right">20</td>
 </tr>
 <tr class="even">
 <td align="left">Luka Dončić</td>
 <td align="left">DAL</td>
-<td align="right">40.735</td>
+<td align="right">50.125</td>
+<td align="right">19</td>
 </tr>
 <tr class="odd">
 <td align="left">James Harden</td>
 <td align="left">HOU</td>
-<td align="right">40.010</td>
+<td align="right">47.800</td>
+<td align="right">19</td>
 </tr>
 <tr class="even">
 <td align="left">Karl-Anthony Towns</td>
 <td align="left">MIN</td>
-<td align="right">37.145</td>
+<td align="right">46.425</td>
+<td align="right">17</td>
 </tr>
 <tr class="odd">
 <td align="left">LeBron James</td>
 <td align="left">LAL</td>
-<td align="right">35.615</td>
+<td align="right">43.925</td>
+<td align="right">20</td>
 </tr>
 <tr class="even">
+<td align="left">Joel Embiid</td>
+<td align="left">PHI</td>
+<td align="right">43.350</td>
+<td align="right">16</td>
+</tr>
+<tr class="odd">
 <td align="left">Anthony Davis</td>
 <td align="left">LAL</td>
-<td align="right">34.700</td>
-</tr>
-<tr class="odd">
-<td align="left">Andre Drummond</td>
-<td align="left">DET</td>
-<td align="right">32.150</td>
+<td align="right">43.100</td>
+<td align="right">19</td>
 </tr>
 <tr class="even">
-<td align="left">Kyrie Irving</td>
-<td align="left">BRK</td>
-<td align="right">30.640</td>
-</tr>
-<tr class="odd">
 <td align="left">Kawhi Leonard</td>
 <td align="left">LAC</td>
-<td align="right">30.240</td>
+<td align="right">41.650</td>
+<td align="right">15</td>
+</tr>
+<tr class="odd">
+<td align="left">Gorgui Dieng</td>
+<td align="left">MIN</td>
+<td align="right">41.025</td>
+<td align="right">15</td>
 </tr>
 <tr class="even">
-<td align="left">Damian Lillard</td>
-<td align="left">POR</td>
-<td align="right">30.125</td>
+<td align="left">Andre Drummond</td>
+<td align="left">DET</td>
+<td align="right">40.950</td>
+<td align="right">20</td>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 
     </div>

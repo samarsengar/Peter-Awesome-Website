@@ -17,13 +17,13 @@ authors:
 draft: no
 featured: no
 image:
-  caption: 'Image credit: [**Unsplash**](https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=2ahUKEwiOn6jIg47mAhXEu54KHQ6IBMEQjRx6BAgBEAQ&url=https%3A%2F%2Ftwitter.com%2Fbball_ref%2Fstatus%2F1134290033979121664&psig=AOvVaw1RrNasfgvMlnI4e_gkKVMD&ust=1575069020292235)'
+  caption: 'Image credit: [**Unsplash**](https://i1.wp.com/www.raptorscage.ca/wp-content/uploads/2019/04/pascal-siakam-ftrjpg_id4alr64p7z81jzrz9q3hwh5z.jpg?w=1800)'
   focal_point: ''
   placement: 2
   preview_only: no
-lastmod: '2019-11-28T13:00:00Z'
+lastmod: '2019-12-02T13:00:00Z'
 subtitle: 'Exporting data online and into R in under 10 minutes :basketball: :fire:'
-summary: Scrape Baksetball-Reference tables in under 10 minutes.
+summary: Scrape Baksetball-Reference tables in under 12 minutes.
 geometry: margin = 1.75 cm
 output:
   html_document:
@@ -34,16 +34,25 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Let's Ball
+# Let's Ball
 
 As a fan of the **NBA** and an enthusiastic **R** user, I've spent some time scouring the internet for ways to obtain useable data to load into R - mainly from the popular data source [Basketball-Reference](https://www.basketball-reference.com). Unsatisfied with my online data quest, I just decided to scrape the data on [Basketball-Reference](https://www.basketball-reference.com) myself! The process is pretty straightforward, as you will see shortly...
 
+## HTML and SelectorGadget
+
 Firstly, as the entire contents of a [Basketball-Reference](https://www.basketball-reference.com)
-web page is written in HTML format, you can easily save the entire content and load it into R. However, it simplifies things greatly if we can be more selective in the contents we want to load into R. HTML files contain ``tags`` that pretty much denotes different content of the HTML page. If you can find the speficic tag for the table you want to save in R, then you're golden! Take for example this table that shows the latest (as of November 28, 2019) player boxscore stats per 36 minutes.
+web page is written in HTML format, you can easily save the entire content and load it into R. However, it simplifies things greatly if we can be more selective in the contents we want to load into R. HTML files contain ``tags`` that pretty much denotes different content of the HTML page. If you can find the speficic tag for the table you want to save in R, then you're golden! Take for example this [table](https://www.basketball-reference.com/leagues/NBA_2020_per_minute.html) that shows the latest (as of December 2nd, 2019) player boxscore stats per 36 minutes.:
 
 ![](bbref.png)
 
-How can we extract only the information found in the above table? To do that, we can simply use a chrome tool called [SelectorGadget](https://chrome.google.com/webstore/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb?hl=en). By using this plug-in, we can simply highlight the specific content of the page we want saved, and export it into R.
+How can we extract only the information found in the above table? To do that, we can simply use a chrome tool called [SelectorGadget](https://chrome.google.com/webstore/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb?hl=en). By using this plug-in, we can simply highlight the specific content of the page we want saved, and export it into R. For those unfamiliar with selectorgadget, I'd refer them to [this helpful video](https://www.youtube.com/watch?v=oqNTfWrGdbk). Below is a screenshot of my selectorgadget screen. 
+
+![](selector_gadget.png)
+
+You'll note that the plug-in produces a ``node`` as we select elements of the html page (this will be useful in our R code). Make sure to only highlight elements of the table and nothing else on the page!
+
+
+## Using R
 
 First, let's load in two R packages:
 
@@ -56,26 +65,27 @@ library(dplyr)
 ```
 
 
+Now, we read in our dataset by specifying the ``url`` and the ``node``.
 ```{r, A1, tidy.opts=list(width.cutoff=65)}
-my_url <- read_html("https://www.basketball-reference.com/leagues/NBA_2020_per_game.html")
-node <- "#per_game_stats a , .right , .center"
+my_url <- read_html("https://www.basketball-reference.com/leagues/NBA_2020_per_minute.html")
+node <- ".left , .center , .right"
 
 ```
 
-Let's look at the first 30 elements of our compiled data:
+Let's look at the first 29 elements of our compiled data:
 ```{r, A2}
 scraped_data <- my_url %>%
   html_nodes(node) %>%
   html_text()
 
-my_variable_names <- scraped_data[1:30]
+my_variable_names <- scraped_data[1:29]
 
 print(my_variable_names)
 
 ```
-These names match exactly the first 30 elements of the table we want to extract.
+These names match exactly the first 29 elements of the table we want to extract.
 
-Just as an FYI, the data is saved as a ``vector`` in r, with ``14,341`` entries.
+Just as an FYI, the data is saved as a ``vector`` in R, with ``13,922`` entries.
 ```{r, A3}
 is.vector(scraped_data)
 ```
@@ -91,6 +101,8 @@ Some of the variable names begin with numbers which is a huge **no-no** in R, so
 my_variable_names[12:17] <- c("Threes_made", "Threes_attempted",
                               "Threes_percent", "Twos_made",
                               "Twos_attempted", "Twos_percent")
+
+print(my_variable_names)
 ```
 
 
@@ -98,24 +110,36 @@ We will use this vector data to fill in an empty table we create in R. We have t
 I'll illustrate below: 
 
 ```{r, A5}
-scraped_data[600: 660]
+scraped_data[582: 660]
 ```
 
+The first instance of this ``junk`` is indexed here:
+```{r, A5A}
+scraped_data[610: 638]
+```
 
-To remove this junk, I'll simply create a vector of indices that correspond to the junk we want removed. After some investigating skills, we can see that it's every 600th - 630th element that we need to remove.
+The second instance of this ``junk`` is indexed here:
+```{r, A5B}
+scraped_data[1219: 1247]
+```
+
+It seems like this junk repeats every 609th element (1219 - 610 = 609). To remove this junk, I'll simply create a vector of indices that correspond to the junk we want removed. 
 ```{r, A6}
-to_remove <- 631:660
+to_remove <- 610:638
 n <- length(scraped_data)
 
-while(to_remove[length(to_remove)] <= n - 601 ){
+while(to_remove[length(to_remove)] <= n - 609 ){
   
-  A <- to_remove[length(to_remove)] + 601
-  to_add <- A:(A+29)
+  A <- to_remove[length(to_remove)] + 581
+  #Note: 1219 - 638 = 581
+  
+  to_add <- A:(A+28)
   to_remove <- c(to_remove, to_add)
   
 }
 ```
 
+Now we remove all the junk as follows:
 ```{r, A7}
 process_dat <- scraped_data[-to_remove]
 ```
@@ -126,12 +150,13 @@ n2 <- length(process_dat)
 print(n2)
 ```
 
-Awesome, now we'll get to work on filling in a data-frame with this cleaned data. The way I did it was to specify the elements that should be added row-wise to a data table in R. I.e. every 30 elements makes up one row in our table:
+Great! Now we'll get to work on filling in a data-frame with this cleaned data. The way I did it was to specify the elements that should be added row-wise to a data table in R. I.e. every 29 elements makes up one row in our table:
 ```{r, A9, warning=FALSE}
-my_index <- seq(from = 31, to = n2, by = 30)
+my_index <- seq(from = 30, to = n2-2, by = 29)
+# Seems to be a glitch where the last 2 elements of scraped_data are not from the table we want to extract.
 
 #Initialize data frame...
-my_data <- data.frame(matrix(ncol = 30, nrow = 452))
+my_data <- data.frame(matrix(ncol = 29, nrow = 457))
 # Note the dimensions here are found by looking at the table on basketball-
 # reference.
 
@@ -159,29 +184,35 @@ str(my_data)
 
 
 ```{r, A11}
-my_data[, c(4, 6:30)] <- sapply(my_data[, c(4,6:30)], as.numeric)
+my_data[, c(4, 6:29)] <- sapply(my_data[, c(4,6:29)], as.numeric)
 str(my_data)
 ```
 
 
-Awesome! Let's take a look at what our table looks like...
+Awesome! Now we're done. The data is now saved into R. 
+
+
+## Illustration
+To illustrate how we might use this data, I'll go through an excercise of data manipulation. Currently on my Fantasy League, we have defined a metric that takes some weighted average of a player's box scofe output. Using the data we've just compiled, I've gone ahead and calculated this metric to see which players perform fantasy league-wise per 36 minutes.
+
 ```{r, A111}
 my_data <- as_tibble(my_data)
+#I like tibbles over data frames
 
-```
-
-```{r, A12}
+#Compute new column of Fantasy points
 my_data <- my_data %>%
-  mutate(FP = -0.2*MP - 0.5*FGA + 
+  mutate(FP = - 0.5*FGA + 
            0.75*Threes_made + PTS +
            1.5*ORB + DRB + 1.5*AST +
            2.5*STL + 2.5*BLK - TOV)
-
 ```
 
+
 ```{r, A122}
+# Which players add most fantasy point value? 
 FP_data <- my_data %>%
-  select(Player, Tm, FP) %>%
+  select(Player, Tm, FP,G) %>%
+  filter(G > 12) %>%
   arrange(desc(FP))
 
 knitr::kable(FP_data[1:10,], caption = "Fantasy Data")
