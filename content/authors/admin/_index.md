@@ -1,6 +1,10 @@
 ---
+name: Peter Tea
+superuser: true
+
 authors:
 - admin
+
 description: Peter Tea SFU
 bio: Putting sports through the ``tea-test``
 education:
@@ -17,8 +21,6 @@ interests:
 - Sports Analytics (Tennis, Basketball)
 - Statistics
 - Computation
-
-name: Peter Tea
 organizations:
 - name: Simon Fraser University
   url: "https://www.stat.sfu.ca/people/grads.html"
