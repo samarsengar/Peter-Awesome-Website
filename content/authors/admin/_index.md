@@ -6,7 +6,7 @@ authors:
 - admin
 
 description: Peter Tea SFU
-bio: Putting sports through the ``tea-test``
+bio: Putting sports through the ``Tea-test``
 education:
   courses:
   - course: Msc Statistics
