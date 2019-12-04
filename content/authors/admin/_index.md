@@ -1,7 +1,8 @@
 ---
 authors:
 - admin
-bio: My research interests include everything sports.
+description: Peter Tea SFU
+bio: Putting sports through the ``tea-test``
 education:
   courses:
   - course: Msc Statistics
