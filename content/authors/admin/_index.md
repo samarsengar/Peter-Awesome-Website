@@ -2,10 +2,11 @@
 name: Peter Tea
 superuser: true
 
+
 authors:
 - admin
 
-description: Peter Tea SFU
+description: Peter Tea SFU Sports Analytics
 bio: Putting sports through the ``Tea-test``
 education:
   courses:
@@ -44,8 +45,6 @@ social:
 - icon: instagram
   icon_pack: fab
   link: https://www.instagram.com/peter.tea1/
-
-superuser: true
 user_groups:
 - Researchers
 - Visitors
