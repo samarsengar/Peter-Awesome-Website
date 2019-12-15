@@ -2,7 +2,7 @@
 date: "2019-12-07T00:00:00Z"
 external_link: ""
 image:
-  caption: Photo by pixelcop on Unsplash
+  caption: 'Photo by pixelcop on Unsplash'
   #(https://unsplash.com/photos/Ygy6aPp6980)
   focal_point: Smart
 links:

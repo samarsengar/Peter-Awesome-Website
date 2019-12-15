@@ -1,5 +1,5 @@
 ---
-title: Scraping data from Basketball-Reference
+title: Scraping data from Basketball-Reference with Selector Gadget
 author: Peter Tea
 date: "2019-11-28T13:00:00Z"
 categories:
@@ -28,6 +28,7 @@ geometry: margin = 1.75 cm
 output:
   html_document:
     keep_md:true
+
 ---
 
 ```{r setup, include=FALSE}
