@@ -26,7 +26,7 @@ math: true
 publishDate: "2017-01-01T00:00:00Z"
 slides:
 summary: We will need a summary
-slides: "example"
+slides: "Sports-Analytics-Slides"
 url_video: 
 ---
 

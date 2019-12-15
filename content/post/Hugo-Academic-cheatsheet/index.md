@@ -68,7 +68,6 @@ Content --> authors --> admin --> _index.md
 
 In the preamble of this ``-index.md`` file, you will need to add an "icon" section that looks like this:
 
-
 ```
 - icon: linkedin
   icon_pack: fab
