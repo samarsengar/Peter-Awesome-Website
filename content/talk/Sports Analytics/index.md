@@ -7,7 +7,7 @@ address:
   region: British Columbia
   street: 
 all_day: true
-authors: []
+author: 
 date: "2020-01-09T13:00:00Z"
 date_end: "2020-01-09T13:00:00Z"
 event: SFU Student Conference

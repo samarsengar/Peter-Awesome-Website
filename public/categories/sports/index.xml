@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sports | Peter Tea</title>
+    <link>/categories/sports/</link>
+      <atom:link href="/categories/sports/index.xml" rel="self" type="application/rss+xml" />
+    <description>Sports</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Tue, 05 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title>Sports</title>
+      <link>/categories/sports/</link>
+    </image>
+    
+    <item>
+      <title>Sports Analytics</title>
+      <link>/slides/sports-analytics-slides/</link>
+      <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>/slides/sports-analytics-slides/</guid>
+      <description>
+
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;/img/tennis_court.jpeg&#34;
+  &gt;
+
+
+&lt;h1 id=&#34;statistics-in-tennis&#34;&gt;Statistics in Tennis&lt;/h1&gt;
+
+&lt;p&gt;Peter Tea&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;which-country-contributes-the-most-tennis-talent&#34;&gt;Which country contributes the most Tennis talent?&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;serving-strategies-in-tennis&#34;&gt;Serving strategies in Tennis&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;wimbledon-2019&#34;&gt;Wimbledon 2019&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;us-open-2019&#34;&gt;US Open 2019&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;questions&#34;&gt;Questions?&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://discourse.gohugo.io&#34; target=&#34;_blank&#34;&gt;Ask&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/&#34; target=&#34;_blank&#34;&gt;Documentation&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
