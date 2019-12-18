@@ -17,16 +17,25 @@ title: Sports Analytics
 Peter Tea
 
 ---
-# Which country contributes the most Tennis talent?
+## Which country contributes the most Tennis talent?
 ---
 
 ---
-# Serving strategies in Tennis
+## Serving strategies in Tennis
+- Hello World
 ---
 
+
 ---
-# Wimbledon 2019
+class: middle, center
+## Wimbledon 2019
+### Rafael Nadal
+
+![](RF_Wim_2019.png)
+
 ---
+
+
 
 ---
 # US Open 2019

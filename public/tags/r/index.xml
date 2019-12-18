@@ -508,5 +508,21 @@ knitr::kable(FP_data[1:10,], caption = &amp;quot;Fantasy Data&amp;quot;)&lt;/cod
 </description>
     </item>
     
+    <item>
+      <title>An introduction to ANOVA, with application to a Cholesterol dataset</title>
+      <link>/talk/uottawa-summer-2017/</link>
+      <pubDate>Thu, 06 Jul 2017 13:00:00 +0000</pubDate>
+      <guid>/talk/uottawa-summer-2017/</guid>
+      <description>&lt;p&gt;During the summer of 2017, I worked with Professor &lt;a href=&#34;https://termehkousha.wixsite.com/termeh&#34; target=&#34;_blank&#34;&gt;Termeh Kousha&lt;/a&gt; as a research assistant. Part of my responsability was to compile notes on statistical methods:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;Topic 1 - One Way ANOVA_Tea.pdf&#34; target=&#34;_blank&#34;&gt;Anova&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;Nonlinear_Regression_Tea.pdf&#34; target=&#34;_blank&#34;&gt;Non-Linear Regression&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;Logistic Regression.pdf&#34; target=&#34;_blank&#34;&gt;Logistic Regression &amp;amp; Weighted Least Squares&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;Survival Analysis.pdf&#34; target=&#34;_blank&#34;&gt;Survival Analysis&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>
