@@ -5,7 +5,7 @@
     <link>/tags/</link>
       <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Sat, 07 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Thu, 09 Jan 2020 13:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Tags</title>
@@ -13,9 +13,33 @@
     </image>
     
     <item>
+      <title>Canada</title>
+      <link>/tags/canada/</link>
+      <pubDate>Thu, 09 Jan 2020 13:00:00 +0000</pubDate>
+      <guid>/tags/canada/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Serve</title>
+      <link>/tags/serve/</link>
+      <pubDate>Thu, 09 Jan 2020 13:00:00 +0000</pubDate>
+      <guid>/tags/serve/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sports Analytics</title>
+      <link>/tags/sports-analytics/</link>
+      <pubDate>Thu, 09 Jan 2020 13:00:00 +0000</pubDate>
+      <guid>/tags/sports-analytics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Tennis</title>
       <link>/tags/tennis/</link>
-      <pubDate>Sat, 07 Dec 2019 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 09 Jan 2020 13:00:00 +0000</pubDate>
       <guid>/tags/tennis/</guid>
       <description></description>
     </item>
@@ -23,7 +47,7 @@
     <item>
       <title>Academic</title>
       <link>/tags/academic/</link>
-      <pubDate>Thu, 28 Nov 2019 13:00:00 +0000</pubDate>
+      <pubDate>Thu, 19 Dec 2019 13:00:00 +0000</pubDate>
       <guid>/tags/academic/</guid>
       <description></description>
     </item>
@@ -31,7 +55,7 @@
     <item>
       <title>Basketball</title>
       <link>/tags/basketball/</link>
-      <pubDate>Thu, 28 Nov 2019 13:00:00 +0000</pubDate>
+      <pubDate>Thu, 19 Dec 2019 13:00:00 +0000</pubDate>
       <guid>/tags/basketball/</guid>
       <description></description>
     </item>
@@ -39,7 +63,7 @@
     <item>
       <title>Demo</title>
       <link>/tags/demo/</link>
-      <pubDate>Thu, 28 Nov 2019 13:00:00 +0000</pubDate>
+      <pubDate>Thu, 19 Dec 2019 13:00:00 +0000</pubDate>
       <guid>/tags/demo/</guid>
       <description></description>
     </item>
@@ -47,8 +71,32 @@
     <item>
       <title>dplyr</title>
       <link>/tags/dplyr/</link>
-      <pubDate>Thu, 28 Nov 2019 13:00:00 +0000</pubDate>
+      <pubDate>Thu, 19 Dec 2019 13:00:00 +0000</pubDate>
       <guid>/tags/dplyr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>/tags/r/</link>
+      <pubDate>Thu, 19 Dec 2019 13:00:00 +0000</pubDate>
+      <guid>/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rvest</title>
+      <link>/tags/rvest/</link>
+      <pubDate>Thu, 19 Dec 2019 13:00:00 +0000</pubDate>
+      <guid>/tags/rvest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web Scraping</title>
+      <link>/tags/web-scraping/</link>
+      <pubDate>Thu, 19 Dec 2019 13:00:00 +0000</pubDate>
+      <guid>/tags/web-scraping/</guid>
       <description></description>
     </item>
     
@@ -57,30 +105,6 @@
       <link>/tags/fun/</link>
       <pubDate>Thu, 28 Nov 2019 13:00:00 +0000</pubDate>
       <guid>/tags/fun/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R</title>
-      <link>/tags/r/</link>
-      <pubDate>Thu, 28 Nov 2019 13:00:00 +0000</pubDate>
-      <guid>/tags/r/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>rvest</title>
-      <link>/tags/rvest/</link>
-      <pubDate>Thu, 28 Nov 2019 13:00:00 +0000</pubDate>
-      <guid>/tags/rvest/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Web Scraping</title>
-      <link>/tags/web-scraping/</link>
-      <pubDate>Thu, 28 Nov 2019 13:00:00 +0000</pubDate>
-      <guid>/tags/web-scraping/</guid>
       <description></description>
     </item>
     

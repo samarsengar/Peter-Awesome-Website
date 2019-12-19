@@ -1,5 +1,5 @@
 ---
-abstract: With Bianca Andreescu becoming the first ever Canadian to hoist a Grand Slam singles trophy, tennis mania has taken over Canada. In this talk, we present some graphics to represent the rising strength of Canadian tennis. We also present some interesting patterns in tennis serving tactics observed in recent grand slam tournaments. 
+abstract: With Bianca Andreescu becoming the first ever Canadian to hoist a Grand Slam singles trophy, tennis mania has taken over Canada. In this talk, we present some graphics to represent the rising strength of Canadian tennis relative to other competing nations. We also present some interesting patterns in tennis serving tactics observed in recent grand slam tournaments. 
 address:
   city: Burnaby
   country: British Columbia
@@ -11,10 +11,10 @@ author:
 date: "2020-01-09T13:00:00Z"
 date_end: "2020-01-09T13:00:00Z"
 event: SFU Student Conference
-event_url: https://www.cucoh.com
+event_url: 
 featured: false
 image:
-  caption: 'Image credit: [**CUCOH**](https://www.cucoh.com)'
+  caption: 'Image credit: [**CBC**](https://www.cbc.ca/sports/tennis/us-open-tennis-final-women-andreescu-1.5274870)'
   focal_point: Right
 links:
 #- icon: twitter
@@ -28,4 +28,10 @@ url_slides: Tennis_Presentation.pdf
 summary: With Bianca Andreescu becoming the first ever Canadian to hoist a Grand Slam singles trophy, tennis mania has taken over Canada. 
 title: Data Visualization in Tennis
 url_video: 
+
+tags:
+  - Tennis
+  - Canada
+  - Serve
+  - Sports Analytics
 ---

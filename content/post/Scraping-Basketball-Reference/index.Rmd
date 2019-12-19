@@ -1,7 +1,7 @@
 ---
 title: Scraping data from Basketball-Reference with Selector Gadget
 author: Peter Tea
-date: "2019-11-28T13:00:00Z"
+date: "2019-12-19T13:00:00Z"
 categories:
   - Demo
 tags:
