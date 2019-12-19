@@ -24,7 +24,7 @@ links:
 location: Simon Fraser University
 math: true
 publishDate: "2017-01-01T00:00:00Z"
-url_slides: 
+url_slides: Tennis_Presentation.pdf
 summary: With Bianca Andreescu becoming the first ever Canadian to hoist a Grand Slam singles trophy, tennis mania has taken over Canada. 
 title: Data Visualization in Tennis
 url_video: 
