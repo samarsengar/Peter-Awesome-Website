@@ -68,7 +68,17 @@
   </url>
   
   <url>
+    <loc>/categories/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/project/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/tennis/</loc>
     <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -98,17 +108,12 @@
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>/categories/demo/</loc>
     <lastmod>2019-12-02T13:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/demo/</loc>
-    <lastmod>2019-12-02T13:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/demo/</loc>
     <lastmod>2019-12-02T13:00:00+00:00</lastmod>
   </url>
   
