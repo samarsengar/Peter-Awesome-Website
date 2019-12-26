@@ -27,7 +27,7 @@ summary: Scrape Baksetball-Reference tables in under 12 minutes.
 geometry: margin = 1.75 cm
 output:
   html_document:
-    keep_md:true
+    keep_md: true
 
 ---
 
@@ -39,7 +39,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 As a fan of the **NBA** and an enthusiastic **R** user, I've spent some time scouring the internet for ways to obtain useable data to load into R - mainly from the popular data source [Basketball-Reference](https://www.basketball-reference.com). Unsatisfied with my online data quest, I just decided to scrape the data on [Basketball-Reference](https://www.basketball-reference.com) myself! The process is pretty straightforward, as you will see shortly...
 
-## HTML and SelectorGadget
+## Working with Raw Data: HTML and SelectorGadget
 
 Firstly, as the entire contents of a [Basketball-Reference](https://www.basketball-reference.com)
 web page is written in HTML format, you can easily save the entire content and load it into R. However, it simplifies things greatly if we can be more selective in the contents we want to load into R. HTML files contain ``tags`` that pretty much denotes different content of the HTML page. If you can find the speficic tag for the table you want to save in R, then you're golden! Take for example this [table](https://www.basketball-reference.com/leagues/NBA_2020_per_minute.html) that shows the latest (as of December 2nd, 2019) player boxscore stats per 36 minutes.:
@@ -53,7 +53,7 @@ How can we extract only the information found in the above table? To do that, we
 You'll note that the plug-in produces a ``node`` as we select elements of the html page (this will be useful in our R code). Make sure to only highlight elements of the table and nothing else on the page!
 
 
-## Using R
+## Loading data into R
 
 First, let's load in two R packages:
 
@@ -96,6 +96,9 @@ length(scraped_data)
 ```
 
 \vspace{50pt}
+
+
+## Data Cleaning in R
 
 Some of the variable names begin with numbers which is a huge **no-no** in R, so let's manually change these names:
 ```{r, A4}
@@ -193,7 +196,7 @@ str(my_data)
 Awesome! Now we're done. The data is now saved into R. 
 
 
-## Illustration
+## Illustration: Using the Data in R
 To illustrate how we might use this data, I'll go through an excercise of data manipulation. Currently on my Fantasy League, we have defined a metric that takes some weighted average of a player's box scofe output. Using the data we've just compiled, I've gone ahead and calculated this metric to see which players perform fantasy league-wise per 36 minutes.
 
 ```{r, A111}

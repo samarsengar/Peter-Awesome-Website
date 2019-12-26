@@ -1,5 +1,5 @@
 ---
-date: "2019-12-07T00:00:00Z"
+date: "2020-01-01T00:00:00Z"
 external_link: ""
 image:
   caption: 'Photo by pixelcop on Unsplash'
@@ -11,7 +11,7 @@ links:
   name: Follow
   url: https://www.linkedin.com/in/peter-tea-a32506166/
 #slides: example
-summary: An example of using the in-built project page.
+summary: Visualizing the beautiful game of Tennis.
 tags:
 - Tennis
 title: Tennis Viz

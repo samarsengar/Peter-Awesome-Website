@@ -58,6 +58,26 @@
   </url>
   
   <url>
+    <loc>/project/2019-grand-slam/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/bubble-plot/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/internal-project/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/authors/admin/</loc>
     <lastmod>2019-12-02T13:00:00+00:00</lastmod>
   </url>
@@ -83,12 +103,12 @@
   </url>
   
   <url>
-    <loc>/categories/demo/</loc>
+    <loc>/tags/demo/</loc>
     <lastmod>2019-12-02T13:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/demo/</loc>
+    <loc>/categories/demo/</loc>
     <lastmod>2019-12-02T13:00:00+00:00</lastmod>
   </url>
   
@@ -120,16 +140,6 @@
   <url>
     <loc>/tags/web-scraping/</loc>
     <lastmod>2019-12-02T13:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/project/</loc>
-    <lastmod>2019-12-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/project/internal-project/</loc>
-    <lastmod>2019-12-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>

@@ -91,6 +91,144 @@
     </item>
     
     <item>
+      <title>2019 Serving Efficiency at Grand Slams</title>
+      <link>/project/2019-grand-slam/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/project/2019-grand-slam/</guid>
+      <description>
+
+
+&lt;div id=&#34;serving-efficiency-at-grand-slams&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;2019 Serving Efficiency at Grand Slams&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;strong&gt;Attribution:&lt;/strong&gt; Special thanks to &lt;a href=&#34;http://www.tennisabstract.com/&#34;&gt;Jeff Sackmann&lt;/a&gt; for scraping and providing the data freely on his &lt;a href=&#34;https://github.com/JeffSackmann/tennis_atp/blob/master/README.md&#34;&gt;Github page&lt;/a&gt;.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;div id=&#34;recapping-the-2019-grand-slam-season&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Recapping the 2019 Grand Slam season&lt;/h3&gt;
+&lt;p&gt;With the conclusion of the 2019 Tennis season, the Big 3 (Nadal, Djokovic and Federer) all continued their domination during the largest stages of the season: the grand slam tournaments&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Rafa Nadal&lt;/strong&gt; cruised to the &lt;em&gt;Roland Garros&lt;/em&gt; chip winning the final match in straight sets against Thiem, while also capturing the &lt;em&gt;US Open&lt;/em&gt; championship in a 5-set thriller over Medvedev.&lt;/p&gt;
+&lt;p&gt;Meanwhile, &lt;strong&gt;Novak Djokovic&lt;/strong&gt; successfully defended his &lt;em&gt;Wimbledon&lt;/em&gt; chip against Roger Federer in a heavy-weight 5-set match, while also capturing the &lt;em&gt;Australian Open&lt;/em&gt; chip against Nadal.&lt;/p&gt;
+&lt;p&gt;Finally, while &lt;strong&gt;Roger Federer&lt;/strong&gt; did not win any grand slams in this 2019 season, he did reach the Wimbledon final as well as make some exciting runs at the other 3 grand slam tournaments. Not bad for the 38-year old Swiss!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-well-did-the-big-3-defend-and-break-serves&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;How well did the Big 3 defend and break serves?&lt;/h3&gt;
+&lt;p&gt;To analyse at a granular level how well the Big 3 performed during the 2019 grand slam tournaments, we look at their performances in &lt;strong&gt;defending&lt;/strong&gt; their own service games and in &lt;strong&gt;attacking&lt;/strong&gt; their opponent service games. A player who effectively defends their serve should win a high proportion of the games in which they serve first. Furthermore, a player who successfully attacks their opponents’ serve should win a reasonable amount of break points.&lt;/p&gt;
+&lt;p&gt;To measure a players defensive and offensive ability, we look at the total number of service games defended and the total number of opponent serves broken respectively. Moreover, to account for opportunity, we divide these metrics by the total number of tennis games played during the grand slam tournaments. Note that we specifically look at stats on a per game basis rather than a per match basis.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Proportion of service games defended =&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[ \frac{ \text{# of service games won}} {\text{Total # of service games}} \]&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Proportion of opponent service games broken =
+&lt;span class=&#34;math display&#34;&gt;\[\frac{ \text{# of service games broken}} {\text{Total # of opponent service games}} \]&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-do-the-numbers-say&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;What do the numbers say?&lt;/h3&gt;
+&lt;p&gt;After some data cleaning and aggregating steps on match summary data found on Jeff Sackmann’s &lt;a href=&#34;https://github.com/JeffSackmann/tennis_atp/blob/master/README.md&#34;&gt;Github page&lt;/a&gt;, we produce the following table that combines the results from the 4 grand slam tournaments of 2019.&lt;/p&gt;
+&lt;table&gt;
+&lt;caption&gt;&lt;span id=&#34;tab:table&#34;&gt;Table 1: &lt;/span&gt;Grand Slam data&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;Player_Name&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;Games&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;SvGmsW_Prop&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;BPW_Prop&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Rafael Nadal&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;27&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.9151671&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.3629032&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Novak Djokovic&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;24&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.8864865&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.3636364&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Roger Federer&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;22&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.9117647&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.2635870&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Kei Nishikori&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;18&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.8018868&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.2952381&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;David Goffin&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;15&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.7922078&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.3047210&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Daniil Medvedev&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;15&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.8233216&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.2669039&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Roberto Bautista Agut&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;15&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.8649635&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.2584270&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Alexander Zverev&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;14&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.7827715&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.2538462&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Stanislas Wawrinka&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;14&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.8977273&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.1850394&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Grigor Dimitrov&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;14&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.8549618&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.2286822&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;During the grand slams Nadal, Djokovic and Federer are ranked 1, 2 and 3 respectively in terms of total matches won. The other two columns we calculated represents the proportion of service games defended (&lt;strong&gt;SvGmsW_Prop&lt;/strong&gt;), and the proportion of opponent serves broken (&lt;strong&gt;BPW_Prop&lt;/strong&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;comparing-the-big-3-to-other-atp-players-via-bubble-plots&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Comparing the big 3 to other ATP players via Bubble plots&lt;/h3&gt;
+&lt;p&gt;Using the two metrics (proportion of service games defended and the proportion of opponent serves broken) we can map out the deffensive and offensive prowess of the Big 3 compared to the abilities of the other ATP players. We place these two metrics on the x- and y-axis respectively. Additionally, to represent the success of the ATP players, we add an extra dimension that represents number of matches won by each player. The larger the &lt;em&gt;bubble&lt;/em&gt;, the more grand slam matches a player has won.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/project/2019-Grand-Slam/index_files/figure-html/pressure-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;From the above bubble plot, we make some very intuitive remarks.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Larger bubbles are found on the top right corner of the plot. This indicates that players who are good at both defending their serve and at breaking their opponent serve tend to win more tennis matches. Unsurprisingly, since the Big 3 are good at both, their bubbles are found in the top right corner.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ATP players tend to be better at holding serve than they are breaking serve. Many of the top players hold serve at a rate of 80%, while most players are unable to break their opponent at a rate of 25%.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ATP players that are very good at holding serve, but are mediocre at breaking serve still tend to win a sizeable amount of matches. Conversely, players that do not defend their serve well, but who excel at breaking their opponent tend to not win many matches.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tennis Viz</title>
+      <link>/project/internal-project/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/project/internal-project/</guid>
+      <description>&lt;p&gt;This is an ongoing project on data visualization.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Scraping data from Basketball-Reference with Selector Gadget</title>
       <link>/post/scraping-basketball-reference/</link>
       <pubDate>Thu, 19 Dec 2019 13:00:00 +0000</pubDate>
@@ -101,8 +239,8 @@
 &lt;div id=&#34;lets-ball&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Let’s Ball&lt;/h1&gt;
 &lt;p&gt;As a fan of the &lt;strong&gt;NBA&lt;/strong&gt; and an enthusiastic &lt;strong&gt;R&lt;/strong&gt; user, I’ve spent some time scouring the internet for ways to obtain useable data to load into R - mainly from the popular data source &lt;a href=&#34;https://www.basketball-reference.com&#34;&gt;Basketball-Reference&lt;/a&gt;. Unsatisfied with my online data quest, I just decided to scrape the data on &lt;a href=&#34;https://www.basketball-reference.com&#34;&gt;Basketball-Reference&lt;/a&gt; myself! The process is pretty straightforward, as you will see shortly…&lt;/p&gt;
-&lt;div id=&#34;html-and-selectorgadget&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;HTML and SelectorGadget&lt;/h2&gt;
+&lt;div id=&#34;working-with-raw-data-html-and-selectorgadget&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Working with Raw Data: HTML and SelectorGadget&lt;/h2&gt;
 &lt;p&gt;Firstly, as the entire contents of a &lt;a href=&#34;https://www.basketball-reference.com&#34;&gt;Basketball-Reference&lt;/a&gt;
 web page is written in HTML format, you can easily save the entire content and load it into R. However, it simplifies things greatly if we can be more selective in the contents we want to load into R. HTML files contain &lt;code&gt;tags&lt;/code&gt; that pretty much denotes different content of the HTML page. If you can find the speficic tag for the table you want to save in R, then you’re golden! Take for example this &lt;a href=&#34;https://www.basketball-reference.com/leagues/NBA_2020_per_minute.html&#34;&gt;table&lt;/a&gt; that shows the latest (as of December 2nd, 2019) player boxscore stats per 36 minutes.:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;bbref.png&#34; /&gt;&lt;/p&gt;
@@ -110,8 +248,8 @@ web page is written in HTML format, you can easily save the entire content and l
 &lt;p&gt;&lt;img src=&#34;selector_gadget.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;You’ll note that the plug-in produces a &lt;code&gt;node&lt;/code&gt; as we select elements of the html page (this will be useful in our R code). Make sure to only highlight elements of the table and nothing else on the page!&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;using-r&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Using R&lt;/h2&gt;
+&lt;div id=&#34;loading-data-into-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Loading data into R&lt;/h2&gt;
 &lt;p&gt;First, let’s load in two R packages:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;rvest:&lt;/li&gt;
@@ -140,8 +278,11 @@ print(my_variable_names)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;is.vector(scraped_data)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] TRUE&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;length(scraped_data)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 14212&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 14270&lt;/code&gt;&lt;/pre&gt;
 
+&lt;/div&gt;
+&lt;div id=&#34;data-cleaning-in-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Data Cleaning in R&lt;/h2&gt;
 &lt;p&gt;Some of the variable names begin with numbers which is a huge &lt;strong&gt;no-no&lt;/strong&gt; in R, so let’s manually change these names:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_variable_names[12:17] &amp;lt;- c(&amp;quot;Threes_made&amp;quot;, &amp;quot;Threes_attempted&amp;quot;,
                               &amp;quot;Threes_percent&amp;quot;, &amp;quot;Twos_made&amp;quot;,
@@ -160,12 +301,12 @@ print(my_variable_names)&lt;/code&gt;&lt;/pre&gt;
 I’ll illustrate below:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;scraped_data[582: 660]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;Dwayne Bacon&amp;quot;  &amp;quot;SG&amp;quot;            &amp;quot;24&amp;quot;            &amp;quot;CHO&amp;quot;          
-##  [5] &amp;quot;22&amp;quot;            &amp;quot;10&amp;quot;            &amp;quot;397&amp;quot;           &amp;quot;4.5&amp;quot;          
-##  [9] &amp;quot;14.4&amp;quot;          &amp;quot;.314&amp;quot;          &amp;quot;0.9&amp;quot;           &amp;quot;4.0&amp;quot;          
-## [13] &amp;quot;.227&amp;quot;          &amp;quot;3.6&amp;quot;           &amp;quot;10.4&amp;quot;          &amp;quot;.348&amp;quot;         
-## [17] &amp;quot;2.2&amp;quot;           &amp;quot;3.2&amp;quot;           &amp;quot;.686&amp;quot;          &amp;quot;0.9&amp;quot;          
-## [21] &amp;quot;4.0&amp;quot;           &amp;quot;4.9&amp;quot;           &amp;quot;2.4&amp;quot;           &amp;quot;1.5&amp;quot;          
-## [25] &amp;quot;0.2&amp;quot;           &amp;quot;1.7&amp;quot;           &amp;quot;2.9&amp;quot;           &amp;quot;12.2&amp;quot;         
+##  [5] &amp;quot;23&amp;quot;            &amp;quot;10&amp;quot;            &amp;quot;401&amp;quot;           &amp;quot;4.5&amp;quot;          
+##  [9] &amp;quot;14.3&amp;quot;          &amp;quot;.314&amp;quot;          &amp;quot;0.9&amp;quot;           &amp;quot;4.0&amp;quot;          
+## [13] &amp;quot;.227&amp;quot;          &amp;quot;3.6&amp;quot;           &amp;quot;10.3&amp;quot;          &amp;quot;.348&amp;quot;         
+## [17] &amp;quot;2.2&amp;quot;           &amp;quot;3.1&amp;quot;           &amp;quot;.686&amp;quot;          &amp;quot;0.9&amp;quot;          
+## [21] &amp;quot;4.0&amp;quot;           &amp;quot;4.8&amp;quot;           &amp;quot;2.4&amp;quot;           &amp;quot;1.4&amp;quot;          
+## [25] &amp;quot;0.2&amp;quot;           &amp;quot;1.7&amp;quot;           &amp;quot;2.9&amp;quot;           &amp;quot;12.0&amp;quot;         
 ## [29] &amp;quot;Rk&amp;quot;            &amp;quot;Player&amp;quot;        &amp;quot;Pos&amp;quot;           &amp;quot;Age&amp;quot;          
 ## [33] &amp;quot;Tm&amp;quot;            &amp;quot;G&amp;quot;             &amp;quot;GS&amp;quot;            &amp;quot;MP&amp;quot;           
 ## [37] &amp;quot;FG&amp;quot;            &amp;quot;FGA&amp;quot;           &amp;quot;FG%&amp;quot;           &amp;quot;3P&amp;quot;           
@@ -174,11 +315,11 @@ I’ll illustrate below:&lt;/p&gt;
 ## [49] &amp;quot;ORB&amp;quot;           &amp;quot;DRB&amp;quot;           &amp;quot;TRB&amp;quot;           &amp;quot;AST&amp;quot;          
 ## [53] &amp;quot;STL&amp;quot;           &amp;quot;BLK&amp;quot;           &amp;quot;TOV&amp;quot;           &amp;quot;PF&amp;quot;           
 ## [57] &amp;quot;PTS&amp;quot;           &amp;quot;21&amp;quot;            &amp;quot;Marvin Bagley&amp;quot; &amp;quot;PF&amp;quot;           
-## [61] &amp;quot;20&amp;quot;            &amp;quot;SAC&amp;quot;           &amp;quot;5&amp;quot;             &amp;quot;1&amp;quot;            
-## [65] &amp;quot;117&amp;quot;           &amp;quot;8.9&amp;quot;           &amp;quot;20.0&amp;quot;          &amp;quot;.446&amp;quot;         
-## [69] &amp;quot;0.6&amp;quot;           &amp;quot;1.8&amp;quot;           &amp;quot;.333&amp;quot;          &amp;quot;8.3&amp;quot;          
-## [73] &amp;quot;18.2&amp;quot;          &amp;quot;.458&amp;quot;          &amp;quot;1.8&amp;quot;           &amp;quot;2.8&amp;quot;          
-## [77] &amp;quot;.667&amp;quot;          &amp;quot;3.7&amp;quot;           &amp;quot;7.4&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+## [61] &amp;quot;20&amp;quot;            &amp;quot;SAC&amp;quot;           &amp;quot;8&amp;quot;             &amp;quot;2&amp;quot;            
+## [65] &amp;quot;192&amp;quot;           &amp;quot;8.2&amp;quot;           &amp;quot;18.6&amp;quot;          &amp;quot;.444&amp;quot;         
+## [69] &amp;quot;0.6&amp;quot;           &amp;quot;2.1&amp;quot;           &amp;quot;.273&amp;quot;          &amp;quot;7.7&amp;quot;          
+## [73] &amp;quot;16.5&amp;quot;          &amp;quot;.466&amp;quot;          &amp;quot;2.6&amp;quot;           &amp;quot;3.4&amp;quot;          
+## [77] &amp;quot;.778&amp;quot;          &amp;quot;3.4&amp;quot;           &amp;quot;7.5&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The first instance of this &lt;code&gt;junk&lt;/code&gt; is indexed here:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;scraped_data[610: 638]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;Rk&amp;quot;     &amp;quot;Player&amp;quot; &amp;quot;Pos&amp;quot;    &amp;quot;Age&amp;quot;    &amp;quot;Tm&amp;quot;     &amp;quot;G&amp;quot;      &amp;quot;GS&amp;quot;     &amp;quot;MP&amp;quot;    
@@ -209,7 +350,7 @@ while(to_remove[length(to_remove)] &amp;lt;= n - 609 ){
 &lt;p&gt;We can check that we have reduced our data vector:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n2 &amp;lt;- length(process_dat)
 print(n2)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 13545&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 13603&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Great! Now we’ll get to work on filling in a data-frame with this cleaned data. The way I did it was to specify the elements that should be added row-wise to a data table in R. I.e. every 29 elements makes up one row in our table:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_index &amp;lt;- seq(from = 30, to = n2-2, by = 29)
 # Seems to be a glitch where the last 2 elements of scraped_data are not from the table we want to extract.
@@ -272,30 +413,30 @@ colnames(my_data) &amp;lt;- my_variable_names&lt;/code&gt;&lt;/pre&gt;
 &lt;td align=&#34;left&#34;&gt;C&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;26&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;OKC&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;24&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;24&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;659&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;6.3&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;10.3&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.614&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;26&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;26&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;716&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;6.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;10.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.624&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;0.0&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;0.1&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;.000&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;6.3&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;10.3&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.617&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.0&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;3.9&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.500&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;4.4&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;8.2&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;12.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;6.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;10.5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.627&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.8&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;3.7&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.486&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;4.5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;8.4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;12.9&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.7&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;1.6&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;2.1&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;2.5&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;14.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;15.0&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;even&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;2&lt;/td&gt;
@@ -303,30 +444,30 @@ colnames(my_data) &amp;lt;- my_variable_names&lt;/code&gt;&lt;/pre&gt;
 &lt;td align=&#34;left&#34;&gt;C&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;22&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;MIA&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;28&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;28&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;955&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;30&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;30&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1023&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;6.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;10.7&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.572&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;10.8&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.565&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;0.0&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;0.3&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;.111&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;6.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;10.3&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.588&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;4.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;6.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.663&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.6&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;8.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;10.5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.579&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;4.4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;6.4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.685&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;8.5&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;11.2&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;4.9&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.6&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;1.4&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;3.1&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;2.9&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;16.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;16.6&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;odd&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;3&lt;/td&gt;
@@ -334,30 +475,30 @@ colnames(my_data) &amp;lt;- my_variable_names&lt;/code&gt;&lt;/pre&gt;
 &lt;td align=&#34;left&#34;&gt;C&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;34&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;SAS&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;24&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;24&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;806&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;8.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;16.2&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.500&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.6&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.8&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.341&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;7.5&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;14.3&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.520&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;3.3&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;4.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.824&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.2&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;5.7&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;7.9&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;27&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;27&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;893&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;8.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;16.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.513&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;0.7&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.9&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.347&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;7.9&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;14.8&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.536&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3.2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3.9&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.825&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;5.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;8.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1.6&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;2.4&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;20.1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;21.1&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;even&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;4&lt;/td&gt;
@@ -365,30 +506,30 @@ colnames(my_data) &amp;lt;- my_variable_names&lt;/code&gt;&lt;/pre&gt;
 &lt;td align=&#34;left&#34;&gt;SG&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;21&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;NOP&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;24&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;26&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;0&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;330&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;5.8&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;17.0&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.340&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;3.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;9.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.337&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;337&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;5.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;17.1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.331&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;9.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.333&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;2.7&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;8.0&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.342&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;8.1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.329&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;1.2&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;1.7&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;.688&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;0.4&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;5.5&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;5.9&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;5.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;5.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;5.8&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;4.9&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;1.0&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;0.4&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;2.8&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;3.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;15.8&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3.2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;15.5&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;odd&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;5&lt;/td&gt;
@@ -396,101 +537,101 @@ colnames(my_data) &amp;lt;- my_variable_names&lt;/code&gt;&lt;/pre&gt;
 &lt;td align=&#34;left&#34;&gt;SG&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;24&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;MEM&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;13&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;16&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;0&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;246&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;5.6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;295&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;6.0&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;13.5&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.413&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.2&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;6.3&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.349&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;3.4&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;7.2&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.469&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.2&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.5&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;.882&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.3&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;5.3&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;5.6&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.8&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;0.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.441&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;6.8&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.393&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;6.7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.491&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;.842&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;4.8&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;5.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.9&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0.6&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;0.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2.2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2.0&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;3.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;15.5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;16.6&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;One last step required! All columns in my table are type &lt;code&gt;chr&lt;/code&gt;. We want to change the columns that are numeric into a numeric type!&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(my_data)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## &amp;#39;data.frame&amp;#39;:    466 obs. of  29 variables:
+&lt;pre&gt;&lt;code&gt;## &amp;#39;data.frame&amp;#39;:    468 obs. of  29 variables:
 ##  $ Rk              : chr  &amp;quot;1&amp;quot; &amp;quot;2&amp;quot; &amp;quot;3&amp;quot; &amp;quot;4&amp;quot; ...
 ##  $ Player          : chr  &amp;quot;Steven Adams&amp;quot; &amp;quot;Bam Adebayo&amp;quot; &amp;quot;LaMarcus Aldridge&amp;quot; &amp;quot;Nickeil Alexander-Walker&amp;quot; ...
 ##  $ Pos             : chr  &amp;quot;C&amp;quot; &amp;quot;C&amp;quot; &amp;quot;C&amp;quot; &amp;quot;SG&amp;quot; ...
 ##  $ Age             : chr  &amp;quot;26&amp;quot; &amp;quot;22&amp;quot; &amp;quot;34&amp;quot; &amp;quot;21&amp;quot; ...
 ##  $ Tm              : chr  &amp;quot;OKC&amp;quot; &amp;quot;MIA&amp;quot; &amp;quot;SAS&amp;quot; &amp;quot;NOP&amp;quot; ...
-##  $ G               : chr  &amp;quot;24&amp;quot; &amp;quot;28&amp;quot; &amp;quot;24&amp;quot; &amp;quot;24&amp;quot; ...
-##  $ GS              : chr  &amp;quot;24&amp;quot; &amp;quot;28&amp;quot; &amp;quot;24&amp;quot; &amp;quot;0&amp;quot; ...
-##  $ MP              : chr  &amp;quot;659&amp;quot; &amp;quot;955&amp;quot; &amp;quot;806&amp;quot; &amp;quot;330&amp;quot; ...
-##  $ FG              : chr  &amp;quot;6.3&amp;quot; &amp;quot;6.1&amp;quot; &amp;quot;8.1&amp;quot; &amp;quot;5.8&amp;quot; ...
-##  $ FGA             : chr  &amp;quot;10.3&amp;quot; &amp;quot;10.7&amp;quot; &amp;quot;16.2&amp;quot; &amp;quot;17.0&amp;quot; ...
-##  $ FG%             : chr  &amp;quot;.614&amp;quot; &amp;quot;.572&amp;quot; &amp;quot;.500&amp;quot; &amp;quot;.340&amp;quot; ...
-##  $ Threes_made     : chr  &amp;quot;0.0&amp;quot; &amp;quot;0.0&amp;quot; &amp;quot;0.6&amp;quot; &amp;quot;3.1&amp;quot; ...
-##  $ Threes_attempted: chr  &amp;quot;0.1&amp;quot; &amp;quot;0.3&amp;quot; &amp;quot;1.8&amp;quot; &amp;quot;9.1&amp;quot; ...
-##  $ Threes_percent  : chr  &amp;quot;.000&amp;quot; &amp;quot;.111&amp;quot; &amp;quot;.341&amp;quot; &amp;quot;.337&amp;quot; ...
-##  $ Twos_made       : chr  &amp;quot;6.3&amp;quot; &amp;quot;6.1&amp;quot; &amp;quot;7.5&amp;quot; &amp;quot;2.7&amp;quot; ...
-##  $ Twos_attempted  : chr  &amp;quot;10.3&amp;quot; &amp;quot;10.3&amp;quot; &amp;quot;14.3&amp;quot; &amp;quot;8.0&amp;quot; ...
-##  $ Twos_percent    : chr  &amp;quot;.617&amp;quot; &amp;quot;.588&amp;quot; &amp;quot;.520&amp;quot; &amp;quot;.342&amp;quot; ...
-##  $ FT              : chr  &amp;quot;2.0&amp;quot; &amp;quot;4.1&amp;quot; &amp;quot;3.3&amp;quot; &amp;quot;1.2&amp;quot; ...
-##  $ FTA             : chr  &amp;quot;3.9&amp;quot; &amp;quot;6.1&amp;quot; &amp;quot;4.1&amp;quot; &amp;quot;1.7&amp;quot; ...
-##  $ FT%             : chr  &amp;quot;.500&amp;quot; &amp;quot;.663&amp;quot; &amp;quot;.824&amp;quot; &amp;quot;.688&amp;quot; ...
-##  $ ORB             : chr  &amp;quot;4.4&amp;quot; &amp;quot;2.6&amp;quot; &amp;quot;2.2&amp;quot; &amp;quot;0.4&amp;quot; ...
-##  $ DRB             : chr  &amp;quot;8.2&amp;quot; &amp;quot;8.6&amp;quot; &amp;quot;5.7&amp;quot; &amp;quot;5.5&amp;quot; ...
-##  $ TRB             : chr  &amp;quot;12.6&amp;quot; &amp;quot;11.2&amp;quot; &amp;quot;7.9&amp;quot; &amp;quot;5.9&amp;quot; ...
-##  $ AST             : chr  &amp;quot;3.7&amp;quot; &amp;quot;4.9&amp;quot; &amp;quot;2.6&amp;quot; &amp;quot;5.0&amp;quot; ...
-##  $ STL             : chr  &amp;quot;0.5&amp;quot; &amp;quot;1.5&amp;quot; &amp;quot;0.7&amp;quot; &amp;quot;1.0&amp;quot; ...
-##  $ BLK             : chr  &amp;quot;1.6&amp;quot; &amp;quot;1.4&amp;quot; &amp;quot;1.9&amp;quot; &amp;quot;0.4&amp;quot; ...
-##  $ TOV             : chr  &amp;quot;2.1&amp;quot; &amp;quot;3.1&amp;quot; &amp;quot;1.7&amp;quot; &amp;quot;2.8&amp;quot; ...
-##  $ PF              : chr  &amp;quot;2.5&amp;quot; &amp;quot;2.9&amp;quot; &amp;quot;2.4&amp;quot; &amp;quot;3.1&amp;quot; ...
-##  $ PTS             : chr  &amp;quot;14.6&amp;quot; &amp;quot;16.3&amp;quot; &amp;quot;20.1&amp;quot; &amp;quot;15.8&amp;quot; ...&lt;/code&gt;&lt;/pre&gt;
+##  $ G               : chr  &amp;quot;26&amp;quot; &amp;quot;30&amp;quot; &amp;quot;27&amp;quot; &amp;quot;26&amp;quot; ...
+##  $ GS              : chr  &amp;quot;26&amp;quot; &amp;quot;30&amp;quot; &amp;quot;27&amp;quot; &amp;quot;0&amp;quot; ...
+##  $ MP              : chr  &amp;quot;716&amp;quot; &amp;quot;1023&amp;quot; &amp;quot;893&amp;quot; &amp;quot;337&amp;quot; ...
+##  $ FG              : chr  &amp;quot;6.6&amp;quot; &amp;quot;6.1&amp;quot; &amp;quot;8.6&amp;quot; &amp;quot;5.7&amp;quot; ...
+##  $ FGA             : chr  &amp;quot;10.6&amp;quot; &amp;quot;10.8&amp;quot; &amp;quot;16.7&amp;quot; &amp;quot;17.1&amp;quot; ...
+##  $ FG%             : chr  &amp;quot;.624&amp;quot; &amp;quot;.565&amp;quot; &amp;quot;.513&amp;quot; &amp;quot;.331&amp;quot; ...
+##  $ Threes_made     : chr  &amp;quot;0.0&amp;quot; &amp;quot;0.0&amp;quot; &amp;quot;0.7&amp;quot; &amp;quot;3.0&amp;quot; ...
+##  $ Threes_attempted: chr  &amp;quot;0.1&amp;quot; &amp;quot;0.3&amp;quot; &amp;quot;2.0&amp;quot; &amp;quot;9.0&amp;quot; ...
+##  $ Threes_percent  : chr  &amp;quot;.000&amp;quot; &amp;quot;.111&amp;quot; &amp;quot;.347&amp;quot; &amp;quot;.333&amp;quot; ...
+##  $ Twos_made       : chr  &amp;quot;6.6&amp;quot; &amp;quot;6.1&amp;quot; &amp;quot;7.9&amp;quot; &amp;quot;2.7&amp;quot; ...
+##  $ Twos_attempted  : chr  &amp;quot;10.5&amp;quot; &amp;quot;10.5&amp;quot; &amp;quot;14.8&amp;quot; &amp;quot;8.1&amp;quot; ...
+##  $ Twos_percent    : chr  &amp;quot;.627&amp;quot; &amp;quot;.579&amp;quot; &amp;quot;.536&amp;quot; &amp;quot;.329&amp;quot; ...
+##  $ FT              : chr  &amp;quot;1.8&amp;quot; &amp;quot;4.4&amp;quot; &amp;quot;3.2&amp;quot; &amp;quot;1.2&amp;quot; ...
+##  $ FTA             : chr  &amp;quot;3.7&amp;quot; &amp;quot;6.4&amp;quot; &amp;quot;3.9&amp;quot; &amp;quot;1.7&amp;quot; ...
+##  $ FT%             : chr  &amp;quot;.486&amp;quot; &amp;quot;.685&amp;quot; &amp;quot;.825&amp;quot; &amp;quot;.688&amp;quot; ...
+##  $ ORB             : chr  &amp;quot;4.5&amp;quot; &amp;quot;2.7&amp;quot; &amp;quot;2.3&amp;quot; &amp;quot;0.4&amp;quot; ...
+##  $ DRB             : chr  &amp;quot;8.4&amp;quot; &amp;quot;8.5&amp;quot; &amp;quot;5.7&amp;quot; &amp;quot;5.3&amp;quot; ...
+##  $ TRB             : chr  &amp;quot;12.9&amp;quot; &amp;quot;11.2&amp;quot; &amp;quot;8.0&amp;quot; &amp;quot;5.8&amp;quot; ...
+##  $ AST             : chr  &amp;quot;3.6&amp;quot; &amp;quot;4.9&amp;quot; &amp;quot;2.7&amp;quot; &amp;quot;4.9&amp;quot; ...
+##  $ STL             : chr  &amp;quot;0.7&amp;quot; &amp;quot;1.6&amp;quot; &amp;quot;0.7&amp;quot; &amp;quot;1.0&amp;quot; ...
+##  $ BLK             : chr  &amp;quot;1.6&amp;quot; &amp;quot;1.4&amp;quot; &amp;quot;2.1&amp;quot; &amp;quot;0.4&amp;quot; ...
+##  $ TOV             : chr  &amp;quot;2.1&amp;quot; &amp;quot;3.1&amp;quot; &amp;quot;1.6&amp;quot; &amp;quot;2.8&amp;quot; ...
+##  $ PF              : chr  &amp;quot;2.5&amp;quot; &amp;quot;2.9&amp;quot; &amp;quot;2.4&amp;quot; &amp;quot;3.2&amp;quot; ...
+##  $ PTS             : chr  &amp;quot;15.0&amp;quot; &amp;quot;16.6&amp;quot; &amp;quot;21.1&amp;quot; &amp;quot;15.5&amp;quot; ...&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_data[, c(4, 6:29)] &amp;lt;- sapply(my_data[, c(4,6:29)], as.numeric)
 str(my_data)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## &amp;#39;data.frame&amp;#39;:    466 obs. of  29 variables:
+&lt;pre&gt;&lt;code&gt;## &amp;#39;data.frame&amp;#39;:    468 obs. of  29 variables:
 ##  $ Rk              : chr  &amp;quot;1&amp;quot; &amp;quot;2&amp;quot; &amp;quot;3&amp;quot; &amp;quot;4&amp;quot; ...
 ##  $ Player          : chr  &amp;quot;Steven Adams&amp;quot; &amp;quot;Bam Adebayo&amp;quot; &amp;quot;LaMarcus Aldridge&amp;quot; &amp;quot;Nickeil Alexander-Walker&amp;quot; ...
 ##  $ Pos             : chr  &amp;quot;C&amp;quot; &amp;quot;C&amp;quot; &amp;quot;C&amp;quot; &amp;quot;SG&amp;quot; ...
 ##  $ Age             : num  26 22 34 21 24 21 27 29 26 31 ...
 ##  $ Tm              : chr  &amp;quot;OKC&amp;quot; &amp;quot;MIA&amp;quot; &amp;quot;SAS&amp;quot; &amp;quot;NOP&amp;quot; ...
-##  $ G               : num  24 28 24 24 13 27 1 18 22 2 ...
-##  $ GS              : num  24 28 24 0 0 24 0 2 1 0 ...
-##  $ MP              : num  659 955 806 330 246 718 16 380 434 14 ...
-##  $ FG              : num  6.3 6.1 8.1 5.8 5.6 6.6 6.8 2.4 4.6 5.1 ...
-##  $ FGA             : num  10.3 10.7 16.2 17 13.5 9.9 13.5 8.1 9.4 18 ...
-##  $ FG%             : num  0.614 0.572 0.5 0.34 0.413 0.665 0.5 0.291 0.487 0.286 ...
-##  $ Threes_made     : num  0 0 0.6 3.1 2.2 0 6.8 0.9 0.3 2.6 ...
-##  $ Threes_attempted: num  0.1 0.3 1.8 9.1 6.3 0.1 9 3.4 1.5 12.9 ...
-##  $ Threes_percent  : num  0 0.111 0.341 0.337 0.349 0 0.75 0.25 0.222 0.2 ...
-##  $ Twos_made       : num  6.3 6.1 7.5 2.7 3.4 6.6 0 1.5 4.2 2.6 ...
-##  $ Twos_attempted  : num  10.3 10.3 14.3 8 7.2 9.8 4.5 4.7 7.9 5.1 ...
-##  $ Twos_percent    : num  0.617 0.588 0.52 0.342 0.469 0.668 0 0.32 0.537 0.5 ...
-##  $ FT              : num  2 4.1 3.3 1.2 2.2 3.5 0 1.8 1.8 0 ...
-##  $ FTA             : num  3.9 6.1 4.1 1.7 2.5 5.8 0 2.7 2.9 0 ...
-##  $ FT%             : num  0.5 0.663 0.824 0.688 0.882 0.609 NA 0.655 0.629 NA ...
-##  $ ORB             : num  4.4 2.6 2.2 0.4 0.3 4.9 0 2.3 2 0 ...
-##  $ DRB             : num  8.2 8.6 5.7 5.5 5.3 9.3 0 6 6.3 18 ...
-##  $ TRB             : num  12.6 11.2 7.9 5.9 5.6 14.2 0 8.2 8.3 18 ...
-##  $ AST             : num  3.7 4.9 2.6 5 2.8 1.6 4.5 2 4.3 5.1 ...
-##  $ STL             : num  0.5 1.5 0.7 1 0.7 0.9 2.3 1.7 1.3 2.6 ...
-##  $ BLK             : num  1.6 1.4 1.9 0.4 0.1 1.9 0 0.8 1.1 0 ...
-##  $ TOV             : num  2.1 3.1 1.7 2.8 2.2 1.6 2.3 1.6 1.8 2.6 ...
-##  $ PF              : num  2.5 2.9 2.4 3.1 3.1 3.4 2.3 2.6 3 2.6 ...
-##  $ PTS             : num  14.6 16.3 20.1 15.8 15.5 16.6 20.3 7.4 11.3 12.9 ...&lt;/code&gt;&lt;/pre&gt;
+##  $ G               : num  26 30 27 26 16 29 1 18 25 2 ...
+##  $ GS              : num  26 30 27 0 0 26 0 2 1 0 ...
+##  $ MP              : num  716 1023 893 337 295 ...
+##  $ FG              : num  6.6 6.1 8.6 5.7 6 6.6 6.8 2.4 4.4 5.1 ...
+##  $ FGA             : num  10.6 10.8 16.7 17.1 13.5 10 13.5 8.1 9.2 18 ...
+##  $ FG%             : num  0.624 0.565 0.513 0.331 0.441 0.662 0.5 0.291 0.479 0.286 ...
+##  $ Threes_made     : num  0 0 0.7 3 2.7 0 6.8 0.9 0.4 2.6 ...
+##  $ Threes_attempted: num  0.1 0.3 2 9 6.8 0.1 9 3.4 1.6 12.9 ...
+##  $ Threes_percent  : num  0 0.111 0.347 0.333 0.393 0 0.75 0.25 0.238 0.2 ...
+##  $ Twos_made       : num  6.6 6.1 7.9 2.7 3.3 6.6 0 1.5 4 2.6 ...
+##  $ Twos_attempted  : num  10.5 10.5 14.8 8.1 6.7 9.9 4.5 4.7 7.6 5.1 ...
+##  $ Twos_percent    : num  0.627 0.579 0.536 0.329 0.491 0.668 0 0.32 0.531 0.5 ...
+##  $ FT              : num  1.8 4.4 3.2 1.2 2 3.5 0 1.8 1.7 0 ...
+##  $ FTA             : num  3.7 6.4 3.9 1.7 2.3 5.7 0 2.7 2.7 0 ...
+##  $ FT%             : num  0.486 0.685 0.825 0.688 0.842 0.615 NA 0.655 0.629 NA ...
+##  $ ORB             : num  4.5 2.7 2.3 0.4 0.2 4.9 0 2.3 1.9 0 ...
+##  $ DRB             : num  8.4 8.5 5.7 5.3 4.8 9.4 0 6 6.1 18 ...
+##  $ TRB             : num  12.9 11.2 8 5.8 5 14.3 0 8.2 8 18 ...
+##  $ AST             : num  3.6 4.9 2.7 4.9 2.9 1.8 4.5 2 4.3 5.1 ...
+##  $ STL             : num  0.7 1.6 0.7 1 0.6 1 2.3 1.7 1.3 2.6 ...
+##  $ BLK             : num  1.6 1.4 2.1 0.4 0.1 1.9 0 0.8 1 0 ...
+##  $ TOV             : num  2.1 3.1 1.6 2.8 2 1.6 2.3 1.6 1.9 2.6 ...
+##  $ PF              : num  2.5 2.9 2.4 3.2 3.1 3.4 2.3 2.6 3.1 2.6 ...
+##  $ PTS             : num  15 16.6 21.1 15.5 16.6 16.7 20.3 7.4 10.9 12.9 ...&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Awesome! Now we’re done. The data is now saved into R.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;illustration&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Illustration&lt;/h2&gt;
+&lt;div id=&#34;illustration-using-the-data-in-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Illustration: Using the Data in R&lt;/h2&gt;
 &lt;p&gt;To illustrate how we might use this data, I’ll go through an excercise of data manipulation. Currently on my Fantasy League, we have defined a metric that takes some weighted average of a player’s box scofe output. Using the data we’ve just compiled, I’ve gone ahead and calculated this metric to see which players perform fantasy league-wise per 36 minutes.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_data &amp;lt;- as_tibble(my_data)
 #I like tibbles over data frames
@@ -520,28 +661,28 @@ knitr::kable(FP_data[1:10,], caption = &amp;quot;Fantasy Data&amp;quot;)&lt;/cod
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Chimezie Metu&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;SAS&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;55.600&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;6&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Giannis Antetokounmpo&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;MIL&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;54.475&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;27&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;55.000&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;30&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
+&lt;tr class=&#34;even&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Luka Dončić&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;DAL&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;49.200&lt;/td&gt;
 &lt;td align=&#34;right&#34;&gt;25&lt;/td&gt;
 &lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Chimezie Metu&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;SAS&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;48.850&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;9&lt;/td&gt;
+&lt;/tr&gt;
 &lt;tr class=&#34;even&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;James Harden&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;HOU&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;47.000&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;27&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;47.275&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;30&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;odd&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Karl-Anthony Towns&lt;/td&gt;
@@ -550,48 +691,39 @@ knitr::kable(FP_data[1:10,], caption = &amp;quot;Fantasy Data&amp;quot;)&lt;/cod
 &lt;td align=&#34;right&#34;&gt;23&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;LeBron James&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;LAL&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;43.575&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;28&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Joel Embiid&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;PHI&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;43.625&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;26&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;odd&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Anthony Davis&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;LAL&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;43.450&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;26&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;43.475&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;28&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Joel Embiid&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;PHI&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;43.375&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;23&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;LeBron James&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;LAL&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;43.125&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;29&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;odd&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Andre Drummond&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;DET&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;42.000&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;26&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;41.750&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;29&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;even&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Hassan Whiteside&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;POR&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;41.075&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;25&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;41.350&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;28&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Tennis Viz</title>
-      <link>/project/internal-project/</link>
-      <pubDate>Sat, 07 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/project/internal-project/</guid>
-      <description>&lt;p&gt;This is an ongoing project on data visualization.&lt;/p&gt;
 </description>
     </item>
     
