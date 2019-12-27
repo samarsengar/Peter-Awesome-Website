@@ -5,7 +5,7 @@
     <link>/tags/bubble-plot/</link>
       <atom:link href="/tags/bubble-plot/index.xml" rel="self" type="application/rss+xml" />
     <description>Bubble plot</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Wed, 01 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Thu, 26 Dec 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Bubble plot</title>
@@ -13,136 +13,7 @@
     </image>
     
     <item>
-      <title>2019 Serving Efficiency at Grand Slams</title>
-      <link>/post/2019-grand-slam/</link>
-      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2019-grand-slam/</guid>
-      <description>
-
-
-&lt;div id=&#34;serving-efficiency-at-grand-slams&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;2019 Serving Efficiency at Grand Slams&lt;/h2&gt;
-&lt;p&gt;&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    &lt;strong&gt;Attribution:&lt;/strong&gt; Special thanks to &lt;a href=&#34;http://www.tennisabstract.com/&#34;&gt;Jeff Sackmann&lt;/a&gt; for scraping and providing the data freely on his &lt;a href=&#34;https://github.com/JeffSackmann/tennis_atp/blob/master/README.md&#34;&gt;Github page&lt;/a&gt;.
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;/p&gt;
-&lt;div id=&#34;recapping-the-2019-grand-slam-season&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Recapping the 2019 Grand Slam season&lt;/h3&gt;
-&lt;p&gt;With the conclusion of the 2019 Tennis season, the Big 3 (Nadal, Djokovic and Federer) all continued their domination during the largest stages of the season: the grand slam tournaments&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Rafa Nadal&lt;/strong&gt; cruised to the &lt;em&gt;Roland Garros&lt;/em&gt; chip winning the final match in straight sets against Thiem, while also capturing the &lt;em&gt;US Open&lt;/em&gt; championship in a 5-set thriller over Medvedev.&lt;/p&gt;
-&lt;p&gt;Meanwhile, &lt;strong&gt;Novak Djokovic&lt;/strong&gt; successfully defended his &lt;em&gt;Wimbledon&lt;/em&gt; chip against Roger Federer in a heavy-weight 5-set match, while also capturing the &lt;em&gt;Australian Open&lt;/em&gt; chip against Nadal.&lt;/p&gt;
-&lt;p&gt;Finally, while &lt;strong&gt;Roger Federer&lt;/strong&gt; did not win any grand slams in this 2019 season, he did reach the Wimbledon final as well as make some exciting runs at the other 3 grand slam tournaments. Not bad for the 38-year old Swiss!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;how-well-did-the-big-3-defend-and-break-serves&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;How well did the Big 3 defend and break serves?&lt;/h3&gt;
-&lt;p&gt;To analyse at a granular level how well the Big 3 performed during the 2019 grand slam tournaments, we look at their performances in &lt;strong&gt;defending&lt;/strong&gt; their own service games and in &lt;strong&gt;attacking&lt;/strong&gt; their opponent service games. A player who effectively defends their serve should win a high proportion of the games in which they serve first. Furthermore, a player who successfully attacks their opponents’ serve should win a reasonable amount of break points.&lt;/p&gt;
-&lt;p&gt;To measure a players defensive and offensive ability, we look at the total number of service games defended and the total number of opponent serves broken respectively. Moreover, to account for opportunity, we divide these metrics by the total number of tennis games played during the grand slam tournaments. Note that we specifically look at stats on a per game basis rather than a per match basis.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Proportion of service games defended =&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[ \frac{ \text{# of service games won}} {\text{Total # of service games}} \]&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Proportion of opponent service games broken =
-&lt;span class=&#34;math display&#34;&gt;\[\frac{ \text{# of service games broken}} {\text{Total # of opponent service games}} \]&lt;/span&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div id=&#34;what-do-the-numbers-say&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;What do the numbers say?&lt;/h3&gt;
-&lt;p&gt;After some data cleaning and aggregating steps on match summary data found on Jeff Sackmann’s &lt;a href=&#34;https://github.com/JeffSackmann/tennis_atp/blob/master/README.md&#34;&gt;Github page&lt;/a&gt;, we produce the following table that combines the results from the 4 grand slam tournaments of 2019.&lt;/p&gt;
-&lt;table&gt;
-&lt;caption&gt;&lt;span id=&#34;tab:table&#34;&gt;Table 1: &lt;/span&gt;Grand Slam data&lt;/caption&gt;
-&lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th align=&#34;left&#34;&gt;Player_Name&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;Games&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;SvGmsW_Prop&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;BPW_Prop&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Rafael Nadal&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;27&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.9151671&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.3629032&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Novak Djokovic&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;24&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.8864865&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.3636364&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Roger Federer&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;22&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.9117647&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.2635870&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Kei Nishikori&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;18&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.8018868&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.2952381&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;David Goffin&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;15&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.7922078&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.3047210&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Daniil Medvedev&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;15&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.8233216&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.2669039&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Roberto Bautista Agut&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;15&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.8649635&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.2584270&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Alexander Zverev&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;14&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.7827715&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.2538462&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Stanislas Wawrinka&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;14&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.8977273&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.1850394&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Grigor Dimitrov&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;14&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.8549618&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.2286822&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;During the grand slams Nadal, Djokovic and Federer are ranked 1, 2 and 3 respectively in terms of total matches won. The other two columns we calculated represents the proportion of service games defended (&lt;strong&gt;SvGmsW_Prop&lt;/strong&gt;), and the proportion of opponent serves broken (&lt;strong&gt;BPW_Prop&lt;/strong&gt;).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;comparing-the-big-3-to-other-atp-players-via-bubble-plots&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Comparing the big 3 to other ATP players via Bubble plots&lt;/h3&gt;
-&lt;p&gt;Using the two metrics (proportion of service games defended and the proportion of opponent serves broken) we can map out the deffensive and offensive prowess of the Big 3 compared to the abilities of the other ATP players. We place these two metrics on the x- and y-axis respectively. Additionally, to represent the success of the ATP players, we add an extra dimension that represents number of matches won by each player. The larger the &lt;em&gt;bubble&lt;/em&gt;, the more grand slam matches a player has won.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/project/2019-Grand-Slam/index_files/figure-html/pressure-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;From the above bubble plot, we make some very intuitive remarks.&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;p&gt;Larger bubbles are found on the top right corner of the plot. This indicates that players who are good at both defending their serve and at breaking their opponent serve tend to win more tennis matches. Unsurprisingly, since the Big 3 are good at both, their bubbles are found in the top right corner.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;ATP players tend to be better at holding serve than they are breaking serve. Many of the top players hold serve at a rate of 80%, while most players are unable to break their opponent at a rate of 25%.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;ATP players that are very good at holding serve, but are mediocre at breaking serve still tend to win a sizeable amount of matches. Conversely, players that do not defend their serve well, but who excel at breaking their opponent tend to not win many matches.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>2019 Serving Efficiency at Grand Slams</title>
+      <title>Serving Efficiency at Grand Slams</title>
       <link>/project/2019-grand-slam/</link>
       <pubDate>Thu, 26 Dec 2019 00:00:00 +0000</pubDate>
       <guid>/project/2019-grand-slam/</guid>
