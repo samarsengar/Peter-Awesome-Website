@@ -123,7 +123,7 @@ for (index in 1:length(bubble_list)){
   to_plot_dat[index,4] <- player_dat$Prop_Break_points_Won
 }
 
-colnames(to_plot_dat) <- c("Player_Name", "Games", "SvGmsW_Prop", "BPW_Prop")
+colnames(to_plot_dat) <- c("Player_Name", "Matches", "SvGmsW_Prop", "BPW_Prop")
 
 get.last.name <- function(name) {
   d <- lapply(ifelse(grepl(",",name),strsplit(name,","),strsplit(name," ")),`[[`,2)
@@ -131,8 +131,8 @@ get.last.name <- function(name) {
 }
 
 to_plot_dat <- as.tbl(to_plot_dat) %>%
-  filter(Games > 0) %>%
-  mutate(Games = as.numeric(Games),
+  filter(Matches > 0) %>%
+  mutate(Matches = as.numeric(Matches),
          SvGmsW_Prop = as.numeric(SvGmsW_Prop),
          BPW_Prop = as.numeric(BPW_Prop),
          Last_Name = get.last.name(Player_Name))
@@ -144,21 +144,21 @@ After some data cleaning and aggregating steps on match summary data found on Je
 
 ```{r table, echo=FALSE}
 A <- to_plot_dat %>%
-  arrange(desc(Games)) %>%
-  select(Player_Name, Games, SvGmsW_Prop, BPW_Prop)
+  arrange(desc(Matches)) %>%
+  select(Player_Name, Matches, SvGmsW_Prop, BPW_Prop)
 
 knitr::kable(A[1:10,], caption = "Grand Slam data")
 ```
 
-During the grand slams Nadal, Djokovic and Federer are ranked 1, 2 and 3 respectively in terms of total matches won. The other two columns we calculated represents the proportion of service games defended (**SvGmsW_Prop**), and the proportion of opponent serves broken (**BPW_Prop**).
+During the grand slams Nadal, Djokovic and Federer are ranked 1, 2 and 3 respectively in terms of total matches played. The other two columns we calculated represents the proportion of service games defended (**SvGmsW_Prop**), and the proportion of opponent serves broken (**BPW_Prop**).
 
 
 ### Comparing the big 3 to other ATP players via Bubble plots
-Using the two metrics (proportion of service games defended and the proportion of opponent serves broken) we can map out the deffensive and offensive prowess of the Big 3 compared to the abilities of the other ATP players. We place these two metrics on the x- and y-axis respectively. Additionally, to represent the success of the ATP players, we add an extra dimension that represents number of matches won by each player. The larger the *bubble*, the more grand slam matches a player has won.
+Using the two metrics (proportion of service games defended and the proportion of opponent serves broken) we can map out the deffensive and offensive prowess of the Big 3 compared to the abilities of the other ATP players. We place these two metrics on the x- and y-axis respectively. Additionally, to represent the success of the ATP players, we add an extra dimension that represents number of matches won by each player. The larger the *bubble*, the more grand slam matches a player has played (which is directly related to the number wins he has during the grand slams).
 
 ```{r pressure2,echo=FALSE,  warning=FALSE}
 
-p <- ggplot(to_plot_dat[-c(1,48,64),], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Games, label = Player_Name)) + 
+p <- ggplot(to_plot_dat[-c(1,48,64),], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Matches, label = Player_Name)) + 
   geom_point(alpha = 0.8, color = "#008080") +
   
   #Add labels for Djoker, Roger and Rafa
@@ -178,18 +178,18 @@ p <- ggplot(to_plot_dat[-c(1,48,64),], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, si
             nudge_y = 3) +
   
   #Adjust size of bubble points and legend title
-  scale_size(range = c(.1, 8), name="Games Won") +
+  scale_size(range = c(.1, 8), name="Matches Played") +
   
   #Colour Djokovic blue
-  geom_point(data=to_plot_dat[1, ], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Games),
+  geom_point(data=to_plot_dat[1, ], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Matches),
              colour="blue", alpha = 0.7) +
   
   #Colour Federer in Green
-  geom_point(data=to_plot_dat[48, ], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Games),
+  geom_point(data=to_plot_dat[48, ], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Matches),
              colour="forestgreen", alpha = 0.7) +
   
   #Colour Rafa in Red
-  geom_point(data=to_plot_dat[64, ], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Games),
+  geom_point(data=to_plot_dat[64, ], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Matches),
              colour="red", alpha = 0.7) +
   
   #Add titles
@@ -227,7 +227,7 @@ For those who adore interactive plots, I've produced the slame plot using the R 
 
 ```{r pressure,echo=FALSE,  warning=FALSE}
 
-p <- ggplot(to_plot_dat[-c(1,48,64),], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Games, label = Player_Name)) + 
+p <- ggplot(to_plot_dat[-c(1,48,64),], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Matches, label = Player_Name)) + 
   geom_point(alpha = 0.8, color = "#008080") +
   
   #Add labels for Djoker, Roger and Rafa
@@ -247,18 +247,18 @@ p <- ggplot(to_plot_dat[-c(1,48,64),], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, si
             nudge_y = 3) +
   
   #Adjust size of bubble points and legend title
-  scale_size(range = c(.1, 8), name="Games Won") +
+  scale_size(range = c(.1, 8), name="Matches Played") +
   
   #Colour Djokovic blue
-  geom_point(data=to_plot_dat[1, ], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Games),
+  geom_point(data=to_plot_dat[1, ], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Matches),
              colour="blue", alpha = 0.7) +
   
   #Colour Federer in Green
-  geom_point(data=to_plot_dat[48, ], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Games),
+  geom_point(data=to_plot_dat[48, ], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Matches),
              colour="forestgreen", alpha = 0.7) +
   
   #Colour Rafa in Red
-  geom_point(data=to_plot_dat[64, ], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Games),
+  geom_point(data=to_plot_dat[64, ], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Matches),
              colour="red", alpha = 0.7) +
   
   #Add titles
