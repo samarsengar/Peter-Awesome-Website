@@ -63,7 +63,7 @@
   </url>
   
   <url>
-    <loc>/project/2019-grand-slam/</loc>
+    <loc>/post/2019-grand-slam/</loc>
     <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -83,6 +83,11 @@
   </url>
   
   <url>
+    <loc>/post/</loc>
+    <lastmod>2020-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/project/</loc>
     <lastmod>2020-01-01T00:00:00+00:00</lastmod>
   </url>
@@ -98,6 +103,11 @@
   </url>
   
   <url>
+    <loc>/project/2019-grand-slam/</loc>
+    <lastmod>2019-12-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/academic/</loc>
     <lastmod>2019-12-02T13:00:00+00:00</lastmod>
   </url>
@@ -108,22 +118,17 @@
   </url>
   
   <url>
-    <loc>/categories/demo/</loc>
-    <lastmod>2019-12-02T13:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/demo/</loc>
     <lastmod>2019-12-02T13:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/dplyr/</loc>
+    <loc>/categories/demo/</loc>
     <lastmod>2019-12-02T13:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/</loc>
+    <loc>/tags/dplyr/</loc>
     <lastmod>2019-12-02T13:00:00+00:00</lastmod>
   </url>
   
