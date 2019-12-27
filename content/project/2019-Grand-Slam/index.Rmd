@@ -59,6 +59,7 @@ To measure a players defensive and offensive ability, we look at the total numbe
 library(dplyr)
 library(ggplot2)
 library(ggrepel)
+library(plotly)
 ```
 
 ```{r cars, echo=FALSE,warning=FALSE}
@@ -155,15 +156,26 @@ During the grand slams Nadal, Djokovic and Federer are ranked 1, 2 and 3 respect
 ### Comparing the big 3 to other ATP players via Bubble plots
 Using the two metrics (proportion of service games defended and the proportion of opponent serves broken) we can map out the deffensive and offensive prowess of the Big 3 compared to the abilities of the other ATP players. We place these two metrics on the x- and y-axis respectively. Additionally, to represent the success of the ATP players, we add an extra dimension that represents number of matches won by each player. The larger the *bubble*, the more grand slam matches a player has won.
 
-```{r pressure,echo=FALSE,  warning=FALSE}
+```{r pressure2,echo=FALSE,  warning=FALSE}
 
-ggplot(to_plot_dat, aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Games, label = Player_Name)) + 
+p <- ggplot(to_plot_dat[-c(1,48,64),], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Games, label = Player_Name)) + 
   geom_point(alpha = 0.8, color = "#008080") +
   
   #Add labels for Djoker, Roger and Rafa
-  geom_text_repel(aes(label=ifelse(SvGmsW_Prop > 0.886486 & BPW_Prop > 0.2635869 , 
-                             as.character(Last_Name),'')
-                ), size = 4.0, nudge_y = -4) +
+  #geom_text_repel(aes(label=ifelse(SvGmsW_Prop > 0.886486 & BPW_Prop > 0.2635869 , 
+  #                                 as.character(Last_Name),'')
+  #), size = 4.0, nudge_y = -4) +
+  
+  geom_text(data =  to_plot_dat %>% filter(Last_Name == "Djokovic"), 
+            aes(label=as.character(Last_Name)), size = 4, color = "blue",
+            nudge_x = -4.5) +
+  
+  geom_text(data =  to_plot_dat %>% filter(Last_Name == "Nadal"), 
+            aes(label=as.character(Last_Name)), size = 4, color = "red",
+            nudge_y = -3) +
+  geom_text(data =  to_plot_dat %>% filter(Last_Name == "Federer"), 
+            aes(label=as.character(Last_Name)), size = 4, color = "forestgreen",
+            nudge_y = 3) +
   
   #Adjust size of bubble points and legend title
   scale_size(range = c(.1, 8), name="Games Won") +
@@ -179,12 +191,12 @@ ggplot(to_plot_dat, aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Games, label =
   #Colour Rafa in Red
   geom_point(data=to_plot_dat[64, ], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Games),
              colour="red", alpha = 0.7) +
-
+  
   #Add titles
   ggtitle("2019 Grand Slam Season") + 
   xlab("% Service Games Held") + ylab("% Service Games Broken") +
   theme_classic() +
-
+  
   theme(panel.background = element_rect(fill = "#F1F8F7", # background colour
                                         colour = "black", # border colour
                                         size = 0.5, linetype = "solid"),
@@ -197,6 +209,8 @@ ggplot(to_plot_dat, aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Games, label =
   
   guides(size = guide_legend(override.aes = list(colour = list("#008080"))))
 
+p
+
 
 ```
 
@@ -207,3 +221,62 @@ From the above bubble plot, we make some very intuitive remarks.
 2. ATP players tend to be better at holding serve than they are breaking serve. Many of the top players hold serve at a rate of 80%, while most players are unable to break their opponent at a rate of 25%.
 
 3. ATP players that are very good at holding serve, but are mediocre at breaking serve still tend to win a sizeable amount of matches. Conversely, players that do not defend their serve well, but who excel at breaking their opponent tend to not win many matches.
+
+
+For those who adore interactive plots, I've produced the slame plot using the R package ``gplotly``.
+
+```{r pressure,echo=FALSE,  warning=FALSE}
+
+p <- ggplot(to_plot_dat[-c(1,48,64),], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Games, label = Player_Name)) + 
+  geom_point(alpha = 0.8, color = "#008080") +
+  
+  #Add labels for Djoker, Roger and Rafa
+  #geom_text_repel(aes(label=ifelse(SvGmsW_Prop > 0.886486 & BPW_Prop > 0.2635869 , 
+  #                                 as.character(Last_Name),'')
+  #), size = 4.0, nudge_y = -4) +
+  
+  geom_text(data =  to_plot_dat %>% filter(Last_Name == "Djokovic"), 
+            aes(label=as.character(Last_Name)), size = 4, color = "blue",
+            nudge_x = -6.5) +
+  
+  geom_text(data =  to_plot_dat %>% filter(Last_Name == "Nadal"), 
+            aes(label=as.character(Last_Name)), size = 4, color = "red",
+            nudge_y = -4) +
+  geom_text(data =  to_plot_dat %>% filter(Last_Name == "Federer"), 
+            aes(label=as.character(Last_Name)), size = 4, color = "forestgreen",
+            nudge_y = 3) +
+  
+  #Adjust size of bubble points and legend title
+  scale_size(range = c(.1, 8), name="Games Won") +
+  
+  #Colour Djokovic blue
+  geom_point(data=to_plot_dat[1, ], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Games),
+             colour="blue", alpha = 0.7) +
+  
+  #Colour Federer in Green
+  geom_point(data=to_plot_dat[48, ], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Games),
+             colour="forestgreen", alpha = 0.7) +
+  
+  #Colour Rafa in Red
+  geom_point(data=to_plot_dat[64, ], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size = Games),
+             colour="red", alpha = 0.7) +
+  
+  #Add titles
+  ggtitle("2019 Grand Slam Season") + 
+  xlab("% Service Games Held") + ylab("% Service Games Broken") +
+  theme_classic() +
+  
+  theme(panel.background = element_rect(fill = "#F1F8F7", # background colour
+                                        colour = "black", # border colour
+                                        size = 0.5, linetype = "solid"),
+        plot.title=element_text(size = rel(1.6),
+                                face = "bold", hjust = 0.5),
+        legend.position = "bottom",
+        legend.background = element_rect(colour = "gray"),
+        legend.key = element_rect(fill = "#F1F8F7", linetype = 1),
+        axis.title = element_text(face = "bold", size = 13)) +
+  
+  guides(size = guide_legend(override.aes = list(colour = list("#008080"))))
+
+ggplotly(p, tooltip = c("size", "Player_Name"))
+```
