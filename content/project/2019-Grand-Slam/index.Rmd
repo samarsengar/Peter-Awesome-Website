@@ -44,13 +44,18 @@ To analyse at a granular level how well the Big 3 performed during the 2019 gran
 
 To measure a players defensive and offensive ability, we look at the total number of service games defended and the total number of opponent serves broken respectively. Moreover, to account for opportunity, we divide these metrics by the total number of tennis games played during the grand slam tournaments. Note that we specifically look at stats on a per game basis rather than a per match basis.
 
-- Proportion of service games defended = 
 
-\[ \frac{ \text{# of service games won}} {\text{Total # of service games}} \]
+- Proportion of service games defended = # of service games won / Total # of service games
 
-- Proportion of opponent service games broken = 
-\[\frac{ \text{# of service games broken}} {\text{Total # of opponent service games}} \]
+- Proportion of opponent service games broken = # of service games broken / Total # of opponent service games
 
+```{r gg, echo = FALSE, warning=FALSE,message=F}
+#Proportion of service games defended = 
+#$\frac{ \text{# of service games won}} {\text{Total # of service games}}$
+
+#- Proportion of opponent service games broken = 
+#\[\frac{ \text{# of service games broken}} {\text{Total # of opponent service games}} \]
+```
 
 
 ### What do the numbers say?
