@@ -31,7 +31,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 With the conclusion of the 2019 Tennis season, the Big 3 (Nadal, Djokovic and Federer) all continued their domination during the largest stages of the season: the grand slam tournaments
   
-  **Rafa Nadal** cruised to the *Roland Garros* chip winning the final match in straight sets against Thiem, while also capturing the *US Open* championship in a 5-set thriller over Medvedev.
+  **Rafa Nadal** cruised to the *Roland Garros* chip winning the final match in four sets against Thiem, while also capturing the *US Open* championship in a 5-set thriller over Medvedev.
   
   Meanwhile, **Novak Djokovic** successfully defended his *Wimbledon* chip against Roger Federer in a heavy-weight 5-set match, while also capturing the *Australian Open* chip against Nadal. 
   
