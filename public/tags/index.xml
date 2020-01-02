@@ -5,7 +5,7 @@
     <link>/tags/</link>
       <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2019</copyright><lastBuildDate>Thu, 09 Jan 2020 13:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright><lastBuildDate>Thu, 09 Jan 2020 13:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Tags</title>
@@ -41,6 +41,22 @@
       <link>/tags/tennis/</link>
       <pubDate>Thu, 09 Jan 2020 13:00:00 +0000</pubDate>
       <guid>/tags/tennis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Grand-Slam</title>
+      <link>/tags/grand-slam/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/grand-slam/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Serve speed</title>
+      <link>/tags/serve-speed/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/serve-speed/</guid>
       <description></description>
     </item>
     

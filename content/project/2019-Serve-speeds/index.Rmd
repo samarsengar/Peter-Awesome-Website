@@ -1,0 +1,203 @@
+---
+title: Analysing Serve Strategies at the 2019 Grand Slams
+author: Peter Tea
+date: '2020-01-01'
+categories:
+  - Tennis
+tags:
+  - Grand-Slam
+  - Tennis
+  - Serve
+  - Serve speed
+authors:
+  - admin
+output:
+  html_document:
+    keep_md: yes
+image:
+  caption: Photo by johnfo on Unsplash
+  focal_point: Smart
+summary: Serving Need for Speed
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## How do 1st serves differ from 2nd serves?
+Tennis serve faults are a common occurrence in any competitive tennis match. Depending on whether a player is on their 1st or their 2nd serve, serving strategy is at the forefront of the player's decision making process in terms of how they want to attack their opponent. For instance, on 1st serve the player is reassured that no matter the outcome, they will have a second opportunity to serve again without penalty. Hence, the risk-return tradeoff of attacking the opponent with a big and powerful serve is certainly manageable. However, if we are on 2nd serve then we are more wary of this tradeoff. Powerful serves are more likely to land ``out``, which is why players tend to instead proceed with a less powerful, but more consistent serve approach.  
+
+
+In this project, we dig deep into the ``service power-consistency`` tradeoff through a couple data visualizations.
+
+```{r libraries, echo = FALSE, warning=FALSE,message=F}
+library(dplyr)
+library(ggplot2)
+library(ggrepel)
+```
+
+```{r functions, echo=FALSE,warning=FALSE}
+source("/Users/petertea/Documents/Sports-Analytics/Create_serve_plots.R")
+source("/Users/petertea/Documents/Sports-Analytics/Tennis_Collection_functions.R")
+
+```
+
+After some data cleaning and aggregating steps on match summary data found on Jeff Sackmann's [Github page](https://github.com/JeffSackmann/tennis_atp/blob/master/README.md), we produce the following analysis from Wimbledon and the US Open grand slam tournaments of 2019.
+
+### ATP Wimbledon Serve Speeds
+```{r table, echo=FALSE}
+RF_2019_Wim <- get_slam_serve(Player = "Roger Federer",
+                              year = 2019, tournament = "wimbledon")
+
+p_RF = create_serve_plot(my_data = RF_2019_Wim, Player = "Roger Federer", year = 2019, tournament = "wimbledon",
+                      hp1 = 0.5, hp2 =3.25, vp1 = 2, vp2 = 2, x1=110, x2=210 )
+
+NJ_2019_Wim <- get_slam_serve(Player = "Novak Djokovic", 
+                              year = 2019, tournament = "wimbledon")
+p_NJ = create_serve_plot(my_data = NJ_2019_Wim, Player = "Novak Djokovic", year = 2019, tournament = "wimbledon",
+                      hp1 = 0.4, hp2 =3.25, vp1 = -2, vp2 = -2)
+#p_NJ <- p_NJ + scale_x_continuous(breaks = seq(min(NJ_2019_Wim$Speed_KMH),
+#                                    max(NJ_2019_Wim$Speed_KMH), by = 10))
+RN_2019_Wim <- get_slam_serve(Player = "Rafael Nadal", 
+                              year = 2019, tournament = "wimbledon")
+p_RN = create_serve_plot(my_data = RN_2019_Wim, Player = "Rafael Nadal", year = 2019, tournament = "wimbledon",
+                      hp1 = 0.25, hp2 =3.25, vp1 = 2, vp2 = 2.1, y=0.06)
+#p_RN <- p_RN + scale_x_continuous(breaks = seq(min(NJ_2019_Wim$Speed_KMH),
+#                                    max(NJ_2019_Wim$Speed_KMH), by = 10))
+```
+
+
+In this project, we will focuss our attention on familiar names from both the ATP and WTA worlds. From the ATP, we chose to look at Rafael Nadal, Roger Federer and Novav Djokovic. From the WTA, we chose to look at Serena Williams, Simona Halep and Bianca Andreescu.
+
+First as an exploratory step, we analysed the observed distributions of first serve speeds compared to second serve speeds.
+
+```{r pressure2,echo=FALSE,  warning=FALSE}
+#gridExtra::grid.arrange(p_RN, p_RF, p_NJ, ncol=2)
+p_RN
+p_RF
+p_NJ
+```
+
+
+From the 3 graphics above, we see that among the 3 ATP players, the average 1st serve speed is consistently greater than the average 2nd serve speed. In fact, with the exception of Novak Djokovic, the maximum 2nd serve speed is lower than the average 1st serve speed! Djokovic's 2nd serve speed has greater variance when compared to Roger and Rafa. Perhaps this has to do with Djokovic's strategy of being more unpredictable in his 2nd serves? In any case, these 3 graphics indicate that these 3 ATP players tend to switch up their serve approaches given the situation of the match. 
+
+
+
+In the women's game, we observe the same pattern when we look at the 2 WTA players who reached the Wimbledon final (Halep def. Williams). 
+
+## WTA Wimbledon Serve Speeds
+```{r pressure,echo=FALSE,  warning=FALSE}
+### Serena Williams Wimbledon
+SW_2019_Wim <- get_slam_serve(Player = "Serena Williams", 
+                              year = 2019, tournament = "wimbledon")
+p_SW = create_serve_plot(my_data = SW_2019_Wim, Player = "Serena Williams", year = 2019, tournament = "wimbledon",
+                      hp1 = -1.25, hp2 =2.75, vp1 = 2, vp2 = 2, x1 = 100 )
+
+SH_2019_Wim <- get_slam_serve(Player = "Simona Halep",
+                              year = 2019, tournament = "wimbledon")
+p_SH = create_serve_plot(my_data = SH_2019_Wim, Player = "Simona Halep", year = 2019, tournament = "wimbledon",
+                      hp1 = -1.5, hp2 =3.5, vp1 = 2, vp2 = 2, x1 = 100 )
+
+p_SW
+p_SH
+```
+
+Throughout the Wimbledon tournament, both Williams and Halep display distinct serve speeds depending on whether they are on their 1st or 2nd serve.
+
+
+
+Inspired by these observed these patterns at Wimbledon, we then explore whether they exist in other tournaments where players play on different surfaces (Wimbledon is played on ``grass`` courts). To provide a partial answer to this question, we perform the same analysis using data from the 2019 US Open tournament, which is played on ``hardcourt``. 
+
+
+## ATP US Open Serve Speeds
+```{r ATP_USOpen_data,echo=FALSE,  warning=FALSE}
+RN_2019_US <- get_slam_serve(Player = "Rafael Nadal",
+                             year = 2019, tournament = "usopen")
+p_RN2 <- create_serve_plot(my_data = RN_2019_US, Player = "Rafael Nadal", year = 2019, tournament = "usopen",
+                        hp1 = -0.2, hp2 =3.3, vp1 = 2, vp2 = 2.1, y=0.05)
+
+
+RF_2019_US <- get_slam_serve(Player = "Roger Federer",
+                             year = 2019, tournament = "usopen")
+p_RF2 = create_serve_plot(my_data = RF_2019_US, Player = "Roger Federer", year = 2019, tournament = "usopen",
+                       hp1 = -1.4, hp2 =3.4, vp1 = 2, vp2 = 2 )
+
+
+
+NJ_2019_US <- get_slam_serve(Player = "Novak Djokovic", 
+                             year = 2019, tournament = "usopen")
+p_NJ2 = create_serve_plot(my_data = NJ_2019_US, Player = "Novak Djokovic", year = 2019, tournament = "usopen",
+                      hp1 = 0.0, hp2 =3.35, vp1 = 3, vp2 = 3)
+```
+
+
+```{r, USOpen_res, echo=FALSE, warning=FALSE}
+p_RN2
+p_RF2
+p_NJ2
+```
+
+From the 3 graphics above, we see that the 3 ATP players at the US Open all exhibit similar patterns observed during the Wimbledon grand slam tournament.
+
+
+## WTA US Open Serve Speeds
+```{r WTA_USOpen_data,echo=FALSE,  warning=FALSE}
+SW_2019_US <- get_slam_serve(Player = "Serena Williams", 
+                             year = 2019, tournament = "usopen")
+p_SW2 = create_serve_plot(my_data = SW_2019_US, Player = "Serena Williams", year = 2019, tournament = "usopen",
+                       hp1 = -1.5, hp2 =3, vp1 = 2, vp2 = 2, x1 = 100 )
+
+BA_2019_US <- get_slam_serve(Player = "Bianca Andreescu", 
+                             year = 2019, tournament = "usopen")
+p_BA = create_serve_plot(my_data = BA_2019_US, Player = "Bianca Andreescu", year = 2019, tournament = "usopen",
+                      hp1 = -0.75, hp2 =2.75, vp1 = 2, vp2 = 2, x1=100 )
+```
+
+
+
+```{r, USOpen_res_WTA, echo=FALSE, warning=FALSE}
+p_SW2
+p_BA
+```
+
+
+Given that players modify their approaches 
+
+
+## What are the implications of a 1st serve appraoch vs. a 2nd serve approach?
+We calculate the following:
+- Δ Serve Speed (KM/H) = Average 2nd serve speed - Average 1st serve speed
+- Δ Win percentage = % Points won on 2nd serve - % Points won on 1st serve
+- Δ Rally Length = Average rally length on 2nd serve  - Average rally length on 1st serve
+- Δ Distance Run = Average distance run on 2nd serve - Average distance run on 1st serve
+
+| Player |Δ Serve Speed (KM/H) | Δ Win percentage  |  Δ Rally Length | Δ Distance Run
+|---|---|---|---|---|---|
+| Djokovic  |🔻29|🔻19|❇️ 2.0   | ❇️ 6.0  | 
+| Nadal  |🔻29|🔻16| ❇️ 1.0  | ❇️ 3.0  | 
+| Federer  |🔻29|🔻15 | ❇️ 1.5  | ❇️ 4.0 |
+| Williams |🔻24|🔻14 | ❇️ 1.0  |  ❇️ 3.0 |
+| Halep |🔻28|🔻10| ▶️ 0.0  | ▶️ 0.0  |
+
+
+From the above table, we might be able to make some interesting conclusions about serve speeds. When we compare 2nd serves to 1st serves:
+
+- Serve speed decreases
+- Win percentage decreases
+- Rally length increases
+- Distance Run increases
+
+
+
+
+
+
+
+
+
+
+
+
+
+- Maybe players are more comfortable (i.e. have more trust in) with their groundstroke game to win
+
+

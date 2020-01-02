@@ -1,0 +1,124 @@
+---
+title: Analysing Serve Strategies at the 2019 Grand Slams
+author: Peter Tea
+date: '2020-01-01'
+categories:
+  - Tennis
+tags:
+  - Grand-Slam
+  - Tennis
+  - Serve
+  - Serve speed
+authors:
+  - admin
+output:
+  html_document:
+    keep_md: yes
+image:
+  caption: Photo by johnfo on Unsplash
+  focal_point: Smart
+summary: Serving Need for Speed
+---
+
+
+
+<div id="how-do-1st-serves-differ-from-2nd-serves" class="section level2">
+<h2>How do 1st serves differ from 2nd serves?</h2>
+<p>Tennis serve faults are a common occurrence in any competitive tennis match. Depending on whether a player is on their 1st or their 2nd serve, serving strategy is at the forefront of the player’s decision making process in terms of how they want to attack their opponent. For instance, on 1st serve the player is reassured that no matter the outcome, they will have a second opportunity to serve again without penalty. Hence, the risk-return tradeoff of attacking the opponent with a big and powerful serve is certainly manageable. However, if we are on 2nd serve then we are more wary of this tradeoff. Powerful serves are more likely to land <code>out</code>, which is why players tend to instead proceed with a less powerful, but more consistent serve approach.</p>
+<p>In this project, we dig deep into the <code>service power-consistency</code> tradeoff through a couple data visualizations.</p>
+<p>After some data cleaning and aggregating steps on match summary data found on Jeff Sackmann’s <a href="https://github.com/JeffSackmann/tennis_atp/blob/master/README.md">Github page</a>, we produce the following analysis from Wimbledon and the US Open grand slam tournaments of 2019.</p>
+<div id="atp-wimbledon-serve-speeds" class="section level3">
+<h3>ATP Wimbledon Serve Speeds</h3>
+<p>In this project, we will focuss our attention on familiar names from both the ATP and WTA worlds. From the ATP, we chose to look at Rafael Nadal, Roger Federer and Novav Djokovic. From the WTA, we chose to look at Serena Williams, Simona Halep and Bianca Andreescu.</p>
+<p>First as an exploratory step, we analysed the observed distributions of first serve speeds compared to second serve speeds.</p>
+<p><img src="/project/2019-Serve-speeds/index_files/figure-html/pressure2-1.png" width="672" /><img src="/project/2019-Serve-speeds/index_files/figure-html/pressure2-2.png" width="672" /><img src="/project/2019-Serve-speeds/index_files/figure-html/pressure2-3.png" width="672" /></p>
+<p>From the 3 graphics above, we see that among the 3 ATP players, the average 1st serve speed is consistently greater than the average 2nd serve speed. In fact, with the exception of Novak Djokovic, the maximum 2nd serve speed is lower than the average 1st serve speed! Djokovic’s 2nd serve speed has greater variance when compared to Roger and Rafa. Perhaps this has to do with Djokovic’s strategy of being more unpredictable in his 2nd serves? In any case, these 3 graphics indicate that these 3 ATP players tend to switch up their serve approaches given the situation of the match.</p>
+<p>In the women’s game, we observe the same pattern when we look at the 2 WTA players who reached the Wimbledon final (Halep def. Williams).</p>
+</div>
+</div>
+<div id="wta-wimbledon-serve-speeds" class="section level2">
+<h2>WTA Wimbledon Serve Speeds</h2>
+<p><img src="/project/2019-Serve-speeds/index_files/figure-html/pressure-1.png" width="672" /><img src="/project/2019-Serve-speeds/index_files/figure-html/pressure-2.png" width="672" /></p>
+<p>Throughout the Wimbledon tournament, both Williams and Halep display distinct serve speeds depending on whether they are on their 1st or 2nd serve.</p>
+<p>Inspired by these observed these patterns at Wimbledon, we then explore whether they exist in other tournaments where players play on different surfaces (Wimbledon is played on <code>grass</code> courts). To provide a partial answer to this question, we perform the same analysis using data from the 2019 US Open tournament, which is played on <code>hardcourt</code>.</p>
+</div>
+<div id="atp-us-open-serve-speeds" class="section level2">
+<h2>ATP US Open Serve Speeds</h2>
+<p><img src="/project/2019-Serve-speeds/index_files/figure-html/USOpen_res-1.png" width="672" /><img src="/project/2019-Serve-speeds/index_files/figure-html/USOpen_res-2.png" width="672" /><img src="/project/2019-Serve-speeds/index_files/figure-html/USOpen_res-3.png" width="672" /></p>
+<p>From the 3 graphics above, we see that the 3 ATP players at the US Open all exhibit similar patterns observed during the Wimbledon grand slam tournament.</p>
+</div>
+<div id="wta-us-open-serve-speeds" class="section level2">
+<h2>WTA US Open Serve Speeds</h2>
+<p><img src="/project/2019-Serve-speeds/index_files/figure-html/USOpen_res_WTA-1.png" width="672" /><img src="/project/2019-Serve-speeds/index_files/figure-html/USOpen_res_WTA-2.png" width="672" /></p>
+<p>Given that players modify their approaches</p>
+</div>
+<div id="what-are-the-implications-of-a-1st-serve-appraoch-vs.a-2nd-serve-approach" class="section level2">
+<h2>What are the implications of a 1st serve appraoch vs. a 2nd serve approach?</h2>
+<p>We calculate the following:
+- Δ Serve Speed (KM/H) = Average 2nd serve speed - Average 1st serve speed
+- Δ Win percentage = % Points won on 2nd serve - % Points won on 1st serve
+- Δ Rally Length = Average rally length on 2nd serve - Average rally length on 1st serve
+- Δ Distance Run = Average distance run on 2nd serve - Average distance run on 1st serve</p>
+<table>
+<thead>
+<tr class="header">
+<th>Player</th>
+<th>Δ Serve Speed (KM/H)</th>
+<th>Δ Win percentage</th>
+<th>Δ Rally Length</th>
+<th>Δ Distance Run</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Djokovic</td>
+<td>🔻29</td>
+<td>🔻19</td>
+<td>❇️ 2.0</td>
+<td>❇️ 6.0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Nadal</td>
+<td>🔻29</td>
+<td>🔻16</td>
+<td>❇️ 1.0</td>
+<td>❇️ 3.0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Federer</td>
+<td>🔻29</td>
+<td>🔻15</td>
+<td>❇️ 1.5</td>
+<td>❇️ 4.0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Williams</td>
+<td>🔻24</td>
+<td>🔻14</td>
+<td>❇️ 1.0</td>
+<td>❇️ 3.0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Halep</td>
+<td>🔻28</td>
+<td>🔻10</td>
+<td>▶️ 0.0</td>
+<td>▶️ 0.0</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>From the above table, we might be able to make some interesting conclusions about serve speeds. When we compare 2nd serves to 1st serves:</p>
+<ul>
+<li>Serve speed decreases</li>
+<li>Win percentage decreases</li>
+<li>Rally length increases</li>
+<li><p>Distance Run increases</p></li>
+<li><p>Maybe players are more comfortable (i.e. have more trust in) with their groundstroke game to win</p></li>
+</ul>
+</div>

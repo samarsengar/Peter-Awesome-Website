@@ -1,5 +1,5 @@
 ---
-title: Serving Efficiency at Grand Slams
+title: Analysing Serving Abilities at Grand Slams
 author: Peter Tea
 date: '2019-12-26'
 categories:
@@ -40,12 +40,12 @@ With the conclusion of the 2019 Tennis season, the Big 3 (Nadal, Djokovic and Fe
 
 ### How well did the Big 3 defend and break serves?
 
-To analyse at a granular level how well the Big 3 performed during the 2019 grand slam tournaments, we look at their performances in **defending** their own service games and in **attacking** their opponent service games. A player who effectively defends their serve should win a high proportion of the games in which they serve first. Furthermore, a player who successfully attacks their opponents' serve should win a reasonable amount of break points.
+To analyse at a granular level how well the Big 3 performed during the 2019 grand slam tournaments, we look at their performances in **defending** their own service games and in **attacking** their opponent service games. A player who effectively defends their serve should win a high proportion of the games in which they serve first. Furthermore, a player who successfully attacks their opponents' serve should win a reasonable amount of break points against their opponent's serve.
 
-To measure a players defensive and offensive ability, we look at the total number of service games defended and the total number of opponent serves broken respectively. Moreover, to account for opportunity, we divide these metrics by the total number of tennis games played during the grand slam tournaments. Note that we specifically look at stats on a per game basis rather than a per match basis.
+To measure a players defensive and offensive ability, we look at the total number of service games defended and the total number of opponent serves broken respectively. Moreover, to account for opportunity, we divide these metrics by the total number of player service games and opponent service games respectively.
 
 
-- Proportion of service games defended = # of service games won / Total # of service games
+- Proportion of service games defended = # of service games won / Total # player of service games
 
 - Proportion of opponent service games broken = # of service games broken / Total # of opponent service games
 
@@ -148,7 +148,7 @@ to_plot_dat <- to_plot_dat %>%
   mutate(Matches_Won = ifelse(Matches<0, 0, Matches))
 ```
 
-After some data cleaning and aggregating steps on match summary data found on Jeff Sackmann's [Github page](https://github.com/JeffSackmann/tennis_atp/blob/master/README.md), we produce the following table that combines the results from the 4 grand slam tournaments of 2019.
+After some data cleaning and aggregating steps on match summary data found on Jeff Sackmann's [Github page](https://github.com/JeffSackmann/tennis_atp/blob/master/README.md), we produce the following table that combines the results from all 4 grand slam tournaments from the 2019 season.
 
 
 ```{r table, echo=FALSE}
@@ -159,11 +159,11 @@ A <- to_plot_dat %>%
 knitr::kable(A[1:10,], caption = "Grand Slam data")
 ```
 
-During the grand slams Nadal, Djokovic and Federer are ranked 1, 2 and 3 respectively in terms of total matches played. The other two columns we calculated represents the proportion of service games defended (**SvGmsW_Prop**), and the proportion of opponent serves broken (**BPW_Prop**).
+During the grand slams Nadal, Djokovic and Federer are ranked 1, 2 and 3 respectively in terms of matches won. The other two columns we calculated represents the proportion of service games defended (**SvGmsW_Prop**), and the proportion of opponent serves broken (**BPW_Prop**).
 
 
 ### Comparing the big 3 to other ATP players via Bubble plots
-Using the two metrics (proportion of service games defended and the proportion of opponent serves broken) we can map out the deffensive and offensive prowess of the Big 3 compared to the abilities of the other ATP players. We place these two metrics on the x- and y-axis respectively. Additionally, to represent the success of the ATP players, we add an extra dimension that represents number of matches won by each player. The larger the *bubble*, the more grand slam matches a player has played (which is directly related to the number wins he has during the grand slams).
+Using the two metrics (proportion of service games defended and the proportion of opponent serves broken) we mapped out the defensive and offensive prowess of the Big 3 compared to the abilities of the other ATP players in the graphic below. We placed these two metrics on the x- and y-axis respectively. Additionally, to represent the success of the ATP players, we added an extra dimension that represents number of matches won by each player. The larger the *bubble* is, the more grand slam matches a player has won.
 
 ```{r pressure2,echo=FALSE,  warning=FALSE}
 
@@ -227,7 +227,7 @@ From the above bubble plot, we make some very intuitive remarks.
 
 1. Larger bubbles are found on the top right corner of the plot. This indicates that players who are good at both defending their serve and at breaking their opponent serve tend to win more tennis matches. Unsurprisingly, since the Big 3 are good at both, their bubbles are found in the top right corner. 
 
-2. ATP players tend to be better at holding serve than they are breaking serve. Many of the top players hold serve at a rate of 80%, while most players are unable to break their opponent at a rate of 25%.
+2. ATP players tend to be better at holding serve than they are at breaking their opponent's serve. Many of the top players hold serve at a rate of 80%, while most players are unable to break their opponent at a rate of 25%.
 
 3. ATP players that are very good at holding serve, but are mediocre at breaking serve still tend to win a sizeable amount of matches. Conversely, players that do not defend their serve well, but who excel at breaking their opponent tend to not win many matches.
 
