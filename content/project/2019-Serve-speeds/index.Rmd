@@ -15,7 +15,7 @@ output:
   html_document:
     keep_md: yes
 image:
-  caption: Photo by johnfo on Unsplash
+  caption: 'Photo by pixelcop on Unsplash'
   focal_point: Smart
 summary: Serving Need for Speed
 ---
