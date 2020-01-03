@@ -33,7 +33,7 @@ With the conclusion of the 2019 Tennis season, the Big 3 (Nadal, Djokovic and Fe
   
   **Rafa Nadal** cruised to the *Roland Garros* chip winning the final match in four sets against Thiem, while also capturing the *US Open* championship in a 5-set thriller over Medvedev.
   
-  Meanwhile, **Novak Djokovic** successfully defended his *Wimbledon* chip against Roger Federer in a heavy-weight 5-set match, while also capturing the *Australian Open* chip against Nadal. 
+  Meanwhile, **Novak Djokovic** successfully defended his *Wimbledon* trophy against Roger Federer in a heavy-weight 5-set match, while also capturing the *Australian Open* chip against Nadal. 
   
   Finally, while **Roger Federer** did not win any grand slams in this 2019 season, he did reach the Wimbledon final as well as make some exciting runs at the other 3 grand slam tournaments. Not bad for the 38-year old Swiss! 
 
@@ -135,17 +135,20 @@ get.last.name <- function(name) {
   lapply(strsplit(gsub("^ ","",d), " "),`[[`,1)
 }
 
-to_plot_dat <- as.tbl(to_plot_dat) %>%
-  filter(Matches > 0) %>%
-  mutate(Matches = as.numeric(Matches) - 4,
+to_plot_dat <- to_plot_dat %>%
+  left_join(
+    ATP_matches_2019 %>%
+      group_by(winner_name) %>%
+      dplyr::summarise(Matches_Won=n()),
+   by = c('Player_Name' = 'winner_name') 
+  ) %>% 
+  mutate(Matches_Won = ifelse(is.na(Matches_Won), 0, Matches_Won),
          SvGmsW_Prop = as.numeric(SvGmsW_Prop),
          BPW_Prop = as.numeric(BPW_Prop),
-         Last_Name = get.last.name(Player_Name)) %>%
+         Last_Name = get.last.name(Player_Name)
+         ) %>%
   arrange(desc(Matches))
 
-to_plot_dat[c(1,2),2] <- to_plot_dat[c(1,2),2] + 2
-to_plot_dat <- to_plot_dat %>%
-  mutate(Matches_Won = ifelse(Matches<0, 0, Matches))
 ```
 
 After some data cleaning and aggregating steps on match summary data found on Jeff Sackmann's [Github page](https://github.com/JeffSackmann/tennis_atp/blob/master/README.md), we produce the following table that combines the results from all 4 grand slam tournaments from the 2019 season.
@@ -229,12 +232,12 @@ From the above bubble plot, we make some very intuitive remarks.
 
 2. ATP players tend to be better at holding serve than they are at breaking their opponent's serve. Many of the top players hold serve at a rate of 80%, while most players are unable to break their opponent at a rate of 25%.
 
-3. ATP players that are very good at holding serve, but are mediocre at breaking serve still tend to win a sizeable amount of matches. Conversely, players that do not defend their serve well, but who excel at breaking their opponent tend to not win many matches.
+3. ATP players that are very good at holding serve, but are average at breaking serve still tend to win a sizeable amount of matches. Conversely, players that do not defend their serve well, but who excel at breaking their opponent tend to not win many matches.
 
 
 
 
-For those who like interactive plots as much as I do, I've produced the slame plot using the R package ``gplotly``.
+For those who like interactive plots as much as I do, I've produced the same plot using the R package ``gplotly``.
 
 ```{r pressure,echo=FALSE,  warning=FALSE}
 
@@ -291,3 +294,5 @@ p <- ggplot(to_plot_dat[-c(1,2,3),], aes(x=SvGmsW_Prop*100, y=BPW_Prop*100, size
 
 ggplotly(p, tooltip = c("size", "Player_Name"))
 ```
+
+All R codes to produce this analysis can be found on my [Github page](https://github.com/petertea96/Tennis-Data-Analysis/blob/master/Bubble%20chart.R).

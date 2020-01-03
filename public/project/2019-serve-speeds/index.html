@@ -522,12 +522,11 @@
 
 <div id="how-do-1st-serves-differ-from-2nd-serves" class="section level2">
 <h2>How do 1st serves differ from 2nd serves?</h2>
-<p>Tennis serve faults are a common occurrence in any competitive tennis match. Depending on whether a player is on their 1st or their 2nd serve, serving strategy is at the forefront of the player’s decision making process in terms of how they want to attack their opponent. For instance, on 1st serve the player is reassured that no matter the outcome, they will have a second opportunity to serve again without penalty. Hence, the risk-return tradeoff of attacking the opponent with a big and powerful serve is certainly manageable. However, if we are on 2nd serve then we are more wary of this tradeoff. Powerful serves are more likely to land <code>out</code>, which is why players tend to instead proceed with a less powerful, but more consistent serve approach.</p>
-<p>In this project, we dig deep into the <code>service power-consistency</code> tradeoff through a couple data visualizations.</p>
-<p>After some data cleaning and aggregating steps on match summary data found on Jeff Sackmann’s <a href="https://github.com/JeffSackmann/tennis_atp/blob/master/README.md">Github page</a>, we produce the following analysis from Wimbledon and the US Open grand slam tournaments of 2019.</p>
+<p>Tennis serve faults are a common occurrence in any competitive tennis match. Depending on whether a player is on their 1st or their 2nd serve, serving strategy is at the forefront of the player’s decision making process in terms of how they want to attack their opponent. For instance, on 1st serve the player is reassured that no matter the outcome, they will at least have a second opportunity to serve again without penalty. Hence, the risk-return tradeoff of attacking the opponent with a big and powerful serve is certainly manageable. However, if we are instead on 2nd serve then we may be more wary of this tradeoff. Powerful serves are more likely to land <code>out</code>, which is why players tend to instead proceed with a less powerful, but more consistent 2nd serve approach.</p>
+<p>In this project, we look deep into the <code>service power-consistency</code> tradeoff through a couple data visualizations.</p>
+<p>In this project, we will focuss our attention on familiar names from both the ATP and WTA worlds. From the ATP, we chose to look at Rafael Nadal, Roger Federer and Novav Djokovic. From the WTA, we chose to look at Serena Williams, Simona Halep and Bianca Andreescu. After some data cleaning and aggregating steps on match summary data found on Jeff Sackmann’s <a href="https://github.com/JeffSackmann/tennis_atp/blob/master/README.md">Github page</a>, we produce the following analysis from Wimbledon and the US Open grand slam tournaments of 2019.</p>
 <div id="atp-wimbledon-serve-speeds" class="section level3">
 <h3>ATP Wimbledon Serve Speeds</h3>
-<p>In this project, we will focuss our attention on familiar names from both the ATP and WTA worlds. From the ATP, we chose to look at Rafael Nadal, Roger Federer and Novav Djokovic. From the WTA, we chose to look at Serena Williams, Simona Halep and Bianca Andreescu.</p>
 <p>First as an exploratory step, we analysed the observed distributions of first serve speeds compared to second serve speeds.</p>
 <p><img src="/project/2019-Serve-speeds/index_files/figure-html/pressure2-1.png" width="672" /><img src="/project/2019-Serve-speeds/index_files/figure-html/pressure2-2.png" width="672" /><img src="/project/2019-Serve-speeds/index_files/figure-html/pressure2-3.png" width="672" /></p>
 <p>From the 3 graphics above, we see that among the 3 ATP players, the average 1st serve speed is consistently greater than the average 2nd serve speed. In fact, with the exception of Novak Djokovic, the maximum 2nd serve speed is lower than the average 1st serve speed! Djokovic’s 2nd serve speed has greater variance when compared to Roger and Rafa. Perhaps this has to do with Djokovic’s strategy of being more unpredictable in his 2nd serves? In any case, these 3 graphics indicate that these 3 ATP players tend to switch up their serve approaches given the situation of the match.</p>
@@ -616,8 +615,65 @@
 <li>Serve speed decreases</li>
 <li>Win percentage decreases</li>
 <li>Rally length increases</li>
-<li><p>Distance Run increases</p></li>
-<li><p>Maybe players are more comfortable (i.e. have more trust in) with their groundstroke game to win</p></li>
+<li>Distance Run increases</li>
+</ul>
+<p>For completeness, we present the same table of numbers for the 2019 US Open tournament.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Player</th>
+<th>Δ Serve Speed (KM/H)</th>
+<th>Δ Win percentage</th>
+<th>Δ Rally Length</th>
+<th>Δ Distance Run</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Djokovic</td>
+<td>🔻33</td>
+<td>🔻13</td>
+<td>❇️ 2.0</td>
+<td>❇️ 5.0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Nadal</td>
+<td>🔻34</td>
+<td>🔻18</td>
+<td>❇️ 3.0</td>
+<td>❇️ 9.0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Federer</td>
+<td>🔻33</td>
+<td>🔻22</td>
+<td>❇️ 2.0</td>
+<td>❇️ 5.0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Williams</td>
+<td>🔻30</td>
+<td>🔻17</td>
+<td>❇️ 1.0</td>
+<td>❇️ 4.0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Andreescu</td>
+<td>🔻21</td>
+<td>🔻18</td>
+<td>❇️ 1.0</td>
+<td>❇️ 3.0</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Maybe players are more comfortable (i.e. have more trust in) with their groundstroke game to win</li>
 </ul>
 </div>
 

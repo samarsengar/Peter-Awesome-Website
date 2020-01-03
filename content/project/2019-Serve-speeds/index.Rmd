@@ -24,10 +24,10 @@ summary: Serving Need for Speed
 knitr::opts_chunk$set(echo = TRUE)
 ```
 ## How do 1st serves differ from 2nd serves?
-Tennis serve faults are a common occurrence in any competitive tennis match. Depending on whether a player is on their 1st or their 2nd serve, serving strategy is at the forefront of the player's decision making process in terms of how they want to attack their opponent. For instance, on 1st serve the player is reassured that no matter the outcome, they will have a second opportunity to serve again without penalty. Hence, the risk-return tradeoff of attacking the opponent with a big and powerful serve is certainly manageable. However, if we are on 2nd serve then we are more wary of this tradeoff. Powerful serves are more likely to land ``out``, which is why players tend to instead proceed with a less powerful, but more consistent serve approach.  
+Tennis serve faults are a common occurrence in any competitive tennis match. Depending on whether a player is on their 1st or their 2nd serve, serving strategy is at the forefront of the player's decision making process in terms of how they want to attack their opponent. For instance, on 1st serve the player is reassured that no matter the outcome, they will at least have a second opportunity to serve again without penalty. Hence, the risk-return tradeoff of attacking the opponent with a big and powerful serve is certainly manageable. However, if we are instead on 2nd serve then we may be more wary of this tradeoff. Powerful serves are more likely to land ``out``, which is why players tend to instead proceed with a less powerful, but more consistent 2nd serve approach.  
 
 
-In this project, we dig deep into the ``service power-consistency`` tradeoff through a couple data visualizations.
+In this project, we look deep into the ``service power-consistency`` tradeoff through a couple data visualizations.
 
 ```{r libraries, echo = FALSE, warning=FALSE,message=F}
 library(dplyr)
@@ -41,7 +41,7 @@ source("/Users/petertea/Documents/Sports-Analytics/Tennis_Collection_functions.R
 
 ```
 
-After some data cleaning and aggregating steps on match summary data found on Jeff Sackmann's [Github page](https://github.com/JeffSackmann/tennis_atp/blob/master/README.md), we produce the following analysis from Wimbledon and the US Open grand slam tournaments of 2019.
+In this project, we will focuss our attention on familiar names from both the ATP and WTA worlds. From the ATP, we chose to look at Rafael Nadal, Roger Federer and Novav Djokovic. From the WTA, we chose to look at Serena Williams, Simona Halep and Bianca Andreescu. After some data cleaning and aggregating steps on match summary data found on Jeff Sackmann's [Github page](https://github.com/JeffSackmann/tennis_atp/blob/master/README.md), we produce the following analysis from Wimbledon and the US Open grand slam tournaments of 2019. 
 
 ### ATP Wimbledon Serve Speeds
 ```{r table, echo=FALSE}
@@ -64,9 +64,6 @@ p_RN = create_serve_plot(my_data = RN_2019_Wim, Player = "Rafael Nadal", year = 
 #p_RN <- p_RN + scale_x_continuous(breaks = seq(min(NJ_2019_Wim$Speed_KMH),
 #                                    max(NJ_2019_Wim$Speed_KMH), by = 10))
 ```
-
-
-In this project, we will focuss our attention on familiar names from both the ATP and WTA worlds. From the ATP, we chose to look at Rafael Nadal, Roger Federer and Novav Djokovic. From the WTA, we chose to look at Serena Williams, Simona Halep and Bianca Andreescu.
 
 First as an exploratory step, we analysed the observed distributions of first serve speeds compared to second serve speeds.
 
@@ -187,9 +184,15 @@ From the above table, we might be able to make some interesting conclusions abou
 - Distance Run increases
 
 
+For completeness, we present the same table of numbers for the 2019 US Open tournament.
 
-
-
+| Player |Δ Serve Speed (KM/H) | Δ Win percentage  |  Δ Rally Length | Δ Distance Run
+|---|---|---|---|---|---|
+| Djokovic  |🔻33|🔻13|❇️ 2.0   | ❇️ 5.0|
+| Nadal  |🔻34|🔻18| ❇️ 3.0  | ❇️ 9.0  | 
+| Federer  |🔻33|🔻22| ❇️ 2.0 | ❇️ 5.0 |
+| Williams |🔻30|🔻17| ❇️ 1.0  |  ❇️ 4.0 |
+| Andreescu |🔻21|🔻18|  ❇️ 1.0 | ❇️ 3.0|
 
 
 
