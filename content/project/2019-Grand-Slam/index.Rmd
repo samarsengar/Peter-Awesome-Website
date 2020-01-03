@@ -232,7 +232,9 @@ From the above bubble plot, we make some very intuitive remarks.
 3. ATP players that are very good at holding serve, but are mediocre at breaking serve still tend to win a sizeable amount of matches. Conversely, players that do not defend their serve well, but who excel at breaking their opponent tend to not win many matches.
 
 
-For those who adore interactive plots, I've produced the slame plot using the R package ``gplotly``.
+
+
+For those who like interactive plots as much as I do, I've produced the slame plot using the R package ``gplotly``.
 
 ```{r pressure,echo=FALSE,  warning=FALSE}
 

@@ -42,9 +42,9 @@ social:
 - icon: github
   icon_pack: fab
   link: https://github.com/petertea96
-- icon: instagram
-  icon_pack: fab
-  link: https://www.instagram.com/peter.tea1/
+#- icon: instagram
+#  icon_pack: fab
+#  link: https://www.instagram.com/peter.tea1/
 user_groups:
 - Researchers
 - Visitors
