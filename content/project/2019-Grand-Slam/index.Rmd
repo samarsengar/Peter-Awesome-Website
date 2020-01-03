@@ -236,7 +236,6 @@ From the above bubble plot, we make some very intuitive remarks.
 
 
 
-
 For those who like interactive plots as much as I do, I've produced the same plot using the R package ``gplotly``.
 
 ```{r pressure,echo=FALSE,  warning=FALSE}
