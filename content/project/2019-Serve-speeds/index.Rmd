@@ -1,7 +1,7 @@
 ---
-title: Analysing Serve Strategies at the 2019 Grand Slams
+title: Analysing the Tennis Serve Power vs. Consistency Tradeoff
 author: Peter Tea
-date: '2020-01-01'
+date: '2020-01-06'
 categories:
   - Tennis
 tags:
@@ -23,11 +23,25 @@ summary: Serving Need for Speed
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-## How do 1st serves differ from 2nd serves?
-Tennis serve faults are a common occurrence in any competitive tennis match. Depending on whether a player is on their 1st or their 2nd serve, serving strategy is at the forefront of the player's decision making process in terms of how they want to attack their opponent. For instance, on 1st serve the player is reassured that no matter the outcome, they will at least have a second opportunity to serve again without penalty. Hence, the risk-return tradeoff of attacking the opponent with a big and powerful serve is certainly manageable. However, if we are instead on 2nd serve then we may be more wary of this tradeoff. Powerful serves are more likely to land ``out``, which is why players tend to instead proceed with a less powerful, but more consistent 2nd serve approach.  
+
+{{% alert note %}}
+**Attribution:** Special thanks to [Jeff Sackmann](http://www.tennisabstract.com/) for scraping and providing the data freely on his [Github page](https://github.com/JeffSackmann/tennis_slam_pointbypoint).
+{{% /alert %}}
+
+# How do 1st serves differ from 2nd serves?
+Tennis serve faults are a common occurrence in any competitive tennis match. Depending on whether a player is on their 1st or their 2nd serve, serving strategy is at the forefront of the player's decision making process in terms of how they want to attack their opponent. For instance, while powerful serves are certainly more difficult for the opponent to return, these serves are difficult to hit accurately and have a higher likelihood of landing outside the service box resulting in a service fault. On the other hand, while slower serves are easier for the player to hit accurately and consistently, they are more predictable and easier for the opposing player returning the serve. 
+
+Moreover on 1st serve, the player is reassured that if they miss their 1st serve, they will still have a second opportunity to serve again without penalty. Hence, the risk-return tradeoff of attacking the opponent with a big and powerful serve is certainly manageable. However, if the player is instead on 2nd serve then they may be more wary of this tradeoff, as there are no more remaining serves in the particular game. The choice of a more powerful but inconsistent serve vs. a slower but consistent serve is paramount as the player approaches the service line.
 
 
-In this project, we look deep into the ``service power-consistency`` tradeoff through a couple data visualizations.
+
+
+
+
+In this project, we look closely into the service `` power-consistency`` tradeoff with a couple of data visualizations.
+
+
+We will first present an exploratory analysis on serves from some familiar names from both the ATP and WTA worlds. From the ATP, we chose to look at ``Rafael Nadal``, ``Roger Federer`` and ``Novak Djokovic``. From the WTA, we chose to look at ``Serena Williams``, ``Simona Halep`` and ``Bianca Andreescu``. After some data cleaning and aggregating steps on match summary data found on Jeff Sackmann's [Github page](https://github.com/JeffSackmann/tennis_atp/blob/master/README.md), we produce the following analysis from Wimbledon and the US Open grand slam tournaments of 2019. 
 
 ```{r libraries, echo = FALSE, warning=FALSE,message=F}
 library(dplyr)
@@ -41,9 +55,7 @@ source("/Users/petertea/Documents/Sports-Analytics/Tennis_Collection_functions.R
 
 ```
 
-In this project, we will focuss our attention on familiar names from both the ATP and WTA worlds. From the ATP, we chose to look at Rafael Nadal, Roger Federer and Novav Djokovic. From the WTA, we chose to look at Serena Williams, Simona Halep and Bianca Andreescu. After some data cleaning and aggregating steps on match summary data found on Jeff Sackmann's [Github page](https://github.com/JeffSackmann/tennis_atp/blob/master/README.md), we produce the following analysis from Wimbledon and the US Open grand slam tournaments of 2019. 
-
-### ATP Wimbledon Serve Speeds
+## Observed 1st Serve Speed vs. 2nd Serve Speed at the 2019 Wimbledon Tournament 
 ```{r table, echo=FALSE}
 RF_2019_Wim <- get_slam_serve(Player = "Roger Federer",
                               year = 2019, tournament = "wimbledon")
@@ -65,7 +77,10 @@ p_RN = create_serve_plot(my_data = RN_2019_Wim, Player = "Rafael Nadal", year = 
 #                                    max(NJ_2019_Wim$Speed_KMH), by = 10))
 ```
 
-First as an exploratory step, we analysed the observed distributions of first serve speeds compared to second serve speeds.
+As an exploratory step, we first plot the observed distributions of 1st serve speeds compared to 2nd serve speeds during the 2019 Wimbledon tournament. Since tennis serves are unique for each individual player, we provide plots of tennis serve speeds for each player of interest. On the x-axis, we have the serve speed in kilometres per hour, and on the y-axis we have the observed density (i.e. the proportion of each observed serve speed). For each plot, the distribution of 1st serve speeds are plotted in green while the distribution of 2nd serve speeds are plotted in orange. On the plots, we also present the average 1st serve and 2nd serve speeds with vertical dashed lines.
+
+## ATP Wimbledon 2019 Serve Speeds
+Starting with the ATP players, we present the following serve speed distribution plots:
 
 ```{r pressure2,echo=FALSE,  warning=FALSE}
 #gridExtra::grid.arrange(p_RN, p_RF, p_NJ, ncol=2)
@@ -74,14 +89,42 @@ p_RF
 p_NJ
 ```
 
+Note: From the dataset, both Novak and Roger played 7 matches while Rafa played 6 matches (Federer defeated Nadal in the semifinals, before falling to Djokovic in the finals).
 
-From the 3 graphics above, we see that among the 3 ATP players, the average 1st serve speed is consistently greater than the average 2nd serve speed. In fact, with the exception of Novak Djokovic, the maximum 2nd serve speed is lower than the average 1st serve speed! Djokovic's 2nd serve speed has greater variance when compared to Roger and Rafa. Perhaps this has to do with Djokovic's strategy of being more unpredictable in his 2nd serves? In any case, these 3 graphics indicate that these 3 ATP players tend to switch up their serve approaches given the situation of the match. 
+```{r, calc_matches_played, echo=FALSE}
+#wd = "/Users/petertea/Documents/Sports-Analytics/Sackmann/tennis_slam_pointbypoint"
+
+#setwd(wd)
+#matches_data <- read.csv("2019-wimbledon-matches.csv")
+
+#matches_data %>%
+#  group_by(player1) %>%
+#  summarise(num_games = n()) %>%
+#  filter(grepl(x=player1, pattern = "Nadal|Federer|Djokovic|Serena Williams|Halep"))
+
+#matches_data %>%
+#  group_by(player2) %>%
+#  summarise(num_games = n()) %>%
+#  filter(grepl(x=player2, pattern = "Nadal|Federer|Djokovic|Serena Williams|Halep"))
+```
+
+
+From the above 3 graphics, we make some simple remarks:
+
+- For all 3 ATP players, the 1st serve distribution is left skewed, while the 2nd serve speed distribution appears more symmetric. The 1st serve skewed distribution indicates that on 1st serve, these 3 ATP players frequently serve at faster speeds than their average serve speed.
+
+
+- The average 1st serve speed is consistently ``greater`` than the average 2nd serve speed. 
+
+- With the exception of Novak Djokovic, the maximum 2nd serve speed is lower than the average 1st serve speed! Djokovic's 2nd serve speed has greater variance when compared to Roger and Rafa. Perhaps this has to do with Djokovic's strategy of being more unpredictable in his 2nd serves? 
+
+- In any case, these 3 graphics indicate that these 3 ATP players tend to switch up their serve approaches given the situation of the match: On 1st serve, these players serve powerfully, but on 2nd serve these players serve more conservatively.
 
 
 
-In the women's game, we observe the same pattern when we look at the 2 WTA players who reached the Wimbledon final (Halep def. Williams). 
+Moving on to the women's game, we observe similar patterns when we look at the 2 WTA players who reached the Wimbledon final (Halep defeated Williams). 
 
-## WTA Wimbledon Serve Speeds
+## WTA Wimbledon 2019 Serve Speeds
 ```{r pressure,echo=FALSE,  warning=FALSE}
 ### Serena Williams Wimbledon
 SW_2019_Wim <- get_slam_serve(Player = "Serena Williams", 
@@ -98,14 +141,53 @@ p_SW
 p_SH
 ```
 
-Throughout the Wimbledon tournament, both Williams and Halep display distinct serve speeds depending on whether they are on their 1st or 2nd serve.
+Note: From the dataset, both Williams and Halep played 7 matches. Halep defeated Williams in the finals.
 
 
+Throughout the Wimbledon tournament, both Williams and Halep display distinct serve speeds depending on whether they are on their 1st or 2nd serve. The results are similar to what we've seen on the ATP serve graphics, however the first serve speed distributions here do not appear to be as left skewed as we've previously seen on the ATP graphics. 
+
+
+
+### What are some possible implications of a slower 2nd serve speed?
+
+Other than the speed of the serve, what else differs when players are serving on 1st serve, compared to when they serve on 2nd serve? We compile some summary statistics that compares the average serve speed, as well as the average win percentage, rally length and distance run by players when they are on 1st serve compared to when they are on 2nd serve. 
+
+More specifically, we calculate the following:
+
+- Δ Serve Speed (KM/H) = Average 2nd serve speed - Average 1st serve speed
+- Δ Win percentage = % Points won on 2nd serve - % Points won on 1st serve
+- Δ Rally Length = Average rally length on 2nd serve  - Average rally length on 1st serve
+- Δ Distance Run = Average distance run on 2nd serve - Average distance run on 1st serve
+
+| Player |Matches |Δ Serve Speed (KM/H) | Δ Win percentage  |  Δ Rally Length | Δ Distance Run
+|---|---|---|---|---|---|
+| Djokovic  | 7 | 🔻29|🔻19|❇️ 2.0   | ❇️ 6.0  | 
+| Nadal  | 6 | 🔻29|🔻16| ❇️ 1.0  | ❇️ 3.0  | 
+| Federer  | 7 | 🔻29|🔻15 | ❇️ 1.5  | ❇️ 4.0 |
+| Williams | 7 | 🔻24|🔻14 | ❇️ 1.0  |  ❇️ 3.0 |
+| Halep | 7 | 🔻28|🔻10| ▶️ 0.0  | ▶️ 0.0  |
+
+
+From the above table, we can generate some interesting ideas about serve speeds. When we compare 2nd serves to 1st serves:
+
+- Serve speed decreases
+- Win percentage decreases
+- Rally length increases
+- Distance Run increases
+
+How are all of these variables related to one another? We know that serve speed decreases as players go from their 1st serve to their 2nd serve. Furthermore, players tend to win a lower proportion of games as they play on their 2nd serves. Not only that but, the rallies that players are involved in are usually longer requiring more distance to run as players play on their 2nd serve. 
+
+As players use a more consistent 2nd serve approach, their serve speed drops which makes the serve easier to return. The opposing player can now anticipate and return the serve, get into a groove more easily, and force the game into longer rallies. More rallies require the player to move more around the court and chase the ball which explains the increase in distance run. 
+
+
+
+
+## US Open 2019 Serve Speeds
 
 Inspired by these observed these patterns at Wimbledon, we then explore whether they exist in other tournaments where players play on different surfaces (Wimbledon is played on ``grass`` courts). To provide a partial answer to this question, we perform the same analysis using data from the 2019 US Open tournament, which is played on ``hardcourt``. 
 
 
-## ATP US Open Serve Speeds
+### ATP US Open 2019 Serve Speeds
 ```{r ATP_USOpen_data,echo=FALSE,  warning=FALSE}
 RN_2019_US <- get_slam_serve(Player = "Rafael Nadal",
                              year = 2019, tournament = "usopen")
@@ -136,7 +218,7 @@ p_NJ2
 From the 3 graphics above, we see that the 3 ATP players at the US Open all exhibit similar patterns observed during the Wimbledon grand slam tournament.
 
 
-## WTA US Open Serve Speeds
+### WTA US Open 2019 Serve Speeds
 ```{r WTA_USOpen_data,echo=FALSE,  warning=FALSE}
 SW_2019_US <- get_slam_serve(Player = "Serena Williams", 
                              year = 2019, tournament = "usopen")
@@ -157,31 +239,6 @@ p_BA
 ```
 
 
-Given that players modify their approaches 
-
-
-## What are the implications of a 1st serve appraoch vs. a 2nd serve approach?
-We calculate the following:
-- Δ Serve Speed (KM/H) = Average 2nd serve speed - Average 1st serve speed
-- Δ Win percentage = % Points won on 2nd serve - % Points won on 1st serve
-- Δ Rally Length = Average rally length on 2nd serve  - Average rally length on 1st serve
-- Δ Distance Run = Average distance run on 2nd serve - Average distance run on 1st serve
-
-| Player |Δ Serve Speed (KM/H) | Δ Win percentage  |  Δ Rally Length | Δ Distance Run
-|---|---|---|---|---|---|
-| Djokovic  |🔻29|🔻19|❇️ 2.0   | ❇️ 6.0  | 
-| Nadal  |🔻29|🔻16| ❇️ 1.0  | ❇️ 3.0  | 
-| Federer  |🔻29|🔻15 | ❇️ 1.5  | ❇️ 4.0 |
-| Williams |🔻24|🔻14 | ❇️ 1.0  |  ❇️ 3.0 |
-| Halep |🔻28|🔻10| ▶️ 0.0  | ▶️ 0.0  |
-
-
-From the above table, we might be able to make some interesting conclusions about serve speeds. When we compare 2nd serves to 1st serves:
-
-- Serve speed decreases
-- Win percentage decreases
-- Rally length increases
-- Distance Run increases
 
 
 For completeness, we present the same table of numbers for the 2019 US Open tournament.
@@ -195,12 +252,58 @@ For completeness, we present the same table of numbers for the 2019 US Open tour
 | Andreescu |🔻21|🔻18|  ❇️ 1.0 | ❇️ 3.0|
 
 
+# Evaluating consistency of 1st serves & 2nd serves
+
+| Player |% 1st serve in | % 2nd serve in  |
+|---|---|---|---|---|---|
+| Djokovic  | 75 | 88  |
+| Nadal  | 73  | 93 | 
+| Federer  |  75 | 94  | 
+| Williams | 73 | 92 | 
+| Halep | 76 | 91 |  
 
 
+So what are the tradeoffs of serve power vs. consistency?
 
-
+- 
+- 
+- 
 
 
 - Maybe players are more comfortable (i.e. have more trust in) with their groundstroke game to win
+
+
+## Chi-Square Test
+
+Contingency table of all games played in ATP Wimbledon
+
+```{r chisqtest, echo=FALSE, warning=FALSE, comment =""}
+dat <- read.csv("/Users/petertea/Documents/Sports-Analytics/Sackmann/tennis_slam_pointbypoint/2019-wimbledon-points.csv")
+
+dat <- dat %>%
+  mutate(Win = ifelse(PointWinner == PointServer, "Yes", "No")) %>%
+  select(Win, ServeNumber) %>%
+  filter(ServeNumber != 0) %>%
+  table() 
+
+dat
+```
+
+
+# Conclusion
+
+- Powerful serves are more likely to land ``out``, which is why players tend to instead proceed with a more conservative, but more consistent 2nd serve approach.
+
+
+## Next Steps
+
+It would be interesting to see if we can somehow model the serve power vs. consistency tradeoff.
+In particular, we want to know: "Over the long run, which is the better strategy: Serving powerfully or serving consistently?" If players approached 2nd serves the same way as they do 1st serves where they serve as powerfully as they can, would this be a better strategy than a conservative 2nd serve approach? Or is the risk from this approach too high? Over the long run, how many games would a player expect to win if they were to use this approach?
+
+
+
+
+
+
 
 
