@@ -15,7 +15,7 @@ output:
 image:
   caption: Photo by johnfo on Unsplash
   focal_point: Smart
-summary: Visualizing the beautiful game of Tennis.
+summary: Serving Grand Slams
 ---
 
 ```{r setup, include=FALSE}

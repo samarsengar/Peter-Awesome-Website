@@ -531,11 +531,11 @@ knitr::kable(FP_data[1:10,], caption = &amp;quot;Fantasy Data&amp;quot;)&lt;/cod
 &lt;li&gt;&lt;a href=&#34;#Drop menu&#34;&gt;Customize Dropdown Menu&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h1 id=&#34;emoticons-a-name-emoticons-a&#34;&gt;Emoticons &lt;a name=&#34;Emoticons&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id=&#34;emoticons-a-name-emoticons-a&#34;&gt;Emoticons &lt;a name=&#34;Emoticons&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.webfx.com/tools/emoji-cheat-sheet/&#34; target=&#34;_blank&#34;&gt;This site&lt;/a&gt; provides a cheatsheet on available emoticons you can use like 😌 or 🙈.&lt;/p&gt;
 
-&lt;h1 id=&#34;adding-personalized-icon-on-browser-tab-a-name-browser-icon-a&#34;&gt;Adding personalized icon on browser tab &lt;a name=&#34;Browser Icon&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id=&#34;adding-personalized-icon-on-browser-tab-a-name-browser-icon-a&#34;&gt;Adding personalized icon on browser tab &lt;a name=&#34;Browser Icon&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;&lt;img src=&#34;tennis_icon.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
@@ -546,14 +546,14 @@ knitr::kable(FP_data[1:10,], caption = &amp;quot;Fantasy Data&amp;quot;)&lt;/cod
 
 &lt;p&gt;You will see in this folder, there are three &lt;code&gt;.png&lt;/code&gt; files named: &lt;code&gt;icon-32.png&lt;/code&gt;, &lt;code&gt;icon-192.png&lt;/code&gt;, and &lt;code&gt;icon-512.png&lt;/code&gt;. Go ahead and upload the same image 3x to this folder, and change their names to the above.&lt;/p&gt;
 
-&lt;h1 id=&#34;quick-links-to-your-slides-poster-code-datasets-and-more-a-name-quick-links-a&#34;&gt;Quick links to your slides, poster, code, datasets and more! &lt;a name=&#34;Quick Links&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id=&#34;quick-links-to-your-slides-poster-code-datasets-and-more-a-name-quick-links-a&#34;&gt;Quick links to your slides, poster, code, datasets and more! &lt;a name=&#34;Quick Links&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;In your preamble, you can specify the options:
 &lt;code&gt;url_slides:&lt;/code&gt;, &lt;code&gt;url_poster:&lt;/code&gt;, &lt;code&gt;url_cite:&lt;/code&gt;, &lt;code&gt;url_code:&lt;/code&gt;, &lt;code&gt;url_video:&lt;/code&gt;, &lt;code&gt;url_Dataset:&lt;/code&gt;, &lt;code&gt;url_PDF:&lt;/code&gt; and &lt;code&gt;url_project:&lt;/code&gt; if you wanted to add quick links to these documents on your posts. Just make sure these files are in the same directory as your post directory.&lt;/p&gt;
 
 &lt;p&gt;&amp;ndash; Peter you should add an image of this here.&lt;/p&gt;
 
-&lt;h1 id=&#34;adding-icons-to-your-about-me-page&#34;&gt;Adding icons to your &amp;ldquo;About Me&amp;rdquo; page&lt;/h1&gt;
+&lt;h2 id=&#34;adding-icons-to-your-about-me-page&#34;&gt;Adding icons to your &amp;ldquo;About Me&amp;rdquo; page&lt;/h2&gt;
 
 &lt;p&gt;You can add cool icons that links to your email or other social media. In the image below, I have icons set up to my email, linkedin, github and instagram accounts.&lt;/p&gt;
 
@@ -575,9 +575,16 @@ knitr::kable(FP_data[1:10,], caption = &amp;quot;Fantasy Data&amp;quot;)&lt;/cod
   link: URL link
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;adding-resume-to-dropdown-menu-a-name-drop-menu-a&#34;&gt;Adding Resume to dropdown menu &lt;a name=&#34;Drop menu&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id=&#34;adding-resume-to-dropdown-menu-a-name-drop-menu-a&#34;&gt;Adding Resume to dropdown menu &lt;a name=&#34;Drop menu&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;Config --&amp;gt; _default --&amp;gt; menus.toml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;changing-your-profile-picture-on-the-about-me-section&#34;&gt;Changing your profile picture on the &amp;ldquo;About Me&amp;rdquo; section.&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;
+public --&amp;gt; authors --&amp;gt; admin
+Rename picture to avatar_hu96a5ab8e0364e843af4687201b687892_52303_250x250_fill_q90_lanczos_center.jpg
 &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>

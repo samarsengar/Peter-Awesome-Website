@@ -49,8 +49,8 @@ user_groups:
 - Researchers
 - Visitors
 ---
+[comment]: <> (Welcome to this awesome website! This is where I will be posting some fun data projects. Please stay tuned for things to come...)
 
-Welcome to this awesome website! This is where I will be posting some fun data projects. Please stay tuned for things to come...
 
 I am currently completing my Master's degree under the supervision of [Tim Swartz](http://people.stat.sfu.ca/~tim/) with a [Natural Sciences and Engineering Research Council of Canada’s](https://www.nserc-crsng.gc.ca/index_eng.asp) (NSERC) Graduate Scholarship. I work as an R facilitator at the [Research Commons](https://www.lib.sfu.ca/about/branches-depts/rc) of SFU, providing R code consultations to graduate students for their research projects, as well as running R workshops. 
 

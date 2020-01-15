@@ -29,7 +29,7 @@ knitr::opts_chunk$set(echo = TRUE)
 {{% /alert %}}
 
 # How do 1st serves differ from 2nd serves?
-Tennis serve faults are a common occurrence in any competitive tennis match. Depending on whether a player is on their 1st or their 2nd serve, serving strategy is at the forefront of the player's decision making process in terms of how they want to attack their opponent. For instance, while powerful serves are certainly more difficult for the opponent to return, these serves are difficult to hit accurately and have a higher likelihood of landing outside the service box resulting in a service fault. On the other hand, while slower serves are easier for the player to hit accurately and consistently, they are more predictable and easier for the opposing player returning the serve. 
+Tennis serve faults are a common occurrence in any competitive tennis match. Depending on whether a player is on their 1st or their 2nd serve, serving strategy is at the forefront of the player's decision making process in terms of how they want to attack their opponent. For instance, a player might choose a powerful serve that reduces the returner's reaction time and ultimately makes these serves more difficult for the opponent to return. However, these fast serves are difficult to hit accurately and have a higher likelihood of landing outside the service box, usually resulting in a service fault. Instead, a player might choose a slower serve, which are easier for the player to hit accurately and consistently. However, these slow serves allow a higher reaction time for the returner, and may also be more predictable and easier for the opposing player returning the serve. 
 
 Moreover on 1st serve, the player is reassured that if they miss their 1st serve, they will still have a second opportunity to serve again without penalty. Hence, the risk-return tradeoff of attacking the opponent with a big and powerful serve is certainly manageable. However, if the player is instead on 2nd serve then they may be more wary of this tradeoff, as there are no more remaining serves in the particular game. The choice of a more powerful but inconsistent serve vs. a slower but consistent serve is paramount as the player approaches the service line.
 
@@ -79,7 +79,7 @@ p_RN = create_serve_plot(my_data = RN_2019_Wim, Player = "Rafael Nadal", year = 
 
 As an exploratory step, we first plot the observed distributions of 1st serve speeds compared to 2nd serve speeds during the 2019 Wimbledon tournament. Since tennis serves are unique for each individual player, we provide plots of tennis serve speeds for each player of interest. On the x-axis, we have the serve speed in kilometres per hour, and on the y-axis we have the observed density (i.e. the proportion of each observed serve speed). For each plot, the distribution of 1st serve speeds are plotted in green while the distribution of 2nd serve speeds are plotted in orange. On the plots, we also present the average 1st serve and 2nd serve speeds with vertical dashed lines.
 
-## ATP Wimbledon 2019 Serve Speeds
+### ATP Wimbledon 2019 Serve Speeds
 Starting with the ATP players, we present the following serve speed distribution plots:
 
 ```{r pressure2,echo=FALSE,  warning=FALSE}
@@ -124,7 +124,7 @@ From the above 3 graphics, we make some simple remarks:
 
 Moving on to the women's game, we observe similar patterns when we look at the 2 WTA players who reached the Wimbledon final (Halep defeated Williams). 
 
-## WTA Wimbledon 2019 Serve Speeds
+### WTA Wimbledon 2019 Serve Speeds
 ```{r pressure,echo=FALSE,  warning=FALSE}
 ### Serena Williams Wimbledon
 SW_2019_Wim <- get_slam_serve(Player = "Serena Williams", 
@@ -252,7 +252,12 @@ For completeness, we present the same table of numbers for the 2019 US Open tour
 | Andreescu |🔻21|🔻18|  ❇️ 1.0 | ❇️ 3.0|
 
 
-# Evaluating consistency of 1st serves & 2nd serves
+[comment]: <> (▲)
+
+### Evaluating consistency of 1st serves & 2nd serves
+
+We've seen that 1st serves tend to be faster than 2nd serves, and players also tend to win more service games on 1st serves than on 2nd serves. You can imagine that if players serve as powerfully as they do on 1st serve throughout the entire match, perhaps they could win more service games. Unfortunately, the rate of success for hitting the powerful 1st serve is much lower than the rate of success for hitting the less powerful 2nd serve. We support this idea by presenting the percentages of serves that fall in the service box (i.e. serves that don't miss) for 1st serves compared to 2nd serves. We present these percentages below for 5 players obtained from the 2019 Wimbledon tournament.
+
 
 | Player |% 1st serve in | % 2nd serve in  |
 |---|---|---|---|---|---|
@@ -262,20 +267,27 @@ For completeness, we present the same table of numbers for the 2019 US Open tour
 | Williams | 73 | 92 | 
 | Halep | 76 | 91 |  
 
-
-So what are the tradeoffs of serve power vs. consistency?
-
-- 
-- 
-- 
+For these players, 1st serves consistently have a lower percentage of landing inside the service box than 2nd serves. This may be because players have a higher margin of error on 1st serve, and can afford to swing powerfully. However, on 2nd serve the margin of error is lower since a missed serve here would now result in a double fault (meaning the opponent wins the point).
 
 
-- Maybe players are more comfortable (i.e. have more trust in) with their groundstroke game to win
+[comment]: <> (So what are the tradeoffs of serve power vs. consistency?)
+[comment]: <> (Maybe players are more comfortable (i.e. have more trust in) with their groundstroke game to win)
+
+Powerful serves are more likely to land ``out``, which is why players tend to instead proceed with a more conservative, but more consistent 2nd serve approach.
 
 
-## Chi-Square Test
 
-Contingency table of all games played in ATP Wimbledon
+
+
+## Further Analysis
+
+It would be interesting to see if we can somehow model the serve power vs. consistency tradeoff.
+In particular, we want to know: "Over the long run, which is the better strategy: Serving powerfully or serving consistently?" If players approached 2nd serves the same way as they do 1st serves where they serve as powerfully as they can, would this be a better strategy than a conservative 2nd serve approach? Or is the risk from this approach too high? Over the long run, how many games would a player expect to win if they were to use this approach?
+
+In this report, we've only looked at unique tennis players at the top of the tennis world. Could we make some conclusions about all tennis players in general?
+
+
+One simlple analysis we've done on combined data from all players participating in the 2019 Wimbledon tournament, is verifying that service win percentage differs between 1st serve and 2nd serve. We first present a contingency table with the number of service games won stratified across the serve number:
 
 ```{r chisqtest, echo=FALSE, warning=FALSE, comment =""}
 dat <- read.csv("/Users/petertea/Documents/Sports-Analytics/Sackmann/tennis_slam_pointbypoint/2019-wimbledon-points.csv")
@@ -289,18 +301,7 @@ dat <- dat %>%
 dat
 ```
 
-
-# Conclusion
-
-- Powerful serves are more likely to land ``out``, which is why players tend to instead proceed with a more conservative, but more consistent 2nd serve approach.
-
-
-## Next Steps
-
-It would be interesting to see if we can somehow model the serve power vs. consistency tradeoff.
-In particular, we want to know: "Over the long run, which is the better strategy: Serving powerfully or serving consistently?" If players approached 2nd serves the same way as they do 1st serves where they serve as powerfully as they can, would this be a better strategy than a conservative 2nd serve approach? Or is the risk from this approach too high? Over the long run, how many games would a player expect to win if they were to use this approach?
-
-
+Then, using a chi-square test, we obtain a p-value less than 0.05. We conclude that there exists some relationship between win percentage and the serve number. Players on 1st serve are more likely to win, compared to when players are on their 2nd serve.
 
 
 

@@ -27,16 +27,15 @@ summary: Serving Need for Speed
 {{% /alert %}}</p>
 <div id="how-do-1st-serves-differ-from-2nd-serves" class="section level1">
 <h1>How do 1st serves differ from 2nd serves?</h1>
-<p>Tennis serve faults are a common occurrence in any competitive tennis match. Depending on whether a player is on their 1st or their 2nd serve, serving strategy is at the forefront of the player’s decision making process in terms of how they want to attack their opponent. For instance, while powerful serves are certainly more difficult for the opponent to return, these serves are difficult to hit accurately and have a higher likelihood of landing outside the service box resulting in a service fault. On the other hand, while slower serves are easier for the player to hit accurately and consistently, they are more predictable and easier for the opposing player returning the serve.</p>
+<p>Tennis serve faults are a common occurrence in any competitive tennis match. Depending on whether a player is on their 1st or their 2nd serve, serving strategy is at the forefront of the player’s decision making process in terms of how they want to attack their opponent. For instance, a player might choose a powerful serve that reduces the returner’s reaction time and ultimately makes these serves more difficult for the opponent to return. However, these fast serves are difficult to hit accurately and have a higher likelihood of landing outside the service box, usually resulting in a service fault. Instead, a player might choose a slower serve, which are easier for the player to hit accurately and consistently. However, these slow serves allow a higher reaction time for the returner, and may also be more predictable and easier for the opposing player returning the serve.</p>
 <p>Moreover on 1st serve, the player is reassured that if they miss their 1st serve, they will still have a second opportunity to serve again without penalty. Hence, the risk-return tradeoff of attacking the opponent with a big and powerful serve is certainly manageable. However, if the player is instead on 2nd serve then they may be more wary of this tradeoff, as there are no more remaining serves in the particular game. The choice of a more powerful but inconsistent serve vs. a slower but consistent serve is paramount as the player approaches the service line.</p>
 <p>In this project, we look closely into the service <code>power-consistency</code> tradeoff with a couple of data visualizations.</p>
 <p>We will first present an exploratory analysis on serves from some familiar names from both the ATP and WTA worlds. From the ATP, we chose to look at <code>Rafael Nadal</code>, <code>Roger Federer</code> and <code>Novak Djokovic</code>. From the WTA, we chose to look at <code>Serena Williams</code>, <code>Simona Halep</code> and <code>Bianca Andreescu</code>. After some data cleaning and aggregating steps on match summary data found on Jeff Sackmann’s <a href="https://github.com/JeffSackmann/tennis_atp/blob/master/README.md">Github page</a>, we produce the following analysis from Wimbledon and the US Open grand slam tournaments of 2019.</p>
 <div id="observed-1st-serve-speed-vs.2nd-serve-speed-at-the-2019-wimbledon-tournament" class="section level2">
 <h2>Observed 1st Serve Speed vs. 2nd Serve Speed at the 2019 Wimbledon Tournament</h2>
 <p>As an exploratory step, we first plot the observed distributions of 1st serve speeds compared to 2nd serve speeds during the 2019 Wimbledon tournament. Since tennis serves are unique for each individual player, we provide plots of tennis serve speeds for each player of interest. On the x-axis, we have the serve speed in kilometres per hour, and on the y-axis we have the observed density (i.e. the proportion of each observed serve speed). For each plot, the distribution of 1st serve speeds are plotted in green while the distribution of 2nd serve speeds are plotted in orange. On the plots, we also present the average 1st serve and 2nd serve speeds with vertical dashed lines.</p>
-</div>
-<div id="atp-wimbledon-2019-serve-speeds" class="section level2">
-<h2>ATP Wimbledon 2019 Serve Speeds</h2>
+<div id="atp-wimbledon-2019-serve-speeds" class="section level3">
+<h3>ATP Wimbledon 2019 Serve Speeds</h3>
 <p>Starting with the ATP players, we present the following serve speed distribution plots:</p>
 <p><img src="/project/2019-Serve-speeds/index_files/figure-html/pressure2-1.png" width="672" /><img src="/project/2019-Serve-speeds/index_files/figure-html/pressure2-2.png" width="672" /><img src="/project/2019-Serve-speeds/index_files/figure-html/pressure2-3.png" width="672" /></p>
 <p>Note: From the dataset, both Novak and Roger played 7 matches while Rafa played 6 matches (Federer defeated Nadal in the semifinals, before falling to Djokovic in the finals).</p>
@@ -49,11 +48,12 @@ summary: Serving Need for Speed
 </ul>
 <p>Moving on to the women’s game, we observe similar patterns when we look at the 2 WTA players who reached the Wimbledon final (Halep defeated Williams).</p>
 </div>
-<div id="wta-wimbledon-2019-serve-speeds" class="section level2">
-<h2>WTA Wimbledon 2019 Serve Speeds</h2>
+<div id="wta-wimbledon-2019-serve-speeds" class="section level3">
+<h3>WTA Wimbledon 2019 Serve Speeds</h3>
 <p><img src="/project/2019-Serve-speeds/index_files/figure-html/pressure-1.png" width="672" /><img src="/project/2019-Serve-speeds/index_files/figure-html/pressure-2.png" width="672" /></p>
 <p>Note: From the dataset, both Williams and Halep played 7 matches. Halep defeated Williams in the finals.</p>
 <p>Throughout the Wimbledon tournament, both Williams and Halep display distinct serve speeds depending on whether they are on their 1st or 2nd serve. The results are similar to what we’ve seen on the ATP serve graphics, however the first serve speed distributions here do not appear to be as left skewed as we’ve previously seen on the ATP graphics.</p>
+</div>
 <div id="what-are-some-possible-implications-of-a-slower-2nd-serve-speed" class="section level3">
 <h3>What are some possible implications of a slower 2nd serve speed?</h3>
 <p>Other than the speed of the serve, what else differs when players are serving on 1st serve, compared to when they serve on 2nd serve? We compile some summary statistics that compares the average serve speed, as well as the average win percentage, rally length and distance run by players when they are on 1st serve compared to when they are on 2nd serve.</p>
@@ -204,10 +204,9 @@ summary: Serving Need for Speed
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div id="evaluating-consistency-of-1st-serves-2nd-serves" class="section level1">
-<h1>Evaluating consistency of 1st serves &amp; 2nd serves</h1>
+<div id="evaluating-consistency-of-1st-serves-2nd-serves" class="section level3">
+<h3>Evaluating consistency of 1st serves &amp; 2nd serves</h3>
+<p>We’ve seen that 1st serves tend to be faster than 2nd serves, and players also tend to win more service games on 1st serves than on 2nd serves. You can imagine that if players serve as powerfully as they do on 1st serve throughout the entire match, perhaps they could win more service games. Unfortunately, the rate of success for hitting the powerful 1st serve is much lower than the rate of success for hitting the less powerful 2nd serve. We support this idea by presenting the percentages of serves that fall in the service box (i.e. serves that don’t miss) for 1st serves compared to 2nd serves. We present these percentages below for 5 players obtained from the 2019 Wimbledon tournament.</p>
 <table>
 <thead>
 <tr class="header">
@@ -262,30 +261,20 @@ summary: Serving Need for Speed
 </tr>
 </tbody>
 </table>
-<p>So what are the tradeoffs of serve power vs. consistency?</p>
-<ul>
-<li></li>
-<li></li>
-<li></li>
-<li>Maybe players are more comfortable (i.e. have more trust in) with their groundstroke game to win</li>
-</ul>
-<div id="chi-square-test" class="section level2">
-<h2>Chi-Square Test</h2>
-<p>Contingency table of all games played in ATP Wimbledon</p>
+<p>For these players, 1st serves consistently have a lower percentage of landing inside the service box than 2nd serves. This may be because players have a higher margin of error on 1st serve, and can afford to swing powerfully. However, on 2nd serve the margin of error is lower since a missed serve here would now result in a double fault (meaning the opponent wins the point).</p>
+<p>Powerful serves are more likely to land <code>out</code>, which is why players tend to instead proceed with a more conservative, but more consistent 2nd serve approach.</p>
+</div>
+</div>
+<div id="further-analysis" class="section level2">
+<h2>Further Analysis</h2>
+<p>It would be interesting to see if we can somehow model the serve power vs. consistency tradeoff.
+In particular, we want to know: “Over the long run, which is the better strategy: Serving powerfully or serving consistently?” If players approached 2nd serves the same way as they do 1st serves where they serve as powerfully as they can, would this be a better strategy than a conservative 2nd serve approach? Or is the risk from this approach too high? Over the long run, how many games would a player expect to win if they were to use this approach?</p>
+<p>In this report, we’ve only looked at unique tennis players at the top of the tennis world. Could we make some conclusions about all tennis players in general?</p>
+<p>One simlple analysis we’ve done on combined data from all players participating in the 2019 Wimbledon tournament, is verifying that service win percentage differs between 1st serve and 2nd serve. We first present a contingency table with the number of service games won stratified across the serve number:</p>
 <pre><code>     ServeNumber
 Win       1     2
   No   8896  6769
   Yes 20490  8567</code></pre>
-</div>
-</div>
-<div id="conclusion" class="section level1">
-<h1>Conclusion</h1>
-<ul>
-<li>Powerful serves are more likely to land <code>out</code>, which is why players tend to instead proceed with a more conservative, but more consistent 2nd serve approach.</li>
-</ul>
-<div id="next-steps" class="section level2">
-<h2>Next Steps</h2>
-<p>It would be interesting to see if we can somehow model the serve power vs. consistency tradeoff.
-In particular, we want to know: “Over the long run, which is the better strategy: Serving powerfully or serving consistently?” If players approached 2nd serves the same way as they do 1st serves where they serve as powerfully as they can, would this be a better strategy than a conservative 2nd serve approach? Or is the risk from this approach too high? Over the long run, how many games would a player expect to win if they were to use this approach?</p>
+<p>Then, using a chi-square test, we obtain a p-value less than 0.05. We conclude that there exists some relationship between win percentage and the serve number. Players on 1st serve are more likely to win, compared to when players are on their 2nd serve.</p>
 </div>
 </div>
