@@ -5,12 +5,36 @@
     <link>/tags/</link>
       <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright><lastBuildDate>Thu, 09 Jan 2020 13:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright><lastBuildDate>Thu, 16 Jan 2020 13:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Tags</title>
       <link>/tags/</link>
     </image>
+    
+    <item>
+      <title>Academic</title>
+      <link>/tags/academic/</link>
+      <pubDate>Thu, 16 Jan 2020 13:00:00 +0000</pubDate>
+      <guid>/tags/academic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Demo</title>
+      <link>/tags/demo/</link>
+      <pubDate>Thu, 16 Jan 2020 13:00:00 +0000</pubDate>
+      <guid>/tags/demo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fun</title>
+      <link>/tags/fun/</link>
+      <pubDate>Thu, 16 Jan 2020 13:00:00 +0000</pubDate>
+      <guid>/tags/fun/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Canada</title>
@@ -69,26 +93,10 @@
     </item>
     
     <item>
-      <title>Academic</title>
-      <link>/tags/academic/</link>
-      <pubDate>Thu, 19 Dec 2019 13:00:00 +0000</pubDate>
-      <guid>/tags/academic/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Basketball</title>
       <link>/tags/basketball/</link>
       <pubDate>Thu, 19 Dec 2019 13:00:00 +0000</pubDate>
       <guid>/tags/basketball/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Demo</title>
-      <link>/tags/demo/</link>
-      <pubDate>Thu, 19 Dec 2019 13:00:00 +0000</pubDate>
-      <guid>/tags/demo/</guid>
       <description></description>
     </item>
     
@@ -121,14 +129,6 @@
       <link>/tags/web-scraping/</link>
       <pubDate>Thu, 19 Dec 2019 13:00:00 +0000</pubDate>
       <guid>/tags/web-scraping/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Fun</title>
-      <link>/tags/fun/</link>
-      <pubDate>Thu, 28 Nov 2019 13:00:00 +0000</pubDate>
-      <guid>/tags/fun/</guid>
       <description></description>
     </item>
     

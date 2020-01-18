@@ -18,17 +18,67 @@
   </url>
   
   <url>
+    <loc>/authors/admin/</loc>
+    <lastmod>2020-01-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/academic/</loc>
+    <lastmod>2019-12-02T13:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/</loc>
+    <lastmod>2020-01-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <lastmod>2020-01-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/choropleth-maps/</loc>
+    <lastmod>2019-12-01T13:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/demo/</loc>
+    <lastmod>2019-12-02T13:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/fun/</loc>
+    <lastmod>2019-12-01T13:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2020-01-09T13:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2019-12-02T13:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-01-09T13:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/choropleth/</loc>
+    <lastmod>2019-12-01T13:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/canada/</loc>
     <lastmod>2020-01-09T13:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/talk/sports-analytics/</loc>
-    <lastmod>2020-01-09T13:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/</loc>
     <lastmod>2020-01-09T13:00:00+00:00</lastmod>
   </url>
   
@@ -48,32 +98,12 @@
   </url>
   
   <url>
-    <loc>/tags/</loc>
-    <lastmod>2020-01-09T13:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/tennis/</loc>
     <lastmod>2020-01-09T13:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/authors/admin/</loc>
-    <lastmod>2020-01-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/project/2019-serve-speeds/</loc>
-    <lastmod>2020-01-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/</loc>
-    <lastmod>2020-01-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/</loc>
     <lastmod>2020-01-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -108,17 +138,7 @@
   </url>
   
   <url>
-    <loc>/tags/academic/</loc>
-    <lastmod>2019-12-02T13:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/basketball/</loc>
-    <lastmod>2019-12-02T13:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/demo/</loc>
     <lastmod>2019-12-02T13:00:00+00:00</lastmod>
   </url>
   
@@ -129,11 +149,6 @@
   
   <url>
     <loc>/tags/dplyr/</loc>
-    <lastmod>2019-12-02T13:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
     <lastmod>2019-12-02T13:00:00+00:00</lastmod>
   </url>
   
@@ -155,11 +170,6 @@
   <url>
     <loc>/tags/web-scraping/</loc>
     <lastmod>2019-12-02T13:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/fun/</loc>
-    <lastmod>2019-12-01T13:00:00+00:00</lastmod>
   </url>
   
   <url>

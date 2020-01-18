@@ -28,10 +28,10 @@
   
     
   
-  <meta name="description" content="Learn how to blog in Academic using Jupyter notebooks">
+  <meta name="description" content="Using choropleth maps to visualize nation tennis strength">
 
   
-  <link rel="alternate" hreflang="en-us" href="/post/jupyter/">
+  <link rel="alternate" hreflang="en-us" href="/post/choropleth/">
 
   
 
@@ -100,7 +100,7 @@
   <link rel="icon" type="image/png" href="/img/icon-32.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="/post/jupyter/">
+  <link rel="canonical" href="/post/choropleth/">
 
   
   
@@ -112,15 +112,15 @@
   <meta property="twitter:card" content="summary_large_image">
   
   <meta property="og:site_name" content="Peter Tea">
-  <meta property="og:url" content="/post/jupyter/">
-  <meta property="og:title" content="Display Jupyter Notebooks with Academic | Peter Tea">
-  <meta property="og:description" content="Learn how to blog in Academic using Jupyter notebooks"><meta property="og:image" content="/post/jupyter/featured.png">
-  <meta property="twitter:image" content="/post/jupyter/featured.png"><meta property="og:locale" content="en-us">
+  <meta property="og:url" content="/post/choropleth/">
+  <meta property="og:title" content="Visualizing Country Strength in Tennis | Peter Tea">
+  <meta property="og:description" content="Using choropleth maps to visualize nation tennis strength"><meta property="og:image" content="/post/choropleth/featured.jpg">
+  <meta property="twitter:image" content="/post/choropleth/featured.jpg"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2019-02-05T00:00:00&#43;00:00">
+      <meta property="article:published_time" content="2020-01-16T13:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2019-09-05T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2019-12-01T13:00:00&#43;00:00">
   
 
   
@@ -146,16 +146,16 @@
   "@type": "BlogPosting",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "/post/jupyter/"
+    "@id": "/post/choropleth/"
   },
-  "headline": "Display Jupyter Notebooks with Academic",
+  "headline": "Visualizing Country Strength in Tennis",
   
   "image": [
-    "/post/jupyter/featured.png"
+    "/post/choropleth/featured.jpg"
   ],
   
-  "datePublished": "2019-02-05T00:00:00Z",
-  "dateModified": "2019-09-05T00:00:00Z",
+  "datePublished": "2020-01-16T13:00:00Z",
+  "dateModified": "2019-12-01T13:00:00Z",
   
   "author": {
     "@type": "Person",
@@ -170,7 +170,7 @@
       "url": "/img/icon-512.png"
     }
   },
-  "description": "Learn how to blog in Academic using Jupyter notebooks"
+  "description": "Using choropleth maps to visualize nation tennis strength"
 }
 </script>
 
@@ -188,7 +188,7 @@
 
 
 
-  <title>Display Jupyter Notebooks with Academic | Peter Tea</title>
+  <title>Visualizing Country Strength in Tennis | Peter Tea</title>
 
 </head>
 
@@ -316,7 +316,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
         </li>
 
         
@@ -345,7 +345,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
         </li>
 
         
@@ -437,10 +437,10 @@
 
 
 <div class="article-container pt-3">
-  <h1>Display Jupyter Notebooks with Academic</h1>
+  <h1>Visualizing Country Strength in Tennis</h1>
 
   
-  <p class="page-subtitle">Learn how to blog in Academic using Jupyter notebooks</p>
+  <p class="page-subtitle">Choropleth maps</p>
   
 
   
@@ -472,7 +472,7 @@
           Last updated on
       
     
-    Sep 5, 2019
+    Dec 1, 2019
   </span>
   
 
@@ -481,7 +481,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    2 min read
+    3 min read
   </span>
   
 
@@ -491,6 +491,10 @@
 
   
   
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/choropleth-maps/">Choropleth maps</a></span>
+  
 
 </div>
 
@@ -512,9 +516,9 @@
 </div>
 
 
-<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 313px;">
+<div class="article-header container featured-image-wrapper mt-4 mb-4" style="max-width: 1200px; max-height: 650px;">
   <div style="position: relative">
-    <img src="/post/jupyter/featured_hub1daa031c2af6888ff37bd93eb033a1a_71549_720x0_resize_lanczos_2.png" alt="" class="featured-image">
+    <img src="/post/choropleth/featured_hudb990d5222657331d082f58cd84a6e6b_99769_1200x0_resize_q90_lanczos.jpg" alt="" class="featured-image">
     
   </div>
 </div>
@@ -526,63 +530,38 @@
     <div class="article-style">
       
 
-<pre><code class="language-python">from IPython.core.display import Image
-Image('https://www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png')
-</code></pre>
+<h1 id="visualizing-country-strength-in-tennis">Visualizing Country Strength in Tennis</h1>
 
-<p><img src="./index_1_0.png" alt="png" /></p>
+<p>On the ATP side of tennis, the growth of Canadian representation at major tournaments has really taken off recently. By the end of the 2019 season Denis Shapovalov (age 20) ranked 15th, Felix Auger-Aliassime (age 19) ranked 21st and Milos Raonic (age 28) ranked 31st. Compared to a decade prior, it&rsquo;d be common to not see a single Canadian ranked in the top 100 in terms of singles play. The same can be said on the WTA side of tennis, where Canadian Bianca Andreescu (age 19) ranked 5th by the end of the 2019 season, and also brought home Canada&rsquo;s first grand slam champion (US Open). A decade prior, many of the top Canadian tennis players were not recognizable among the world&rsquo;s elite. So how far exactly have we come as a nation competing in Tennis? With some choropleth maps, we help answer this question!</p>
 
-<pre><code class="language-python">print(&quot;Welcome to Academic!&quot;)
-</code></pre>
+<p>How do we measure country strength in Tennis? We look directly at ranking points. Ranking points are awarded to players who win at big stages of the tennis season. In terms of tournaments, A tennis season can be broken down into Grand Slams, Masters 1000 and Masters 500/250s. The further along a player progresses through a tennis tournament, the more ranking points that player is awarded. For example, a player who wins a grand slam tournament is awarded 2000 points while the runner up is awarded 1200 ranking points. A player who wins a Master 1000 tournament is awarded 1000 points, while the runner up is awarded 600 ranking points.</p>
 
-<pre><code>Welcome to Academic!
-</code></pre>
+<p>For each player, the final ranking points of the season is computed as follows:</p>
 
-<h2 id="install-python-and-jupyterlab">Install Python and JupyterLab</h2>
+<p>Player scores for all 4 grand slam tournaments + Player score for all 8 Masters 1000 + Player&rsquo;s best 6 results from Master&rsquo;s <sup>500</sup>&frasl;<sub>250</sub> tournaments.
+For each season, we quantify each country&rsquo;s tennis strength by computing the total ranking points from players originating from the same country divided by the grand total ranking points of the season.</p>
 
-<p><a href="https://www.anaconda.com/distribution/#download-section" target="_blank">Install Anaconda</a> which includes Python 3 and JupyterLab.</p>
+<p>Using player ranking data from Oncourt, I&rsquo;ve processed the data to summarize the total relative contributing ranking points from each country. This is done by summing the yearly ranking points for players from each country, and then dividing by the total ranking points distributed for that year.</p>
 
-<p>Alternatively, install JupyterLab with <code>pip3 install jupyterlab</code>.</p>
+<h2 id="atp-analysis">ATP Analysis</h2>
 
-<h2 id="create-or-upload-a-jupyter-notebook">Create or upload a Jupyter notebook</h2>
+<p>Here is a static image from the 2019 season:</p>
 
-<p>Run the following commands in your Terminal, substituting <code>&lt;MY-WEBSITE-FOLDER&gt;</code> and <code>&lt;SHORT-POST-TITLE&gt;</code> with the file path to your Academic website folder and a short title for your blog post (use hyphens instead of spaces), respectively:</p>
+<p><img src="ATP.jpg" alt="" /></p>
 
-<pre><code class="language-bash">mkdir -p &lt;MY-WEBSITE-FOLDER&gt;/content/post/&lt;SHORT-POST-TITLE&gt;/
-cd &lt;MY-WEBSITE-FOLDER&gt;/content/post/&lt;SHORT-POST-TITLE&gt;/
-jupyter lab index.ipynb
-</code></pre>
+<p>The <a href="https://plot.ly/~petertea96/21/#/" target="_blank">interactive version</a> of this map shows exactly how the nation strength of tennis has shifted through time.</p>
 
-<p>The <code>jupyter</code> command above will launch the JupyterLab editor, allowing us to add Academic metadata and write the content.</p>
+<p>From 2003 – 2019, the ATP world has largely been dominated by Spain and USA. In recent years, Canada seems to be getting better and better!</p>
 
-<h2 id="edit-your-post-metadata">Edit your post metadata</h2>
+<h2 id="wta-analysis">WTA Analysis</h2>
 
-<p>The first cell of your Jupter notebook will contain your post metadata (<a href="https://sourcethemes.com/academic/docs/front-matter/" target="_blank">front matter</a>).</p>
+<p>Here is a static image from the 2019 season:</p>
 
-<p>In Jupter, choose <em>Markdown</em> as the type of the first cell and wrap your Academic metadata in three dashes, indicating that it is YAML front matter:</p>
+<p><img src="WTA.jpg" alt="" /></p>
 
-<pre><code>---
-title: My post's title
-date: 2019-09-01
+<p>The <a href="https://plot.ly/~petertea96/23/#/" target="_blank">interactive version</a> of this map shows exactly how the nation strength of tennis has shifted through time.</p>
 
-# Put any other Academic metadata here...
----
-</code></pre>
-
-<p>Edit the metadata of your post, using the <a href="https://sourcethemes.com/academic/docs/managing-content" target="_blank">documentation</a> as a guide to the available options.</p>
-
-<p>To set a <a href="https://sourcethemes.com/academic/docs/managing-content/#featured-image" target="_blank">featured image</a>, place an image named <code>featured</code> into your post&rsquo;s folder.</p>
-
-<p>For other tips, such as using math, see the guide on <a href="https://sourcethemes.com/academic/docs/writing-markdown-latex/" target="_blank">writing content with Academic</a>.</p>
-
-<h2 id="convert-notebook-to-markdown">Convert notebook to Markdown</h2>
-
-<pre><code class="language-bash">jupyter nbconvert index.ipynb --to markdown --NbConvertApp.output_files_dir=.
-</code></pre>
-
-<h2 id="example">Example</h2>
-
-<p>This post was created with Jupyter. The orginal files can be found at <a href="https://github.com/gcushen/hugo-academic/tree/master/exampleSite/content/post/jupyter" target="_blank">https://github.com/gcushen/hugo-academic/tree/master/exampleSite/content/post/jupyter</a></p>
+<p>From 2003 – 2019, the WTA world has largely been dominated by Russia and USA.</p>
 
     </div>
 
@@ -591,6 +570,16 @@ date: 2019-09-01
 
 
 
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/academic/">Academic</a>
+  
+  <a class="badge badge-light" href="/tags/demo/">Demo</a>
+  
+  <a class="badge badge-light" href="/tags/fun/">Fun</a>
+  
+</div>
 
 
 
@@ -605,7 +594,7 @@ date: 2019-09-01
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=/post/jupyter/&amp;text=Display%20Jupyter%20Notebooks%20with%20Academic" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=/post/choropleth/&amp;text=Visualizing%20Country%20Strength%20in%20Tennis" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -618,7 +607,7 @@ date: 2019-09-01
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=/post/jupyter/&amp;t=Display%20Jupyter%20Notebooks%20with%20Academic" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=/post/choropleth/&amp;t=Visualizing%20Country%20Strength%20in%20Tennis" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -631,7 +620,7 @@ date: 2019-09-01
       
       
       <li>
-        <a href="mailto:?subject=Display%20Jupyter%20Notebooks%20with%20Academic&amp;body=/post/jupyter/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Visualizing%20Country%20Strength%20in%20Tennis&amp;body=/post/choropleth/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -644,7 +633,7 @@ date: 2019-09-01
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=/post/jupyter/&amp;title=Display%20Jupyter%20Notebooks%20with%20Academic" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=/post/choropleth/&amp;title=Visualizing%20Country%20Strength%20in%20Tennis" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -657,7 +646,7 @@ date: 2019-09-01
       
       
       <li>
-        <a href="https://web.whatsapp.com/send?text=Display%20Jupyter%20Notebooks%20with%20Academic%20/post/jupyter/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="https://web.whatsapp.com/send?text=Visualizing%20Country%20Strength%20in%20Tennis%20/post/choropleth/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -670,7 +659,7 @@ date: 2019-09-01
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=/post/jupyter/&amp;title=Display%20Jupyter%20Notebooks%20with%20Academic" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=/post/choropleth/&amp;title=Visualizing%20Country%20Strength%20in%20Tennis" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -783,6 +772,21 @@ date: 2019-09-01
 
 
   
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/hugo-academic-cheatsheet/">Hugo-Academic CheatSheet</a></li>
+      
+      <li><a href="/post/scraping-basketball-reference/">Scraping data from Basketball-Reference with Selector Gadget</a></li>
+      
+      <li><a href="/talk/uottawa-summer-2017/">An introduction to ANOVA, with application to a Cholesterol dataset</a></li>
+      
+      <li><a href="/talk/cucoh/">A Genetic Association Study Comparing Kernel-based Methods, with Application to Crohn&#39;s Disease</a></li>
+      
+    </ul>
+  </div>
   
 
 
