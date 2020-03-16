@@ -5,7 +5,7 @@
     <link>/authors/</link>
       <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
     <description>Authors</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright><lastBuildDate>Mon, 20 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright><lastBuildDate>Mon, 16 Mar 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Authors</title>
@@ -15,20 +15,12 @@
     <item>
       <title></title>
       <link>/authors/admin/</link>
-      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
       <guid>/authors/admin/</guid>
       <description>&lt;p&gt;I am currently completing my Master&amp;rsquo;s degree under the supervision of &lt;a href=&#34;http://people.stat.sfu.ca/~tim/&#34; target=&#34;_blank&#34;&gt;Tim Swartz&lt;/a&gt; with a &lt;a href=&#34;https://www.nserc-crsng.gc.ca/index_eng.asp&#34; target=&#34;_blank&#34;&gt;Natural Sciences and Engineering Research Council of Canada’s&lt;/a&gt; (NSERC) Graduate Scholarship. I work as an R facilitator at the &lt;a href=&#34;https://www.lib.sfu.ca/about/branches-depts/rc&#34; target=&#34;_blank&#34;&gt;Research Commons&lt;/a&gt; of SFU, providing R code consultations to graduate students for their research projects, as well as running R workshops.&lt;/p&gt;
 
 &lt;p&gt;In the past, I&amp;rsquo;ve been fortunate to hold positions as a Statistical Genetics researcher under the supervision of &lt;a href=&#34;https://mysite.science.uottawa.ca/kburkett/&#34; target=&#34;_blank&#34;&gt;Kelly Burkett&lt;/a&gt;, as well as a Data Scientist at the &lt;a href=&#34;https://www.canada.ca/en/revenue-agency.html&#34; target=&#34;_blank&#34;&gt;Canada Revenue Agency&lt;/a&gt;.&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Robert Ford</title>
-      <link>/authors/robert-ford/</link>
-      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
-      <guid>/authors/robert-ford/</guid>
-      <description></description>
     </item>
     
   </channel>
