@@ -45,7 +45,7 @@ summary: Predicting All-NBA Team
 <p>We first present code on collecting end-of season box-score statistics (<em>per 100 possessions</em>), and saving them into <code>.RDS</code> files using the bballR R package. We decide to only keep player seaason records where the player played at least 100 minutes. We add in this criterion since having players who play limited minutes are likely not going to be considered for the All-NBA teams.</p>
 <pre class="r"><code>##### --------------- Using bballR package to scrape historical data --------------- #####
 
-setwd(&quot;/Users/petertea/Documents/NBA/Data&quot;)
+setwd(&quot;~/Documents/Sports-Analytics/NBA/Data&quot;)
 # --&gt; Set current working directory to where we want to save data
 
 # Use the bballR package to gather some end of season boxscore stats
@@ -162,17 +162,10 @@ scraped_data &lt;- my_url %&gt;%
   html_text()
 
 # Remove the &quot;Rk&quot; column from data
-Rk_ind &lt;- which(scraped_data == &quot;Rk&quot;)[-1]
+#Rk_ind &lt;- which(scraped_data == &quot;Rk&quot;)[-1]
 
-#Remove all unnecessary bits
-to_remove = c()
-for ( i in Rk_ind){
-  to_remove = c(to_remove, i:(i+31))
-}
 
-scraped_data &lt;- scraped_data[-to_remove]
-
-each_row &lt;- seq(from = 33, to = 15906,  by = 32)
+each_row &lt;- seq(from = 33, to = length(scraped_data) - 32,  by = 32)
 col_names = scraped_data[1:32]
 
 dat = matrix(ncol = 32)
@@ -184,9 +177,14 @@ for (i in each_row){
 colnames(dat) &lt;- col_names
 
 Current_season_dat &lt;- as.data.frame(dat, stringsAsFactors = FALSE)
+Current_season_dat &lt;- Current_season_dat[-which(Current_season_dat$Rk == &quot;Rk&quot;), ]
+
+
 Current_season_dat[c(4, 6:32)] &lt;- sapply(Current_season_dat[c(4, 6:32)], as.numeric)
 
-saveRDS(Current_season_dat, file = &quot;Current_season_dat.RDS&quot;)</code></pre>
+Current_season_dat &lt;- Current_season_dat[-1, -30]
+
+saveRDS(Current_season_dat, file = &quot;~/Documents/Sports-Analytics/NBA/Data/Current_season_dat.RDS&quot;)</code></pre>
 </div>
 </div>
 <div id="exploratory-data-analysis" class="section level2">
@@ -206,10 +204,6 @@ saveRDS(Current_season_dat, file = &quot;Current_season_dat.RDS&quot;)</code></p
 <li>ORtg: Offensive rating (An estimate of points produced per 100 possessions)</li>
 <li>DRtg: Defensive rating (An estimate of points allowed per 100 possessions)</li>
 </ul>
-<pre class="r"><code># Read in our Data:
-Historical_dat_1990_2019 &lt;-readRDS(&quot;/Users/petertea/Documents/NBA/Data/Historical_dat_1989_2019.RDS&quot;)
-
-Current_season_dat &lt;- readRDS(&quot;/Users/petertea/Documents/NBA/Data/Current_season_dat.RDS&quot;)</code></pre>
 <pre class="r"><code>###########
 # --&gt; Exploratory correlation plot b/n variables
 library(ggcorrplot)
@@ -232,7 +226,9 @@ ggcorrplot(corr_mat, type = &quot;lower&quot;, colors = c(&quot;#FF0000&quot;, &
 <div id="fitting-gam-models" class="section level2">
 <h2>Fitting GAM Models <a name="GAM"></a></h2>
 <p>To predict whether a player will be selected or not for an All-NBA team, we use GAM models. In the context of our problem, a GLM (i.e. logistic regression) could be used to estimate the log odds (a function of a success probability) of a player reaching All-NBA status, given his in season performance. However, GLM models assume a linear relationship (i.e. a parametric form) between the covariates and the log-odds of All-NBA selection which may not be true. GAM models on the other hand do not assume a priori any specific structure for the relationship between boxscore stats and the outcome of All-NBA selection. In fact, GAMs can be used to model non-linear effects of the covariates on the response variable. In a sense, we can consider GAM models as a more flexible version of GLM models. GAMs have the abililty to model these non-linear relationships using spline functions. More information on GAMs can be found <a href="https://christophm.github.io/interpretable-ml-book/extend-lm.html">here</a>.</p>
-<p>Since the relationship between our proposed covariates and the outcome of All-NBA selection may be different based on position (eg: Assists and steals may be more important for Guards, while blocks and rebounds may be more important for Centers), we fit 3 seperate GAM models for the Guard, Forward and Center positions.</p>
+<!--
+Since the relationship between our proposed covariates and the outcome of All-NBA selection may be different based on position (eg: Assists and steals may be more important for Guards, while blocks and rebounds may be more important for Centers), we fit 3 seperate GAM models for the Guard, Forward and Center positions.
+-->
 <p>To further reduce noise, we also only chose to look at player season records where the player played atleast 5 games (in addition to playing at least 100 total minutes). The rationale is that players who do not meet the above criteria are likely not considered from All-NBA selection.</p>
 <pre class="r"><code>Historical_dat_1990_2019 &lt;- Historical_dat_1990_2019 %&gt;%
   filter(G &gt; 5 &amp; MP &gt; 100)</code></pre>
@@ -250,41 +246,83 @@ possible_years &lt;- 1990:2019
 
 test_years &lt;- sort(sample(x=possible_years, size = 9))
 
-train_years &lt;- sort(possible_years[is.na(pmatch(possible_years, test_years))])</code></pre>
-<div id="guards-gam-model" class="section level3">
-<h3>Guards GAM Model</h3>
-<p>Here is the fitting of a GAM model to the Guards belonging to our training set.</p>
-<pre class="r"><code>###### ----- Guards GAM Model Analysis ----- #####
-Guards_train_dat &lt;- Historical_dat_1990_2019 %&gt;%
-  filter(New_Pos == &quot;G&quot; &amp; Year %in% train_years)
-
-Guards_test_dat &lt;- Historical_dat_1990_2019 %&gt;%
-  filter(New_Pos == &quot;G&quot; &amp; Year %in% test_years)
+train_years &lt;- sort(possible_years[is.na(pmatch(possible_years, test_years))])
 
 
-# Build model and assess predictive ability:
+train_dat &lt;- Historical_dat_1990_2019 %&gt;%
+  filter(Year %in% train_years) %&gt;%
+  select(New_Pos, PTS, AST, STL, BLK, MP, ORB, DRB, TOV, PF, ORtg, DRtg, FT, FG, FGA, Year,
+         Player, ALL_NBA)
 
-# --&gt; Guards GAM Model
-guards_mod &lt;- gam(ALL_NBA ~ s(PTS) + s(AST) + s(STL) + s(BLK) + s(MP) + 
-                    s(ORB) + s(DRB) + s(TOV) + s(PF) + s(ORtg) + s(DRtg) + 
-                    s(FT) + s(FG) + s(FGA),
-                  data = Guards_train_dat,
-                  family = binomial,
-                  method = &quot;REML&quot;)
+test_dat &lt;- Historical_dat_1990_2019 %&gt;%
+  filter(Year %in% test_years)  %&gt;%
+  select(New_Pos, PTS, AST, STL, BLK, MP, ORB, DRB, TOV, PF, ORtg, DRtg, FT, FG, FGA, Year,
+         Player, ALL_NBA)</code></pre>
+<div id="gam-model" class="section level3">
+<h3>GAM Model</h3>
+<p>Here is the fitting of a GAM model to our training set.</p>
+<pre class="r"><code>library(mgcv)
 
-# --&gt; Use fitted model on testing dataset
-# --&gt; Predict probabilities of All-NBA selection
-predicted_probs &lt;- predict(guards_mod, Guards_test_dat, type = &quot;response&quot;)  
+gen_mod =  gam(ALL_NBA ~ s(PTS) + s(AST) + s(STL) + s(BLK) + s(MP) + 
+                 s(ORB) + s(DRB) + s(TOV) + s(PF) + s(ORtg) + s(DRtg) + 
+                 s(FT) + s(FG) + s(FGA) + New_Pos,
+               data = train_dat,
+               family = binomial,
+               method = &quot;REML&quot;)</code></pre>
+<pre class="r"><code>summary(gen_mod)</code></pre>
+<pre><code>## 
+## Family: binomial 
+## Link function: logit 
+## 
+## Formula:
+## ALL_NBA ~ s(PTS) + s(AST) + s(STL) + s(BLK) + s(MP) + s(ORB) + 
+##     s(DRB) + s(TOV) + s(PF) + s(ORtg) + s(DRtg) + s(FT) + s(FG) + 
+##     s(FGA) + New_Pos
+## 
+## Parametric coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept) -11.1535     0.7598 -14.679   &lt;2e-16 ***
+## New_PosF     -0.2974     0.4063  -0.732   0.4643    
+## New_PosG     -1.2459     0.6069  -2.053   0.0401 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Approximate significance of smooth terms:
+##           edf Ref.df Chi.sq  p-value    
+## s(PTS)  1.000  1.001  7.245  0.00713 ** 
+## s(AST)  1.535  1.913 24.477 4.54e-05 ***
+## s(STL)  3.018  3.744  7.469  0.09130 .  
+## s(BLK)  1.000  1.000  0.318  0.57274    
+## s(MP)   1.150  1.284 92.432  &lt; 2e-16 ***
+## s(ORB)  1.000  1.000  2.993  0.08364 .  
+## s(DRB)  4.690  5.756 12.732  0.02963 *  
+## s(TOV)  1.000  1.000  0.015  0.90325    
+## s(PF)   1.000  1.000 15.933 6.56e-05 ***
+## s(ORtg) 1.000  1.000  5.875  0.01536 *  
+## s(DRtg) 1.398  1.709 94.097  &lt; 2e-16 ***
+## s(FT)   2.993  3.777  9.284  0.03331 *  
+## s(FG)   4.296  5.246 16.078  0.00838 ** 
+## s(FGA)  2.676  3.457  5.696  0.16203    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## R-sq.(adj) =  0.703   Deviance explained = 78.4%
+## -REML = 331.67  Scale est. = 1         n = 9289</code></pre>
+<p>The summary of our fitted Guards GAM model is shown below. To inspect the degree of <code>wiggliness</code> in our fitted model, we look at the edf (estimated degrees of freedom). Terms with edf values equal to 1 represent fitted splines which are linear; edf values equal to 2 represent fitted splines which are quadratic; larger edf values represent splines that are increasingly non-linear (i.e. higher EDF value implies more complex splines). In our model, the 5 statistically significant covariates (at level 5%) all have edf &gt; 1.</p>
+<p>From the summary of this GAM model, we see that <code>Assists</code> <code>Minutes</code> and <code>Defensive Rating</code> were the strongest influencers on whether a player was awarded All-NBA. Additionally, 78.4 % of the deviance was explained by this model.</p>
+</div>
+</div>
+<div id="evaluating-gam-model-performance" class="section level2">
+<h2>Evaluating GAM Model Performance</h2>
+<p>Using our fitted model, we now predict how well it classifies All-NBA selection in our testing set.</p>
+<pre class="r"><code>predicted_probs &lt;- predict(gen_mod, test_dat, type = &quot;response&quot;)  
 
-Results_G_dat &lt;- cbind(Guards_test_dat, predicted_probs)
-
-# How many of our classifications are correct?
-# Each year, 6 guards win an All-NBA selection
+Results_dat &lt;- cbind(test_dat, predicted_probs)
 
 correct_G_vector &lt;- vector()
 for(year in test_years){
-  how_many &lt;- Results_G_dat %&gt;%
-    filter(Year == year) %&gt;%
+  how_many &lt;- Results_dat %&gt;%
+    filter(Year == year &amp; New_Pos == &quot;G&quot;) %&gt;%
     arrange(desc(predicted_probs)) %&gt;%
     select(ALL_NBA) %&gt;%
     head(6) %&gt;%
@@ -293,81 +331,12 @@ for(year in test_years){
   correct_G_vector &lt;- append(correct_G_vector, how_many)
 }
 names(correct_G_vector) &lt;- test_years
-correct_G_vector
-sum(correct_G_vector/ (9*6))</code></pre>
-<p>The summary of our fitted Guards GAM model is shown below. To inspect the degree of <code>wiggliness</code> in our fitted model, we look at the edf (estimated degrees of freedom). Terms with edf values equal to 1 represent fitted splines which are linear; edf values equal to 2 represent fitted splines which are quadratic; larger edf values represent splines that are increasingly non-linear (i.e. higher EDF value implies more complex splines). In our model, the 5 statistically significant covariates (at level 5%) all have edf &gt; 1.</p>
-<div class="figure">
-<img src="guards_summary.png" alt="Guards_Summary" />
-<p class="caption">Guards_Summary</p>
-</div>
-<p>From the summary of this Guards GAM model, we see that <code>Assists</code> <code>Minutes</code> and <code>Defensive Rating</code> were the strongest influencers on whether a guard was awarded All-NBA. Additionally, 80.4 % of the deviance was explained by this model. Using our fitted model, we predict how well it classifies All-NBA selection in our testing set.</p>
-<table>
-<thead>
-<tr class="header">
-<th>Testing set Year</th>
-<th>1990</th>
-<th>1993</th>
-<th>1994</th>
-<th>1996</th>
-<th>1999</th>
-<th>2000</th>
-<th>2002</th>
-<th>2005</th>
-<th>2010</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>No. correct classifications</td>
-<td>5</td>
-<td>5</td>
-<td>3</td>
-<td>4</td>
-<td>4</td>
-<td>3</td>
-<td>5</td>
-<td>5</td>
-<td>5</td>
-</tr>
-</tbody>
-</table>
-<p>Since 6 guards are chosen for All- NBA each year, our predictions correspond to an overall classification rate of 72 % in the testing dataset.</p>
-</div>
-<div id="forwards-gam-model" class="section level3">
-<h3>Forwards GAM Model</h3>
-<p>Here is the fitting of a GAM model to the Forwards belonging to our training set.</p>
-<pre class="r"><code>###### ----- Forwards GAM Model Analysis ----- #####
-Forwards_train_dat &lt;- Historical_dat_1990_2019 %&gt;%
-  filter(New_Pos == &quot;F&quot; &amp; Year %in% train_years)
-
-
-Forwards_test_dat &lt;- Historical_dat_1990_2019 %&gt;%
-  filter(New_Pos == &quot;F&quot; &amp; Year %in% test_years)
-
-
-# Build model and assess predictive ability:
-
-# --&gt; Forwards GAM Model
-Forwards_mod &lt;- gam(ALL_NBA ~ s(PTS) + s(AST) + s(STL) + s(BLK) + s(MP) + 
-                    s(ORB) + s(DRB) + s(TOV) + s(PF) + s(ORtg) + s(DRtg) + 
-                    s(FT) + s(FG) + s(FGA),
-                  data = Forwards_train_dat,
-                  family = binomial,
-                  method = &quot;REML&quot;)
-
-# --&gt; Use fitted model on testing dataset
-# --&gt; Predict probabilities of All-NBA selection
-predicted_probs &lt;- predict(Forwards_mod, Forwards_test_dat, type = &quot;response&quot;)  
-
-Results_F_dat &lt;- cbind(Forwards_test_dat, predicted_probs)
-
-# How many of our classifications are correct?
-# Each year, 6 guards win an All-NBA selection
+#correct_G_vector
 
 correct_vector_F &lt;- vector()
 for(year in test_years){
-  how_many &lt;- Results_F_dat %&gt;%
-    filter(Year == year) %&gt;%
+  how_many &lt;- Results_dat %&gt;%
+    filter(Year == year &amp; New_Pos == &quot;F&quot;) %&gt;%
     arrange(desc(predicted_probs)) %&gt;%
     select(ALL_NBA) %&gt;%
     head(6) %&gt;%
@@ -376,79 +345,14 @@ for(year in test_years){
   correct_vector_F &lt;- append(correct_vector_F, how_many)
 }
 names(correct_vector_F) &lt;- test_years
-correct_vector_F
-sum(correct_vector_F/ (9*6))</code></pre>
-<p><img src="forwards_summary.png" alt="Forward_summary" />
-From the summary of this Forwards GAM model, we see that <code>Minutes</code>, <code>Defensive Rating</code> and <code>Offensive Rating</code> were the strongest influencers on whether a forward was awarded All-NBA. Additionally, 80.9 % of the deviance was explained by this model. Using our fitted model, we predict how well it classifies Forward All-NBA selection in our testing set.</p>
-<table>
-<thead>
-<tr class="header">
-<th>Testing set Year</th>
-<th>1990</th>
-<th>1993</th>
-<th>1994</th>
-<th>1996</th>
-<th>1999</th>
-<th>2000</th>
-<th>2002</th>
-<th>2005</th>
-<th>2010</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>No. correct classifications</td>
-<td>4</td>
-<td>5</td>
-<td>4</td>
-<td>5</td>
-<td>4</td>
-<td>6</td>
-<td>3</td>
-<td>5</td>
-<td>5</td>
-</tr>
-</tbody>
-</table>
-<p>Since 6 forwards are chosen for All- NBA each year, our predictions correspond to an overall classification rate of 76 % in the testing dataset.</p>
-</div>
-<div id="centers-gam-model" class="section level3">
-<h3>Centers GAM Model</h3>
-<p>Here is the fitting of a GAM model to the Forwards belonging to our training set.</p>
-<pre class="r"><code>###### ----- Centers GAM Model Analysis ----- #####
+#correct_vector_F
 
-Centers_train_dat &lt;- Historical_dat_1990_2019 %&gt;%
-  filter(New_Pos == &quot;C&quot; &amp; Year %in% train_years)
-
-
-Centers_test_dat &lt;- Historical_dat_1990_2019 %&gt;%
-  filter(New_Pos == &quot;C&quot; &amp; Year %in% test_years)
-
-
-# Build model and assess predictive ability:
-
-# --&gt; Center GAM Model
-Centers_mod &lt;- gam(ALL_NBA ~ s(PTS) + s(AST) + s(STL) + s(BLK) + s(MP) + 
-                      s(ORB) + s(DRB) + s(TOV) + s(PF) + s(ORtg) + s(DRtg) + 
-                      s(FT) + s(FG) + s(FGA),
-                    data = Centers_train_dat,
-                    family = binomial,
-                    method = &quot;REML&quot;)
-
-# --&gt; Use fitted model on testing dataset
-# --&gt; Predict probabilities of All-NBA selection
-predicted_probs_C &lt;- predict(Centers_mod, Centers_test_dat, type = &quot;response&quot;)  
-
-Results_C_dat &lt;- cbind(Centers_test_dat, predicted_probs_C)
-
-# How many of our classifications are correct?
-# Each year, 3 Centers win an All-NBA selection
 
 correct_vector_C &lt;- vector()
 for(year in test_years){
-  how_many &lt;- Results_C_dat %&gt;%
-    filter(Year == year) %&gt;%
-    arrange(desc(predicted_probs_C)) %&gt;%
+  how_many &lt;- Results_dat %&gt;%
+    filter(Year == year &amp; New_Pos == &quot;C&quot;) %&gt;%
+    arrange(desc(predicted_probs)) %&gt;%
     select(ALL_NBA) %&gt;%
     head(3) %&gt;%
     sum()
@@ -456,48 +360,128 @@ for(year in test_years){
   correct_vector_C &lt;- append(correct_vector_C, how_many)
 }
 names(correct_vector_C) &lt;- test_years
-correct_vector_C
-sum(correct_vector_C/ (9*3))</code></pre>
-<p><img src="centers_summary.png" alt="Centers_summary" />
-From the summary of this Centers GAM model, we see that <code>Minutes</code>, <code>Defensive Rating</code> and <code>Field Goal Attempts</code> were the strongest influencers on whether a guard was awarded All-NBA. Additionally, 80.4 % of the deviance was explained by this model. Using our fitted model, we predict how well it classifies All-NBA selection in our testing set.</p>
+#correct_vector_C</code></pre>
+<div id="guards-result" class="section level3">
+<h3>Guards Result</h3>
 <table>
+<caption>(#tab:guards_res)Classification Rate of Guards</caption>
 <thead>
 <tr class="header">
-<th>Testing set Year</th>
-<th>1990</th>
-<th>1993</th>
-<th>1994</th>
-<th>1996</th>
-<th>1999</th>
-<th>2000</th>
-<th>2002</th>
-<th>2005</th>
-<th>2010</th>
+<th align="right">1990</th>
+<th align="right">1993</th>
+<th align="right">1994</th>
+<th align="right">1996</th>
+<th align="right">1999</th>
+<th align="right">2000</th>
+<th align="right">2002</th>
+<th align="right">2005</th>
+<th align="right">2010</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>No. correct classifications</td>
-<td>3</td>
-<td>3</td>
-<td>3</td>
-<td>2</td>
-<td>1</td>
-<td>3</td>
-<td>3</td>
-<td>2</td>
-<td>3</td>
+<td align="right">5</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">5</td>
+<td align="right">5</td>
+<td align="right">4</td>
+<td align="right">4</td>
 </tr>
 </tbody>
 </table>
-<p>Since 3 centers are chosen for All- NBA each year, our predictions correspond to an overall classification rate of 85 % in the testing dataset.</p>
-<pre class="r"><code>sum(correct_G_vector + correct_vector_F + correct_vector_C)/(15*9)</code></pre>
+<!--
+Testing set Year |1990 | 1993 | 1994 | 1996 | 1999 | 2000 | 2002 | 2005 | 2010 | 
+|---|---|---|---|---|---|---|---|---|---|
+No. correct classifications |  5   | 4   | 3 |   4   | 4 |   5 |   5 |   4 |   4 |
+-->
+<p>In the above table, we present the number of correct players classified into the All-NBA team. Note that each year, 6 guards are chosen for All- NBA. The results indicate an overall classification rate of 70 % in the testing dataset.</p>
+</div>
+<div id="forwards-result" class="section level3">
+<h3>Forwards Result</h3>
+<table>
+<caption>(#tab:forwards_res)Classification Rate of Forwards</caption>
+<thead>
+<tr class="header">
+<th align="right">1990</th>
+<th align="right">1993</th>
+<th align="right">1994</th>
+<th align="right">1996</th>
+<th align="right">1999</th>
+<th align="right">2000</th>
+<th align="right">2002</th>
+<th align="right">2005</th>
+<th align="right">2010</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">4</td>
+<td align="right">6</td>
+<td align="right">4</td>
+<td align="right">5</td>
+<td align="right">4</td>
+<td align="right">6</td>
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="right">4</td>
+</tr>
+</tbody>
+</table>
+<!--
+Testing set Year |1990 | 1993 | 1994 | 1996 | 1999 | 2000 | 2002 | 2005 | 2010 | 
+|---|---|---|---|---|---|---|---|---|---|
+No. correct classifications |  4   | 6   | 4 |   5   | 4 |   6 |   3 |   5 |   5 |
+-->
+<p>In the above table, we present the number of correct players classified into the All-NBA team. Note that each year, 6 forwardss are chosen for All- NBA. The results indicate an overall classification rate of 76 % in the testing dataset.</p>
+</div>
+<div id="centers-result" class="section level3">
+<h3>Centers Result</h3>
+<table>
+<caption>(#tab:centers_res)Classification Rate of Centers</caption>
+<thead>
+<tr class="header">
+<th align="right">1990</th>
+<th align="right">1993</th>
+<th align="right">1994</th>
+<th align="right">1996</th>
+<th align="right">1999</th>
+<th align="right">2000</th>
+<th align="right">2002</th>
+<th align="right">2005</th>
+<th align="right">2010</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">3</td>
+</tr>
+</tbody>
+</table>
+<!--
+Testing set Year |1990 | 1993 | 1994 | 1996 | 1999 | 2000 | 2002 | 2005 | 2010 | 
+|---|---|---|---|---|---|---|---|---|---|
+No. correct classifications |  3   | 3   | 3 |   2   | 1 |   3 |   3 |   2 |   3 |
+-->
+<p>In the above table, we present the number of correct players classified into the All-NBA team. Note that each year, 3 centers are chosen for All- NBA. The results indicate an overall classification rate of 89 % in the testing dataset.</p>
+<p>Overall, we have correctly classified the recipients of the All-NBA section 80 % of the time.</p>
 </div>
 </div>
-<div id="model-inference" class="section level2">
-<h2>Model inference</h2>
-<p>Which boxscore statistics best predicts</p>
+<div id="whos-taking-the-all-nba-this-year" class="section level2">
+<h2>Who’s taking the All-NBA this year?</h2>
 <p>Given the results, we present the following 1st, 2nd and 3rd All-NBA-Teams:</p>
+<div id="all-nba-1st-team" class="section level3">
+<h3>All-NBA 1st Team</h3>
 <table>
 <thead>
 <tr class="header">
@@ -508,31 +492,119 @@ From the summary of this Centers GAM model, we see that <code>Minutes</code>, <c
 </thead>
 <tbody>
 <tr class="odd">
-<td></td>
+<td>Luka Dončić</td>
 <td>G</td>
-<td></td>
+<td>96 %</td>
 </tr>
 <tr class="even">
-<td></td>
+<td>James Harden</td>
 <td>G</td>
-<td></td>
+<td>85 %</td>
 </tr>
 <tr class="odd">
 <td>Giannis Antetokounmpo</td>
 <td>F</td>
-<td></td>
+<td>100 %</td>
 </tr>
 <tr class="even">
-<td></td>
+<td>*LeBron James</td>
 <td>F</td>
-<td></td>
+<td>97 %</td>
 </tr>
 <tr class="odd">
-<td></td>
+<td>Anthony Davis</td>
 <td>C</td>
-<td></td>
+<td>87 %</td>
 </tr>
 </tbody>
 </table>
+</div>
+<div id="all-nba-2nd-team" class="section level3">
+<h3>All-NBA 2nd Team</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Player</th>
+<th>Position</th>
+<th>Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Damian Lillard</td>
+<td>G</td>
+<td>55 %</td>
+</tr>
+<tr class="even">
+<td>Trae Young</td>
+<td>G</td>
+<td>36 %</td>
+</tr>
+<tr class="odd">
+<td>Kawhi Leonard</td>
+<td>F</td>
+<td>89 %</td>
+</tr>
+<tr class="even">
+<td>Khris Middleton</td>
+<td>F</td>
+<td>17 %</td>
+</tr>
+<tr class="odd">
+<td>Nikola Jokic</td>
+<td>C</td>
+<td>64 %</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="all-nba-3rd-team" class="section level3">
+<h3>All-NBA 3rd Team</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Player</th>
+<th>Position</th>
+<th>Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>**Bradley Beal</td>
+<td>G</td>
+<td>11 %</td>
+</tr>
+<tr class="even">
+<td>Russell Westbrook</td>
+<td>G</td>
+<td>5 %</td>
+</tr>
+<tr class="odd">
+<td>Jimmy Butler</td>
+<td>F</td>
+<td>6 %</td>
+</tr>
+<tr class="even">
+<td>Jayson Tatum</td>
+<td>F</td>
+<td>6 %</td>
+</tr>
+<tr class="odd">
+<td>Joel Embiid</td>
+<td>C</td>
+<td>19 %</td>
+</tr>
+</tbody>
+</table>
+<p>*While Lebron was coded as a <code>Guard</code>, we will treat him as a Forward in our projections.</p>
+<p>**We note that Kyrie Irving was actually given the 5th highest fitted value among guards (15 % chance of All-NBA Selection). However, due to his season-ending shoulder-injury, it is unlikely that he would be considered for this award by the end of the season.</p>
+<p>Notable Omissions:</p>
+<ul>
+<li><p>Guards: Devin Booker (5 %), Zach Lavine (4 %), Donovan Mitchell (3 %), Kemba Walker (2 %), Chris Paul (2 %), Ben Simmons ( &lt; 1 %)</p></li>
+<li><p>Forwards: Bam Adebayo (3 %), Pascal Siakam (2 %), Paul George (2 %), Demar Derozan (1 %)</p></li>
+<li><p>Centers: Karl-Anthony Towns (13 %)</p></li>
+</ul>
+<p>Are there any major snubs from the model? While Devin Booker has put up some stellar numbers (34.2 PTS / 8.6 AST / 5.5 REBS per 100 Possessions), and Chris Paul’s OKC Thunder are surprising everybody out west (currently 5th place with a 40-24 record), it’s tough to exclude any of the guards from the list. Interestingly enough, of the players predicted to win an All-NBA selection, only 1 did not make this year’s All-Star Team (<code>Bradley Beal</code>). Speaking of the All-Star Team, which All-Stars did not get a nod for the All-NBA teams? Among the starters, we are missing: Pascal Siakam and Kemba Walker. Among the reserves, we are missing: Kyle Lowry, Ben Simmons, Bam Adebayo, Domantas Sabonis, Chris Paul, Donovan Mitchell, Brandom Ingram, Rudy Gobert, and Devin Booker.</p>
+</div>
 </div>
 </div>
