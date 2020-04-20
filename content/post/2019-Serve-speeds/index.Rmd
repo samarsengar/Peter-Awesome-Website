@@ -1,7 +1,7 @@
 ---
 title: Analysing the Tennis Serve Power vs. Consistency Tradeoff
 author: Peter Tea
-date: '2020-01-06'
+date: '2020-03-26'
 categories:
   - Tennis
 tags:
@@ -50,32 +50,53 @@ library(ggplot2)
 library(ggrepel)
 ```
 
-```{r functions, echo=FALSE,warning=FALSE}
-source("/Users/petertea/Documents/Sports-Analytics/Create_serve_plots.R")
-source("/Users/petertea/Documents/Sports-Analytics/Tennis_Collection_functions.R")
+```{r functions, echo=FALSE,warning=FALSE, cache = TRUE}
+source("/Users/petertea/Documents/Sports-Analytics/Serve Speeds/Create_serve_plots.R")
+source("/Users/petertea/Documents/Sports-Analytics/Serve Speeds/Tennis_Collection_functions.R")
 
 ```
 
 ## Observed 1st Serve Speed vs. 2nd Serve Speed at the 2019 Wimbledon Tournament 
-```{r table, echo=FALSE}
+```{r table, echo=FALSE, eval = FALSE}
 RF_2019_Wim <- get_slam_serve(Player = "Roger Federer",
-                              year = 2019, tournament = "wimbledon")
+                              year = 2019, tournament = "wimbledon") %>%
+  filter(ServeNumber >0 & Speed_KMH > 0 )
 
-p_RF = create_serve_plot(my_data = RF_2019_Wim, Player = "Roger Federer", year = 2019, tournament = "wimbledon",
-                      hp1 = 0.5, hp2 =3.25, vp1 = 2, vp2 = 2, x1=110, x2=210 )
+p_RF = create_serve_plot(my_data = RF_2019_Wim, 
+                         Player = "Roger Federer", year = 2019, 
+                         tournament = "wimbledon" )
+
+png("RF_2019_Wim.png", units="in", width=7, height=4, res=140)  
+p_RF
+dev.off()
+
+
 
 NJ_2019_Wim <- get_slam_serve(Player = "Novak Djokovic", 
-                              year = 2019, tournament = "wimbledon")
-p_NJ = create_serve_plot(my_data = NJ_2019_Wim, Player = "Novak Djokovic", year = 2019, tournament = "wimbledon",
-                      hp1 = 0.4, hp2 =3.25, vp1 = -2, vp2 = -2)
+                              year = 2019, tournament = "wimbledon") %>%
+  filter(ServeNumber >0 & Speed_KMH > 0 )
+
+p_NJ = create_serve_plot(my_data = NJ_2019_Wim, Player = "Novak Djokovic", year = 2019, 
+                         tournament = "wimbledon")
 #p_NJ <- p_NJ + scale_x_continuous(breaks = seq(min(NJ_2019_Wim$Speed_KMH),
 #                                    max(NJ_2019_Wim$Speed_KMH), by = 10))
+
+png("NJ_2019_Wim.png", units="in", width=7, height=4, res=140)  
+p_NJ
+dev.off()
+
 RN_2019_Wim <- get_slam_serve(Player = "Rafael Nadal", 
-                              year = 2019, tournament = "wimbledon")
-p_RN = create_serve_plot(my_data = RN_2019_Wim, Player = "Rafael Nadal", year = 2019, tournament = "wimbledon",
-                      hp1 = 0.25, hp2 =3.25, vp1 = 2, vp2 = 2.1, y=0.06)
+                              year = 2019, tournament = "wimbledon") %>%
+  filter(ServeNumber >0 & Speed_KMH > 0 )
+
+p_RN = create_serve_plot(my_data = RN_2019_Wim, Player = "Rafael Nadal",
+                         year = 2019, tournament = "wimbledon", y=0.06)
 #p_RN <- p_RN + scale_x_continuous(breaks = seq(min(NJ_2019_Wim$Speed_KMH),
 #                                    max(NJ_2019_Wim$Speed_KMH), by = 10))
+
+png("RN_2019_Wim.png", units="in", width=7, height=4, res=140)  
+p_RN
+dev.off()
 ```
 
 As an exploratory step, we first plot the observed distributions of 1st serve speeds compared to 2nd serve speeds during the 2019 Wimbledon tournament. Since tennis serves are unique for each individual player, we provide plots of tennis serve speeds for each player of interest. On the x-axis, we have the serve speed in kilometres per hour, and on the y-axis we have the observed density (i.e. the proportion of each observed serve speed). For each plot, the distribution of 1st serve speeds are plotted in green while the distribution of 2nd serve speeds are plotted in orange. On the plots, we also present the average 1st serve and 2nd serve speeds with vertical dashed lines.
@@ -83,12 +104,11 @@ As an exploratory step, we first plot the observed distributions of 1st serve sp
 ### ATP Wimbledon 2019 Serve Speeds
 Starting with the ATP players, we present the following serve speed distribution plots:
 
-```{r pressure2,echo=FALSE,  warning=FALSE}
-#gridExtra::grid.arrange(p_RN, p_RF, p_NJ, ncol=2)
-p_RN
-p_RF
-p_NJ
-```
+![](RN_2019_Wim.png)
+
+![](RF_2019_Wim.png)
+![](NJ_2019_Wim.png)
+
 
 Note: From the dataset, both Novak and Roger played 7 matches while Rafa played 6 matches (Federer defeated Nadal in the semifinals, before falling to Djokovic in the finals).
 
@@ -110,6 +130,8 @@ Note: From the dataset, both Novak and Roger played 7 matches while Rafa played 
 ```
 
 
+
+
 From the above 3 graphics, we make some simple remarks:
 
 - For all 3 ATP players, the 1st serve distribution is left skewed, while the 2nd serve speed distribution appears more symmetric. The 1st serve skewed distribution indicates that on 1st serve, these 3 ATP players frequently serve at faster speeds than their average serve speed.
@@ -126,21 +148,36 @@ From the above 3 graphics, we make some simple remarks:
 Moving on to the women's game, we observe similar patterns when we look at the 2 WTA players who reached the Wimbledon final (Halep defeated Williams). 
 
 ### WTA Wimbledon 2019 Serve Speeds
-```{r pressure,echo=FALSE,  warning=FALSE}
-### Serena Williams Wimbledon
+```{r pressure,echo=FALSE,  warning=FALSE, eval = FALSE}
+### Serena Williams Wimbledon and Halep
 SW_2019_Wim <- get_slam_serve(Player = "Serena Williams", 
-                              year = 2019, tournament = "wimbledon")
+                              year = 2019, tournament = "wimbledon") %>%
+  filter(ServeNumber >0 & Speed_KMH > 0 )
+
 p_SW = create_serve_plot(my_data = SW_2019_Wim, Player = "Serena Williams", year = 2019, tournament = "wimbledon",
-                      hp1 = -1.25, hp2 =2.75, vp1 = 2, vp2 = 2, x1 = 100 )
+                         x1 = 100 )
 
 SH_2019_Wim <- get_slam_serve(Player = "Simona Halep",
-                              year = 2019, tournament = "wimbledon")
+                              year = 2019, tournament = "wimbledon") %>%
+  filter(ServeNumber >0 & Speed_KMH > 0 )
+
 p_SH = create_serve_plot(my_data = SH_2019_Wim, Player = "Simona Halep", year = 2019, tournament = "wimbledon",
-                      hp1 = -1.5, hp2 =3.5, vp1 = 2, vp2 = 2, x1 = 100 )
+                          x1 = 100 )
 
 p_SW
+p_SH                         
+
+png("SW_2019_Wim.png", units="in", width=7, height=4, res=140)  
+p_SW
+dev.off()
+
+png("SH_2019_Wim.png", units="in", width=7, height=4, res=140)  
 p_SH
+dev.off()
 ```
+
+![](SW_2019_Wim.png)
+![](SH_2019_Wim.png)
 
 Note: From the dataset, both Williams and Halep played 7 matches. Halep defeated Williams in the finals.
 
@@ -189,56 +226,88 @@ Inspired by these observed these patterns at Wimbledon, we then explore whether 
 
 
 ### ATP US Open 2019 Serve Speeds
-```{r ATP_USOpen_data,echo=FALSE,  warning=FALSE}
+```{r ATP_USOpen_data,echo=FALSE,  warning=FALSE, eval=FALSE}
 RN_2019_US <- get_slam_serve(Player = "Rafael Nadal",
-                             year = 2019, tournament = "usopen")
+                             year = 2019, tournament = "usopen") %>%
+  filter(ServeNumber >0 & Speed_KMH > 0 )
+
 p_RN2 <- create_serve_plot(my_data = RN_2019_US, Player = "Rafael Nadal", year = 2019, tournament = "usopen",
-                        hp1 = -0.2, hp2 =3.3, vp1 = 2, vp2 = 2.1, y=0.05)
+                           y=0.05)
+
+
+png("RN_2019_us.png", units="in", width=7, height=4, res=140)  
+p_RN2
+dev.off()
+
 
 
 RF_2019_US <- get_slam_serve(Player = "Roger Federer",
-                             year = 2019, tournament = "usopen")
+                             year = 2019, tournament = "usopen")%>%
+  filter(ServeNumber >0 & Speed_KMH > 0 )
+
 p_RF2 = create_serve_plot(my_data = RF_2019_US, Player = "Roger Federer", year = 2019, tournament = "usopen",
-                       hp1 = -1.4, hp2 =3.4, vp1 = 2, vp2 = 2 )
+                          hp1 = -1.4, hp2 =3.4, vp1 = 2, vp2 = 2 )
+
+png("RF_2019_us.png", units="in", width=7, height=4, res=140)  
+p_RF2
+dev.off()
 
 
 
 NJ_2019_US <- get_slam_serve(Player = "Novak Djokovic", 
-                             year = 2019, tournament = "usopen")
+                             year = 2019, tournament = "usopen") %>%
+  filter(ServeNumber >0 & Speed_KMH > 0 )
+
 p_NJ2 = create_serve_plot(my_data = NJ_2019_US, Player = "Novak Djokovic", year = 2019, tournament = "usopen",
-                      hp1 = 0.0, hp2 =3.35, vp1 = 3, vp2 = 3)
-```
+                          hp1 = 0.0, hp2 =3.35, vp1 = 3, vp2 = 3)
 
-
-```{r, USOpen_res, echo=FALSE, warning=FALSE}
-p_RN2
-p_RF2
+png("NJ_2019_us.png", units="in", width=7, height=4, res=140)  
 p_NJ2
+dev.off()
+
 ```
+
+
+```{r, USO9_us.png)
+
+![](RF_2019_us.png)
+
+![](NJ_2019_us.png)
 
 From the 3 graphics above, we see that the 3 ATP players at the US Open all exhibit similar patterns observed during the Wimbledon grand slam tournament.
 
 
 ### WTA US Open 2019 Serve Speeds
-```{r WTA_USOpen_data,echo=FALSE,  warning=FALSE}
+```{r WTA_USOpen_data,echo=FALSE,  warning=FALSE, eval = FALSE}
 SW_2019_US <- get_slam_serve(Player = "Serena Williams", 
-                             year = 2019, tournament = "usopen")
+                             year = 2019, tournament = "usopen") %>%
+  filter(ServeNumber >0 & Speed_KMH > 0 )
+
 p_SW2 = create_serve_plot(my_data = SW_2019_US, Player = "Serena Williams", year = 2019, tournament = "usopen",
-                       hp1 = -1.5, hp2 =3, vp1 = 2, vp2 = 2, x1 = 100 )
+                           x1 = 100 )
 
 BA_2019_US <- get_slam_serve(Player = "Bianca Andreescu", 
-                             year = 2019, tournament = "usopen")
+                             year = 2019, tournament = "usopen") %>%
+  filter(ServeNumber >0 & Speed_KMH > 0 )
+
 p_BA = create_serve_plot(my_data = BA_2019_US, Player = "Bianca Andreescu", year = 2019, tournament = "usopen",
-                      hp1 = -0.75, hp2 =2.75, vp1 = 2, vp2 = 2, x1=100 )
-```
+                        x1=100 )
 
 
 
-```{r, USOpen_res_WTA, echo=FALSE, warning=FALSE}
-p_SW2
+png("BA_2019_us.png", units="in", width=7, height=4, res=140)  
 p_BA
+dev.off()
+
+png("SW_2019_us.png", units="in", width=7, height=4, res=140)  
+p_SW2
+dev.off()
+
 ```
 
+![](SW_2019_us.png)
+
+![](BA_2019_us.png)
 
 
 

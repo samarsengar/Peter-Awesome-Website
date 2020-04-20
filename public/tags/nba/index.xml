@@ -49,8 +49,8 @@ setwd(&amp;quot;~/Documents/Sports-Analytics/NBA/Data&amp;quot;)
 # --&amp;gt; Set current working directory to where we want to save data
 
 # Use the bballR package to gather some end of season boxscore stats
-install.packages(&amp;quot;remotes&amp;quot;)
-remotes::install_github(&amp;quot;bobbyingram/bballR&amp;quot;)
+#install.packages(&amp;quot;remotes&amp;quot;)
+#remotes::install_github(&amp;quot;bobbyingram/bballR&amp;quot;)
 
 # --&amp;gt; Load all libraries we will need
 library(bballR)
@@ -364,7 +364,7 @@ names(correct_vector_C) &amp;lt;- test_years
 &lt;div id=&#34;guards-result&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Guards Result&lt;/h3&gt;
 &lt;table&gt;
-&lt;caption&gt;(#tab:guards_res)Classification Rate of Guards&lt;/caption&gt;
+&lt;caption&gt;&lt;span id=&#34;tab:Guards&#34;&gt;Table 1: &lt;/span&gt;Classification Rate of Guards&lt;/caption&gt;
 &lt;thead&gt;
 &lt;tr class=&#34;header&#34;&gt;
 &lt;th align=&#34;right&#34;&gt;1990&lt;/th&gt;
@@ -397,12 +397,12 @@ Testing set Year |1990 | 1993 | 1994 | 1996 | 1999 | 2000 | 2002 | 2005 | 2010 |
 |---|---|---|---|---|---|---|---|---|---|
 No. correct classifications |  5   | 4   | 3 |   4   | 4 |   5 |   5 |   4 |   4 |
 --&gt;
-&lt;p&gt;In the above table, we present the number of correct players classified into the All-NBA team. Note that each year, 6 guards are chosen for All- NBA. The results indicate an overall classification rate of 70 % in the testing dataset.&lt;/p&gt;
+&lt;p&gt;In the above table 1, we present the number of correct players classified into the All-NBA team. Note that each year, 6 guards are chosen for All- NBA. The results indicate an overall classification rate of 70 % in the testing dataset.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;forwards-result&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Forwards Result&lt;/h3&gt;
 &lt;table&gt;
-&lt;caption&gt;(#tab:forwards_res)Classification Rate of Forwards&lt;/caption&gt;
+&lt;caption&gt;&lt;span id=&#34;tab:Forwards&#34;&gt;Table 2: &lt;/span&gt;Classification Rate of Forwards&lt;/caption&gt;
 &lt;thead&gt;
 &lt;tr class=&#34;header&#34;&gt;
 &lt;th align=&#34;right&#34;&gt;1990&lt;/th&gt;
@@ -435,12 +435,12 @@ Testing set Year |1990 | 1993 | 1994 | 1996 | 1999 | 2000 | 2002 | 2005 | 2010 |
 |---|---|---|---|---|---|---|---|---|---|
 No. correct classifications |  4   | 6   | 4 |   5   | 4 |   6 |   3 |   5 |   5 |
 --&gt;
-&lt;p&gt;In the above table, we present the number of correct players classified into the All-NBA team. Note that each year, 6 forwardss are chosen for All- NBA. The results indicate an overall classification rate of 76 % in the testing dataset.&lt;/p&gt;
+&lt;p&gt;In the above table 2, we present the number of correct players classified into the All-NBA team. Note that each year, 6 forwardss are chosen for All- NBA. The results indicate an overall classification rate of 76 % in the testing dataset.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;centers-result&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Centers Result&lt;/h3&gt;
 &lt;table&gt;
-&lt;caption&gt;(#tab:centers_res)Classification Rate of Centers&lt;/caption&gt;
+&lt;caption&gt;&lt;span id=&#34;tab:Centers&#34;&gt;Table 3: &lt;/span&gt;Classification Rate of Centers&lt;/caption&gt;
 &lt;thead&gt;
 &lt;tr class=&#34;header&#34;&gt;
 &lt;th align=&#34;right&#34;&gt;1990&lt;/th&gt;
@@ -473,7 +473,7 @@ Testing set Year |1990 | 1993 | 1994 | 1996 | 1999 | 2000 | 2002 | 2005 | 2010 |
 |---|---|---|---|---|---|---|---|---|---|
 No. correct classifications |  3   | 3   | 3 |   2   | 1 |   3 |   3 |   2 |   3 |
 --&gt;
-&lt;p&gt;In the above table, we present the number of correct players classified into the All-NBA team. Note that each year, 3 centers are chosen for All- NBA. The results indicate an overall classification rate of 89 % in the testing dataset.&lt;/p&gt;
+&lt;p&gt;In the above table 3, we present the number of correct players classified into the All-NBA team. Note that each year, 3 centers are chosen for All- NBA. The results indicate an overall classification rate of 89 % in the testing dataset.&lt;/p&gt;
 &lt;p&gt;Overall, we have correctly classified the recipients of the All-NBA section 80 % of the time.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;

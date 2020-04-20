@@ -49,8 +49,8 @@ setwd(&quot;~/Documents/Sports-Analytics/NBA/Data&quot;)
 # --&gt; Set current working directory to where we want to save data
 
 # Use the bballR package to gather some end of season boxscore stats
-install.packages(&quot;remotes&quot;)
-remotes::install_github(&quot;bobbyingram/bballR&quot;)
+#install.packages(&quot;remotes&quot;)
+#remotes::install_github(&quot;bobbyingram/bballR&quot;)
 
 # --&gt; Load all libraries we will need
 library(bballR)
@@ -364,7 +364,7 @@ names(correct_vector_C) &lt;- test_years
 <div id="guards-result" class="section level3">
 <h3>Guards Result</h3>
 <table>
-<caption>(#tab:guards_res)Classification Rate of Guards</caption>
+<caption><span id="tab:Guards">Table 1: </span>Classification Rate of Guards</caption>
 <thead>
 <tr class="header">
 <th align="right">1990</th>
@@ -397,12 +397,12 @@ Testing set Year |1990 | 1993 | 1994 | 1996 | 1999 | 2000 | 2002 | 2005 | 2010 |
 |---|---|---|---|---|---|---|---|---|---|
 No. correct classifications |  5   | 4   | 3 |   4   | 4 |   5 |   5 |   4 |   4 |
 -->
-<p>In the above table, we present the number of correct players classified into the All-NBA team. Note that each year, 6 guards are chosen for All- NBA. The results indicate an overall classification rate of 70 % in the testing dataset.</p>
+<p>In the above table 1, we present the number of correct players classified into the All-NBA team. Note that each year, 6 guards are chosen for All- NBA. The results indicate an overall classification rate of 70 % in the testing dataset.</p>
 </div>
 <div id="forwards-result" class="section level3">
 <h3>Forwards Result</h3>
 <table>
-<caption>(#tab:forwards_res)Classification Rate of Forwards</caption>
+<caption><span id="tab:Forwards">Table 2: </span>Classification Rate of Forwards</caption>
 <thead>
 <tr class="header">
 <th align="right">1990</th>
@@ -435,12 +435,12 @@ Testing set Year |1990 | 1993 | 1994 | 1996 | 1999 | 2000 | 2002 | 2005 | 2010 |
 |---|---|---|---|---|---|---|---|---|---|
 No. correct classifications |  4   | 6   | 4 |   5   | 4 |   6 |   3 |   5 |   5 |
 -->
-<p>In the above table, we present the number of correct players classified into the All-NBA team. Note that each year, 6 forwardss are chosen for All- NBA. The results indicate an overall classification rate of 76 % in the testing dataset.</p>
+<p>In the above table 2, we present the number of correct players classified into the All-NBA team. Note that each year, 6 forwardss are chosen for All- NBA. The results indicate an overall classification rate of 76 % in the testing dataset.</p>
 </div>
 <div id="centers-result" class="section level3">
 <h3>Centers Result</h3>
 <table>
-<caption>(#tab:centers_res)Classification Rate of Centers</caption>
+<caption><span id="tab:Centers">Table 3: </span>Classification Rate of Centers</caption>
 <thead>
 <tr class="header">
 <th align="right">1990</th>
@@ -473,7 +473,7 @@ Testing set Year |1990 | 1993 | 1994 | 1996 | 1999 | 2000 | 2002 | 2005 | 2010 |
 |---|---|---|---|---|---|---|---|---|---|
 No. correct classifications |  3   | 3   | 3 |   2   | 1 |   3 |   3 |   2 |   3 |
 -->
-<p>In the above table, we present the number of correct players classified into the All-NBA team. Note that each year, 3 centers are chosen for All- NBA. The results indicate an overall classification rate of 89 % in the testing dataset.</p>
+<p>In the above table 3, we present the number of correct players classified into the All-NBA team. Note that each year, 3 centers are chosen for All- NBA. The results indicate an overall classification rate of 89 % in the testing dataset.</p>
 <p>Overall, we have correctly classified the recipients of the All-NBA section 80 % of the time.</p>
 </div>
 </div>

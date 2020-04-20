@@ -1,7 +1,7 @@
 ---
 title: Analysing Serving Abilities at Grand Slams
 author: Peter Tea
-date: '2019-12-26'
+date: '2020-02-26'
 categories:
   - Tennis
 tags:
@@ -42,7 +42,7 @@ With the conclusion of the 2019 Tennis season, the Big 3 (Nadal, Djokovic and Fe
 
 To analyse at a granular level how well the Big 3 performed during the 2019 grand slam tournaments, we look at their performances in **defending** their own service games and in **attacking** their opponent service games. A player who effectively defends their serve should win a high proportion of the games in which they serve first. Furthermore, a player who successfully attacks their opponents' serve should win a reasonable amount of break points against their opponent's serve.
 
-To measure a players defensive and offensive ability, we look at the total number of service games defended and the total number of opponent serves broken respectively. Moreover, to account for opportunity, we divide these metrics by the total number of player service games and opponent service games respectively.
+To measure a players defensive and offensive ability, we look at the total number of service games defended, and the total number of opponents serves broken respectively. Moreover, to account for opportunity, we divide these metrics by the total number of player service games and opponent service games respectively.
 
 
 - Proportion of service games defended = # of service games won / Total # player of service games
@@ -157,16 +157,18 @@ After some data cleaning and aggregating steps on match summary data found on Je
 ```{r table, echo=FALSE}
 A <- to_plot_dat %>%
   arrange(desc(Matches_Won)) %>%
+  mutate(SvGmsW_Prop = round(SvGmsW_Prop,3) * 100,
+          BPW_Prop = round( BPW_Prop,3)*100) %>%
   select(Player_Name, Matches_Won, SvGmsW_Prop, BPW_Prop)
 
 knitr::kable(A[1:10,], caption = "Grand Slam data")
 ```
 
-During the grand slams Nadal, Djokovic and Federer are ranked 1, 2 and 3 respectively in terms of matches won. The other two columns we calculated represents the proportion of service games defended (**SvGmsW_Prop**), and the proportion of opponent serves broken (**BPW_Prop**).
+During the grand slams Nadal, Djokovic and Federer are ranked 1, 2 and 3 respectively in terms of matches won. The other two columns we calculated represent the proportion of service games defended (**SvGmsW_Prop**), and the proportion of opponent serves broken (**BPW_Prop**).
 
 
 ### Comparing the big 3 to other ATP players via Bubble plots
-Using the two metrics (proportion of service games defended and the proportion of opponent serves broken) we mapped out the defensive and offensive prowess of the Big 3 compared to the abilities of the other ATP players in the graphic below. We placed these two metrics on the x- and y-axis respectively. Additionally, to represent the success of the ATP players, we added an extra dimension that represents number of matches won by each player. The larger the *bubble* is, the more grand slam matches a player has won.
+Using the two metrics (proportion of service games defended, and the proportion of opponent serves broken) we mapped out the defensive and offensive prowess of the Big 3 compared to the abilities of the other ATP players in the graphic below. We placed these two metrics on the x- and y-axis respectively. Additionally, to represent the success of the ATP players, we added an extra dimension that represents number of matches won by each player. The larger the *bubble* is, the more grand slam matches a player has won.
 
 ```{r pressure2,echo=FALSE,  warning=FALSE}
 

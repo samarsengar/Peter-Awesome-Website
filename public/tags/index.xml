@@ -5,7 +5,7 @@
     <link>/tags/</link>
       <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright><lastBuildDate>Mon, 16 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright><lastBuildDate>Sun, 19 Apr 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Tags</title>
@@ -13,10 +13,50 @@
     </image>
     
     <item>
+      <title>Tennis</title>
+      <link>/tags/tennis/</link>
+      <pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/tennis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Grand-Slam</title>
+      <link>/tags/grand-slam/</link>
+      <pubDate>Thu, 26 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/grand-slam/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Serve</title>
+      <link>/tags/serve/</link>
+      <pubDate>Thu, 26 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/serve/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Serve speed</title>
+      <link>/tags/serve-speed/</link>
+      <pubDate>Thu, 26 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/serve-speed/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Tracking Data</title>
       <link>/tags/tracking-data/</link>
       <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
       <guid>/tags/tracking-data/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bubble plot</title>
+      <link>/tags/bubble-plot/</link>
+      <pubDate>Wed, 26 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/bubble-plot/</guid>
       <description></description>
     </item>
     
@@ -69,50 +109,10 @@
     </item>
     
     <item>
-      <title>Serve</title>
-      <link>/tags/serve/</link>
-      <pubDate>Thu, 09 Jan 2020 13:00:00 +0000</pubDate>
-      <guid>/tags/serve/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Sports Analytics</title>
       <link>/tags/sports-analytics/</link>
       <pubDate>Thu, 09 Jan 2020 13:00:00 +0000</pubDate>
       <guid>/tags/sports-analytics/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tennis</title>
-      <link>/tags/tennis/</link>
-      <pubDate>Thu, 09 Jan 2020 13:00:00 +0000</pubDate>
-      <guid>/tags/tennis/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Grand-Slam</title>
-      <link>/tags/grand-slam/</link>
-      <pubDate>Mon, 06 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/grand-slam/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Serve speed</title>
-      <link>/tags/serve-speed/</link>
-      <pubDate>Mon, 06 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/serve-speed/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Bubble plot</title>
-      <link>/tags/bubble-plot/</link>
-      <pubDate>Thu, 26 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/tags/bubble-plot/</guid>
       <description></description>
     </item>
     

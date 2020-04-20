@@ -34,9 +34,10 @@ url_slides: Anova.pdf
 url_video: 
 ---
 
-During the summer of 2017, I worked with Professor [Termeh Kousha](https://termehkousha.wixsite.com/termeh) as a research assistant. Part of my responsability was to compile notes on statistical methods:
-
+During the summer of 2017, I worked with Professor [Termeh Kousha](https://termehkousha.wixsite.com/termeh) as a research assistant. Part of my responsability was to compile notes on statistical methods.
+<!---
 - [Anova](Topic 1 - One Way ANOVA_Tea.pdf)
 - [Non-Linear Regression](Nonlinear_Regression_Tea.pdf)
 - [Logistic Regression & Weighted Least Squares](Logistic Regression.pdf)
 - [Survival Analysis](Survival Analysis.pdf)
+-->

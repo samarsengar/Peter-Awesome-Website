@@ -5,7 +5,7 @@
     <link>/tags/grand-slam/</link>
       <atom:link href="/tags/grand-slam/index.xml" rel="self" type="application/rss+xml" />
     <description>Grand-Slam</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright><lastBuildDate>Mon, 06 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright><lastBuildDate>Thu, 26 Mar 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Grand-Slam</title>
@@ -14,9 +14,9 @@
     
     <item>
       <title>Analysing the Tennis Serve Power vs. Consistency Tradeoff</title>
-      <link>/project/2019-serve-speeds/</link>
-      <pubDate>Mon, 06 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/project/2019-serve-speeds/</guid>
+      <link>/post/2019-serve-speeds/</link>
+      <pubDate>Thu, 26 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>/post/2019-serve-speeds/</guid>
       <description>
 
 
@@ -38,7 +38,9 @@
 &lt;div id=&#34;atp-wimbledon-2019-serve-speeds&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;ATP Wimbledon 2019 Serve Speeds&lt;/h3&gt;
 &lt;p&gt;Starting with the ATP players, we present the following serve speed distribution plots:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/project/2019-Serve-speeds/index_files/figure-html/pressure2-1.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;/project/2019-Serve-speeds/index_files/figure-html/pressure2-2.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;/project/2019-Serve-speeds/index_files/figure-html/pressure2-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;RN_2019_Wim.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;RF_2019_Wim.png&#34; /&gt;
+&lt;img src=&#34;NJ_2019_Wim.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Note: From the dataset, both Novak and Roger played 7 matches while Rafa played 6 matches (Federer defeated Nadal in the semifinals, before falling to Djokovic in the finals).&lt;/p&gt;
 &lt;p&gt;From the above 3 graphics, we make some simple remarks:&lt;/p&gt;
 &lt;ul&gt;
@@ -51,7 +53,8 @@
 &lt;/div&gt;
 &lt;div id=&#34;wta-wimbledon-2019-serve-speeds&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;WTA Wimbledon 2019 Serve Speeds&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;/project/2019-Serve-speeds/index_files/figure-html/pressure-1.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;/project/2019-Serve-speeds/index_files/figure-html/pressure-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;SW_2019_Wim.png&#34; /&gt;
+&lt;img src=&#34;SH_2019_Wim.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Note: From the dataset, both Williams and Halep played 7 matches. Halep defeated Williams in the finals.&lt;/p&gt;
 &lt;p&gt;Throughout the Wimbledon tournament, both Williams and Halep display distinct serve speeds depending on whether they are on their 1st or 2nd serve. The results are similar to what we’ve seen on the ATP serve graphics, however the first serve speed distributions here do not appear to be as left skewed as we’ve previously seen on the ATP graphics.&lt;/p&gt;
 &lt;/div&gt;
@@ -143,12 +146,15 @@
 &lt;p&gt;Inspired by these observed these patterns at Wimbledon, we then explore whether they exist in other tournaments where players play on different surfaces (Wimbledon is played on &lt;code&gt;grass&lt;/code&gt; courts). To provide a partial answer to this question, we perform the same analysis using data from the 2019 US Open tournament, which is played on &lt;code&gt;hardcourt&lt;/code&gt;.&lt;/p&gt;
 &lt;div id=&#34;atp-us-open-2019-serve-speeds&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;ATP US Open 2019 Serve Speeds&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;/project/2019-Serve-speeds/index_files/figure-html/USOpen_res-1.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;/project/2019-Serve-speeds/index_files/figure-html/USOpen_res-2.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;/project/2019-Serve-speeds/index_files/figure-html/USOpen_res-3.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;```{r, USO9_us.png)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;RF_2019_us.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;NJ_2019_us.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;From the 3 graphics above, we see that the 3 ATP players at the US Open all exhibit similar patterns observed during the Wimbledon grand slam tournament.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;wta-us-open-2019-serve-speeds&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;WTA US Open 2019 Serve Speeds&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;/project/2019-Serve-speeds/index_files/figure-html/USOpen_res_WTA-1.png&#34; width=&#34;672&#34; /&gt;&lt;img src=&#34;/project/2019-Serve-speeds/index_files/figure-html/USOpen_res_WTA-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;SW_2019_us.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;BA_2019_us.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;For completeness, we present the same table of numbers for the 2019 US Open tournament.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;

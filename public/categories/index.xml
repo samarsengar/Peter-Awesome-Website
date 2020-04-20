@@ -5,12 +5,20 @@
     <link>/categories/</link>
       <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     <description>Categories</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright><lastBuildDate>Mon, 16 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright><lastBuildDate>Sun, 19 Apr 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Categories</title>
       <link>/categories/</link>
     </image>
+    
+    <item>
+      <title>Tennis</title>
+      <link>/categories/tennis/</link>
+      <pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/categories/tennis/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Basketball</title>
@@ -25,14 +33,6 @@
       <link>/categories/choropleth-maps/</link>
       <pubDate>Thu, 16 Jan 2020 13:00:00 +0000</pubDate>
       <guid>/categories/choropleth-maps/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tennis</title>
-      <link>/categories/tennis/</link>
-      <pubDate>Mon, 06 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/categories/tennis/</guid>
       <description></description>
     </item>
     

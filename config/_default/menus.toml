@@ -23,7 +23,7 @@
 [[main]]
     name = "Presentations"
     url = "talk"
-    weight = 20
+    weight = 40
 
 #[[main]]
 #  name = "Demo"
@@ -35,7 +35,7 @@
 [[main]]
   name = "Projects"
   url = "#projects"
-  weight = 40
+  weight = 20
 
 #[[main]]
 #  name = "Publications"
