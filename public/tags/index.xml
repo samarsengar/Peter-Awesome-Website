@@ -5,7 +5,7 @@
     <link>/tags/</link>
       <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright><lastBuildDate>Sun, 19 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright><lastBuildDate>Tue, 21 Apr 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Tags</title>
@@ -13,10 +13,26 @@
     </image>
     
     <item>
-      <title>Tennis</title>
-      <link>/tags/tennis/</link>
-      <pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/tennis/</guid>
+      <title>Basketball</title>
+      <link>/tags/basketball/</link>
+      <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/basketball/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Visualization</title>
+      <link>/tags/data-visualization/</link>
+      <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/data-visualization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NBA</title>
+      <link>/tags/nba/</link>
+      <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/nba/</guid>
       <description></description>
     </item>
     
@@ -45,6 +61,14 @@
     </item>
     
     <item>
+      <title>Tennis</title>
+      <link>/tags/tennis/</link>
+      <pubDate>Thu, 26 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/tennis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Tracking Data</title>
       <link>/tags/tracking-data/</link>
       <pubDate>Mon, 16 Mar 2020 00:00:00 +0000</pubDate>
@@ -57,14 +81,6 @@
       <link>/tags/bubble-plot/</link>
       <pubDate>Wed, 26 Feb 2020 00:00:00 +0000</pubDate>
       <guid>/tags/bubble-plot/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>NBA</title>
-      <link>/tags/nba/</link>
-      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/nba/</guid>
       <description></description>
     </item>
     
@@ -97,30 +113,6 @@
       <link>/tags/fun/</link>
       <pubDate>Thu, 16 Jan 2020 13:00:00 +0000</pubDate>
       <guid>/tags/fun/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Canada</title>
-      <link>/tags/canada/</link>
-      <pubDate>Thu, 09 Jan 2020 13:00:00 +0000</pubDate>
-      <guid>/tags/canada/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Sports Analytics</title>
-      <link>/tags/sports-analytics/</link>
-      <pubDate>Thu, 09 Jan 2020 13:00:00 +0000</pubDate>
-      <guid>/tags/sports-analytics/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Basketball</title>
-      <link>/tags/basketball/</link>
-      <pubDate>Thu, 19 Dec 2019 13:00:00 +0000</pubDate>
-      <guid>/tags/basketball/</guid>
       <description></description>
     </item>
     

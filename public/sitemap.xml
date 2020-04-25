@@ -19,56 +19,66 @@
   
   <url>
     <loc>/authors/admin/</loc>
-    <lastmod>2020-04-19T00:00:00+00:00</lastmod>
+    <lastmod>2020-04-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/authors/</loc>
-    <lastmod>2020-04-19T00:00:00+00:00</lastmod>
+    <lastmod>2020-04-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/bayesian-hierarchical-models/</loc>
-    <lastmod>2020-04-19T00:00:00+00:00</lastmod>
+    <loc>/tags/basketball/</loc>
+    <lastmod>2020-04-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/basketball/</loc>
+    <lastmod>2020-04-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2020-04-19T00:00:00+00:00</lastmod>
+    <lastmod>2020-04-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/data-visualization/</loc>
+    <lastmod>2020-04-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/nba/</loc>
+    <lastmod>2020-04-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/</loc>
-    <lastmod>2020-04-19T00:00:00+00:00</lastmod>
+    <lastmod>2020-04-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/</loc>
-    <lastmod>2020-04-19T00:00:00+00:00</lastmod>
+    <loc>/project/all-nba-pca/</loc>
+    <lastmod>2020-04-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/</loc>
+    <lastmod>2020-04-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2020-04-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/tennis/</loc>
-    <lastmod>2020-04-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/tennis/</loc>
-    <lastmod>2020-04-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2019-serve-speeds/</loc>
-    <lastmod>2020-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2020-04-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/grand-slam/</loc>
+    <lastmod>2020-03-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
     <lastmod>2020-03-26T00:00:00+00:00</lastmod>
   </url>
   
@@ -78,22 +88,27 @@
   </url>
   
   <url>
+    <loc>/post/2019-serve-speeds/</loc>
+    <lastmod>2020-03-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/serve-speed/</loc>
     <lastmod>2020-03-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
+    <loc>/categories/tennis/</loc>
+    <lastmod>2020-03-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/tennis/</loc>
+    <lastmod>2020-03-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/project/ssac_2020/</loc>
-    <lastmod>2020-03-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/basketball/</loc>
-    <lastmod>2020-03-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/project/</loc>
     <lastmod>2020-03-16T00:00:00+00:00</lastmod>
   </url>
   
@@ -110,11 +125,6 @@
   <url>
     <loc>/tags/bubble-plot/</loc>
     <lastmod>2020-02-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/nba/</loc>
-    <lastmod>2020-01-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -150,31 +160,6 @@
   <url>
     <loc>/post/choropleth/</loc>
     <lastmod>2019-12-01T13:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/canada/</loc>
-    <lastmod>2020-01-09T13:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/talk/sports-analytics/</loc>
-    <lastmod>2020-01-09T13:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/talk/</loc>
-    <lastmod>2020-01-09T13:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/sports-analytics/</loc>
-    <lastmod>2020-01-09T13:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/basketball/</loc>
-    <lastmod>2019-12-02T13:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -239,6 +224,11 @@
   
   <url>
     <loc>/tags/kernel-methods/</loc>
+    <lastmod>2018-11-09T13:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/talk/</loc>
     <lastmod>2018-11-09T13:00:00+00:00</lastmod>
   </url>
   

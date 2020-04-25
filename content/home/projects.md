@@ -6,7 +6,7 @@ active = true  # Activate this widget? true/false
 weight = 60  # Order that this section will appear.
 
 title = "Projects"
-subtitle = ""
+subtitle = "Data Science Portfolio"
 
 [content]
   # Page type to display. E.g. project.
@@ -28,10 +28,16 @@ subtitle = ""
   [[content.filter_button]]
     name = "Tennis"
     tag = "Tennis"
+
+  [[content.filter_button]]
+    name = "Basketball"
+    tag = "Basketball"
   
   [[content.filter_button]]
     name = "Other"
     tag = "Demo"
+    
+
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
