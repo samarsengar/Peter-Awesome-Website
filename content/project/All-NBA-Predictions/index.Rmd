@@ -1,0 +1,116 @@
+---
+title: Predicting All-NBA Teams
+author: Peter Tea
+date: '2020-04-29'
+categories:
+  - Basketball
+tags:
+  - Prediction
+  - NBA
+  - Basketball
+authors:
+  - admin
+output:
+  html_document:
+    keep_md: yes
+image:
+  caption: Photo by JC Gellidon on Unsplash
+  focal_point: Smart
+summary: Predicting All-NBA Team
+---
+
+```{r setup, include=FALSE, eval=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# 2020 All-NBA Predictions
+
+### Random Forest
+
+| Position | Player                | All-NBA Probability (%) |
+|:--------:|-----------------------|-----------------|
+| G        | James Harden          | 81              |
+|          | Luka Dončić           | 69              |
+|          | Trae Young            | 52              |
+|          | Russell Westbrook     | 52              |
+|          | Damian Lillard        | 52              |
+|          | Bradley Beal          | 48              |
+|          | Kyrie Irving          | 33              |
+|          | Devin Booker          | 33              |
+| F        | Giannis Antetokounmpo | 84              |
+|          | LeBron James          | 72              |
+|          | Kawhi Leonard         | 69              |
+|          | Paul George           | 34              |
+|          | Jayson Tatum          | 26              |
+|          | Zion Williamson       | 25              |
+|          | Khris Middleton       | 24              |
+|          | Jimmy Butler          | 21              |
+| C        | Anthony Davis         | 78              |
+|          | Rudy Gobert           | 48              |
+|          | Nikola Jokić          | 45              |
+|          | Joel Embiid           | 36              |
+|          | Karl-Anthony Towns    | 29              |
+
+
+### Generalized Additive Models
+
+To be continued...
+
+## Table of contents
+1. [Introduction: All-NBA Selection](#introduction)
+2. [Obtaining/Scraping Data](#data)
+3. [Exploratory Data Analysis](#EDA)
+4. [Random Forest](#rfc)
+
+
+
+### All-NBA Selection <a name="introduction"></a>
+
+The All-NBA award is an annual NBA distinction bestowed upon players with outstanding performances for a given season. Since 1989, the All-NBA award is partitioned into 3 tiers;
+1st, 2nd and 3rd All-NBA where each team is uniquely composed of 2 guards, 2 forwards and 1 center. In total, 6 guards, 6 forwards and 3 centers are selected for this prestigious award. Not only is there a financial incentive for players implicated with selection into the All-NBA, but there is also a reputation reward which in some way validates these chosen players as the true stars in the game. 
+
+The NBA holds a firm reputation of being a ``Star-Driven League``, meaning that teams exclusively boasting the greatest players are the ones who can legitimately compete for championships. Using the All-NBA tag as a proxy for ``great players`` provides an interesting avenue where we could identify foundational pieces that may eventually land a championship. In this project, we build classification models to predict which players will form all 3 All-NBA teams.
+
+
+
+
+
+
+
+## Obtaining/Scraping NBA Data <a name="data"></a>
+
+Box-score metrics standardized by *per 100 possessions* was obtained through R, using the [bballR R package](https://rdrr.io/github/bobbyingram/bballR/man/scrape_all_players.html).
+We chose to look at per 100 possessions as it provides a more intuitive comparison between players under different eras and team offence styles. 
+
+Past All-NBA winners was scraped through [Basketball Reference](https://www.basketball-reference.com/) with the ``rVest`` R package.
+
+To further reduce noise in the data, we chose to only consider players meeting the following 2 conditions:
+
+1. Player participated in at least 10 games
+2. Player played at least 25 minutes/game
+
+
+## Random Forest Classifier <a name="rfc"></a>
+
+Add Information
+
+
+## Appendix
+
+### Predictor Variables
+
+- PTS: Points scored per 100 possessions
+- AST: Assists per 100 possessions
+- STL: Steals per 100 possessions
+- BLK: Blocks per 100 possessions
+- MP: Minutes played
+- ORB: Offensive rebounds per 100 possessions
+- DRB: Defensive rebounds per 100 possessions
+- TOV: Turnovers per 100 possessions
+- PF: Personal fouls per 100 possessions
+- ORtg: Offensive rating (An estimate of points produced per 100 possessions)
+- DRtg: Defensive rating (An estimate of points allowed per 100 possessions)
+
+
+### How does All-NBA voting work?
+Selection is controlled by a panel of sportswriters and broadcasters (i.e. the media) who select players for the All-NBA 1st, 2nd and 3rd Teams by position. A tally of all the votes are then taken to determine the results of All-NBA selections for all three teams. Players placed on a 1st All-NBA team ballot are awarded 5 points, while players placed on a 2nd All-NBA team ballot are awarded 3 points and 1 point for a 3rd All-NBA team ballot.
+

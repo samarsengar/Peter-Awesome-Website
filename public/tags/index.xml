@@ -5,7 +5,7 @@
     <link>/tags/</link>
       <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright><lastBuildDate>Tue, 21 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright><lastBuildDate>Wed, 29 Apr 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Tags</title>
@@ -15,8 +15,24 @@
     <item>
       <title>Basketball</title>
       <link>/tags/basketball/</link>
-      <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
       <guid>/tags/basketball/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NBA</title>
+      <link>/tags/nba/</link>
+      <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/nba/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Prediction</title>
+      <link>/tags/prediction/</link>
+      <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/prediction/</guid>
       <description></description>
     </item>
     
@@ -25,14 +41,6 @@
       <link>/tags/data-visualization/</link>
       <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
       <guid>/tags/data-visualization/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>NBA</title>
-      <link>/tags/nba/</link>
-      <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/nba/</guid>
       <description></description>
     </item>
     
@@ -81,14 +89,6 @@
       <link>/tags/bubble-plot/</link>
       <pubDate>Wed, 26 Feb 2020 00:00:00 +0000</pubDate>
       <guid>/tags/bubble-plot/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Prediction</title>
-      <link>/tags/prediction/</link>
-      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/prediction/</guid>
       <description></description>
     </item>
     

@@ -65,7 +65,7 @@ To remove as much noise and outliers as possible, we’ve decided to only includ
 1.	Played in at least 10 games
 2.	Averaged at least 15 minutes played per game
 
-Applying the above two filters reduces the size of the data from 12913 to 9126 observations. Additionally, we chose to look at a total of 25 continuous features.
+Applying the above two filters reduces the size of the data from 13760 to 8729 observations. Additionally, we chose to look at a total of 25 continuous features.
 
 
 ### PCA Visualizations  <a name="vision"></a>
@@ -89,7 +89,7 @@ Similarly, we see that Principal Component 2 (PC2) places its highest weights on
 ### PC Scores Plot
 
 How do players, and more importantly All-NBA players, fit along this 2-D representation? 
-For each of the n=9126 observations, we plot the ``scores`` of the first principal component along the x-axis, and the scores of the second principal component along the y-axis.
+For each of the n=8729 observations, we plot the ``scores`` of the first principal component along the x-axis, and the scores of the second principal component along the y-axis.
 
 Let’s first take a look at the scores for guards. 
 
@@ -120,7 +120,6 @@ Here we see some interesting points. Trae Young so clearly separates himself wit
 So far, we’ve only considered a two-dimensional representation of the 25-dimensional data for simplicity. However, does 2 dimensions successfully capture the major patterns in the data? How much information is lost by projecting the observations onto only the first two principal components? That is, how much of the variance in the data is not contained in the first two principal components? To answer these important questions, we present a scree plot which depicts the proportion of variance explained by each of the principal components. 
 
 ![](allnba_screeplot.png)
-
 
 We see that the first principal component explains about 28% of the variance in the data, and the second principal component explains 24% of the variance. Together, the first two principal components explain almost 52%  of the variance in the data; just over half of the entire variance.
 The third principal component accounts for under 10% of the variance, while the remaining principal components each slightly hover above or are below 5% of the total variance. 

@@ -52,7 +52,7 @@
 &lt;li&gt;Played in at least 10 games&lt;/li&gt;
 &lt;li&gt;Averaged at least 15 minutes played per game&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Applying the above two filters reduces the size of the data from 12913 to 9126 observations. Additionally, we chose to look at a total of 25 continuous features.&lt;/p&gt;
+&lt;p&gt;Applying the above two filters reduces the size of the data from 13760 to 8729 observations. Additionally, we chose to look at a total of 25 continuous features.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;pca-visualizations&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;PCA Visualizations &lt;a name=&#34;vision&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
@@ -69,7 +69,7 @@
 &lt;div id=&#34;pc-scores-plot&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;PC Scores Plot&lt;/h3&gt;
 &lt;p&gt;How do players, and more importantly All-NBA players, fit along this 2-D representation?
-For each of the n=9126 observations, we plot the &lt;code&gt;scores&lt;/code&gt; of the first principal component along the x-axis, and the scores of the second principal component along the y-axis.&lt;/p&gt;
+For each of the n=8729 observations, we plot the &lt;code&gt;scores&lt;/code&gt; of the first principal component along the x-axis, and the scores of the second principal component along the y-axis.&lt;/p&gt;
 &lt;p&gt;Let’s first take a look at the scores for guards.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;guards_biplot.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Here we see a clear distinction of players who make All-NBA compared to those who don’t. While the majority of guards tend to have negative scores along the PC1 axis, about half of the All-NBA guards have highly positive PC1 scores. This might indicate that having higher versatility, that is the ability to not only facilitate plays but also score and grab rebounds, might lead to an All-NBA player. Of course, we do see a sizeable amount of guards placed near the direction favouring steals and assists. This would indicate that having higher versatility is certainly not a prerequisite for a guard to be All-NBA. Surprisingly, there does not appear to be an obvious pattern of players on 1st team All-NBA compared to the 2nd and 3rd teams.&lt;/p&gt;

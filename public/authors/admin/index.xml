@@ -5,12 +5,202 @@
     <link>/authors/admin/</link>
       <atom:link href="/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     <description>Peter Tea</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright><lastBuildDate>Tue, 21 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright><lastBuildDate>Wed, 29 Apr 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Peter Tea</title>
       <link>/authors/admin/</link>
     </image>
+    
+    <item>
+      <title>Predicting All-NBA Teams</title>
+      <link>/project/all-nba-predictions/</link>
+      <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/project/all-nba-predictions/</guid>
+      <description>
+
+
+&lt;div id=&#34;all-nba-predictions&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;2020 All-NBA Predictions&lt;/h1&gt;
+&lt;div id=&#34;random-forest&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Random Forest&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;center&#34;&gt;Position&lt;/th&gt;
+&lt;th&gt;Player&lt;/th&gt;
+&lt;th&gt;All-NBA Probability (%)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;G&lt;/td&gt;
+&lt;td&gt;James Harden&lt;/td&gt;
+&lt;td&gt;81&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td&gt;Luka Dončić&lt;/td&gt;
+&lt;td&gt;69&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td&gt;Trae Young&lt;/td&gt;
+&lt;td&gt;52&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td&gt;Russell Westbrook&lt;/td&gt;
+&lt;td&gt;52&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td&gt;Damian Lillard&lt;/td&gt;
+&lt;td&gt;52&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td&gt;Bradley Beal&lt;/td&gt;
+&lt;td&gt;48&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td&gt;Kyrie Irving&lt;/td&gt;
+&lt;td&gt;33&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td&gt;Devin Booker&lt;/td&gt;
+&lt;td&gt;33&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;F&lt;/td&gt;
+&lt;td&gt;Giannis Antetokounmpo&lt;/td&gt;
+&lt;td&gt;84&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td&gt;LeBron James&lt;/td&gt;
+&lt;td&gt;72&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td&gt;Kawhi Leonard&lt;/td&gt;
+&lt;td&gt;69&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td&gt;Paul George&lt;/td&gt;
+&lt;td&gt;34&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td&gt;Jayson Tatum&lt;/td&gt;
+&lt;td&gt;26&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td&gt;Zion Williamson&lt;/td&gt;
+&lt;td&gt;25&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td&gt;Khris Middleton&lt;/td&gt;
+&lt;td&gt;24&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td&gt;Jimmy Butler&lt;/td&gt;
+&lt;td&gt;21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;C&lt;/td&gt;
+&lt;td&gt;Anthony Davis&lt;/td&gt;
+&lt;td&gt;78&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td&gt;Rudy Gobert&lt;/td&gt;
+&lt;td&gt;48&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td&gt;Nikola Jokić&lt;/td&gt;
+&lt;td&gt;45&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td&gt;Joel Embiid&lt;/td&gt;
+&lt;td&gt;36&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td&gt;Karl-Anthony Towns&lt;/td&gt;
+&lt;td&gt;29&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div id=&#34;generalized-additive-models&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Generalized Additive Models&lt;/h3&gt;
+&lt;p&gt;To be continued…&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;table-of-contents&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Table of contents&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction: All-NBA Selection&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#data&#34;&gt;Obtaining/Scraping Data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#EDA&#34;&gt;Exploratory Data Analysis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#rfc&#34;&gt;Random Forest&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div id=&#34;all-nba-selection&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;All-NBA Selection &lt;a name=&#34;introduction&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The All-NBA award is an annual NBA distinction bestowed upon players with outstanding performances for a given season. Since 1989, the All-NBA award is partitioned into 3 tiers;
+1st, 2nd and 3rd All-NBA where each team is uniquely composed of 2 guards, 2 forwards and 1 center. In total, 6 guards, 6 forwards and 3 centers are selected for this prestigious award. Not only is there a financial incentive for players implicated with selection into the All-NBA, but there is also a reputation reward which in some way validates these chosen players as the true stars in the game.&lt;/p&gt;
+&lt;p&gt;The NBA holds a firm reputation of being a &lt;code&gt;Star-Driven League&lt;/code&gt;, meaning that teams exclusively boasting the greatest players are the ones who can legitimately compete for championships. Using the All-NBA tag as a proxy for &lt;code&gt;great players&lt;/code&gt; provides an interesting avenue where we could identify foundational pieces that may eventually land a championship. In this project, we build classification models to predict which players will form all 3 All-NBA teams.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;obtainingscraping-nba-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Obtaining/Scraping NBA Data &lt;a name=&#34;data&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Box-score metrics standardized by &lt;em&gt;per 100 possessions&lt;/em&gt; was obtained through R, using the &lt;a href=&#34;https://rdrr.io/github/bobbyingram/bballR/man/scrape_all_players.html&#34;&gt;bballR R package&lt;/a&gt;.
+We chose to look at per 100 possessions as it provides a more intuitive comparison between players under different eras and team offence styles.&lt;/p&gt;
+&lt;p&gt;Past All-NBA winners was scraped through &lt;a href=&#34;https://www.basketball-reference.com/&#34;&gt;Basketball Reference&lt;/a&gt; with the &lt;code&gt;rVest&lt;/code&gt; R package.&lt;/p&gt;
+&lt;p&gt;To further reduce noise in the data, we chose to only consider players meeting the following 2 conditions:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Player participated in at least 10 games&lt;/li&gt;
+&lt;li&gt;Player played at least 25 minutes/game&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;random-forest-classifier&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Random Forest Classifier &lt;a name=&#34;rfc&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Add Information&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;appendix&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Appendix&lt;/h2&gt;
+&lt;div id=&#34;predictor-variables&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Predictor Variables&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;PTS: Points scored per 100 possessions&lt;/li&gt;
+&lt;li&gt;AST: Assists per 100 possessions&lt;/li&gt;
+&lt;li&gt;STL: Steals per 100 possessions&lt;/li&gt;
+&lt;li&gt;BLK: Blocks per 100 possessions&lt;/li&gt;
+&lt;li&gt;MP: Minutes played&lt;/li&gt;
+&lt;li&gt;ORB: Offensive rebounds per 100 possessions&lt;/li&gt;
+&lt;li&gt;DRB: Defensive rebounds per 100 possessions&lt;/li&gt;
+&lt;li&gt;TOV: Turnovers per 100 possessions&lt;/li&gt;
+&lt;li&gt;PF: Personal fouls per 100 possessions&lt;/li&gt;
+&lt;li&gt;ORtg: Offensive rating (An estimate of points produced per 100 possessions)&lt;/li&gt;
+&lt;li&gt;DRtg: Defensive rating (An estimate of points allowed per 100 possessions)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;how-does-all-nba-voting-work&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;How does All-NBA voting work?&lt;/h3&gt;
+&lt;p&gt;Selection is controlled by a panel of sportswriters and broadcasters (i.e. the media) who select players for the All-NBA 1st, 2nd and 3rd Teams by position. A tally of all the votes are then taken to determine the results of All-NBA selections for all three teams. Players placed on a 1st All-NBA team ballot are awarded 5 points, while players placed on a 2nd All-NBA team ballot are awarded 3 points and 1 point for a 3rd All-NBA team ballot.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Principal Component Analysis on All-NBA</title>
@@ -52,7 +242,7 @@
 &lt;li&gt;Played in at least 10 games&lt;/li&gt;
 &lt;li&gt;Averaged at least 15 minutes played per game&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Applying the above two filters reduces the size of the data from 12913 to 9126 observations. Additionally, we chose to look at a total of 25 continuous features.&lt;/p&gt;
+&lt;p&gt;Applying the above two filters reduces the size of the data from 13760 to 8729 observations. Additionally, we chose to look at a total of 25 continuous features.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;pca-visualizations&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;PCA Visualizations &lt;a name=&#34;vision&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
@@ -69,7 +259,7 @@
 &lt;div id=&#34;pc-scores-plot&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;PC Scores Plot&lt;/h3&gt;
 &lt;p&gt;How do players, and more importantly All-NBA players, fit along this 2-D representation?
-For each of the n=9126 observations, we plot the &lt;code&gt;scores&lt;/code&gt; of the first principal component along the x-axis, and the scores of the second principal component along the y-axis.&lt;/p&gt;
+For each of the n=8729 observations, we plot the &lt;code&gt;scores&lt;/code&gt; of the first principal component along the x-axis, and the scores of the second principal component along the y-axis.&lt;/p&gt;
 &lt;p&gt;Let’s first take a look at the scores for guards.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;guards_biplot.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Here we see a clear distinction of players who make All-NBA compared to those who don’t. While the majority of guards tend to have negative scores along the PC1 axis, about half of the All-NBA guards have highly positive PC1 scores. This might indicate that having higher versatility, that is the ability to not only facilitate plays but also score and grab rebounds, might lead to an All-NBA player. Of course, we do see a sizeable amount of guards placed near the direction favouring steals and assists. This would indicate that having higher versatility is certainly not a prerequisite for a guard to be All-NBA. Surprisingly, there does not appear to be an obvious pattern of players on 1st team All-NBA compared to the 2nd and 3rd teams.&lt;/p&gt;
@@ -531,605 +721,6 @@ Win       1     2
 &lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:672px;height:480px;&#34; class=&#34;plotly html-widget&#34;&gt;&lt;/div&gt;
 &lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;data&#34;:[{&#34;x&#34;:[80.188679245283,79.2207792207792,82.3321554770318,86.4963503649635,78.2771535580524,89.7727272727273,85.4961832061069,84.9206349206349,79.4979079497908,85.6573705179283,84.8484848484848,82.7751196172249,85.8267716535433,83.9024390243902,77.9904306220096,84.4221105527638,81.6425120772947,84.3601895734597,82.1621621621622,82.2222222222222,86.9565217391304,85.945945945946,83.8323353293413,78.0487804878049,93.4131736526946,90.5405405405405,71.1111111111111,78.9808917197452,83.4285714285714,80.9523809523809,84.7368421052632,81.025641025641,83.4224598930481,83.2116788321168,83.5820895522388,75.3731343283582,74.7058823529412,84.0909090909091,82.7067669172932,89.3081761006289,72.972972972973,79.746835443038,91.8918918918919,82.1656050955414,75.3521126760563,78.8617886178862,74.1496598639456,79.8561151079137,76.9230769230769,74.6031746031746,75.5905511811024,78.6885245901639,83.4532374100719,89.6296296296296,86.9230769230769,81.4159292035398,75.8928571428571,76.9911504424779,82.4074074074074,72,70,82.7956989247312,78.2608695652174,76.3157894736842,76.6129032258064,75.8333333333333,73.6842105263158,72.0720720720721,72.1153846153846,67.8260869565217,84.5528455284553,83.3333333333333,86.3636363636364,79.4117647058823,93.3333333333333,78.5714285714286,79.4871794871795,81.9047619047619,89.7727272727273,69.620253164557,75.2941176470588,72.2222222222222,74.4444444444444,65,70.7865168539326,82.1917808219178,74.0384615384615,72.7272727272727,70.7317073170732,70.4545454545455,76.6990291262136,74.4186046511628,63.2352941176471,75.4098360655738,85.1351351351351,77.7777777777778,77.2727272727273,76.1904761904762,71.6981132075472,81.1111111111111,72.4137931034483,64.7058823529412,73.972602739726,82.9268292682927,69.8412698412698,79.5454545454545,61.1111111111111,68.5714285714286,71.6981132075472,75,80.7692307692308,88,71.4285714285714,75.3846153846154,72.0930232558139,89.8305084745763,80.3030303030303,86.6666666666667,55.5555555555556,62.5,73.3333333333333,57.5,64,77.5862068965517,72.9166666666667,69.7674418604651,60.8695652173913,81.4814814814815,78.9473684210526,71.4285714285714,83.3333333333333,55.1724137931034,81.4814814814815,76.4705882352941,69.2307692307692,71.875,74.2857142857143,66.6666666666667,76.0869565217391,71.4285714285714,64.8648648648649,69.2307692307692,75.7575757575758,64.2857142857143,50,88,61.5384615384615,50,55.5555555555556,80.7692307692308,73.3333333333333,78.9473684210526,77.2727272727273,75,75,60,41.6666666666667,71.4285714285714,60,38.4615384615385,85,57.1428571428571,80,64.2857142857143,50,38.4615384615385,50,50,50,87.5,58.3333333333333,66.6666666666667,60,50,80.7692307692308,50,71.4285714285714,73.6842105263158,65.3846153846154,58.8235294117647,33.3333333333333,60.8695652173913,62.5,76],&#34;y&#34;:[29.5238095238095,30.4721030042918,26.6903914590747,25.8426966292135,25.3846153846154,18.503937007874,22.8682170542636,18.7755102040816,31.5352697095436,16.0493827160494,18.5344827586207,22.8571428571429,17.741935483871,30.3482587064677,22.8571428571429,27.6381909547739,20.5882352941176,24.5283018867925,23.4042553191489,20.4444444444444,16.2162162162162,18.0851063829787,14.8148148148148,15.9509202453988,15.6626506024096,22.7586206896552,24.8618784530387,23.2704402515723,17.9775280898876,20.7100591715976,14.9732620320856,18.4210526315789,17.4863387978142,20,18.3823529411765,28.1481481481481,24.4047619047619,16.1538461538462,20.5882352941176,10.5590062111801,23.1788079470199,20.253164556962,5.26315789473684,15.9235668789809,19.7183098591549,21.9512195121951,18.4931506849315,19.7080291970803,25,15.8730158730159,25,24.1935483870968,16.551724137931,13.4328358208955,14.6153846153846,16.6666666666667,17.5438596491228,13.2743362831858,16.5137614678899,28.125,21.2962962962963,18.6813186813187,15.7894736842105,16.6666666666667,21.9512195121951,19.5121951219512,23.4782608695652,15.929203539823,11.6504854368932,30.2521008403361,9.83606557377049,13.5593220338983,14.6788990825688,9.09090909090909,9.32203389830508,21.6216216216216,14.6341463414634,18.0952380952381,20.2247191011236,13.4146341463415,16.2790697674419,23.3333333333333,17.3913043478261,27.1604938271605,22.5806451612903,15.2777777777778,15.2380952380952,10.1123595505618,16.8674698795181,25.8426966292135,12.7450980392157,12.6436781609195,20.2898550724638,23.3333333333333,29.3333333333333,15.1515151515152,18.4615384615385,14.2857142857143,12.7272727272727,18.6813186813187,13.7931034482759,17.910447761194,15.2777777777778,7.95454545454545,7.69230769230769,16.6666666666667,5.45454545454545,8.33333333333333,21.1538461538462,21.8181818181818,15.6862745098039,14.2857142857143,17.1875,25,19.5121951219512,20.3389830508475,10.4477611940298,25.8064516129032,10.8695652173913,11.4285714285714,4.44444444444444,5.12820512820513,13.7254901960784,11.864406779661,4.16666666666667,6.66666666666667,4.54545454545455,18.5185185185185,18.4210526315789,33.3333333333333,25.8064516129032,34.4827586206897,20,16.6666666666667,34.2105263157895,13.3333333333333,8.57142857142857,20.5128205128205,18.3673469387755,3.44827586206897,10.5263157894737,28.9473684210526,8.82352941176471,7.14285714285714,7.69230769230769,7.69230769230769,0,7.69230769230769,27.7777777777778,3.84615384615385,0,20,13.6363636363636,6.25,19.047619047619,12.5,15.3846153846154,0,20,21.4285714285714,5,14.2857142857143,0,13.3333333333333,21.4285714285714,21.4285714285714,37.5,35.2941176470588,0,0,0,16.6666666666667,30,10.5263157894737,19.2307692307692,7.69230769230769,19.047619047619,18.1818181818182,25.9259259259259,16.6666666666667,0,31.8181818181818,11.7647058823529,12],&#34;text&#34;:[&#34;Matches_Won: 14&lt;br /&gt;Player_Name: Kei Nishikori&#34;,&#34;Matches_Won: 11&lt;br /&gt;Player_Name: David Goffin&#34;,&#34;Matches_Won: 11&lt;br /&gt;Player_Name: Daniil Medvedev&#34;,&#34;Matches_Won: 11&lt;br /&gt;Player_Name: Roberto Bautista Agut&#34;,&#34;Matches_Won: 10&lt;br /&gt;Player_Name: Alexander Zverev&#34;,&#34;Matches_Won: 10&lt;br /&gt;Player_Name: Stan Wawrinka&#34;,&#34;Matches_Won: 10&lt;br /&gt;Player_Name: Grigor Dimitrov&#34;,&#34;Matches_Won:  9&lt;br /&gt;Player_Name: Lucas Pouille&#34;,&#34;Matches_Won:  9&lt;br /&gt;Player_Name: Diego Schwartzman&#34;,&#34;Matches_Won:  9&lt;br /&gt;Player_Name: Matteo Berrettini&#34;,&#34;Matches_Won:  8&lt;br /&gt;Player_Name: Marin Cilic&#34;,&#34;Matches_Won:  8&lt;br /&gt;Player_Name: Karen Khachanov&#34;,&#34;Matches_Won:  8&lt;br /&gt;Player_Name: Stefanos Tsitsipas&#34;,&#34;Matches_Won:  8&lt;br /&gt;Player_Name: Gael Monfils&#34;,&#34;Matches_Won:  7&lt;br /&gt;Player_Name: Fabio Fognini&#34;,&#34;Matches_Won:  7&lt;br /&gt;Player_Name: Pablo Carreno Busta&#34;,&#34;Matches_Won:  7&lt;br /&gt;Player_Name: Dominic Thiem&#34;,&#34;Matches_Won:  7&lt;br /&gt;Player_Name: Fernando Verdasco&#34;,&#34;Matches_Won:  7&lt;br /&gt;Player_Name: Alex De Minaur&#34;,&#34;Matches_Won:  7&lt;br /&gt;Player_Name: Benoit Paire&#34;,&#34;Matches_Won:  6&lt;br /&gt;Player_Name: Alexei Popyrin&#34;,&#34;Matches_Won:  6&lt;br /&gt;Player_Name: Jan Lennard Struff&#34;,&#34;Matches_Won:  5&lt;br /&gt;Player_Name: Leonardo Mayer&#34;,&#34;Matches_Won:  5&lt;br /&gt;Player_Name: Joao Sousa&#34;,&#34;Matches_Won:  7&lt;br /&gt;Player_Name: Milos Raonic&#34;,&#34;Matches_Won:  6&lt;br /&gt;Player_Name: Borna Coric&#34;,&#34;Matches_Won:  5&lt;br /&gt;Player_Name: Nikoloz Basilashvili&#34;,&#34;Matches_Won:  5&lt;br /&gt;Player_Name: Daniel Evans&#34;,&#34;Matches_Won:  5&lt;br /&gt;Player_Name: Frances Tiafoe&#34;,&#34;Matches_Won:  5&lt;br /&gt;Player_Name: Pablo Cuevas&#34;,&#34;Matches_Won:  5&lt;br /&gt;Player_Name: Thomas Fabbiano&#34;,&#34;Matches_Won:  5&lt;br /&gt;Player_Name: Guido Pella&#34;,&#34;Matches_Won:  5&lt;br /&gt;Player_Name: Tennys Sandgren&#34;,&#34;Matches_Won:  4&lt;br /&gt;Player_Name: Jo-Wilfried Tsonga&#34;,&#34;Matches_Won:  4&lt;br /&gt;Player_Name: Denis Shapovalov&#34;,&#34;Matches_Won:  4&lt;br /&gt;Player_Name: Gilles Simon&#34;,&#34;Matches_Won:  4&lt;br /&gt;Player_Name: Filip Krajinovic&#34;,&#34;Matches_Won:  4&lt;br /&gt;Player_Name: Taylor Fritz&#34;,&#34;Matches_Won:  4&lt;br /&gt;Player_Name: Jordan Thompson&#34;,&#34;Matches_Won:  4&lt;br /&gt;Player_Name: Reilly Opelka&#34;,&#34;Matches_Won:  4&lt;br /&gt;Player_Name: Denis Kudla&#34;,&#34;Matches_Won:  4&lt;br /&gt;Player_Name: Mikhail Kukushkin&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: Ivo Karlovic&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: Jeremy Chardy&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: Pierre Hugues Herbert&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: John Millman&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: Yoshihito Nishioka&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: Andreas Seppi&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: Dusan Lajovic&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: Laslo Djere&#34;,&#34;Matches_Won:  4&lt;br /&gt;Player_Name: Juan Ignacio Londero&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: Miomir Kecmanovic&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: Ugo Humbert&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: Feliciano Lopez&#34;,&#34;Matches_Won:  4&lt;br /&gt;Player_Name: Sam Querrey&#34;,&#34;Matches_Won:  4&lt;br /&gt;Player_Name: Andrey Rublev&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: Pablo Andujar&#34;,&#34;Matches_Won:  2&lt;br /&gt;Player_Name: Marius Copil&#34;,&#34;Matches_Won:  2&lt;br /&gt;Player_Name: Philipp Kohlschreiber&#34;,&#34;Matches_Won:  2&lt;br /&gt;Player_Name: Marton Fucsovics&#34;,&#34;Matches_Won:  2&lt;br /&gt;Player_Name: Radu Albot&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: Tomas Berdych&#34;,&#34;Matches_Won:  2&lt;br /&gt;Player_Name: Robin Haase&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: Henri Laaksonen&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: Alexander Bublik&#34;,&#34;Matches_Won:  2&lt;br /&gt;Player_Name: Kyle Edmund&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: Gregoire Barrere&#34;,&#34;Matches_Won:  2&lt;br /&gt;Player_Name: Martin Klizan&#34;,&#34;Matches_Won:  2&lt;br /&gt;Player_Name: Christian Garin&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: Corentin Moutet&#34;,&#34;Matches_Won:  2&lt;br /&gt;Player_Name: Hubert Hurkacz&#34;,&#34;Matches_Won:  2&lt;br /&gt;Player_Name: Jiri Vesely&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: Nick Kyrgios&#34;,&#34;Matches_Won:  2&lt;br /&gt;Player_Name: Steve Johnson&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: John Isner&#34;,&#34;Matches_Won:  4&lt;br /&gt;Player_Name: Dominik Koepfer&#34;,&#34;Matches_Won:  2&lt;br /&gt;Player_Name: Aljaz Bedene&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: Hyeon Chung&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: Kevin Anderson&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Lloyd Harris&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Federico Delbonis&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: Antoine Hoang&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Adrian Mannarino&#34;,&#34;Matches_Won:  2&lt;br /&gt;Player_Name: Hugo Dellien&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Roberto Carballes Baena&#34;,&#34;Matches_Won:  2&lt;br /&gt;Player_Name: Casper Ruud&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Janko Tipsarevic&#34;,&#34;Matches_Won:  2&lt;br /&gt;Player_Name: Ricardas Berankis&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Cameron Norrie&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Damir Dzumhur&#34;,&#34;Matches_Won:  2&lt;br /&gt;Player_Name: Kamil Majchrzak&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Bradley Klahn&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Matthew Ebden&#34;,&#34;Matches_Won:  2&lt;br /&gt;Player_Name: Salvatore Caruso&#34;,&#34;Matches_Won:  3&lt;br /&gt;Player_Name: Juan Martin del Potro&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Richard Gasquet&#34;,&#34;Matches_Won:  2&lt;br /&gt;Player_Name: Felix Auger Aliassime&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Marcel Granollers&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Steve Darcis&#34;,&#34;Matches_Won:  2&lt;br /&gt;Player_Name: Paolo Lorenzi&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Lorenzo Sonego&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Cedrik Marcel Stebe&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Jaume Munar&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Nicolas Jarry&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Albert Ramos&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Marco Cecchinato&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Prajnesh Gunneswaran&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Taro Daniel&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Ilya Ivashka&#34;,&#34;Matches_Won:  2&lt;br /&gt;Player_Name: Alex Bolt&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Evgeny Donskoy&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Maximilian Marterer&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Mackenzie McDonald&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Stefano Travaglia&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Elliot Benchetrit&#34;,&#34;Matches_Won:  2&lt;br /&gt;Player_Name: Nicolas Mahut&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Vasek Pospisil&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Thanasi Kokkinakis&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Malek Jaziri&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Ernests Gulbis&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Mischa Zverev&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Bernard Tomic&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Peter Gojowczyk&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Guido Andreozzi&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Guillermo Garcia Lopez&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Thiago Monteiro&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Jozef Kovalik&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Ryan Harrison&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Viktor Troicki&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Mikael Ymer&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Oscar Otte&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Yannick Maden&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Marcos Baghdatis&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Jay Clarke&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Jenson Brooksby&#34;,&#34;Matches_Won:  1&lt;br /&gt;Player_Name: Egor Gerasimov&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Jack Sock&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Bjorn Fratangelo&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Christopher Eubanks&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Denis Istomin&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Rudolf Molleker&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Soon Woo Kwon&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Marcos Giron&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Brayden Schnur&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Mitchell Krueger&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Luca Vanni&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Zhe Li&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Gleb Sakharov&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Michael Mmoh&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Andy Murray&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Tatsuma Ito&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Jason Kubler&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Marc Polmans&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Pedro Sousa&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Mirza Basic&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: James Duckworth&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Pedro Martinez&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Sergiy Stakhovsky&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Lukas Rosol&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Blaz Rola&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Tommy Paul&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Maxime Janvier&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Simone Bolelli&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Alejandro Davidovich Fokina&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Alexandre Muller&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Quentin Halys&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Alexey Vatutin&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Kimmer Coppejans&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Yannick Hanfmann&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Andrea Arnaboldi&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Ruben Bemelmans&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Yasutaka Uchiyama&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Dennis Novak&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Paul Jubb&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: James Ward&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Yuichi Sugita&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Noah Rubin&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Jannik Sinner&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Zachary Svajda&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Sumit Nagal&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Marco Trungelliti&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Santiago Giraldo&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Tobias Kamke&#34;,&#34;Matches_Won:  0&lt;br /&gt;Player_Name: Ernesto Escobedo&#34;],&#34;type&#34;:&#34;scatter&#34;,&#34;mode&#34;:&#34;markers&#34;,&#34;marker&#34;:{&#34;autocolorscale&#34;:false,&#34;color&#34;:&#34;rgba(0,128,128,1)&#34;,&#34;opacity&#34;:0.8,&#34;size&#34;:[22.7218343474753,20.1836869370515,20.1836869370515,20.1836869370515,19.2619793501709,19.2619793501709,19.2619793501709,18.2929133858268,18.2929133858268,18.2929133858268,17.268339617382,17.268339617382,17.268339617382,17.268339617382,16.1774629473337,16.1774629473337,16.1774629473337,16.1774629473337,16.1774629473337,16.1774629473337,15.005456857691,15.005456857691,13.7309760168176,13.7309760168176,16.1774629473337,15.005456857691,13.7309760168176,13.7309760168176,13.7309760168176,13.7309760168176,13.7309760168176,13.7309760168176,13.7309760168176,12.3212598425197,12.3212598425197,12.3212598425197,12.3212598425197,12.3212598425197,12.3212598425197,12.3212598425197,12.3212598425197,12.3212598425197,10.7211600981121,10.7211600981121,10.7211600981121,10.7211600981121,10.7211600981121,10.7211600981121,10.7211600981121,10.7211600981121,12.3212598425197,10.7211600981121,10.7211600981121,10.7211600981121,12.3212598425197,12.3212598425197,10.7211600981121,8.82314618664374,8.82314618664374,8.82314618664374,8.82314618664374,10.7211600981121,8.82314618664374,10.7211600981121,10.7211600981121,8.82314618664374,10.7211600981121,8.82314618664374,8.82314618664374,10.7211600981121,8.82314618664374,8.82314618664374,10.7211600981121,8.82314618664374,10.7211600981121,12.3212598425197,8.82314618664374,10.7211600981121,10.7211600981121,6.3496062992126,6.3496062992126,10.7211600981121,6.3496062992126,8.82314618664374,6.3496062992126,8.82314618664374,6.3496062992126,8.82314618664374,6.3496062992126,6.3496062992126,8.82314618664374,6.3496062992126,6.3496062992126,8.82314618664374,10.7211600981121,6.3496062992126,8.82314618664374,6.3496062992126,6.3496062992126,8.82314618664374,6.3496062992126,6.3496062992126,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,6.3496062992126,6.3496062992126,8.82314618664374,6.3496062992126,6.3496062992126,6.3496062992126,6.3496062992126,6.3496062992126,8.82314618664374,6.3496062992126,6.3496062992126,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,6.3496062992126,6.3496062992126,6.3496062992126,6.3496062992126,6.3496062992126,6.3496062992126,6.3496062992126,6.3496062992126,6.3496062992126,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512,0.377952755905512],&#34;symbol&#34;:&#34;circle&#34;,&#34;line&#34;:{&#34;width&#34;:1.88976377952756,&#34;color&#34;:&#34;rgba(0,128,128,1)&#34;}},&#34;hoveron&#34;:&#34;points&#34;,&#34;showlegend&#34;:false,&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;hoverinfo&#34;:&#34;text&#34;,&#34;frame&#34;:null},{&#34;x&#34;:[82.1486486486487],&#34;y&#34;:[36.3636363636364],&#34;text&#34;:&#34;Djokovic&#34;,&#34;hovertext&#34;:&#34;Matches_Won: 4&lt;br /&gt;Player_Name: Djokovic&#34;,&#34;textfont&#34;:{&#34;size&#34;:15.1181102362205,&#34;color&#34;:&#34;rgba(0,0,255,1)&#34;},&#34;type&#34;:&#34;scatter&#34;,&#34;mode&#34;:&#34;text&#34;,&#34;hoveron&#34;:&#34;points&#34;,&#34;showlegend&#34;:false,&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;hoverinfo&#34;:&#34;text&#34;,&#34;frame&#34;:null},{&#34;x&#34;:[91.5167095115681],&#34;y&#34;:[32.2903225806452],&#34;text&#34;:&#34;Nadal&#34;,&#34;hovertext&#34;:&#34;Matches_Won: 4&lt;br /&gt;Player_Name: Nadal&#34;,&#34;textfont&#34;:{&#34;size&#34;:15.1181102362205,&#34;color&#34;:&#34;rgba(255,0,0,1)&#34;},&#34;type&#34;:&#34;scatter&#34;,&#34;mode&#34;:&#34;text&#34;,&#34;hoveron&#34;:&#34;points&#34;,&#34;showlegend&#34;:false,&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;hoverinfo&#34;:&#34;text&#34;,&#34;frame&#34;:null},{&#34;x&#34;:[91.1764705882353],&#34;y&#34;:[29.3586956521739],&#34;text&#34;:&#34;Federer&#34;,&#34;hovertext&#34;:&#34;Matches_Won: 4&lt;br /&gt;Player_Name: Federer&#34;,&#34;textfont&#34;:{&#34;size&#34;:15.1181102362205,&#34;color&#34;:&#34;rgba(34,139,34,1)&#34;},&#34;type&#34;:&#34;scatter&#34;,&#34;mode&#34;:&#34;text&#34;,&#34;hoveron&#34;:&#34;points&#34;,&#34;showlegend&#34;:false,&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;hoverinfo&#34;:&#34;text&#34;,&#34;frame&#34;:null},{&#34;x&#34;:[88.6486486486487],&#34;y&#34;:[36.3636363636364],&#34;text&#34;:&#34;Matches_Won: 22&lt;br /&gt;Matches_Won: 22&lt;br /&gt;Player_Name: Novak Djokovic&#34;,&#34;type&#34;:&#34;scatter&#34;,&#34;mode&#34;:&#34;markers&#34;,&#34;marker&#34;:{&#34;autocolorscale&#34;:false,&#34;color&#34;:&#34;rgba(0,0,255,1)&#34;,&#34;opacity&#34;:0.7,&#34;size&#34;:28.3874906476385,&#34;symbol&#34;:&#34;circle&#34;,&#34;line&#34;:{&#34;width&#34;:1.88976377952756,&#34;color&#34;:&#34;rgba(0,0,255,1)&#34;}},&#34;hoveron&#34;:&#34;points&#34;,&#34;showlegend&#34;:false,&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;hoverinfo&#34;:&#34;text&#34;,&#34;frame&#34;:null},{&#34;x&#34;:[91.1764705882353],&#34;y&#34;:[26.3586956521739],&#34;text&#34;:&#34;Matches_Won: 18&lt;br /&gt;Matches_Won: 18&lt;br /&gt;Player_Name: Roger Federer&#34;,&#34;type&#34;:&#34;scatter&#34;,&#34;mode&#34;:&#34;markers&#34;,&#34;marker&#34;:{&#34;autocolorscale&#34;:false,&#34;color&#34;:&#34;rgba(34,139,34,1)&#34;,&#34;opacity&#34;:0.7,&#34;size&#34;:25.7135330481202,&#34;symbol&#34;:&#34;circle&#34;,&#34;line&#34;:{&#34;width&#34;:1.88976377952756,&#34;color&#34;:&#34;rgba(34,139,34,1)&#34;}},&#34;hoveron&#34;:&#34;points&#34;,&#34;showlegend&#34;:false,&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;hoverinfo&#34;:&#34;text&#34;,&#34;frame&#34;:null},{&#34;x&#34;:[91.5167095115681],&#34;y&#34;:[36.2903225806452],&#34;text&#34;:&#34;Matches_Won: 25&lt;br /&gt;Matches_Won: 25&lt;br /&gt;Player_Name: Rafael Nadal&#34;,&#34;type&#34;:&#34;scatter&#34;,&#34;mode&#34;:&#34;markers&#34;,&#34;marker&#34;:{&#34;autocolorscale&#34;:false,&#34;color&#34;:&#34;rgba(255,0,0,1)&#34;,&#34;opacity&#34;:0.7,&#34;size&#34;:30.2362204724409,&#34;symbol&#34;:&#34;circle&#34;,&#34;line&#34;:{&#34;width&#34;:1.88976377952756,&#34;color&#34;:&#34;rgba(255,0,0,1)&#34;}},&#34;hoveron&#34;:&#34;points&#34;,&#34;showlegend&#34;:false,&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;hoverinfo&#34;:&#34;text&#34;,&#34;frame&#34;:null}],&#34;layout&#34;:{&#34;margin&#34;:{&#34;t&#34;:49.6073059360731,&#34;r&#34;:7.30593607305936,&#34;b&#34;:42.8393524283935,&#34;l&#34;:39.9169779991698},&#34;plot_bgcolor&#34;:&#34;rgba(241,248,247,1)&#34;,&#34;paper_bgcolor&#34;:&#34;rgba(255,255,255,1)&#34;,&#34;font&#34;:{&#34;color&#34;:&#34;rgba(0,0,0,1)&#34;,&#34;family&#34;:&#34;&#34;,&#34;size&#34;:14.6118721461187},&#34;title&#34;:{&#34;text&#34;:&#34;&lt;b&gt; 2019 Grand Slam Season &lt;\/b&gt;&#34;,&#34;font&#34;:{&#34;color&#34;:&#34;rgba(0,0,0,1)&#34;,&#34;family&#34;:&#34;&#34;,&#34;size&#34;:23.37899543379},&#34;x&#34;:0.5,&#34;xref&#34;:&#34;paper&#34;},&#34;xaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;type&#34;:&#34;linear&#34;,&#34;autorange&#34;:false,&#34;range&#34;:[30.3293413173653,96.4171656686627],&#34;tickmode&#34;:&#34;array&#34;,&#34;ticktext&#34;:[null,&#34;40&#34;,&#34;60&#34;,&#34;80&#34;,null],&#34;tickvals&#34;:[null,40,60,80,null],&#34;categoryorder&#34;:&#34;array&#34;,&#34;categoryarray&#34;:[null,&#34;40&#34;,&#34;60&#34;,&#34;80&#34;,null],&#34;nticks&#34;:null,&#34;ticks&#34;:&#34;outside&#34;,&#34;tickcolor&#34;:&#34;rgba(51,51,51,1)&#34;,&#34;ticklen&#34;:3.65296803652968,&#34;tickwidth&#34;:0.66417600664176,&#34;showticklabels&#34;:true,&#34;tickfont&#34;:{&#34;color&#34;:&#34;rgba(77,77,77,1)&#34;,&#34;family&#34;:&#34;&#34;,&#34;size&#34;:11.689497716895},&#34;tickangle&#34;:-0,&#34;showline&#34;:true,&#34;linecolor&#34;:&#34;rgba(0,0,0,1)&#34;,&#34;linewidth&#34;:0.66417600664176,&#34;showgrid&#34;:false,&#34;gridcolor&#34;:null,&#34;gridwidth&#34;:0,&#34;zeroline&#34;:false,&#34;anchor&#34;:&#34;y&#34;,&#34;title&#34;:{&#34;text&#34;:&#34;&lt;b&gt; % Service Games Held &lt;\/b&gt;&#34;,&#34;font&#34;:{&#34;color&#34;:&#34;rgba(0,0,0,1)&#34;,&#34;family&#34;:&#34;&#34;,&#34;size&#34;:17.2685761726858}},&#34;hoverformat&#34;:&#34;.2f&#34;},&#34;yaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;type&#34;:&#34;linear&#34;,&#34;autorange&#34;:false,&#34;range&#34;:[-1.875,39.375],&#34;tickmode&#34;:&#34;array&#34;,&#34;ticktext&#34;:[&#34;0&#34;,&#34;10&#34;,&#34;20&#34;,&#34;30&#34;,null],&#34;tickvals&#34;:[0,10,20,30,null],&#34;categoryorder&#34;:&#34;array&#34;,&#34;categoryarray&#34;:[&#34;0&#34;,&#34;10&#34;,&#34;20&#34;,&#34;30&#34;,null],&#34;nticks&#34;:null,&#34;ticks&#34;:&#34;outside&#34;,&#34;tickcolor&#34;:&#34;rgba(51,51,51,1)&#34;,&#34;ticklen&#34;:3.65296803652968,&#34;tickwidth&#34;:0.66417600664176,&#34;showticklabels&#34;:true,&#34;tickfont&#34;:{&#34;color&#34;:&#34;rgba(77,77,77,1)&#34;,&#34;family&#34;:&#34;&#34;,&#34;size&#34;:11.689497716895},&#34;tickangle&#34;:-0,&#34;showline&#34;:true,&#34;linecolor&#34;:&#34;rgba(0,0,0,1)&#34;,&#34;linewidth&#34;:0.66417600664176,&#34;showgrid&#34;:false,&#34;gridcolor&#34;:null,&#34;gridwidth&#34;:0,&#34;zeroline&#34;:false,&#34;anchor&#34;:&#34;x&#34;,&#34;title&#34;:{&#34;text&#34;:&#34;&lt;b&gt; % Service Games Broken &lt;\/b&gt;&#34;,&#34;font&#34;:{&#34;color&#34;:&#34;rgba(0,0,0,1)&#34;,&#34;family&#34;:&#34;&#34;,&#34;size&#34;:17.2685761726858}},&#34;hoverformat&#34;:&#34;.2f&#34;},&#34;shapes&#34;:[{&#34;type&#34;:&#34;rect&#34;,&#34;fillcolor&#34;:null,&#34;line&#34;:{&#34;color&#34;:null,&#34;width&#34;:0,&#34;linetype&#34;:[]},&#34;yref&#34;:&#34;paper&#34;,&#34;xref&#34;:&#34;paper&#34;,&#34;x0&#34;:0,&#34;x1&#34;:1,&#34;y0&#34;:0,&#34;y1&#34;:1}],&#34;showlegend&#34;:false,&#34;legend&#34;:{&#34;bgcolor&#34;:&#34;rgba(255,255,255,1)&#34;,&#34;bordercolor&#34;:&#34;rgba(190,190,190,1)&#34;,&#34;borderwidth&#34;:1.88976377952756,&#34;font&#34;:{&#34;color&#34;:&#34;rgba(0,0,0,1)&#34;,&#34;family&#34;:&#34;&#34;,&#34;size&#34;:11.689497716895}},&#34;hovermode&#34;:&#34;closest&#34;,&#34;barmode&#34;:&#34;relative&#34;},&#34;config&#34;:{&#34;doubleClick&#34;:&#34;reset&#34;,&#34;showSendToCloud&#34;:false},&#34;source&#34;:&#34;A&#34;,&#34;attrs&#34;:{&#34;df8246bb7d36&#34;:{&#34;x&#34;:{},&#34;y&#34;:{},&#34;size&#34;:{},&#34;label&#34;:{},&#34;type&#34;:&#34;scatter&#34;},&#34;df823f198881&#34;:{&#34;label&#34;:{},&#34;x&#34;:{},&#34;y&#34;:{},&#34;size&#34;:{},&#34;label.1&#34;:{}},&#34;df822550ed84&#34;:{&#34;label&#34;:{},&#34;x&#34;:{},&#34;y&#34;:{},&#34;size&#34;:{},&#34;label.1&#34;:{}},&#34;df826419883f&#34;:{&#34;label&#34;:{},&#34;x&#34;:{},&#34;y&#34;:{},&#34;size&#34;:{},&#34;label.1&#34;:{}},&#34;df8248401370&#34;:{&#34;x&#34;:{},&#34;y&#34;:{},&#34;size&#34;:{},&#34;x.1&#34;:{},&#34;y.1&#34;:{},&#34;size.1&#34;:{},&#34;label&#34;:{}},&#34;df8266bc431e&#34;:{&#34;x&#34;:{},&#34;y&#34;:{},&#34;size&#34;:{},&#34;x.1&#34;:{},&#34;y.1&#34;:{},&#34;size.1&#34;:{},&#34;label&#34;:{}},&#34;df8251da9b43&#34;:{&#34;x&#34;:{},&#34;y&#34;:{},&#34;size&#34;:{},&#34;x.1&#34;:{},&#34;y.1&#34;:{},&#34;size.1&#34;:{},&#34;label&#34;:{}}},&#34;cur_data&#34;:&#34;df8246bb7d36&#34;,&#34;visdat&#34;:{&#34;df8246bb7d36&#34;:[&#34;function (y) &#34;,&#34;x&#34;],&#34;df823f198881&#34;:[&#34;function (y) &#34;,&#34;x&#34;],&#34;df822550ed84&#34;:[&#34;function (y) &#34;,&#34;x&#34;],&#34;df826419883f&#34;:[&#34;function (y) &#34;,&#34;x&#34;],&#34;df8248401370&#34;:[&#34;function (y) &#34;,&#34;x&#34;],&#34;df8266bc431e&#34;:[&#34;function (y) &#34;,&#34;x&#34;],&#34;df8251da9b43&#34;:[&#34;function (y) &#34;,&#34;x&#34;]},&#34;highlight&#34;:{&#34;on&#34;:&#34;plotly_click&#34;,&#34;persistent&#34;:false,&#34;dynamic&#34;:false,&#34;selectize&#34;:false,&#34;opacityDim&#34;:0.2,&#34;selected&#34;:{&#34;opacity&#34;:1},&#34;debounce&#34;:0},&#34;shinyEvents&#34;:[&#34;plotly_hover&#34;,&#34;plotly_click&#34;,&#34;plotly_selected&#34;,&#34;plotly_relayout&#34;,&#34;plotly_brushed&#34;,&#34;plotly_brushing&#34;,&#34;plotly_clickannotation&#34;,&#34;plotly_doubleclick&#34;,&#34;plotly_deselect&#34;,&#34;plotly_afterplot&#34;,&#34;plotly_sunburstclick&#34;],&#34;base_url&#34;:&#34;https://plot.ly&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
 &lt;p&gt;All R codes to produce this analysis can be found on my &lt;a href=&#34;https://github.com/petertea96/Tennis-Data-Analysis/blob/master/Bubble%20chart.R&#34;&gt;Github page&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Using GAMs to predict 2020 All-NBA Team</title>
-      <link>/project/all-nba/</link>
-      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/project/all-nba/</guid>
-      <description>
-
-
-&lt;div id=&#34;all-nba-selection&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;All-NBA Selection&lt;/h1&gt;
-&lt;div id=&#34;table-of-contents&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Table of contents&lt;/h2&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction: All-NBA Selection&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#data&#34;&gt;Obtaining/Scraping Data&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#EDA&#34;&gt;Exploratory Data Analysis&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#gam&#34;&gt;Fitting GAM Model&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div id=&#34;all-nba-selection-1&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;All-NBA Selection &lt;a name=&#34;introduction&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;The All-NBA team is an annual NBA distinction awarded to players with outstanding peformances at the end of each NBA season. Since the 1989 season, the All-NBA team is composed of three sub All-NBA teams (i.e. 1st All-NBA, 2nd All-NBA and 3rd All-NBA) where each team is composed of 2 guards, 2 forwards and 1 center. In total, 6 guards, 6 forwards and 3 centers are selected for the All-NBA team.&lt;/p&gt;
-&lt;p&gt;Selection is controlled by a panel of sportswriters and broadcasters (i.e. the media) who select players for the All-NBA 1st, 2nd and 3rd Teams by position. A tally of all the votes are then taken to determine the results of All-NBA selections for all three teams. Players placed on a 1st All-NBA team ballot are awarded 5 points, while players placed on a 2nd All-NBA team ballot are awarded 3 points and 1 point for a 3rd All-NBA team ballot. The implications of the All-NBA team are not only of financial incentive, but also for reputation as inclusion to this team might validate the stardom of NBA players.&lt;/p&gt;
-&lt;p&gt;In this project, we build models to predict which players will form all 3 All-NBA teams. We first collect end-of-season boxscore statistics since the 1989 NBA season to train and test our prediction models. Then, we make our predictions for the All-NBA team for this current 2020 NBA season. We decided to look at statistics on a &lt;em&gt;per 100 possessions&lt;/em&gt; metric to account for fluctuating pace of play across different NBA seasons.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;obtainingscraping-nba-data&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Obtaining/Scraping NBA Data &lt;a name=&#34;data&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;We first scrape historic end-of-season boxscore statistics for NBA players using the &lt;a href=&#34;https://rdrr.io/github/bobbyingram/bballR/&#34;&gt;&lt;code&gt;bballR&lt;/code&gt;&lt;/a&gt; R package. As stated previously, we are interested in box-score metrics on a &lt;em&gt;per 100 possessions&lt;/em&gt; scale, which the bballR R package can easily provide.&lt;/p&gt;
-&lt;div id=&#34;player-per-100-possessions-data&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1989 - 2019 Player per 100 possessions Data&lt;/h3&gt;
-&lt;p&gt;We first present code on collecting end-of season box-score statistics (&lt;em&gt;per 100 possessions&lt;/em&gt;), and saving them into &lt;code&gt;.RDS&lt;/code&gt; files using the bballR R package. We decide to only keep player seaason records where the player played at least 100 minutes. We add in this criterion since having players who play limited minutes are likely not going to be considered for the All-NBA teams.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##### --------------- Using bballR package to scrape historical data --------------- #####
-
-setwd(&amp;quot;~/Documents/Sports-Analytics/NBA/Data&amp;quot;)
-# --&amp;gt; Set current working directory to where we want to save data
-
-# Use the bballR package to gather some end of season boxscore stats
-#install.packages(&amp;quot;remotes&amp;quot;)
-#remotes::install_github(&amp;quot;bobbyingram/bballR&amp;quot;)
-
-# --&amp;gt; Load all libraries we will need
-library(bballR)
-
-
-# --&amp;gt; First scrape key data outlining info on all NBA players (this may help with merging datasets later on)
-players_dat &amp;lt;- bballR::scrape_all_players()
-
-# --&amp;gt; Save file
-saveRDS(players_dat, file = &amp;quot;players_dat.RDS&amp;quot;)
-# Data Key: https://rdrr.io/github/bobbyingram/bballR/man/scrape_all_players.html
-
-
-# --&amp;gt; Second, scrape end of season boxscore statistics (per 100 possessions) from the 1989 season to the previous 2019 NBA season.
-
-for (year in 1989:2019){
-  filename = paste(&amp;quot;NBA_&amp;quot;, year, &amp;quot;_P100P.RDS&amp;quot;, sep = &amp;quot;&amp;quot; )
-  saveRDS(bballR::scrape_season_per_100_poss(year), file = filename)
-}
-#https://rdrr.io/github/bobbyingram/bballR/man/scrape_season_per_100_poss.html
-
-
-# --&amp;gt; Combine all seasons into a single &amp;quot;master file&amp;quot;
-# --&amp;gt; Only include players who played more than 100 minutes a season
-Historical_dat_1989_2019 &amp;lt;- data.frame()
-for( year in 1990:2019){
-  dat &amp;lt;- readRDS(paste(&amp;quot;NBA_&amp;quot;, year, &amp;quot;_P100P.RDS&amp;quot;, sep = &amp;quot;&amp;quot; ))
-  
-  dat &amp;lt;- dat %&amp;gt;%
-    filter(MP &amp;gt; 100) %&amp;gt;% 
-    filter(Tm != &amp;quot;TOT&amp;quot;) %&amp;gt;%
-    mutate(Year = year)
-  
-  Historical_dat_1989_2019 &amp;lt;- rbind(Historical_dat_1989_2019, dat)
-  
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;all-nba-player-selections&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1989 - 2019 All-NBA Player Selections&lt;/h3&gt;
-&lt;p&gt;The previous code saved each season’s per 100 possesion box-score statistics in separate .RDS files. Now, we will need to scrape data that indicates which players won All-NBA team awards at the end of each season. Unfortunately, the bballR R package does not include functions that scrape this type of information for us. Instead, we will scrape this information ourselves.&lt;/p&gt;
-&lt;p&gt;A list of All-NBA teams can be found on &lt;a href=&#34;https://www.basketball-reference.com/awards/all_league.html&#34;&gt;basketball-reference&lt;/a&gt;. We will use the &lt;code&gt;rVest&lt;/code&gt; R package to scrape this data into a clean .RDS file as shown in the code below:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# ----- Get list of player names who made the ALL - NBA Teams ----- #
-library(rvest)
-library(dplyr)
-
-my_url &amp;lt;- read_html(&amp;quot;https://www.basketball-reference.com/awards/all_league.html&amp;quot;)
-node &amp;lt;- &amp;quot;tbody .left , .right&amp;quot;
-# Node found using InspectorGadget chrome tool.
-
-scraped_data &amp;lt;- my_url %&amp;gt;%
-  html_nodes(node) %&amp;gt;%
-  html_text()
-
-dummy&amp;lt;- scraped_data[1:984]
-# Anything past the 984th element of the list is not required
-
-# Remove empty elements from the list
-to_remove &amp;lt;- c()
-for (i in seq(from=25, to = 953, by = 32)){
-  ind &amp;lt;- seq(from = i, to = i+7, by = 1)
-  to_remove &amp;lt;- c(to_remove, ind)
-}
-
-dummy &amp;lt;- dummy[-to_remove]
-
-# Remove entries that indicate type of All-NBA team awarded
-to_remove2 &amp;lt;- which(grepl(&amp;quot;0|1|2|3|NBA&amp;quot;, dummy))
-players &amp;lt;- dummy[-to_remove2]
-
-
-# Initialize data frame...
-year &amp;lt;- rep(2019:1989, each = 15)
-team &amp;lt;- rep(rep(1:3, each = 5), times = 31)
-
-
-ALL_NBA_data &amp;lt;- data.frame(Year = year, Team = team, Player = players, stringsAsFactors = F) %&amp;gt;%
-  mutate(Position = substr(Player, start = nchar(Player), stop = nchar(Player)),
-         Player = substr(Player, 1, nchar(Player) - 2)
-         ) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now that we have collected historic box-score statistics after each NBA season, and also collected the names of the players who won All-NBA after those seasons, the next step is to combine these two datasets together.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Create an ID that will match the box-score dataset
-to_test &amp;lt;- paste(ALL_NBA_data$Player, ALL_NBA_data$Year, sep =&amp;quot;-&amp;quot;)
-
-# Add column of 1 if player made All-NBA that season, and 0 if they did not.
-# Also, adjust position to be G, F or C.
-Historical_dat_1989_2019 &amp;lt;- Historical_dat_1989_2019 %&amp;gt;%
-  mutate(ID = paste(Player, Year, sep = &amp;quot;-&amp;quot;),
-         ALL_NBA = ifelse(ID %in% to_test, 1, 0),
-         New_Pos = ifelse(&amp;quot;G&amp;quot; == substr(Pos,2,2), &amp;quot;G&amp;quot;, ifelse(&amp;quot;F&amp;quot; == substr(Pos,2,2), &amp;quot;F&amp;quot;, &amp;quot;C&amp;quot;) ))
-
-#Historical_dat_1989_2019 %&amp;gt;% group_by(Year) %&amp;gt;%
-#  summarise(n = sum(ALL_NBA)) %&amp;gt;% View()
-# --&amp;gt; Two years have &amp;quot;16&amp;quot; players winning All-NBA
-# --&amp;gt; This is just one player being traded during season (playing for two different teams)
-
-saveRDS(Historical_dat_1989_2019, file = &amp;quot;Historical_dat_1989_2019.RDS&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;current-2020-player-per-100-possessions-data&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Current 2020 Player per 100 possessions Data&lt;/h3&gt;
-&lt;p&gt;Later on in our report, we will predict who will be included in this year’s All-NBA team. To do this, we will need to scrape the current season box-score statistics (per 100 possessions). Again, we will use basketball-reference and the R package &lt;code&gt;rVest&lt;/code&gt;.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;##### ----- Get current per 100 possession season stats ----- #####
-my_url &amp;lt;- read_html(&amp;quot;https://www.basketball-reference.com/leagues/NBA_2020_per_poss.html&amp;quot;)
-
-node &amp;lt;- &amp;quot;.left , .right , .center&amp;quot;
-
-
-scraped_data &amp;lt;- my_url %&amp;gt;%
-  html_nodes(node) %&amp;gt;%
-  html_text()
-
-# Remove the &amp;quot;Rk&amp;quot; column from data
-#Rk_ind &amp;lt;- which(scraped_data == &amp;quot;Rk&amp;quot;)[-1]
-
-
-each_row &amp;lt;- seq(from = 33, to = length(scraped_data) - 32,  by = 32)
-col_names = scraped_data[1:32]
-
-dat = matrix(ncol = 32)
-for (i in each_row){
-  dat &amp;lt;- rbind(dat, scraped_data[i:(i+31)])
-  
-}
-
-colnames(dat) &amp;lt;- col_names
-
-Current_season_dat &amp;lt;- as.data.frame(dat, stringsAsFactors = FALSE)
-Current_season_dat &amp;lt;- Current_season_dat[-which(Current_season_dat$Rk == &amp;quot;Rk&amp;quot;), ]
-
-
-Current_season_dat[c(4, 6:32)] &amp;lt;- sapply(Current_season_dat[c(4, 6:32)], as.numeric)
-
-Current_season_dat &amp;lt;- Current_season_dat[-1, -30]
-
-saveRDS(Current_season_dat, file = &amp;quot;~/Documents/Sports-Analytics/NBA/Data/Current_season_dat.RDS&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;exploratory-data-analysis&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Exploratory Data Analysis &lt;a name=&#34;EDA&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;After all that heavy lifting, we now present some basic exploratory data analysis on our collected data. For the purposes of this project, we decided to focus only on players who have played at least 100 minutes in a given season. This condition removes players who are not full-time NBA players and hence better represents a sample of NBA players who are more inclined to be selected for the All-NBA teams.&lt;/p&gt;
-&lt;p&gt;We first present a simple correlation plot between 14 different boxscore metrics for these NBA players. These metrics include:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;PTS: Points scored per 100 possessions&lt;/li&gt;
-&lt;li&gt;AST: Assists per 100 possessions&lt;/li&gt;
-&lt;li&gt;STL: Steals per 100 possessions&lt;/li&gt;
-&lt;li&gt;BLK: Blocks per 100 possessions&lt;/li&gt;
-&lt;li&gt;MP: Minutes played&lt;/li&gt;
-&lt;li&gt;ORB: Offensive rebounds per 100 possessions&lt;/li&gt;
-&lt;li&gt;DRB: Defensive rebounds per 100 possessions&lt;/li&gt;
-&lt;li&gt;TOV: Turnovers per 100 possessions&lt;/li&gt;
-&lt;li&gt;PF: Personal fouls per 100 possessions&lt;/li&gt;
-&lt;li&gt;ORtg: Offensive rating (An estimate of points produced per 100 possessions)&lt;/li&gt;
-&lt;li&gt;DRtg: Defensive rating (An estimate of points allowed per 100 possessions)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;###########
-# --&amp;gt; Exploratory correlation plot b/n variables
-library(ggcorrplot)
-library(dplyr)
-
-corr_mat &amp;lt;- Historical_dat_1990_2019 %&amp;gt;%
-  select(PTS, AST, STL, BLK, MP, ORB, DRB, TOV, PF, ORtg, DRtg) %&amp;gt;%
-  cor() %&amp;gt;%
-  round(1)
-
-
-ggcorrplot(corr_mat, type = &amp;quot;lower&amp;quot;, colors = c(&amp;quot;#FF0000&amp;quot;, &amp;quot;#FFFFF0&amp;quot; , &amp;quot;#4169E1&amp;quot;),
-           outline.col = &amp;quot;black&amp;quot;, lab = T, ggtheme = theme_classic(),
-           title = &amp;quot;Correlation of per 100 possession boxscore stats&amp;quot;,
-           legend.title = &amp;quot;Correlation&amp;quot;,
-           lab_size = 3)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/project/All-NBA/index_files/figure-html/EDA-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;From the correlation plot above, we see that there exists strong linear relationships between a player’s Offensive Rebounding numbers with their Defensive Rebounding numbers and number of Blocks. This is unsurprising since players who grab rebounds and block shots tend to be near the rim, and hence will have a tendency to perform both roles of grabbing rebounds and blocking shots. Turnovers and assists also tend to be related as well since decision makers whose job is to set up their teamates through assists, may be more liable to turn the ball over as well.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;fitting-gam-models&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Fitting GAM Models &lt;a name=&#34;GAM&#34;&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;To predict whether a player will be selected or not for an All-NBA team, we use GAM models. In the context of our problem, a GLM (i.e. logistic regression) could be used to estimate the log odds (a function of a success probability) of a player reaching All-NBA status, given his in season performance. However, GLM models assume a linear relationship (i.e. a parametric form) between the covariates and the log-odds of All-NBA selection which may not be true. GAM models on the other hand do not assume a priori any specific structure for the relationship between boxscore stats and the outcome of All-NBA selection. In fact, GAMs can be used to model non-linear effects of the covariates on the response variable. In a sense, we can consider GAM models as a more flexible version of GLM models. GAMs have the abililty to model these non-linear relationships using spline functions. More information on GAMs can be found &lt;a href=&#34;https://christophm.github.io/interpretable-ml-book/extend-lm.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;!--
-Since the relationship between our proposed covariates and the outcome of All-NBA selection may be different based on position (eg: Assists and steals may be more important for Guards, while blocks and rebounds may be more important for Centers), we fit 3 seperate GAM models for the Guard, Forward and Center positions.
---&gt;
-&lt;p&gt;To further reduce noise, we also only chose to look at player season records where the player played atleast 5 games (in addition to playing at least 100 total minutes). The rationale is that players who do not meet the above criteria are likely not considered from All-NBA selection.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;Historical_dat_1990_2019 &amp;lt;- Historical_dat_1990_2019 %&amp;gt;%
-  filter(G &amp;gt; 5 &amp;amp; MP &amp;gt; 100)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Next up, we’ll set up our training and testing sets to inform us on the quality of the fit of our models. We chose the conventional 70 % split for the training set and 30 % to the test set. To ensure that there are an adequate amount of outcomes in each of the training and test sets, we allocate total years to each set. That is, since we have a total of 31 years, we allocate 0.3 x 30 = &lt;strong&gt;9 years&lt;/strong&gt; of data to the testing set and the remaining &lt;strong&gt;22 years&lt;/strong&gt; of data to the training set.&lt;/p&gt;
-&lt;p&gt;To evaluate the predictive performances of our GAM models, we look at their classification rates on the testing set. Here, in our calculations for classification rates, we will only consider the amount of correct All-NBA predictions. That is, among the players who actually won All-NBA, how many did we correctly predict that they would win. A classification rate that considers correct classification among those who did not win All-NBA would not be very informative since the majority of players do not win All-NBA.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Create Training (70%) - Testing (30%) split
-# In total, we have 30 years of data.
-# --&amp;gt; Training set will have 21 years worth of data, Testing set will have 9 years worth of data 
-
-set.seed(824)
-# --&amp;gt; RIP Kobe and Gianna Bryant
-
-# Randomly select 9 years:
-possible_years &amp;lt;- 1990:2019
-
-test_years &amp;lt;- sort(sample(x=possible_years, size = 9))
-
-train_years &amp;lt;- sort(possible_years[is.na(pmatch(possible_years, test_years))])
-
-
-train_dat &amp;lt;- Historical_dat_1990_2019 %&amp;gt;%
-  filter(Year %in% train_years) %&amp;gt;%
-  select(New_Pos, PTS, AST, STL, BLK, MP, ORB, DRB, TOV, PF, ORtg, DRtg, FT, FG, FGA, Year,
-         Player, ALL_NBA)
-
-test_dat &amp;lt;- Historical_dat_1990_2019 %&amp;gt;%
-  filter(Year %in% test_years)  %&amp;gt;%
-  select(New_Pos, PTS, AST, STL, BLK, MP, ORB, DRB, TOV, PF, ORtg, DRtg, FT, FG, FGA, Year,
-         Player, ALL_NBA)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;gam-model&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;GAM Model&lt;/h3&gt;
-&lt;p&gt;Here is the fitting of a GAM model to our training set.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(mgcv)
-
-gen_mod =  gam(ALL_NBA ~ s(PTS) + s(AST) + s(STL) + s(BLK) + s(MP) + 
-                 s(ORB) + s(DRB) + s(TOV) + s(PF) + s(ORtg) + s(DRtg) + 
-                 s(FT) + s(FG) + s(FGA) + New_Pos,
-               data = train_dat,
-               family = binomial,
-               method = &amp;quot;REML&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(gen_mod)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Family: binomial 
-## Link function: logit 
-## 
-## Formula:
-## ALL_NBA ~ s(PTS) + s(AST) + s(STL) + s(BLK) + s(MP) + s(ORB) + 
-##     s(DRB) + s(TOV) + s(PF) + s(ORtg) + s(DRtg) + s(FT) + s(FG) + 
-##     s(FGA) + New_Pos
-## 
-## Parametric coefficients:
-##             Estimate Std. Error z value Pr(&amp;gt;|z|)    
-## (Intercept) -11.1535     0.7598 -14.679   &amp;lt;2e-16 ***
-## New_PosF     -0.2974     0.4063  -0.732   0.4643    
-## New_PosG     -1.2459     0.6069  -2.053   0.0401 *  
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
-## 
-## Approximate significance of smooth terms:
-##           edf Ref.df Chi.sq  p-value    
-## s(PTS)  1.000  1.001  7.245  0.00713 ** 
-## s(AST)  1.535  1.913 24.477 4.54e-05 ***
-## s(STL)  3.018  3.744  7.469  0.09130 .  
-## s(BLK)  1.000  1.000  0.318  0.57274    
-## s(MP)   1.150  1.284 92.432  &amp;lt; 2e-16 ***
-## s(ORB)  1.000  1.000  2.993  0.08364 .  
-## s(DRB)  4.690  5.756 12.732  0.02963 *  
-## s(TOV)  1.000  1.000  0.015  0.90325    
-## s(PF)   1.000  1.000 15.933 6.56e-05 ***
-## s(ORtg) 1.000  1.000  5.875  0.01536 *  
-## s(DRtg) 1.398  1.709 94.097  &amp;lt; 2e-16 ***
-## s(FT)   2.993  3.777  9.284  0.03331 *  
-## s(FG)   4.296  5.246 16.078  0.00838 ** 
-## s(FGA)  2.676  3.457  5.696  0.16203    
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
-## 
-## R-sq.(adj) =  0.703   Deviance explained = 78.4%
-## -REML = 331.67  Scale est. = 1         n = 9289&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The summary of our fitted Guards GAM model is shown below. To inspect the degree of &lt;code&gt;wiggliness&lt;/code&gt; in our fitted model, we look at the edf (estimated degrees of freedom). Terms with edf values equal to 1 represent fitted splines which are linear; edf values equal to 2 represent fitted splines which are quadratic; larger edf values represent splines that are increasingly non-linear (i.e. higher EDF value implies more complex splines). In our model, the 5 statistically significant covariates (at level 5%) all have edf &amp;gt; 1.&lt;/p&gt;
-&lt;p&gt;From the summary of this GAM model, we see that &lt;code&gt;Assists&lt;/code&gt; &lt;code&gt;Minutes&lt;/code&gt; and &lt;code&gt;Defensive Rating&lt;/code&gt; were the strongest influencers on whether a player was awarded All-NBA. Additionally, 78.4 % of the deviance was explained by this model.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;evaluating-gam-model-performance&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Evaluating GAM Model Performance&lt;/h2&gt;
-&lt;p&gt;Using our fitted model, we now predict how well it classifies All-NBA selection in our testing set.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;predicted_probs &amp;lt;- predict(gen_mod, test_dat, type = &amp;quot;response&amp;quot;)  
-
-Results_dat &amp;lt;- cbind(test_dat, predicted_probs)
-
-correct_G_vector &amp;lt;- vector()
-for(year in test_years){
-  how_many &amp;lt;- Results_dat %&amp;gt;%
-    filter(Year == year &amp;amp; New_Pos == &amp;quot;G&amp;quot;) %&amp;gt;%
-    arrange(desc(predicted_probs)) %&amp;gt;%
-    select(ALL_NBA) %&amp;gt;%
-    head(6) %&amp;gt;%
-    sum()
-  
-  correct_G_vector &amp;lt;- append(correct_G_vector, how_many)
-}
-names(correct_G_vector) &amp;lt;- test_years
-#correct_G_vector
-
-correct_vector_F &amp;lt;- vector()
-for(year in test_years){
-  how_many &amp;lt;- Results_dat %&amp;gt;%
-    filter(Year == year &amp;amp; New_Pos == &amp;quot;F&amp;quot;) %&amp;gt;%
-    arrange(desc(predicted_probs)) %&amp;gt;%
-    select(ALL_NBA) %&amp;gt;%
-    head(6) %&amp;gt;%
-    sum()
-  
-  correct_vector_F &amp;lt;- append(correct_vector_F, how_many)
-}
-names(correct_vector_F) &amp;lt;- test_years
-#correct_vector_F
-
-
-correct_vector_C &amp;lt;- vector()
-for(year in test_years){
-  how_many &amp;lt;- Results_dat %&amp;gt;%
-    filter(Year == year &amp;amp; New_Pos == &amp;quot;C&amp;quot;) %&amp;gt;%
-    arrange(desc(predicted_probs)) %&amp;gt;%
-    select(ALL_NBA) %&amp;gt;%
-    head(3) %&amp;gt;%
-    sum()
-  
-  correct_vector_C &amp;lt;- append(correct_vector_C, how_many)
-}
-names(correct_vector_C) &amp;lt;- test_years
-#correct_vector_C&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;guards-result&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Guards Result&lt;/h3&gt;
-&lt;table&gt;
-&lt;caption&gt;&lt;span id=&#34;tab:Guards&#34;&gt;Table 1: &lt;/span&gt;Classification Rate of Guards&lt;/caption&gt;
-&lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th align=&#34;right&#34;&gt;1990&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;1993&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;1994&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;1996&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;1999&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;2000&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;2002&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;2005&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;2010&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;right&#34;&gt;5&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;5&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;5&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;!--
-Testing set Year |1990 | 1993 | 1994 | 1996 | 1999 | 2000 | 2002 | 2005 | 2010 | 
-|---|---|---|---|---|---|---|---|---|---|
-No. correct classifications |  5   | 4   | 3 |   4   | 4 |   5 |   5 |   4 |   4 |
---&gt;
-&lt;p&gt;In the above table 1, we present the number of correct players classified into the All-NBA team. Note that each year, 6 guards are chosen for All- NBA. The results indicate an overall classification rate of 70 % in the testing dataset.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;forwards-result&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Forwards Result&lt;/h3&gt;
-&lt;table&gt;
-&lt;caption&gt;&lt;span id=&#34;tab:Forwards&#34;&gt;Table 2: &lt;/span&gt;Classification Rate of Forwards&lt;/caption&gt;
-&lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th align=&#34;right&#34;&gt;1990&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;1993&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;1994&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;1996&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;1999&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;2000&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;2002&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;2005&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;2010&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;6&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;5&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;6&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;5&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;4&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;!--
-Testing set Year |1990 | 1993 | 1994 | 1996 | 1999 | 2000 | 2002 | 2005 | 2010 | 
-|---|---|---|---|---|---|---|---|---|---|
-No. correct classifications |  4   | 6   | 4 |   5   | 4 |   6 |   3 |   5 |   5 |
---&gt;
-&lt;p&gt;In the above table 2, we present the number of correct players classified into the All-NBA team. Note that each year, 6 forwardss are chosen for All- NBA. The results indicate an overall classification rate of 76 % in the testing dataset.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;centers-result&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Centers Result&lt;/h3&gt;
-&lt;table&gt;
-&lt;caption&gt;&lt;span id=&#34;tab:Centers&#34;&gt;Table 3: &lt;/span&gt;Classification Rate of Centers&lt;/caption&gt;
-&lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th align=&#34;right&#34;&gt;1990&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;1993&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;1994&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;1996&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;1999&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;2000&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;2002&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;2005&lt;/th&gt;
-&lt;th align=&#34;right&#34;&gt;2010&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;2&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;3&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;!--
-Testing set Year |1990 | 1993 | 1994 | 1996 | 1999 | 2000 | 2002 | 2005 | 2010 | 
-|---|---|---|---|---|---|---|---|---|---|
-No. correct classifications |  3   | 3   | 3 |   2   | 1 |   3 |   3 |   2 |   3 |
---&gt;
-&lt;p&gt;In the above table 3, we present the number of correct players classified into the All-NBA team. Note that each year, 3 centers are chosen for All- NBA. The results indicate an overall classification rate of 89 % in the testing dataset.&lt;/p&gt;
-&lt;p&gt;Overall, we have correctly classified the recipients of the All-NBA section 80 % of the time.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;whos-taking-the-all-nba-this-year&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Who’s taking the All-NBA this year?&lt;/h2&gt;
-&lt;p&gt;Given the results, we present the following 1st, 2nd and 3rd All-NBA-Teams:&lt;/p&gt;
-&lt;div id=&#34;all-nba-1st-team&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;All-NBA 1st Team&lt;/h3&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th&gt;Player&lt;/th&gt;
-&lt;th&gt;Position&lt;/th&gt;
-&lt;th&gt;Probability&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Luka Dončić&lt;/td&gt;
-&lt;td&gt;G&lt;/td&gt;
-&lt;td&gt;96 %&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;James Harden&lt;/td&gt;
-&lt;td&gt;G&lt;/td&gt;
-&lt;td&gt;85 %&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Giannis Antetokounmpo&lt;/td&gt;
-&lt;td&gt;F&lt;/td&gt;
-&lt;td&gt;100 %&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;*LeBron James&lt;/td&gt;
-&lt;td&gt;F&lt;/td&gt;
-&lt;td&gt;97 %&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Anthony Davis&lt;/td&gt;
-&lt;td&gt;C&lt;/td&gt;
-&lt;td&gt;87 %&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;div id=&#34;all-nba-2nd-team&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;All-NBA 2nd Team&lt;/h3&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th&gt;Player&lt;/th&gt;
-&lt;th&gt;Position&lt;/th&gt;
-&lt;th&gt;Probability&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Damian Lillard&lt;/td&gt;
-&lt;td&gt;G&lt;/td&gt;
-&lt;td&gt;55 %&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;Trae Young&lt;/td&gt;
-&lt;td&gt;G&lt;/td&gt;
-&lt;td&gt;36 %&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Kawhi Leonard&lt;/td&gt;
-&lt;td&gt;F&lt;/td&gt;
-&lt;td&gt;89 %&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;Khris Middleton&lt;/td&gt;
-&lt;td&gt;F&lt;/td&gt;
-&lt;td&gt;17 %&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Nikola Jokic&lt;/td&gt;
-&lt;td&gt;C&lt;/td&gt;
-&lt;td&gt;64 %&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;div id=&#34;all-nba-3rd-team&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;All-NBA 3rd Team&lt;/h3&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th&gt;Player&lt;/th&gt;
-&lt;th&gt;Position&lt;/th&gt;
-&lt;th&gt;Probability&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;**Bradley Beal&lt;/td&gt;
-&lt;td&gt;G&lt;/td&gt;
-&lt;td&gt;11 %&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;Russell Westbrook&lt;/td&gt;
-&lt;td&gt;G&lt;/td&gt;
-&lt;td&gt;5 %&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Jimmy Butler&lt;/td&gt;
-&lt;td&gt;F&lt;/td&gt;
-&lt;td&gt;6 %&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;Jayson Tatum&lt;/td&gt;
-&lt;td&gt;F&lt;/td&gt;
-&lt;td&gt;6 %&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Joel Embiid&lt;/td&gt;
-&lt;td&gt;C&lt;/td&gt;
-&lt;td&gt;19 %&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;*While Lebron was coded as a &lt;code&gt;Guard&lt;/code&gt;, we will treat him as a Forward in our projections.&lt;/p&gt;
-&lt;p&gt;**We note that Kyrie Irving was actually given the 5th highest fitted value among guards (15 % chance of All-NBA Selection). However, due to his season-ending shoulder-injury, it is unlikely that he would be considered for this award by the end of the season.&lt;/p&gt;
-&lt;p&gt;Notable Omissions:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Guards: Devin Booker (5 %), Zach Lavine (4 %), Donovan Mitchell (3 %), Kemba Walker (2 %), Chris Paul (2 %), Ben Simmons ( &amp;lt; 1 %)&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Forwards: Bam Adebayo (3 %), Pascal Siakam (2 %), Paul George (2 %), Demar Derozan (1 %)&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Centers: Karl-Anthony Towns (13 %)&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Are there any major snubs from the model? While Devin Booker has put up some stellar numbers (34.2 PTS / 8.6 AST / 5.5 REBS per 100 Possessions), and Chris Paul’s OKC Thunder are surprising everybody out west (currently 5th place with a 40-24 record), it’s tough to exclude any of the guards from the list. Interestingly enough, of the players predicted to win an All-NBA selection, only 1 did not make this year’s All-Star Team (&lt;code&gt;Bradley Beal&lt;/code&gt;). Speaking of the All-Star Team, which All-Stars did not get a nod for the All-NBA teams? Among the starters, we are missing: Pascal Siakam and Kemba Walker. Among the reserves, we are missing: Kyle Lowry, Ben Simmons, Bam Adebayo, Domantas Sabonis, Chris Paul, Donovan Mitchell, Brandom Ingram, Rudy Gobert, and Devin Booker.&lt;/p&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>

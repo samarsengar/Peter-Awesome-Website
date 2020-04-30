@@ -1,0 +1,202 @@
+---
+title: Predicting All-NBA Teams
+author: Peter Tea
+date: '2020-04-29'
+categories:
+  - Basketball
+tags:
+  - Prediction
+  - NBA
+  - Basketball
+authors:
+  - admin
+output:
+  html_document:
+    keep_md: yes
+image:
+  caption: Photo by JC Gellidon on Unsplash
+  focal_point: Smart
+summary: Predicting All-NBA Team
+---
+
+
+
+<div id="all-nba-predictions" class="section level1">
+<h1>2020 All-NBA Predictions</h1>
+<div id="random-forest" class="section level3">
+<h3>Random Forest</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Position</th>
+<th>Player</th>
+<th>All-NBA Probability (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">G</td>
+<td>James Harden</td>
+<td>81</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td>Luka Dončić</td>
+<td>69</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td>Trae Young</td>
+<td>52</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td>Russell Westbrook</td>
+<td>52</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td>Damian Lillard</td>
+<td>52</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td>Bradley Beal</td>
+<td>48</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td>Kyrie Irving</td>
+<td>33</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td>Devin Booker</td>
+<td>33</td>
+</tr>
+<tr class="odd">
+<td align="center">F</td>
+<td>Giannis Antetokounmpo</td>
+<td>84</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td>LeBron James</td>
+<td>72</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td>Kawhi Leonard</td>
+<td>69</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td>Paul George</td>
+<td>34</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td>Jayson Tatum</td>
+<td>26</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td>Zion Williamson</td>
+<td>25</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td>Khris Middleton</td>
+<td>24</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td>Jimmy Butler</td>
+<td>21</td>
+</tr>
+<tr class="odd">
+<td align="center">C</td>
+<td>Anthony Davis</td>
+<td>78</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td>Rudy Gobert</td>
+<td>48</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td>Nikola Jokić</td>
+<td>45</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td>Joel Embiid</td>
+<td>36</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td>Karl-Anthony Towns</td>
+<td>29</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="generalized-additive-models" class="section level3">
+<h3>Generalized Additive Models</h3>
+<p>To be continued…</p>
+</div>
+<div id="table-of-contents" class="section level2">
+<h2>Table of contents</h2>
+<ol style="list-style-type: decimal">
+<li><a href="#introduction">Introduction: All-NBA Selection</a></li>
+<li><a href="#data">Obtaining/Scraping Data</a></li>
+<li><a href="#EDA">Exploratory Data Analysis</a></li>
+<li><a href="#rfc">Random Forest</a></li>
+</ol>
+<div id="all-nba-selection" class="section level3">
+<h3>All-NBA Selection <a name="introduction"></a></h3>
+<p>The All-NBA award is an annual NBA distinction bestowed upon players with outstanding performances for a given season. Since 1989, the All-NBA award is partitioned into 3 tiers;
+1st, 2nd and 3rd All-NBA where each team is uniquely composed of 2 guards, 2 forwards and 1 center. In total, 6 guards, 6 forwards and 3 centers are selected for this prestigious award. Not only is there a financial incentive for players implicated with selection into the All-NBA, but there is also a reputation reward which in some way validates these chosen players as the true stars in the game.</p>
+<p>The NBA holds a firm reputation of being a <code>Star-Driven League</code>, meaning that teams exclusively boasting the greatest players are the ones who can legitimately compete for championships. Using the All-NBA tag as a proxy for <code>great players</code> provides an interesting avenue where we could identify foundational pieces that may eventually land a championship. In this project, we build classification models to predict which players will form all 3 All-NBA teams.</p>
+</div>
+</div>
+<div id="obtainingscraping-nba-data" class="section level2">
+<h2>Obtaining/Scraping NBA Data <a name="data"></a></h2>
+<p>Box-score metrics standardized by <em>per 100 possessions</em> was obtained through R, using the <a href="https://rdrr.io/github/bobbyingram/bballR/man/scrape_all_players.html">bballR R package</a>.
+We chose to look at per 100 possessions as it provides a more intuitive comparison between players under different eras and team offence styles.</p>
+<p>Past All-NBA winners was scraped through <a href="https://www.basketball-reference.com/">Basketball Reference</a> with the <code>rVest</code> R package.</p>
+<p>To further reduce noise in the data, we chose to only consider players meeting the following 2 conditions:</p>
+<ol style="list-style-type: decimal">
+<li>Player participated in at least 10 games</li>
+<li>Player played at least 25 minutes/game</li>
+</ol>
+</div>
+<div id="random-forest-classifier" class="section level2">
+<h2>Random Forest Classifier <a name="rfc"></a></h2>
+<p>Add Information</p>
+</div>
+<div id="appendix" class="section level2">
+<h2>Appendix</h2>
+<div id="predictor-variables" class="section level3">
+<h3>Predictor Variables</h3>
+<ul>
+<li>PTS: Points scored per 100 possessions</li>
+<li>AST: Assists per 100 possessions</li>
+<li>STL: Steals per 100 possessions</li>
+<li>BLK: Blocks per 100 possessions</li>
+<li>MP: Minutes played</li>
+<li>ORB: Offensive rebounds per 100 possessions</li>
+<li>DRB: Defensive rebounds per 100 possessions</li>
+<li>TOV: Turnovers per 100 possessions</li>
+<li>PF: Personal fouls per 100 possessions</li>
+<li>ORtg: Offensive rating (An estimate of points produced per 100 possessions)</li>
+<li>DRtg: Defensive rating (An estimate of points allowed per 100 possessions)</li>
+</ul>
+</div>
+<div id="how-does-all-nba-voting-work" class="section level3">
+<h3>How does All-NBA voting work?</h3>
+<p>Selection is controlled by a panel of sportswriters and broadcasters (i.e. the media) who select players for the All-NBA 1st, 2nd and 3rd Teams by position. A tally of all the votes are then taken to determine the results of All-NBA selections for all three teams. Players placed on a 1st All-NBA team ballot are awarded 5 points, while players placed on a 2nd All-NBA team ballot are awarded 3 points and 1 point for a 3rd All-NBA team ballot.</p>
+</div>
+</div>
+</div>
