@@ -24,34 +24,23 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 # 2020 All-NBA Predictions
 
-### Random Forest
+```{r, predictions, echo =FALSE}
+dat1 <- read.csv(file = "All_NBA_2020_votes.csv")
 
-| Position | Player                | All-NBA Probability (%) |
-|:--------:|-----------------------|-----------------|
-| G        | James Harden          | 81              |
-|          | Luka Dončić           | 69              |
-|          | Trae Young            | 52              |
-|          | Russell Westbrook     | 52              |
-|          | Damian Lillard        | 52              |
-|          | Bradley Beal          | 48              |
-|          | Kyrie Irving          | 33              |
-|          | Devin Booker          | 33              |
-| F        | Giannis Antetokounmpo | 84              |
-|          | LeBron James          | 72              |
-|          | Kawhi Leonard         | 69              |
-|          | Paul George           | 34              |
-|          | Jayson Tatum          | 26              |
-|          | Zion Williamson       | 25              |
-|          | Khris Middleton       | 24              |
-|          | Jimmy Butler          | 21              |
-| C        | Anthony Davis         | 78              |
-|          | Rudy Gobert           | 48              |
-|          | Nikola Jokić          | 45              |
-|          | Joel Embiid           | 36              |
-|          | Karl-Anthony Towns    | 29              |
+dat1 <- sapply(dat1, as.character)
+dat1[is.na(dat1)] <- " "
 
 
-### Generalized Additive Models
+colnames(dat1) <- c("Position", "Player", "Logistic Regression Points",
+                   "Random Forest Points", "GAM Points", "Neural Nets Points", "KNN Points", "Total Points")
+
+knitr::kable(dat1, 
+             caption = "Model Results",
+             digits = 2)
+```
+
+
+Who will be named to the All-NBA teams this year? In this project, I fit many classification models to predict this year's All-NBA teams. Then, I aggregate the results of each model that mimics the current All-NBA voting system.
 
 To be continued...
 
@@ -59,16 +48,18 @@ To be continued...
 1. [Introduction: All-NBA Selection](#introduction)
 2. [Obtaining/Scraping Data](#data)
 3. [Exploratory Data Analysis](#EDA)
-4. [Random Forest](#rfc)
+4. [Logistic Regression](#logreg)
+5. [Random Forest](#rfc)
+
 
 
 
 ### All-NBA Selection <a name="introduction"></a>
 
 The All-NBA award is an annual NBA distinction bestowed upon players with outstanding performances for a given season. Since 1989, the All-NBA award is partitioned into 3 tiers;
-1st, 2nd and 3rd All-NBA where each team is uniquely composed of 2 guards, 2 forwards and 1 center. In total, 6 guards, 6 forwards and 3 centers are selected for this prestigious award. Not only is there a financial incentive for players implicated with selection into the All-NBA, but there is also a reputation reward which in some way validates these chosen players as the true stars in the game. 
+1st, 2nd and 3rd All-NBA teams where each team is uniquely composed of 2 guards, 2 forwards and 1 center. In total, 6 guards, 6 forwards and 3 centers are selected for this prestigious award. Not only is there a financial incentive for players implicated with selection into the All-NBA, but there is also a reputation reward which in some way validates these chosen players as the true stars in the game. 
 
-The NBA holds a firm reputation of being a ``Star-Driven League``, meaning that teams exclusively boasting the greatest players are the ones who can legitimately compete for championships. Using the All-NBA tag as a proxy for ``great players`` provides an interesting avenue where we could identify foundational pieces that may eventually land a championship. In this project, we build classification models to predict which players will form all 3 All-NBA teams.
+The NBA holds a firm reputation of being a ``Star-Driven League``, meaning that teams who boast the top players on their active rosters are the ones who can legitimately and exclusively contend for championships. The identification of All-NBA caliber players provides an interesting avenue where we can explore which players can serve as foundational pieces that may eventually land a fortunate team an elusive championship. In this project, we build classification models to predict which players are worthy of occupying 3 All-NBA teams.
 
 
 
@@ -88,10 +79,105 @@ To further reduce noise in the data, we chose to only consider players meeting t
 1. Player participated in at least 10 games
 2. Player played at least 25 minutes/game
 
+<br/>
+
+## Logistic Regression <a name="logreg"></a>
+
+Logistic regression was the first classification algorithm fitted to our All-NBA data. Players in the test-set with a predicted probability of making the All-NBA greater than 50% were classified as All-NBA predictions.
+
+### Logistic Regression 2020 Predictions
+
+```{r, logregpred, echo=FALSE}
+log_pred = read.csv("log_reg_predictions.csv")
+
+to_show = log_pred[, -c(2,3,5)]
+
+to_show$Probability = round(to_show$Probability,3)*100
+
+knitr::kable(to_show, 
+             caption = "Logistic Regression 2020 All-NBA predictions",
+             digits = 2)
+```
+
+### Logistic Regression Performance
+ 
+The fitted model had a test dataset precision of 0.79 and 0.97 for players making All-NBA and players not making All-NBA, respectively. This means that of the All-NBA predictions made, the model was correct 79% of the time while of the non-All-NBA predictions made, the model was correct 97% of the time. 
+
+Where does the model make its errors? Since the importance of this model is mainly in predicting All-NBA players rather than predicting non-All-NBA players, we should focus our evaluation on the performance of this model in making its All-NBA selections. Below, we take a closer look at the All-NBA positive predictions made by the model.
+
+```{r, logregperf, echo =FALSE}
+dat <- read.csv(file = "log_reg_performance.csv", )
+colnames(dat) <- c("All NBA Team", "Prediction Total", "True Total")
+
+knitr::kable(dat, 
+             caption = "Summary of Logistic regression predictions",
+             digits = 2)
+```
+
+From the above table, 36 of the All-NBA predictions made by the model were players who ultimately landed on the 1st All-NBA team. Meanwhile, the model could not identify 3 All-NBA players who ended up making the 1st All-NBA team. Furthermore, 28 and 20 of the All-NBA predictions made by the model, were players who ultimately landed on the 2nd and 3rd All-NBA teams, respectively. Lastly, 22 predicted All-NBA players ultimately did not end up on these prestigious teams.
+Intuitively this means that the model is easily able to identify the greatest players (ranked 1 – 5) but struggles in identifying the last selections (ranked 11 – 15).
+
+We can also consider a Confusion Matrix to assess this model's performance.
+
+
+|                       | True Non- All-NBA | True All-NBA |
+|-----------------------|--------------|------------------|
+| Predicted Non-All-NBA     | 1066         | 22               |
+| Predicted All-NBA | 33           | 84               |
+
+Again, we see that the model performs better at predicting players who did not make All-NBA, than players who actually did end up making All-NBA.
+
+
+<br/>
 
 ## Random Forest Classifier <a name="rfc"></a>
 
-Add Information
+A Random forest algorithm was the second classification algorithm fitted to our All-NBA data. The formation of nodes was made based on a gini index criterion (i.e. splitting nodes based on minimizing gini impurity). Other criterion, like entropy, was considered however was found to have comparable performance in terms of precision. The binary classification of All-NBA selection vs. no All-NBA selection was made with a threshold of 50% of votes from the aggregate decision trees. Other threshold values were considered, however was found to have lower precision. In total, we set 500 decision trees for the random forest. 
+
+
+### Random Forest 2020 Predictions
+
+The probability estimates obtained represent the proportion among the 500 decision trees that predict an All-NBA selection.
+
+```{r, rfcpred, echo = FALSE}
+rfc_pred = read.csv("rfc_predictions.csv")
+
+to_show = rfc_pred[, -c(2,3,5)]
+
+to_show$Probability = round(to_show$Probability,3)*100
+
+
+knitr::kable(to_show, 
+             caption = "Random Forest 2020 All-NBA predictions",
+             digits = 2)
+
+```
+
+### Random Forest Model Performance
+
+The fitted model had a test dataset precision of 0.96 and 0.87 for players not making All-NBA and players making All-NBA, respectively.
+
+An 87% precision for All-NBA predictions means that of all the players predicted to make All-NBA, 87% of them truly was selected for All-NBA. That is, of the 89 All-NBA predictions made, only 77 of them were correct. Interestingly, the test-set contained exactly 117 true All-NBA players which is quite higher than the volume of All-NBA predictions made by the model. If we consider the distribution of predictions made shown in the table below, it appears that the random forest model has an easier time predicting players on the 1st team All-NBA compared to the lesser 2 All-NBA teams.
+
+```{r, rfcperf, echo =FALSE}
+dat <- read.csv(file = "rfc_performance.csv", )
+colnames(dat) <- c("All NBA Team", "Prediction Total", "True Total")
+
+knitr::kable(dat, 
+             caption = "Summary of Random Forest predictions",
+             digits = 2)
+```
+
+34 of the All-NBA predictions made by the model were players who ultimately landed on the 1st All-NBA team. This also means that the model could not identify 5 players who made the 1st All-NBA team. Furthermore, 29 and 15 of the All-NBA predictions made by the model, were players who ultimately landed on the 2nd and 3rd All-NBA teams, respectively.
+
+
+### Random Forest Feature Importance
+With random forests, we can evaluate the relative importance of each feature in the fitted model. This is done by calculating the relevance score of each feature, standardized such that the sum of all feature scores is 1.
+
+![](feature_importance.png)
+
+From the Feature Importance plot, we see that Points scored is by and far the most important feature in deciding whether a player is predicted to be All-NBA. This is then followed by Field goals made and then the overall performance of the team. From watching sports broadcasting, especially NBA on TNT, it has been suggested that players who put up great numbers on winning teams tend to have the edge in these contests than players who put up amazing numbers on struggling teams. This is fuelled by the notion that players on great teams often sacrifice personal accolades for the success of the team, which is warmly embraced by the media.  
+
 
 
 ## Appendix
@@ -107,8 +193,9 @@ Add Information
 - DRB: Defensive rebounds per 100 possessions
 - TOV: Turnovers per 100 possessions
 - PF: Personal fouls per 100 possessions
-- ORtg: Offensive rating (An estimate of points produced per 100 possessions)
-- DRtg: Defensive rating (An estimate of points allowed per 100 possessions)
+- OFF Rating: Offensive rating (An estimate of points produced per 100 possessions)
+- DEF Rating: Defensive rating (An estimate of points allowed per 100 possessions)
+- Team Performance: A team's total # wins / League total # wins
 
 
 ### How does All-NBA voting work?

@@ -12,16 +12,16 @@ education:
   courses:
   - course: Msc Statistics
     institution: Simon Fraser University
-    year: 2019 - 2021
+    year: 2019 - Present
   - course: Bsc Biostatistics
     institution: University of Ottawa
     url: "https://www.stat.sfu.ca/people/grads.html"
     year: 2014 - 2019
 email: "petertea96@gmail.com"
 interests:
-- Sports Analytics (Tennis, Basketball)
+- Sports Analytics
 - Statistics
-- Computation
+- Yoga
 organizations:
 - name: Simon Fraser University
   url: "https://www.stat.sfu.ca/people/grads.html"
@@ -52,7 +52,8 @@ user_groups:
 [comment]: <> (Welcome to this awesome website! This is where I will be posting some fun data projects. Please stay tuned for things to come...)
 
 
-I am currently completing my Master's degree under the supervision of [Tim Swartz](http://people.stat.sfu.ca/~tim/) with a [Natural Sciences and Engineering Research Council of Canada’s](https://www.nserc-crsng.gc.ca/index_eng.asp) (NSERC) Graduate Scholarship. I work as an R facilitator at the [Research Commons](https://www.lib.sfu.ca/about/branches-depts/rc) of SFU, providing R code consultations to graduate students for their research projects, as well as running R workshops. 
+I am a MSc. Statistics student under the supervision of [Tim Swartz](http://people.stat.sfu.ca/~tim/) with a [Natural Sciences and Engineering Research Council of Canada’s](https://www.nserc-crsng.gc.ca/index_eng.asp) (NSERC) Graduate Scholarship. Currently employed as a Data Science co-op at [Aquatic Informatics](https://aquaticinformatics.com/).
 
-In the past, I've been fortunate to hold positions as a Statistical Genetics researcher under the supervision of [Kelly Burkett](https://mysite.science.uottawa.ca/kburkett/), as well as a Data Scientist at the [Canada Revenue Agency](https://www.canada.ca/en/revenue-agency.html).
+
+In the past, I've held positions as an R consultant at SFU [Research Commons](https://www.lib.sfu.ca/about/branches-depts/rc), a Statistical Genetics researcher under the supervision of [Kelly Burkett](https://mysite.science.uottawa.ca/kburkett/), as well as a Data Scientist at the [Canada Revenue Agency](https://www.canada.ca/en/revenue-agency.html).
 
