@@ -117,38 +117,6 @@
     </item>
     
     <item>
-      <title>dplyr</title>
-      <link>/tags/dplyr/</link>
-      <pubDate>Thu, 19 Dec 2019 13:00:00 +0000</pubDate>
-      <guid>/tags/dplyr/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R</title>
-      <link>/tags/r/</link>
-      <pubDate>Thu, 19 Dec 2019 13:00:00 +0000</pubDate>
-      <guid>/tags/r/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>rvest</title>
-      <link>/tags/rvest/</link>
-      <pubDate>Thu, 19 Dec 2019 13:00:00 +0000</pubDate>
-      <guid>/tags/rvest/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Web Scraping</title>
-      <link>/tags/web-scraping/</link>
-      <pubDate>Thu, 19 Dec 2019 13:00:00 +0000</pubDate>
-      <guid>/tags/web-scraping/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Kernel Methods</title>
       <link>/tags/kernel-methods/</link>
       <pubDate>Fri, 09 Nov 2018 13:00:00 +0000</pubDate>
@@ -193,6 +161,14 @@
       <link>/tags/anova/</link>
       <pubDate>Thu, 06 Jul 2017 13:00:00 +0000</pubDate>
       <guid>/tags/anova/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>/tags/r/</link>
+      <pubDate>Thu, 06 Jul 2017 13:00:00 +0000</pubDate>
+      <guid>/tags/r/</guid>
       <description></description>
     </item>
     
