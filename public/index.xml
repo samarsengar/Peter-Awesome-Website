@@ -92,7 +92,6 @@
 
 &lt;div id=&#34;all-nba-predictions&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;2020 All-NBA Predictions&lt;/h1&gt;
-&lt;p&gt;Who will be named to the All-NBA teams this year? In this project, we fit several classification models on per 100 possessions data to vote in this year’s All-NBA selection. Then, we aggregate the results from each model that mimics the current All-NBA voting system.&lt;/p&gt;
 &lt;div id=&#34;table-of-contents&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Table of contents&lt;/h2&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
@@ -116,6 +115,7 @@ Not only is there a financial incentive for players implicated with this award, 
 --&gt;
 &lt;p&gt;The NBA holds a firm reputation of being a &lt;code&gt;Star-Driven League&lt;/code&gt;, meaning that teams who boast the top players on their active rosters are the ones who can legitimately and exclusively contend for championships. The identification of All-NBA caliber players provides an interesting avenue where we can explore which players can serve as foundational pieces, and that may eventually land a fortunate team an elusive championship.&lt;/p&gt;
 &lt;p&gt;While NBA pundits are accustomed to making predictions based on preconceived biases and opinions on players, we make our own All-NBA predictions using a set of classification models which hopefully reduces the emotional elements and recall biases plaguing NBA voting.&lt;/p&gt;
+&lt;p&gt;In this project, we fit several classification models on per 100 possessions data to vote in this year’s All-NBA selection. Then, we aggregate the results from each model that mimics the current All-NBA voting system.&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;obtainingscraping-nba-data&#34; class=&#34;section level2&#34;&gt;
