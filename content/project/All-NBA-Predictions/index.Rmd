@@ -57,7 +57,7 @@ While NBA pundits are accustomed to making predictions based on preconceived bia
 ## Obtaining/Scraping NBA Data <a name="data"></a>
 
 Box-score metrics standardized by *per 100 possessions* was obtained through R, using the [bballR](https://rdrr.io/github/bobbyingram/bballR/man/scrape_all_players.html) R package.
-We chose to look at per 100 possessions as it provides a more intuitive comparison between players under different eras and team offence styles. 
+We chose to look at per 100 possessions instead of the conventional per game standard since per 100 possessions provides a more intuitive comparison between players under different eras and team offence styles. 
 
 Past All-NBA winners dating back from 1989 onward to 2019 was scraped through [Basketball Reference](https://www.basketball-reference.com/) with the ``rVest`` R package.
 
@@ -71,7 +71,7 @@ These conditions remove players who are not full-time NBA players and is aimed a
 
 ### Data Inconsistencies
 
-Many issues were faced when collecting data from different sources. One main concern was that player position data were inconsistent. For example in the 2017-18 season Anthony Davis was coded as a Forward, despite winning All-NBA award that year as a Center. Similarly in that same year, both Jimmy Butler and Lamarcus Aldridge were coded as a Guard and Center respectively, despite both being named onto the All-NBA as Forwards. Position adjustments were made adhering to the position coded in the All-NBA data but since not all players are in the All-NBA data, it is very likely that other position inconsistencies were left untreated in the data.
+Many issues were faced when collecting data from different sources. One main concern was that player position data were inconsistent. For example in the 2017-18 season Anthony Davis was coded as a Forward, despite winning All-NBA award that year as a Center. Similarly in that same year, both Jimmy Butler and Lamarcus Aldridge were coded as a Guard and Center respectively, despite both being named onto the All-NBA as Forwards. Manual adjustments on player positions were made to adher to the position coded in the All-NBA data but since not all players are in the All-NBA data, it is very likely that other position inconsistencies were left untreated in the data.
 
 <br/>
 
@@ -121,26 +121,6 @@ Center: Joel Embiid (3.5 votes)
 
 <br/>
 
-The total voting results for all players receiving a vote can be found in the table below.
-
-
-```{r, predictions, echo =FALSE}
-dat1 <- read.csv(file = "votes_data.csv")
-
-dat1 <- sapply(dat1, as.character)
-dat1[is.na(dat1)] <- " "
-
-
-colnames(dat1) <- c("Position", "Player", "Total Votes")
-
-knitr::kable(dat1, 
-             caption = "Model Results",
-             digits = 2)
-```
-
-A more in depth breakdown of the votes for each model, can be found in the model's respective subsection.
-
-<br/>
 
 ### Model Comparisons
 
@@ -393,3 +373,27 @@ All R and Python code to scrape data and fit the models can be found [here](http
 
 ### How does All-NBA voting work?
 Selection is controlled by a panel of sportswriters and broadcasters (i.e. the media) who select players for the All-NBA 1st, 2nd and 3rd Teams by position. A tally of all the votes are then taken to determine the results of All-NBA selections for all three teams. Players placed on a 1st All-NBA team ballot are awarded 5 points, while players placed on a 2nd All-NBA team ballot are awarded 3 points and 1 point for a 3rd All-NBA team ballot.
+
+
+<br/>
+
+### Total Votes
+
+The total voting results for all players receiving a vote can be found in the table below.
+
+
+```{r, predictions, echo =FALSE}
+dat1 <- read.csv(file = "votes_data.csv")
+
+dat1 <- sapply(dat1, as.character)
+dat1[is.na(dat1)] <- " "
+
+
+colnames(dat1) <- c("Position", "Player", "Total Votes")
+
+knitr::kable(dat1, 
+             caption = "Model Results",
+             digits = 2)
+```
+
+A more in depth breakdown of the votes for each model, can be found in the model's respective subsection.

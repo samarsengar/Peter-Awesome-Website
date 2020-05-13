@@ -551,7 +551,7 @@ Not only is there a financial incentive for players implicated with this award, 
 <div id="obtainingscraping-nba-data" class="section level2">
 <h2>Obtaining/Scraping NBA Data <a name="data"></a></h2>
 <p>Box-score metrics standardized by <em>per 100 possessions</em> was obtained through R, using the <a href="https://rdrr.io/github/bobbyingram/bballR/man/scrape_all_players.html">bballR</a> R package.
-We chose to look at per 100 possessions as it provides a more intuitive comparison between players under different eras and team offence styles.</p>
+We chose to look at per 100 possessions instead of the conventional per game standard since per 100 possessions provides a more intuitive comparison between players under different eras and team offence styles.</p>
 <p>Past All-NBA winners dating back from 1989 onward to 2019 was scraped through <a href="https://www.basketball-reference.com/">Basketball Reference</a> with the <code>rVest</code> R package.</p>
 <p>To further reduce noise in the data, we chose to only consider players meeting the following 2 conditions:</p>
 <ol style="list-style-type: decimal">
@@ -561,7 +561,7 @@ We chose to look at per 100 possessions as it provides a more intuitive comparis
 <p>These conditions remove players who are not full-time NBA players and is aimed at choosing a representative sample of NBA players who are more inclined to be considered for the All-NBA teams.</p>
 <div id="data-inconsistencies" class="section level3">
 <h3>Data Inconsistencies</h3>
-<p>Many issues were faced when collecting data from different sources. One main concern was that player position data were inconsistent. For example in the 2017-18 season Anthony Davis was coded as a Forward, despite winning All-NBA award that year as a Center. Similarly in that same year, both Jimmy Butler and Lamarcus Aldridge were coded as a Guard and Center respectively, despite both being named onto the All-NBA as Forwards. Position adjustments were made adhering to the position coded in the All-NBA data but since not all players are in the All-NBA data, it is very likely that other position inconsistencies were left untreated in the data.</p>
+<p>Many issues were faced when collecting data from different sources. One main concern was that player position data were inconsistent. For example in the 2017-18 season Anthony Davis was coded as a Forward, despite winning All-NBA award that year as a Center. Similarly in that same year, both Jimmy Butler and Lamarcus Aldridge were coded as a Guard and Center respectively, despite both being named onto the All-NBA as Forwards. Manual adjustments on player positions were made to adher to the position coded in the All-NBA data but since not all players are in the All-NBA data, it is very likely that other position inconsistencies were left untreated in the data.</p>
 <p><br/></p>
 </div>
 </div>
@@ -692,9 +692,951 @@ We chose to look at per 100 possessions as it provides a more intuitive comparis
 <p>Forwards: Bam Adebayo (4 votes), Pascal Siakam (3 votes), Paul George (2 votes)</p>
 <p>Center: Joel Embiid (3.5 votes)</p>
 <p><br/></p>
+</div>
+<div id="model-comparisons" class="section level3">
+<h3>Model Comparisons</h3>
+<p>To ensure fair and consistent comparison, we fit each model using the same training set and evaluate performance using the same test set. Since there was a huge imbalance in the number of All-NBA players vs. the number of Non-All-NBA players, we chose to obtain the train-test split with identical proportion of All-NBA cases. Here is the breakdown of our training and test data:</p>
+<table>
+<colgroup>
+<col width="22%" />
+<col width="19%" />
+<col width="19%" />
+<col width="19%" />
+<col width="19%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data</th>
+<th># 1st All NBA Team Players</th>
+<th># 2nd All NBA Team Players</th>
+<th># 3rd All NBA Team Players</th>
+<th># Non-All-NBA Players</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Training Data</td>
+<td>116</td>
+<td>116</td>
+<td>116</td>
+<td>3625</td>
+</tr>
+<tr class="even">
+<td>Test Data</td>
+<td>39</td>
+<td>39</td>
+<td>39</td>
+<td>1088</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>155</td>
+<td>155</td>
+<td>155</td>
+<td>4713</td>
+</tr>
+</tbody>
+</table>
+<p>Both the training and test sets are composed of roughly 90% Non-All-NBA players, and 3.3% each of 1st, 2nd and 3rd All-NBA players. In total, the training set contained 348 All-NBA player observations (116 x 3 = 348), while the test set contained 117 All-NBA player observations (39 x 3 = 117).</p>
+<p>We evaluate the performances of each model on the test set with the following metrics:</p>
+<ol style="list-style-type: decimal">
+<li>How well the model identifies players who ultimately end up on the 1st, 2nd or 3rd All-NBA teams. We define ith Team Sensitivity as:</li>
+</ol>
+<pre><code>  ith Team Sensitivity =  # True Positives on ith All-NBA team / Total number players on the ith All-NBA team
+  
+  where i = 1, 2, 3.</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Overall All-NBA sensitivity</li>
+</ol>
+<pre><code>  Overall Sensitivity =  # True Positives on any All-NBA team / Total number players on any All-NBA team</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>How well the model properly identifies Non-All-NBA players. We define the False Positive Rate (FPR) as</li>
+</ol>
+<pre><code>  FPR =  # False Positive All-NBA players / Total number Non-All-NBA players</code></pre>
+<pre><code>   Note: True Positives represent the number of correctly predicted All-NBA players, while False Positives represent the number of incorrectly predicted All-NBA players.</code></pre>
+<p>Ideally, we want models to have high sensitivity and low FPR.
+1st Team All-NBA players should in theory be the easiest for the models to identify, since these players represent the supposed elite top 5 players after a given season. On the other hand, players who ultimately end up on the 2nd and 3rd All-NBA teams might be tougher for the models to identify; usually there is less consensus among voters on players occupying the secondary and tertiary teams.</p>
+<p>Below, we present a table comparing our 5 models based on the metrics described above.
+<br/></p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">Performance Metric</th>
+<th align="right">Logistic Regression</th>
+<th align="right">Random Forest</th>
+<th align="right">GAM</th>
+<th align="right">KNN</th>
+<th align="right">SVM</th>
+<th align="right">XGBoost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td align="left">1st All-NBA Sensitivity</td>
+<td align="right">0.92</td>
+<td align="right">0.87</td>
+<td align="right">0.97</td>
+<td align="right">0.85</td>
+<td align="right">0.90</td>
+<td align="right">0.87</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td align="left">2nd All-NBA Sensitivity</td>
+<td align="right">0.72</td>
+<td align="right">0.69</td>
+<td align="right">0.82</td>
+<td align="right">0.54</td>
+<td align="right">0.80</td>
+<td align="right">0.74</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td align="left">3rd All-NBA Sensitivity</td>
+<td align="right">0.51</td>
+<td align="right">0.41</td>
+<td align="right">0.59</td>
+<td align="right">0.31</td>
+<td align="right">0.54</td>
+<td align="right">0.46</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td align="left">Overall All-NBA Sensitivity</td>
+<td align="right">0.72</td>
+<td align="right">0.66</td>
+<td align="right">0.80</td>
+<td align="right">0.56</td>
+<td align="right">0.74</td>
+<td align="right">0.69</td>
+</tr>
+<tr class="odd">
+<td>41</td>
+<td align="left">FPR</td>
+<td align="right">0.02</td>
+<td align="right">0.01</td>
+<td align="right">0.03</td>
+<td align="right">0.01</td>
+<td align="right">0.02</td>
+<td align="right">0.02</td>
+</tr>
+<tr class="even">
+<td><br/></td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
+<p>How do we interpret these results? Let’s consider the logistic regression performance row. We see that this model was able to correctly identify 92.3 % of 1st team All-NBA players in the test set. That’s 36 out of 39 1st team players identified, which also means that this model was unable to identify three 1st All-NBA players (fyi these 3 players were: Guard Latrell Sprewell in 1994, Guard Jason Kidd in 1999 and Center Marc Gasol in 2015). Furthermore, the model was able to correctly identify 71.8 % of 2nd team All-NBA players (28 of 39) and 51.3% of 3rd team All-NBA players (20 of 39).
+<!--
+The fitted logistic regression model had a test dataset precision of 79% and 97% for players making All-NBA and players not making All-NBA, respectively. This means that of the All-NBA predictions made, the model was correct 79% of the time while of the non-All-NBA predictions made, the model was correct 97% of the time.
+--></p>
+<p>In general, we see that all models have an easier time predicting players on the 1st team All-NBA compared to the remaining 2 All-NBA teams. Intuitively this means that the model is easily able to identify the greatest players (ranked 1 – 5) but struggles in identifying the last selections (ranked 11 – 15). We also generally see a tradeoff between a model’s sensitivity and their FPR. Take for example GAM which has the highest sensitivities across all 3 All-NBA teams, but also the highest FPR when compared against its competing models. The GAM model makes a higher volume of All-NBA predictions than its competitors, which leads to both a higher volume of True Positives (identifiying true All-NBA players) and False Negatives (misidentifying All-NBA players).</p>
+<p><br/></p>
+</div>
+</div>
+<div id="logistic-regression" class="section level2">
+<h2>Logistic Regression <a name="logreg"></a></h2>
+<p>Logistic regression was the first classification algorithm fitted to our All-NBA data. Players with a predicted probability of making the All-NBA greater than 50% were classified as All-NBA predictions in the traning and test stages.</p>
+<div id="logistic-regression-2020-predictions" class="section level3">
+<h3>Logistic Regression 2020 Predictions</h3>
+<p>Here, we present the model’s All-NBA probability predictions on the 2020 season.</p>
+<table>
+<caption><span id="tab:logregpred">Table 1: </span>Logistic Regression 2020 All-NBA predictions</caption>
+<thead>
+<tr class="header">
+<th align="left">Position</th>
+<th align="right">Probability</th>
+<th align="left">Player</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Center</td>
+<td align="right">96.1</td>
+<td align="left">Anthony Davis</td>
+</tr>
+<tr class="even">
+<td align="left">Center</td>
+<td align="right">58.4</td>
+<td align="left">Nikola Jokić</td>
+</tr>
+<tr class="odd">
+<td align="left">Center</td>
+<td align="right">49.2</td>
+<td align="left">Rudy Gobert</td>
+</tr>
+<tr class="even">
+<td align="left">Center</td>
+<td align="right">36.4</td>
+<td align="left">Joel Embiid</td>
+</tr>
+<tr class="odd">
+<td align="left">Center</td>
+<td align="right">27.6</td>
+<td align="left">Karl-Anthony Towns</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">100.0</td>
+<td align="left">Giannis Antetokounmpo</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">99.6</td>
+<td align="left">LeBron James</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">82.6</td>
+<td align="left">Kawhi Leonard</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">37.4</td>
+<td align="left">Jimmy Butler</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">33.3</td>
+<td align="left">Khris Middleton</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">9.7</td>
+<td align="left">Bam Adebayo</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">8.0</td>
+<td align="left">Zion Williamson</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">7.0</td>
+<td align="left">Jayson Tatum</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">98.3</td>
+<td align="left">James Harden</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">97.9</td>
+<td align="left">Luka Dončić</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">71.0</td>
+<td align="left">Damian Lillard</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">43.0</td>
+<td align="left">Kyrie Irving</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">38.6</td>
+<td align="left">Trae Young</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">27.9</td>
+<td align="left">Russell Westbrook</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">14.7</td>
+<td align="left">Ben Simmons</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">13.1</td>
+<td align="left">Chris Paul</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="random-forest-classifier" class="section level2">
+<h2>Random Forest Classifier <a name="rfc"></a></h2>
+<p>A Random forest algorithm was the second classification algorithm fitted to our All-NBA data. The formation of nodes was made based on a gini index criterion (i.e. splitting nodes based on minimizing gini impurity). Other criterion, like entropy, was considered however was found to have comparable performance in terms of precision. The binary classification of All-NBA selection vs. Non-All-NBA selection was made with a threshold of 50% of votes from the aggregate decision trees. Other threshold values were considered, however was found to have lower precision. In total, we set 200 decision trees for the random forest.</p>
+<div id="random-forest-2020-predictions" class="section level3">
+<h3>Random Forest 2020 Predictions</h3>
+<p>The probability estimates obtained represent the proportion among the 200 decision trees that predict an All-NBA selection.</p>
+<table>
+<caption><span id="tab:rfcpred">Table 2: </span>Random Forest 2020 All-NBA predictions</caption>
+<thead>
+<tr class="header">
+<th align="left">Position</th>
+<th align="right">Probability</th>
+<th align="left">Player</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Center</td>
+<td align="right">84.0</td>
+<td align="left">Anthony Davis</td>
+</tr>
+<tr class="even">
+<td align="left">Center</td>
+<td align="right">53.0</td>
+<td align="left">Rudy Gobert</td>
+</tr>
+<tr class="odd">
+<td align="left">Center</td>
+<td align="right">42.5</td>
+<td align="left">Nikola Jokić</td>
+</tr>
+<tr class="even">
+<td align="left">Center</td>
+<td align="right">33.5</td>
+<td align="left">Joel Embiid</td>
+</tr>
+<tr class="odd">
+<td align="left">Center</td>
+<td align="right">31.5</td>
+<td align="left">Montrezl Harrell</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">85.0</td>
+<td align="left">Giannis Antetokounmpo</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">76.0</td>
+<td align="left">LeBron James</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">68.0</td>
+<td align="left">Kawhi Leonard</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">33.5</td>
+<td align="left">Khris Middleton</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">29.0</td>
+<td align="left">Paul George</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">27.0</td>
+<td align="left">Zion Williamson</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">26.0</td>
+<td align="left">Jimmy Butler</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">25.5</td>
+<td align="left">Jayson Tatum</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">78.0</td>
+<td align="left">James Harden</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">71.0</td>
+<td align="left">Luka Dončić</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">53.5</td>
+<td align="left">Russell Westbrook</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">44.0</td>
+<td align="left">Damian Lillard</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">41.5</td>
+<td align="left">Trae Young</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">38.0</td>
+<td align="left">Bradley Beal</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">34.5</td>
+<td align="left">Donovan Mitchell</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">33.0</td>
+<td align="left">Kyrie Irving</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="random-forest-feature-importance" class="section level3">
+<h3>Random Forest Feature Importance</h3>
+<p>With random forests, we also evaluate the relative importance of each feature in the fitted model. This is done by calculating the relevance score of each feature, standardized such that the sum of all feature scores is 1.</p>
+<p><img src="feature_importance.png" /></p>
+<p>From the Feature Importance plot, we see that Points scored is by and large the most important feature in deciding whether a player is predicted to be All-NBA. This is then followed by Field goals made and then the overall performance of the team. It has been frequently suggested, especially by members of the media who participate in All-NBA voting, that players who put up great numbers on winning teams are viewed more favorably than players who put up amazing numbers on losing teams. This is fuelled by the notion that players on great teams often sacrifice personal accolades for the success of the team, which is warmly embraced by the media.</p>
+<p><br/></p>
+</div>
+</div>
+<div id="generalized-additive-models-gam" class="section level2">
+<h2>Generalized Additive Models (GAM) <a name="gam"></a></h2>
+<p>Previously, we used a logistic regression model to estimate a player’s probability of being named All-NBA at the end of a season. However, this GLM model assumes a linear relationship between the predictors and the log-odds of All-NBA selection, which may not be true. GAM models on the other hand do not assume a priori any specific structure for the relationship between the predictors and the outcome of All-NBA selection. In fact, GAMs can be used to model non-linear effects of these predictors on the response variable with the aid of spline functions. In a sense, we can consider GAM models as a more flexible version of GLM models. More information on GAMs can be found <a href="https://christophm.github.io/interpretable-ml-book/extend-lm.html">here</a>.</p>
+<p>When fitting the GAM model, we left all hyper-parameters with their default values. A random search on the lambda penalty hyper-parameter was performed, however was found to have weaker performance when applied to the test-set.</p>
+<div id="gam-2020-predictions" class="section level3">
+<h3>GAM 2020 Predictions</h3>
+<table>
+<caption><span id="tab:gampred">Table 3: </span>Logistic Regression 2020 All-NBA predictions</caption>
+<thead>
+<tr class="header">
+<th align="left">Position</th>
+<th align="right">Probability</th>
+<th align="left">Player</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Center</td>
+<td align="right">96.6</td>
+<td align="left">Anthony Davis</td>
+</tr>
+<tr class="even">
+<td align="left">Center</td>
+<td align="right">96.0</td>
+<td align="left">Rudy Gobert</td>
+</tr>
+<tr class="odd">
+<td align="left">Center</td>
+<td align="right">95.8</td>
+<td align="left">Nikola Jokić</td>
+</tr>
+<tr class="even">
+<td align="left">Center</td>
+<td align="right">29.4</td>
+<td align="left">Hassan Whiteside</td>
+</tr>
+<tr class="odd">
+<td align="left">Center</td>
+<td align="right">26.8</td>
+<td align="left">Joel Embiid</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">100.0</td>
+<td align="left">Giannis Antetokounmpo</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">100.0</td>
+<td align="left">LeBron James</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">97.9</td>
+<td align="left">Kawhi Leonard</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">68.0</td>
+<td align="left">Bam Adebayo</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">21.5</td>
+<td align="left">Jayson Tatum</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">18.0</td>
+<td align="left">Pascal Siakam</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">17.6</td>
+<td align="left">Khris Middleton</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">8.7</td>
+<td align="left">Jimmy Butler</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">100.0</td>
+<td align="left">James Harden</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">99.8</td>
+<td align="left">Luka Dončić</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">66.8</td>
+<td align="left">Kemba Walker</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">62.5</td>
+<td align="left">Russell Westbrook</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">57.7</td>
+<td align="left">Kyle Lowry</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">18.6</td>
+<td align="left">Donovan Mitchell</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">15.8</td>
+<td align="left">Damian Lillard</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">5.8</td>
+<td align="left">Zach LaVine</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="k-nearest-neighbours-knn" class="section level2">
+<h2>K Nearest Neighbours (KNN) <a name="knn"></a></h2>
+<p>Before applying the KNN algorithm, we standardized all continuous features in our data. Then, to choose an optimal value of k, we performed the algorithm with varying values of k and looked at the corresponding error rates. As shown in the Error Rate vs. K value graph below, k = 14 corresponded to the value with the lowest error rate.</p>
+<p><img src="knn.png" /></p>
+<div id="knn-2020-predictions" class="section level3">
+<h3>KNN 2020 Predictions</h3>
+<table>
+<caption><span id="tab:knnpred">Table 4: </span>KNN 2020 All-NBA predictions</caption>
+<thead>
+<tr class="header">
+<th align="left">Position</th>
+<th align="right">Probability</th>
+<th align="left">Player</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Center</td>
+<td align="right">92.9</td>
+<td align="left">Anthony Davis</td>
+</tr>
+<tr class="even">
+<td align="left">Center</td>
+<td align="right">78.6</td>
+<td align="left">Nikola Jokić</td>
+</tr>
+<tr class="odd">
+<td align="left">Center</td>
+<td align="right">50.0</td>
+<td align="left">Joel Embiid</td>
+</tr>
+<tr class="even">
+<td align="left">Center</td>
+<td align="right">28.6</td>
+<td align="left">Andre Drummond</td>
+</tr>
+<tr class="odd">
+<td align="left">Center</td>
+<td align="right">28.6</td>
+<td align="left">Rudy Gobert</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">100.0</td>
+<td align="left">Kawhi Leonard</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">92.9</td>
+<td align="left">Giannis Antetokounmpo</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">92.9</td>
+<td align="left">LeBron James</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">35.7</td>
+<td align="left">Jayson Tatum</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">28.6</td>
+<td align="left">Jimmy Butler</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">21.4</td>
+<td align="left">Paul George</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">14.3</td>
+<td align="left">Pascal Siakam</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">14.3</td>
+<td align="left">Bojan Bogdanović</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">92.9</td>
+<td align="left">James Harden</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">85.7</td>
+<td align="left">Luka Dončić</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">42.9</td>
+<td align="left">Damian Lillard</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">42.9</td>
+<td align="left">Russell Westbrook</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">42.9</td>
+<td align="left">Bradley Beal</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">28.6</td>
+<td align="left">Trae Young</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">21.4</td>
+<td align="left">Donovan Mitchell</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">21.4</td>
+<td align="left">Kyle Lowry</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="support-vector-machine-svm" class="section level2">
+<h2>Support Vector Machine (SVM) <a name="svm"></a></h2>
+<!--
+For the SVM algoritm, a hyperplane that separates the binary outcomes is chosen such that the distance between the hyperplane and the support vectors (i.e. the data points that lie closest to the proposed hyperplane) is maximized. That is, the SVM algorithm finds an optimal separating hyperplane with the greatest possible margins.
+
+The support vectors are the most influential points on the chosen hyperplane.
+-->
+<p>A random search on the values of the parameters ‘C’ and ‘gamma’ was performed prior to fitting the SVM model, which were found to have similar performance to an SVM model equipped with the default settings of these parameters (C = 1, gamma = 1 / number of features).
+A radial basis function was chosen for the kernel.</p>
+<div id="svm-2020-predictions" class="section level3">
+<h3>SVM 2020 Predictions</h3>
+<table>
+<caption><span id="tab:svmpred">Table 5: </span>SVM 2020 All-NBA predictions</caption>
+<thead>
+<tr class="header">
+<th align="left">Position</th>
+<th align="right">Probability</th>
+<th align="left">Player</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Center</td>
+<td align="right">98.7</td>
+<td align="left">Anthony Davis</td>
+</tr>
+<tr class="even">
+<td align="left">Center</td>
+<td align="right">87.5</td>
+<td align="left">Rudy Gobert</td>
+</tr>
+<tr class="odd">
+<td align="left">Center</td>
+<td align="right">82.2</td>
+<td align="left">Nikola Jokić</td>
+</tr>
+<tr class="even">
+<td align="left">Center</td>
+<td align="right">52.7</td>
+<td align="left">Joel Embiid</td>
+</tr>
+<tr class="odd">
+<td align="left">Center</td>
+<td align="right">50.6</td>
+<td align="left">Hassan Whiteside</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">100.0</td>
+<td align="left">Giannis Antetokounmpo</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">100.0</td>
+<td align="left">LeBron James</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">94.8</td>
+<td align="left">Kawhi Leonard</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">54.4</td>
+<td align="left">Jimmy Butler</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">51.2</td>
+<td align="left">Khris Middleton</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">37.9</td>
+<td align="left">Bam Adebayo</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">35.7</td>
+<td align="left">Jayson Tatum</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">28.7</td>
+<td align="left">Pascal Siakam</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">100.0</td>
+<td align="left">James Harden</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">99.6</td>
+<td align="left">Luka Dončić</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">83.4</td>
+<td align="left">Damian Lillard</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">64.4</td>
+<td align="left">Trae Young</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">62.8</td>
+<td align="left">Russell Westbrook</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">33.7</td>
+<td align="left">Bradley Beal</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">31.3</td>
+<td align="left">Ben Simmons</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">26.3</td>
+<td align="left">Kyle Lowry</td>
+</tr>
+</tbody>
+</table>
+<p><br/></p>
+</div>
+</div>
+<div id="xgboost" class="section level2">
+<h2>XGBoost <a name="xgb"></a></h2>
+<!--Need to tune hyperparameters
+-->
+<p><img src="xgb_feature_importance.png" /></p>
+<div id="xgboost-2020-predictions" class="section level3">
+<h3>XGBoost 2020 Predictions</h3>
+<table>
+<caption><span id="tab:xgbpred">Table 6: </span>XGBoost 2020 All-NBA predictions</caption>
+<thead>
+<tr class="header">
+<th align="left">Position</th>
+<th align="right">Probability</th>
+<th align="left">Player</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Center</td>
+<td align="right">89.2</td>
+<td align="left">Anthony Davis</td>
+</tr>
+<tr class="even">
+<td align="left">Center</td>
+<td align="right">64.7</td>
+<td align="left">Nikola Jokić</td>
+</tr>
+<tr class="odd">
+<td align="left">Center</td>
+<td align="right">29.2</td>
+<td align="left">Rudy Gobert</td>
+</tr>
+<tr class="even">
+<td align="left">Center</td>
+<td align="right">10.0</td>
+<td align="left">Montrezl Harrell</td>
+</tr>
+<tr class="odd">
+<td align="left">Center</td>
+<td align="right">9.1</td>
+<td align="left">Joel Embiid</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">98.3</td>
+<td align="left">Giannis Antetokounmpo</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">96.7</td>
+<td align="left">LeBron James</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">90.6</td>
+<td align="left">Kawhi Leonard</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">53.3</td>
+<td align="left">Khris Middleton</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">28.8</td>
+<td align="left">Jimmy Butler</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">24.4</td>
+<td align="left">Pascal Siakam</td>
+</tr>
+<tr class="even">
+<td align="left">Forward</td>
+<td align="right">22.1</td>
+<td align="left">Jayson Tatum</td>
+</tr>
+<tr class="odd">
+<td align="left">Forward</td>
+<td align="right">10.9</td>
+<td align="left">Bojan Bogdanović</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">90.0</td>
+<td align="left">Luka Dončić</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">86.2</td>
+<td align="left">James Harden</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">59.4</td>
+<td align="left">Russell Westbrook</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">50.1</td>
+<td align="left">Donovan Mitchell</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">41.3</td>
+<td align="left">Kemba Walker</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">41.0</td>
+<td align="left">Damian Lillard</td>
+</tr>
+<tr class="even">
+<td align="left">Guard</td>
+<td align="right">38.1</td>
+<td align="left">Trae Young</td>
+</tr>
+<tr class="odd">
+<td align="left">Guard</td>
+<td align="right">33.6</td>
+<td align="left">Bradley Beal</td>
+</tr>
+</tbody>
+</table>
+<p><br/></p>
+</div>
+</div>
+<div id="appendix" class="section level2">
+<h2>Appendix</h2>
+<p>All R and Python code to scrape data and fit the models can be found <a href="https://github.com/petertea96/all_nba">here</a>.</p>
+<div id="feature-variables" class="section level3">
+<h3>Feature Variables <a name="features"></a></h3>
+<ul>
+<li>PTS: Points scored per 100 possessions</li>
+<li>AST: Assists per 100 possessions</li>
+<li>STL: Steals per 100 possessions</li>
+<li>BLK: Blocks per 100 possessions</li>
+<li>MP: Minutes played</li>
+<li>ORB: Offensive rebounds per 100 possessions</li>
+<li>DRB: Defensive rebounds per 100 possessions</li>
+<li>TOV: Turnovers per 100 possessions</li>
+<li>PF: Personal fouls per 100 possessions</li>
+<li>OFF Rating: Offensive rating (An estimate of points produced per 100 possessions)</li>
+<li>DEF Rating: Defensive rating (An estimate of points allowed per 100 possessions)</li>
+<li>Team Performance: A team’s total # wins / League total # wins</li>
+</ul>
+</div>
+<div id="how-does-all-nba-voting-work" class="section level3">
+<h3>How does All-NBA voting work?</h3>
+<p>Selection is controlled by a panel of sportswriters and broadcasters (i.e. the media) who select players for the All-NBA 1st, 2nd and 3rd Teams by position. A tally of all the votes are then taken to determine the results of All-NBA selections for all three teams. Players placed on a 1st All-NBA team ballot are awarded 5 points, while players placed on a 2nd All-NBA team ballot are awarded 3 points and 1 point for a 3rd All-NBA team ballot.</p>
+<p><br/></p>
+</div>
+<div id="total-votes" class="section level3">
+<h3>Total Votes</h3>
 <p>The total voting results for all players receiving a vote can be found in the table below.</p>
 <table>
-<caption><span id="tab:predictions">Table 1: </span>Model Results</caption>
+<caption><span id="tab:predictions">Table 7: </span>Model Results</caption>
 <thead>
 <tr class="header">
 <th align="left">Position</th>
@@ -866,945 +1808,6 @@ We chose to look at per 100 possessions as it provides a more intuitive comparis
 </tbody>
 </table>
 <p>A more in depth breakdown of the votes for each model, can be found in the model’s respective subsection.</p>
-<p><br/></p>
-</div>
-<div id="model-comparisons" class="section level3">
-<h3>Model Comparisons</h3>
-<p>To ensure fair and consistent comparison, we fit each model using the same training set and evaluate performance using the same test set. Since there was a huge imbalance in the number of All-NBA players vs. the number of Non-All-NBA players, we chose to obtain the train-test split with identical proportion of All-NBA cases. Here is the breakdown of our training and test data:</p>
-<table>
-<colgroup>
-<col width="22%" />
-<col width="19%" />
-<col width="19%" />
-<col width="19%" />
-<col width="19%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Data</th>
-<th># 1st All NBA Team Players</th>
-<th># 2nd All NBA Team Players</th>
-<th># 3rd All NBA Team Players</th>
-<th># Non-All-NBA Players</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Training Data</td>
-<td>116</td>
-<td>116</td>
-<td>116</td>
-<td>3625</td>
-</tr>
-<tr class="even">
-<td>Test Data</td>
-<td>39</td>
-<td>39</td>
-<td>39</td>
-<td>1088</td>
-</tr>
-<tr class="odd">
-<td>Total</td>
-<td>155</td>
-<td>155</td>
-<td>155</td>
-<td>4713</td>
-</tr>
-</tbody>
-</table>
-<p>Both the training and test sets are composed of roughly 90% Non-All-NBA players, and 3.3% each of 1st, 2nd and 3rd All-NBA players. In total, the training set contained 348 All-NBA player observations (116 x 3 = 348), while the test set contained 117 All-NBA player observations (39 x 3 = 117).</p>
-<p>We evaluate the performances of each model on the test set with the following metrics:</p>
-<ol style="list-style-type: decimal">
-<li>How well the model identifies players who ultimately end up on the 1st, 2nd or 3rd All-NBA teams. We define ith Team Sensitivity as:</li>
-</ol>
-<pre><code>  ith Team Sensitivity =  # True Positives on ith All-NBA team / Total number players on the ith All-NBA team
-  
-  where i = 1, 2, 3.</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li>Overall All-NBA sensitivity</li>
-</ol>
-<pre><code>  Overall Sensitivity =  # True Positives on any All-NBA team / Total number players on any All-NBA team</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li>How well the model properly identifies Non-All-NBA players. We define the False Positive Rate (FPR) as</li>
-</ol>
-<pre><code>  FPR =  # False Positive All-NBA players / Total number Non-All-NBA players</code></pre>
-<pre><code>   Note: True Positives represent the number of correctly predicted All-NBA players, while False Positives represent the number of incorrectly predicted All-NBA players.</code></pre>
-<p>Ideally, we want models to have high sensitivity and low FPR.
-1st Team All-NBA players should in theory be the easiest for the models to identify, since these players represent the supposed elite top 5 players after a given season. On the other hand, players who ultimately end up on the 2nd and 3rd All-NBA teams might be tougher for the models to identify; usually there is less consensus among voters on players occupying the secondary and tertiary teams.</p>
-<p>Below, we present a table comparing our 5 models based on the metrics described above.
-<br/></p>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th align="left">Performance Metric</th>
-<th align="right">Logistic Regression</th>
-<th align="right">Random Forest</th>
-<th align="right">GAM</th>
-<th align="right">KNN</th>
-<th align="right">SVM</th>
-<th align="right">XGBoost</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td align="left">1st All-NBA Sensitivity</td>
-<td align="right">0.92</td>
-<td align="right">0.87</td>
-<td align="right">0.97</td>
-<td align="right">0.85</td>
-<td align="right">0.90</td>
-<td align="right">0.87</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td align="left">2nd All-NBA Sensitivity</td>
-<td align="right">0.72</td>
-<td align="right">0.69</td>
-<td align="right">0.82</td>
-<td align="right">0.54</td>
-<td align="right">0.80</td>
-<td align="right">0.74</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td align="left">3rd All-NBA Sensitivity</td>
-<td align="right">0.51</td>
-<td align="right">0.41</td>
-<td align="right">0.59</td>
-<td align="right">0.31</td>
-<td align="right">0.54</td>
-<td align="right">0.46</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td align="left">Overall All-NBA Sensitivity</td>
-<td align="right">0.72</td>
-<td align="right">0.66</td>
-<td align="right">0.80</td>
-<td align="right">0.56</td>
-<td align="right">0.74</td>
-<td align="right">0.69</td>
-</tr>
-<tr class="odd">
-<td>41</td>
-<td align="left">FPR</td>
-<td align="right">0.02</td>
-<td align="right">0.01</td>
-<td align="right">0.03</td>
-<td align="right">0.01</td>
-<td align="right">0.02</td>
-<td align="right">0.02</td>
-</tr>
-<tr class="even">
-<td><br/></td>
-<td align="left"></td>
-<td align="right"></td>
-<td align="right"></td>
-<td align="right"></td>
-<td align="right"></td>
-<td align="right"></td>
-<td align="right"></td>
-</tr>
-</tbody>
-</table>
-<p>How do we interpret these results? Let’s consider the logistic regression performance row. We see that this model was able to correctly identify 92.3 % of 1st team All-NBA players in the test set. That’s 36 out of 39 1st team players identified, which also means that this model was unable to identify three 1st All-NBA players (fyi these 3 players were: Guard Latrell Sprewell in 1994, Guard Jason Kidd in 1999 and Center Marc Gasol in 2015). Furthermore, the model was able to correctly identify 71.8 % of 2nd team All-NBA players (28 of 39) and 51.3% of 3rd team All-NBA players (20 of 39).
-<!--
-The fitted logistic regression model had a test dataset precision of 79% and 97% for players making All-NBA and players not making All-NBA, respectively. This means that of the All-NBA predictions made, the model was correct 79% of the time while of the non-All-NBA predictions made, the model was correct 97% of the time.
---></p>
-<p>In general, we see that all models have an easier time predicting players on the 1st team All-NBA compared to the remaining 2 All-NBA teams. Intuitively this means that the model is easily able to identify the greatest players (ranked 1 – 5) but struggles in identifying the last selections (ranked 11 – 15). We also generally see a tradeoff between a model’s sensitivity and their FPR. Take for example GAM which has the highest sensitivities across all 3 All-NBA teams, but also the highest FPR when compared against its competing models. The GAM model makes a higher volume of All-NBA predictions than its competitors, which leads to both a higher volume of True Positives (identifiying true All-NBA players) and False Negatives (misidentifying All-NBA players).</p>
-<p><br/></p>
-</div>
-</div>
-<div id="logistic-regression" class="section level2">
-<h2>Logistic Regression <a name="logreg"></a></h2>
-<p>Logistic regression was the first classification algorithm fitted to our All-NBA data. Players with a predicted probability of making the All-NBA greater than 50% were classified as All-NBA predictions in the traning and test stages.</p>
-<div id="logistic-regression-2020-predictions" class="section level3">
-<h3>Logistic Regression 2020 Predictions</h3>
-<p>Here, we present the model’s All-NBA probability predictions on the 2020 season.</p>
-<table>
-<caption><span id="tab:logregpred">Table 2: </span>Logistic Regression 2020 All-NBA predictions</caption>
-<thead>
-<tr class="header">
-<th align="left">Position</th>
-<th align="right">Probability</th>
-<th align="left">Player</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Center</td>
-<td align="right">96.1</td>
-<td align="left">Anthony Davis</td>
-</tr>
-<tr class="even">
-<td align="left">Center</td>
-<td align="right">58.4</td>
-<td align="left">Nikola Jokić</td>
-</tr>
-<tr class="odd">
-<td align="left">Center</td>
-<td align="right">49.2</td>
-<td align="left">Rudy Gobert</td>
-</tr>
-<tr class="even">
-<td align="left">Center</td>
-<td align="right">36.4</td>
-<td align="left">Joel Embiid</td>
-</tr>
-<tr class="odd">
-<td align="left">Center</td>
-<td align="right">27.6</td>
-<td align="left">Karl-Anthony Towns</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">100.0</td>
-<td align="left">Giannis Antetokounmpo</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">99.6</td>
-<td align="left">LeBron James</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">82.6</td>
-<td align="left">Kawhi Leonard</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">37.4</td>
-<td align="left">Jimmy Butler</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">33.3</td>
-<td align="left">Khris Middleton</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">9.7</td>
-<td align="left">Bam Adebayo</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">8.0</td>
-<td align="left">Zion Williamson</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">7.0</td>
-<td align="left">Jayson Tatum</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">98.3</td>
-<td align="left">James Harden</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">97.9</td>
-<td align="left">Luka Dončić</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">71.0</td>
-<td align="left">Damian Lillard</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">43.0</td>
-<td align="left">Kyrie Irving</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">38.6</td>
-<td align="left">Trae Young</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">27.9</td>
-<td align="left">Russell Westbrook</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">14.7</td>
-<td align="left">Ben Simmons</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">13.1</td>
-<td align="left">Chris Paul</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="random-forest-classifier" class="section level2">
-<h2>Random Forest Classifier <a name="rfc"></a></h2>
-<p>A Random forest algorithm was the second classification algorithm fitted to our All-NBA data. The formation of nodes was made based on a gini index criterion (i.e. splitting nodes based on minimizing gini impurity). Other criterion, like entropy, was considered however was found to have comparable performance in terms of precision. The binary classification of All-NBA selection vs. Non-All-NBA selection was made with a threshold of 50% of votes from the aggregate decision trees. Other threshold values were considered, however was found to have lower precision. In total, we set 200 decision trees for the random forest.</p>
-<div id="random-forest-2020-predictions" class="section level3">
-<h3>Random Forest 2020 Predictions</h3>
-<p>The probability estimates obtained represent the proportion among the 200 decision trees that predict an All-NBA selection.</p>
-<table>
-<caption><span id="tab:rfcpred">Table 3: </span>Random Forest 2020 All-NBA predictions</caption>
-<thead>
-<tr class="header">
-<th align="left">Position</th>
-<th align="right">Probability</th>
-<th align="left">Player</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Center</td>
-<td align="right">84.0</td>
-<td align="left">Anthony Davis</td>
-</tr>
-<tr class="even">
-<td align="left">Center</td>
-<td align="right">53.0</td>
-<td align="left">Rudy Gobert</td>
-</tr>
-<tr class="odd">
-<td align="left">Center</td>
-<td align="right">42.5</td>
-<td align="left">Nikola Jokić</td>
-</tr>
-<tr class="even">
-<td align="left">Center</td>
-<td align="right">33.5</td>
-<td align="left">Joel Embiid</td>
-</tr>
-<tr class="odd">
-<td align="left">Center</td>
-<td align="right">31.5</td>
-<td align="left">Montrezl Harrell</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">85.0</td>
-<td align="left">Giannis Antetokounmpo</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">76.0</td>
-<td align="left">LeBron James</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">68.0</td>
-<td align="left">Kawhi Leonard</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">33.5</td>
-<td align="left">Khris Middleton</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">29.0</td>
-<td align="left">Paul George</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">27.0</td>
-<td align="left">Zion Williamson</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">26.0</td>
-<td align="left">Jimmy Butler</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">25.5</td>
-<td align="left">Jayson Tatum</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">78.0</td>
-<td align="left">James Harden</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">71.0</td>
-<td align="left">Luka Dončić</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">53.5</td>
-<td align="left">Russell Westbrook</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">44.0</td>
-<td align="left">Damian Lillard</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">41.5</td>
-<td align="left">Trae Young</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">38.0</td>
-<td align="left">Bradley Beal</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">34.5</td>
-<td align="left">Donovan Mitchell</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">33.0</td>
-<td align="left">Kyrie Irving</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="random-forest-feature-importance" class="section level3">
-<h3>Random Forest Feature Importance</h3>
-<p>With random forests, we also evaluate the relative importance of each feature in the fitted model. This is done by calculating the relevance score of each feature, standardized such that the sum of all feature scores is 1.</p>
-<p><img src="feature_importance.png" /></p>
-<p>From the Feature Importance plot, we see that Points scored is by and large the most important feature in deciding whether a player is predicted to be All-NBA. This is then followed by Field goals made and then the overall performance of the team. It has been frequently suggested, especially by members of the media who participate in All-NBA voting, that players who put up great numbers on winning teams are viewed more favorably than players who put up amazing numbers on losing teams. This is fuelled by the notion that players on great teams often sacrifice personal accolades for the success of the team, which is warmly embraced by the media.</p>
-<p><br/></p>
-</div>
-</div>
-<div id="generalized-additive-models-gam" class="section level2">
-<h2>Generalized Additive Models (GAM) <a name="gam"></a></h2>
-<p>Previously, we used a logistic regression model to estimate a player’s probability of being named All-NBA at the end of a season. However, this GLM model assumes a linear relationship between the predictors and the log-odds of All-NBA selection, which may not be true. GAM models on the other hand do not assume a priori any specific structure for the relationship between the predictors and the outcome of All-NBA selection. In fact, GAMs can be used to model non-linear effects of these predictors on the response variable with the aid of spline functions. In a sense, we can consider GAM models as a more flexible version of GLM models. More information on GAMs can be found <a href="https://christophm.github.io/interpretable-ml-book/extend-lm.html">here</a>.</p>
-<p>When fitting the GAM model, we left all hyper-parameters with their default values. A random search on the lambda penalty hyper-parameter was performed, however was found to have weaker performance when applied to the test-set.</p>
-<div id="gam-2020-predictions" class="section level3">
-<h3>GAM 2020 Predictions</h3>
-<table>
-<caption><span id="tab:gampred">Table 4: </span>Logistic Regression 2020 All-NBA predictions</caption>
-<thead>
-<tr class="header">
-<th align="left">Position</th>
-<th align="right">Probability</th>
-<th align="left">Player</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Center</td>
-<td align="right">96.6</td>
-<td align="left">Anthony Davis</td>
-</tr>
-<tr class="even">
-<td align="left">Center</td>
-<td align="right">96.0</td>
-<td align="left">Rudy Gobert</td>
-</tr>
-<tr class="odd">
-<td align="left">Center</td>
-<td align="right">95.8</td>
-<td align="left">Nikola Jokić</td>
-</tr>
-<tr class="even">
-<td align="left">Center</td>
-<td align="right">29.4</td>
-<td align="left">Hassan Whiteside</td>
-</tr>
-<tr class="odd">
-<td align="left">Center</td>
-<td align="right">26.8</td>
-<td align="left">Joel Embiid</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">100.0</td>
-<td align="left">Giannis Antetokounmpo</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">100.0</td>
-<td align="left">LeBron James</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">97.9</td>
-<td align="left">Kawhi Leonard</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">68.0</td>
-<td align="left">Bam Adebayo</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">21.5</td>
-<td align="left">Jayson Tatum</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">18.0</td>
-<td align="left">Pascal Siakam</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">17.6</td>
-<td align="left">Khris Middleton</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">8.7</td>
-<td align="left">Jimmy Butler</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">100.0</td>
-<td align="left">James Harden</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">99.8</td>
-<td align="left">Luka Dončić</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">66.8</td>
-<td align="left">Kemba Walker</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">62.5</td>
-<td align="left">Russell Westbrook</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">57.7</td>
-<td align="left">Kyle Lowry</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">18.6</td>
-<td align="left">Donovan Mitchell</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">15.8</td>
-<td align="left">Damian Lillard</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">5.8</td>
-<td align="left">Zach LaVine</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="k-nearest-neighbours-knn" class="section level2">
-<h2>K Nearest Neighbours (KNN) <a name="knn"></a></h2>
-<p>Before applying the KNN algorithm, we standardized all continuous features in our data. Then, to choose an optimal value of k, we performed the algorithm with varying values of k and looked at the corresponding error rates. As shown in the Error Rate vs. K value graph below, k = 14 corresponded to the value with the lowest error rate.</p>
-<p><img src="knn.png" /></p>
-<div id="knn-2020-predictions" class="section level3">
-<h3>KNN 2020 Predictions</h3>
-<table>
-<caption><span id="tab:knnpred">Table 5: </span>KNN 2020 All-NBA predictions</caption>
-<thead>
-<tr class="header">
-<th align="left">Position</th>
-<th align="right">Probability</th>
-<th align="left">Player</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Center</td>
-<td align="right">92.9</td>
-<td align="left">Anthony Davis</td>
-</tr>
-<tr class="even">
-<td align="left">Center</td>
-<td align="right">78.6</td>
-<td align="left">Nikola Jokić</td>
-</tr>
-<tr class="odd">
-<td align="left">Center</td>
-<td align="right">50.0</td>
-<td align="left">Joel Embiid</td>
-</tr>
-<tr class="even">
-<td align="left">Center</td>
-<td align="right">28.6</td>
-<td align="left">Andre Drummond</td>
-</tr>
-<tr class="odd">
-<td align="left">Center</td>
-<td align="right">28.6</td>
-<td align="left">Rudy Gobert</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">100.0</td>
-<td align="left">Kawhi Leonard</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">92.9</td>
-<td align="left">Giannis Antetokounmpo</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">92.9</td>
-<td align="left">LeBron James</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">35.7</td>
-<td align="left">Jayson Tatum</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">28.6</td>
-<td align="left">Jimmy Butler</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">21.4</td>
-<td align="left">Paul George</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">14.3</td>
-<td align="left">Pascal Siakam</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">14.3</td>
-<td align="left">Bojan Bogdanović</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">92.9</td>
-<td align="left">James Harden</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">85.7</td>
-<td align="left">Luka Dončić</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">42.9</td>
-<td align="left">Damian Lillard</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">42.9</td>
-<td align="left">Russell Westbrook</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">42.9</td>
-<td align="left">Bradley Beal</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">28.6</td>
-<td align="left">Trae Young</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">21.4</td>
-<td align="left">Donovan Mitchell</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">21.4</td>
-<td align="left">Kyle Lowry</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="support-vector-machine-svm" class="section level2">
-<h2>Support Vector Machine (SVM) <a name="svm"></a></h2>
-<!--
-For the SVM algoritm, a hyperplane that separates the binary outcomes is chosen such that the distance between the hyperplane and the support vectors (i.e. the data points that lie closest to the proposed hyperplane) is maximized. That is, the SVM algorithm finds an optimal separating hyperplane with the greatest possible margins.
-
-The support vectors are the most influential points on the chosen hyperplane.
--->
-<p>A random search on the values of the parameters ‘C’ and ‘gamma’ was performed prior to fitting the SVM model, which were found to have similar performance to an SVM model equipped with the default settings of these parameters (C = 1, gamma = 1 / number of features).
-A radial basis function was chosen for the kernel.</p>
-<div id="svm-2020-predictions" class="section level3">
-<h3>SVM 2020 Predictions</h3>
-<table>
-<caption><span id="tab:svmpred">Table 6: </span>SVM 2020 All-NBA predictions</caption>
-<thead>
-<tr class="header">
-<th align="left">Position</th>
-<th align="right">Probability</th>
-<th align="left">Player</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Center</td>
-<td align="right">98.7</td>
-<td align="left">Anthony Davis</td>
-</tr>
-<tr class="even">
-<td align="left">Center</td>
-<td align="right">87.5</td>
-<td align="left">Rudy Gobert</td>
-</tr>
-<tr class="odd">
-<td align="left">Center</td>
-<td align="right">82.2</td>
-<td align="left">Nikola Jokić</td>
-</tr>
-<tr class="even">
-<td align="left">Center</td>
-<td align="right">52.7</td>
-<td align="left">Joel Embiid</td>
-</tr>
-<tr class="odd">
-<td align="left">Center</td>
-<td align="right">50.6</td>
-<td align="left">Hassan Whiteside</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">100.0</td>
-<td align="left">Giannis Antetokounmpo</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">100.0</td>
-<td align="left">LeBron James</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">94.8</td>
-<td align="left">Kawhi Leonard</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">54.4</td>
-<td align="left">Jimmy Butler</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">51.2</td>
-<td align="left">Khris Middleton</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">37.9</td>
-<td align="left">Bam Adebayo</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">35.7</td>
-<td align="left">Jayson Tatum</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">28.7</td>
-<td align="left">Pascal Siakam</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">100.0</td>
-<td align="left">James Harden</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">99.6</td>
-<td align="left">Luka Dončić</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">83.4</td>
-<td align="left">Damian Lillard</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">64.4</td>
-<td align="left">Trae Young</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">62.8</td>
-<td align="left">Russell Westbrook</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">33.7</td>
-<td align="left">Bradley Beal</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">31.3</td>
-<td align="left">Ben Simmons</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">26.3</td>
-<td align="left">Kyle Lowry</td>
-</tr>
-</tbody>
-</table>
-<p><br/></p>
-</div>
-</div>
-<div id="xgboost" class="section level2">
-<h2>XGBoost <a name="xgb"></a></h2>
-<!--Need to tune hyperparameters
--->
-<p><img src="xgb_feature_importance.png" /></p>
-<div id="xgboost-2020-predictions" class="section level3">
-<h3>XGBoost 2020 Predictions</h3>
-<table>
-<caption><span id="tab:xgbpred">Table 7: </span>XGBoost 2020 All-NBA predictions</caption>
-<thead>
-<tr class="header">
-<th align="left">Position</th>
-<th align="right">Probability</th>
-<th align="left">Player</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Center</td>
-<td align="right">89.2</td>
-<td align="left">Anthony Davis</td>
-</tr>
-<tr class="even">
-<td align="left">Center</td>
-<td align="right">64.7</td>
-<td align="left">Nikola Jokić</td>
-</tr>
-<tr class="odd">
-<td align="left">Center</td>
-<td align="right">29.2</td>
-<td align="left">Rudy Gobert</td>
-</tr>
-<tr class="even">
-<td align="left">Center</td>
-<td align="right">10.0</td>
-<td align="left">Montrezl Harrell</td>
-</tr>
-<tr class="odd">
-<td align="left">Center</td>
-<td align="right">9.1</td>
-<td align="left">Joel Embiid</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">98.3</td>
-<td align="left">Giannis Antetokounmpo</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">96.7</td>
-<td align="left">LeBron James</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">90.6</td>
-<td align="left">Kawhi Leonard</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">53.3</td>
-<td align="left">Khris Middleton</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">28.8</td>
-<td align="left">Jimmy Butler</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">24.4</td>
-<td align="left">Pascal Siakam</td>
-</tr>
-<tr class="even">
-<td align="left">Forward</td>
-<td align="right">22.1</td>
-<td align="left">Jayson Tatum</td>
-</tr>
-<tr class="odd">
-<td align="left">Forward</td>
-<td align="right">10.9</td>
-<td align="left">Bojan Bogdanović</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">90.0</td>
-<td align="left">Luka Dončić</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">86.2</td>
-<td align="left">James Harden</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">59.4</td>
-<td align="left">Russell Westbrook</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">50.1</td>
-<td align="left">Donovan Mitchell</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">41.3</td>
-<td align="left">Kemba Walker</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">41.0</td>
-<td align="left">Damian Lillard</td>
-</tr>
-<tr class="even">
-<td align="left">Guard</td>
-<td align="right">38.1</td>
-<td align="left">Trae Young</td>
-</tr>
-<tr class="odd">
-<td align="left">Guard</td>
-<td align="right">33.6</td>
-<td align="left">Bradley Beal</td>
-</tr>
-</tbody>
-</table>
-<p><br/></p>
-</div>
-</div>
-<div id="appendix" class="section level2">
-<h2>Appendix</h2>
-<p>All R and Python code to scrape data and fit the models can be found <a href="https://github.com/petertea96/all_nba">here</a>.</p>
-<div id="feature-variables" class="section level3">
-<h3>Feature Variables <a name="features"></a></h3>
-<ul>
-<li>PTS: Points scored per 100 possessions</li>
-<li>AST: Assists per 100 possessions</li>
-<li>STL: Steals per 100 possessions</li>
-<li>BLK: Blocks per 100 possessions</li>
-<li>MP: Minutes played</li>
-<li>ORB: Offensive rebounds per 100 possessions</li>
-<li>DRB: Defensive rebounds per 100 possessions</li>
-<li>TOV: Turnovers per 100 possessions</li>
-<li>PF: Personal fouls per 100 possessions</li>
-<li>OFF Rating: Offensive rating (An estimate of points produced per 100 possessions)</li>
-<li>DEF Rating: Defensive rating (An estimate of points allowed per 100 possessions)</li>
-<li>Team Performance: A team’s total # wins / League total # wins</li>
-</ul>
-</div>
-<div id="how-does-all-nba-voting-work" class="section level3">
-<h3>How does All-NBA voting work?</h3>
-<p>Selection is controlled by a panel of sportswriters and broadcasters (i.e. the media) who select players for the All-NBA 1st, 2nd and 3rd Teams by position. A tally of all the votes are then taken to determine the results of All-NBA selections for all three teams. Players placed on a 1st All-NBA team ballot are awarded 5 points, while players placed on a 2nd All-NBA team ballot are awarded 3 points and 1 point for a 3rd All-NBA team ballot.</p>
 </div>
 </div>
 </div>
