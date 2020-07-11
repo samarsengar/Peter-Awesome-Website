@@ -1,9 +1,9 @@
 ---
-title: 2020 MIT Sloan Sports Analytics Conference Hackathon
-author: Peter Tea
-date: '2020-03-16'
+title: Economic Time Series
+author: Samar Sengar
+date: '2020-07-01'
 categories:
-  - Basketball
+  - Data Analytics
 tags:
   - Tracking Data
 authors:
@@ -14,8 +14,8 @@ output:
 image:
   caption: Photo by SSAC
   focal_point: Smart
-summary: SSAC
-url_slides: https://docs.google.com/presentation/d/1j1k1EK6CP4E8CbRU3Xr8OuSUySRzWh9An_79K0GIUog/edit?usp=sharing
+summary: Economic Time Series
+url_slides: file:///C:/Users/indu%20praksh/Desktop/Summer/Economic%20Time-series%20Data.html
 ---
 
-Here are the [Slides]("https://docs.google.com/presentation/d/1j1k1EK6CP4E8CbRU3Xr8OuSUySRzWh9An_79K0GIUog/edit?usp=sharing")
+Here are the [Slides]("file:///C:/Users/indu%20praksh/Desktop/Summer/Economic%20Time-series%20Data.html")
