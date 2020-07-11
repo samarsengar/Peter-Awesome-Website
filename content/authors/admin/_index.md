@@ -10,12 +10,12 @@ description: Samar Sengar UIC Data Analytics
 bio: Pursuing Masters from UIC in Data Analytics
 education:
   courses:
-  - course: DAta Analytics
+  - course: Data Analytics
     institution: University of Illinois at Chicago
     year: 2019 - Present
   - course: Bachelor of Engineer(B.E)
     institution: Shri Vaishnav Institute of Technology and Science
-    url: "https://www.stat.sfu.ca/people/grads.html"
+    url: "www.svvv.edu.in"
     year: 2011 - 2015
 email: "ssenga3@uic.edu"
 interests:
@@ -56,5 +56,5 @@ user_groups:
 I am a MS Data Analytics student at University of Illinois at Chicago(UIC)
 
 
-In the past, I've held positions an consultant at Atos.
+In the past, I've held position as an consultant at Atos.
 
