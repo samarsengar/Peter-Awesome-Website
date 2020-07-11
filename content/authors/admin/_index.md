@@ -1,31 +1,32 @@
 ---
-name: Peter Tea
+name: Samar Sengar
 superuser: true
 
 
 authors:
 - admin
 
-description: Peter Tea SFU Sports Analytics
-bio: Putting sports through the ``Tea-test``
+description: Samar Sengar UIC Data Analytics
+bio: Pursuing Masters from UIC in Data Analytics
 education:
   courses:
-  - course: Msc Statistics
-    institution: Simon Fraser University
+  - course: DAta Analytics
+    institution: University of Illinois at Chicago
     year: 2019 - Present
-  - course: Bsc Biostatistics
-    institution: University of Ottawa
+  - course: Bachelor of Engineer(B.E)
+    institution: Shri Vaishnav Institute of Technology and Science
     url: "https://www.stat.sfu.ca/people/grads.html"
-    year: 2014 - 2019
-email: "petertea96@gmail.com"
+    year: 2011 - 2015
+email: "ssenga3@uic.edu"
 interests:
-- Sports Analytics
-- Statistics
-- Yoga
+- Data Analytics
+- Data Science
+- Machine Learning
 organizations:
-- name: Simon Fraser University
-  url: "https://www.stat.sfu.ca/people/grads.html"
-role: Msc. Statistics
+- name: University of Illinois at Chicago
+  url: "www.uic.edu
+"
+role: MS in Data Analytics
 social:
 - icon: envelope
   icon_pack: fas
@@ -38,13 +39,13 @@ social:
 #  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
 - icon: linkedin
   icon_pack: fab
-  link: https://www.linkedin.com/in/petertea/
+  link: https://www.linkedin.com/in/samar-pratap-singh-sengar-522b6b91/
 - icon: github
   icon_pack: fab
-  link: https://github.com/petertea96
+  link: https://github.com/samarsengar
 #- icon: instagram
 #  icon_pack: fab
-#  link: https://www.instagram.com/peter.tea1/
+#  link: https://www.instagram.com/this_is_samar/
 user_groups:
 - Researchers
 - Visitors
@@ -52,8 +53,8 @@ user_groups:
 [comment]: <> (Welcome to this awesome website! This is where I will be posting some fun data projects. Please stay tuned for things to come...)
 
 
-I am a MSc. Statistics student under the supervision of [Tim Swartz](http://people.stat.sfu.ca/~tim/) and currently employed as a Data Science co-op at [Aquatic Informatics](https://aquaticinformatics.com/).
+I am a MS Data Analytics student at University of Illinois at Chicago(UIC)
 
 
-In the past, I've held positions as an R consultant at SFU [Research Commons](https://www.lib.sfu.ca/about/branches-depts/rc), a Statistical Genetics researcher under the supervision of [Kelly Burkett](https://mysite.science.uottawa.ca/kburkett/), as well as a Data Scientist at the [Canada Revenue Agency](https://www.canada.ca/en/revenue-agency.html).
+In the past, I've held positions an consultant at Atos.
 
