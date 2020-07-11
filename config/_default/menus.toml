@@ -16,14 +16,14 @@
 
 [[main]]
     name = "Resume"
-    url = "PTEA_Resume.pdf"
+    url = "Samar_Resume.pdf"
     weight = 10
 
 
-[[main]]
-    name = "Presentations"
-    url = "talk"
-    weight = 40
+#[[main]]
+ #   name = "Presentations"
+  #  url = "talk"
+  #  weight = 40
 
 #[[main]]
 #  name = "Demo"
