@@ -26,12 +26,12 @@ subtitle = "Data Science Portfolio"
     tag = "*"
   
   [[content.filter_button]]
-    name = "Tennis"
-    tag = "Tennis"
+    name = "Data Analytics"
+    tag = "DAta Analytics"
 
-  [[content.filter_button]]
-    name = "Basketball"
-    tag = "Basketball"
+  #[[content.filter_button]]
+   # name = "Basketball"
+    #tag = "Basketball"
   
   [[content.filter_button]]
     name = "Other"
