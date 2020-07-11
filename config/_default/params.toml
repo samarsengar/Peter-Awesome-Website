@@ -85,12 +85,12 @@ edit_page = {repo_url = "https://github.com/gcushen/hugo-academic", content_dir 
 ############################
 
 # Enter contact details (optional). To hide a field, clear it to "".
-email = "petertea96@gmail.com"
+email = "ssenga3@uic.edu"
 phone = ""
 
 # Address
 # For country_code, use the 2-letter ISO code (see https://en.wikipedia.org/wiki/#ISO_3166-1_alpha-2 )
-address = {street = "8888 University Dr.", city = "Burnaby", region = "BC", country = "Canada", country_code = "CA"}
+address = {street = "1459 w taylor street", city = "Chicago", region = "Illinois", country = "USA", country_code = "USA"}
 
 # Geographic coordinates
 # To get your coordinates, right-click on Google Maps and choose "What's here?". The #coords will show up at the bottom.
