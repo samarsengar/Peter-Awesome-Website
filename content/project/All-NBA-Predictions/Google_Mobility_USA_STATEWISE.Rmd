@@ -1,0 +1,85 @@
+---
+title: "Stay At Home Order"
+author: "Samar"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+#Google Mobility Data plot using ggplot for 7 states which does not have stay at home order.
+```{r,fig.width=16, fig.height=14}
+library(datasets)
+library(githubinstall)
+library(tidyverse)
+library(covdata)
+library(ggforce)
+library(dplyr)
+library(timetk)
+library(usmap)
+library(ggpubr)
+
+a1<-google_mobility %>%
+  filter(country_region_code == "US",sub_region_1 %in% c("Arkansas", "Iowa","Nebraska","North Dakota","South Dakota","Utah","Wyoming"),!is.na(sub_region_1), is.na(sub_region_2)) %>%
+  mutate(type = tools::toTitleCase(type)) %>%
+  
+  
+  
+  ggplot(mapping = aes(x = date, y = pct_diff,
+                       group = sub_region_1)) +
+ 
+  
+  geom_line(size = 0.5, color = "gray80") +
+  geom_smooth(aes(color = type, group = 1), se = FALSE) +
+  facet_wrap(~ type, ncol = 2) +
+  labs(x = "Date", y = "Percent Change from Baseline", title = "Relative Trends in Mobility for Kinds of Location in the usa 7 states which does not have stay at home order",
+                              subtitle = "Data are relative to median activity between Jan and june",
+       color = "Location Type",
+       caption = "Data: Google. Graph: @kjhealy") +
+  theme_minimal() +
+  theme(legend.position = "top",
+        strip.text = element_text(size = rel(1.3)))
+
+a1<-a1 + facet_wrap(. ~ type, scales="free_y")
+```
+#Google Mobility Data plot using ggplot for states which  have stay at home order.
+
+```{r,fig.width=16, fig.height=14}
+a2<-google_mobility %>%
+  filter(country_region_code == "US",!sub_region_1 %in% c("Arkansas", "Iowa","Nebraska","North Dakota","South Dakota","Utah","Wyoming"),!is.na(sub_region_1), is.na(sub_region_2)) %>%
+  mutate(type = tools::toTitleCase(type)) %>%
+  
+  
+  
+  ggplot(mapping = aes(x = date, y = pct_diff,
+                       group = sub_region_1)) +
+ 
+  
+  geom_line(size = 0.5, color = "gray80") +
+  geom_smooth(aes(color = type, group = 1), se = FALSE) +
+  facet_wrap(~ type, ncol = 2) +
+  labs(x = "Date", y = "Percent Change from Baseline", title = "Relative Trends in Mobility for Kinds of Location in the usa 7 states have stay at home order",
+                              subtitle = "Data are relative to median activity between Jan and june",
+       color = "Location Type",
+       caption = "Data: Google. Graph: @kjhealy") +
+  theme_minimal() +
+  theme(legend.position = "top",
+        strip.text = element_text(size = rel(1.3)))
+
+a2<-a2 + facet_wrap(. ~ type, scales="free_y")
+```
+
+#Comparing both 
+```{r,fig.width=16, fig.height=14}
+figure <- ggarrange(a1,a2,
+                    labels = c("A", "B"),
+                    ncol = 2, nrow = 2)
+
+
+figure
+
+
+```
