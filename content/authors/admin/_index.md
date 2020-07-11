@@ -53,7 +53,7 @@ user_groups:
 [comment]: <> (Welcome to this awesome website! This is where I will be posting some fun data projects. Please stay tuned for things to come...)
 
 
-I am a MS Data Analytics student at University of Illinois at Chicago(UIC)
+I am a Data Analytics student at University of Illinois at Chicago(UIC)
 
 
 In the past, I've held position as an consultant at Atos.
