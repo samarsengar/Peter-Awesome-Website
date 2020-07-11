@@ -1,0 +1,533 @@
+---
+title: "Economic Time-series Data"
+author: "Samar"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+#Loading packages
+
+
+```{r,warning=FALSE,message=FALSE}
+library(tidyverse)
+library(tidyquant)
+library(scales)
+```
+
+#Get Data
+```{r,warning=FALSE,message=FALSE}
+fred_raw <- tq_get(c("RSXFSN",  # Advance retail sales
+                     "GDPC1",  # GDP
+                     "ICSA",  # Initial unemployment claims
+                     "FPCPITOTLZGUSA",  # Inflation
+                     "UNRATE",  # Unemployment rate
+                     "USREC",   # Recessions
+                     "BOPGSTB",#Trade Balance: Goods and Services,Balance of Payments Basis
+                     "BOPTEXP",#Export of Goods and Services,Balance of Payment Basis
+                     "BOPTIMP",#Import of Goods and Services,Balance of Payment Basis
+                     "UMCSENT",#Consumer Sentiment
+                     "PERMIT",#Housing Starts and Building Permits
+                     "PI",#Personal Income
+                     "PCE",#Personal Consumption Expenditures
+                     "DGORDER",#Manufacturers' New Orders: Durable Goods
+                     "T10Y2Y",#10-Year Treasury Constant Maturity Minus 2-Year Treasury Constant Maturity
+                     "TCU",#Capacity Utilization: Total Industry
+                     "INDPRO"),#Industrial Production Index
+                   get = "economic.data",  # Use FRED
+                   from = "1990-01-01")
+```
+#Recession
+
+```{r,warning=FALSE,message=FALSE}
+recessions_tidy <- fred_raw %>% 
+  filter(symbol == "USREC") %>% 
+  mutate(recession_change = price - lag(price))
+recessions_tidy
+
+recessions_start_end <- fred_raw %>% 
+  filter(symbol == "USREC") %>% 
+  mutate(recession_change = price - lag(price)) %>% 
+  filter(recession_change != 0)
+recessions_start_end
+
+recessions <- tibble(start = filter(recessions_start_end, recession_change == 1)$date,
+                     end = filter(recessions_start_end, recession_change == -1)$date)
+recessions
+
+
+
+
+```
+#Retail Sales
+```{r,warning=FALSE,message=FALSE}
+options(scipen=999)
+retail_sales <- fred_raw %>% 
+  filter(symbol == "RSXFSN")
+
+retail_sales
+
+ggplot(retail_sales,aes(x=date,y=price))+
+geom_rect(data = recessions, 
+            aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf),
+            inherit.aes = FALSE, fill = "#B10DC9", alpha = 0.3) +
+  geom_line(color = "#FF4136", size = 0.5) +
+  annotate(geom = "label", x = as.Date("2010-01-01"), y = 10000, 
+           label = "The Great Recession", size = 3, family = "Roboto Condensed") +
+  annotate(geom = "label", x = as.Date("2020-01-01"), y = 500000, 
+           label = "COVID-19", size = 3, family = "Roboto Condensed", hjust = 1) +
+  scale_y_continuous(labels = comma) +
+  labs(y = "Retail Sales",
+       x = NULL,
+       title = "Retail Sales",
+       subtitle = "Monthly data",
+       caption = "Source: US Employment and Training Administration and FRED") +
+  theme_bw(base_family = "Roboto Condensed") +
+  theme(plot.title = element_text(face = "bold"))
+```
+# Unemployment Claims 
+
+```{r,warning=FALSE,message=FALSE}
+options(scipen=999)
+unemployment_claims_only <- fred_raw %>% 
+  filter(symbol == "ICSA")
+
+unemployment_claims_only
+
+
+ggplot(unemployment_claims_only, aes(x = date, y = price)) +
+  geom_rect(data = recessions, 
+            aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf),
+            inherit.aes = FALSE, fill = "#B10DC9", alpha = 0.3) +
+  geom_line(color = "#FF4136", size = 0.5) +
+  annotate(geom = "label", x = as.Date("2010-01-01"), y = 1000000, 
+           label = "The Great Recession", size = 3, family = "Roboto Condensed") +
+  annotate(geom = "label", x = as.Date("2020-01-01"), y = 7000000, 
+           label = "COVID-19", size = 3, family = "Roboto Condensed", hjust = 1) +
+  scale_y_continuous(labels = comma) +
+  labs(y = "Initial unemployment claims",
+       x = NULL,
+       title = "Initial unemployment claims",
+       subtitle = "Weekly data",
+       caption = "Source: US Employment and Training Administration and FRED") +
+  theme_bw(base_family = "Roboto Condensed") +
+  theme(plot.title = element_text(face = "bold"))
+```
+#GDP
+
+```{r,warning=FALSE,message=FALSE}
+options(scipen=999)
+gdp_only <- fred_raw %>% 
+  filter(symbol == "GDPC1")
+
+ggplot(gdp_only, aes(x = date, y = price)) +
+  geom_rect(data = recessions, 
+            aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf),
+            inherit.aes = FALSE, fill = "#B10DC9", alpha = 0.3) +
+  geom_line(color = "#0074D9", size = 1) +
+  
+  annotate(geom = "label", x = as.Date("2010-01-01"), y = 2000, 
+           label = "The Great Recession", size = 3, family = "Roboto Condensed") +
+  annotate(geom = "label", x = as.Date("2020-01-01"), y = 20000, 
+           label = "COVID-19", size = 3, family = "Roboto Condensed", hjust = 1) +
+  
+  scale_y_continuous(labels = dollar) +
+  labs(y = "Billions of 2012 dollars",
+       x = NULL,
+       title = "US Gross Domestic Product",
+       subtitle = "Quarterly data; real 2012 dollars",
+       caption = "Source: U.S. Bureau of Economic Analysis") +
+  theme_bw(base_family = "Roboto Condensed") +
+  theme(plot.title = element_text(face = "bold"))
+```
+#Unemployment Rate
+
+```{r,warning=FALSE,message=FALSE}
+options(scipen=999)
+Unemployment_Rate <- fred_raw %>% 
+  filter(symbol == "UNRATE")
+
+Unemployment_Rate
+
+
+ggplot(Unemployment_Rate, aes(x = date, y = price)) +
+  geom_rect(data = recessions, 
+            aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf),
+            inherit.aes = FALSE, fill = "#B10DC9", alpha = 0.3) +
+  geom_line(color = "#FF4136", size = 0.5) +
+  annotate(geom = "label", x = as.Date("2010-01-01"), y =0, 
+           label = "The Great Recession", size = 3, family = "Roboto Condensed") +
+  annotate(geom = "label", x = as.Date("2020-01-01"), y = 20, 
+           label = "COVID-19", size = 3, family = "Roboto Condensed", hjust = 1) +
+  scale_y_continuous(labels = comma) +
+  labs(y = "Unemployment_Rate",
+       x = NULL,
+       title = "Unemployment_Rate",
+       subtitle = "Monthly data",
+       caption = "Source: U.S. Bureau of Labor Statistics") +
+  theme_bw(base_family = "Roboto Condensed") +
+  theme(plot.title = element_text(face = "bold"))
+```
+#Inflation
+
+```{r,warning=FALSE,message=FALSE}
+options(scipen=999)
+Inflation <- fred_raw %>% 
+  filter(symbol == "FPCPITOTLZGUSA")
+
+Inflation
+
+
+ggplot(Inflation, aes(x = date, y = price)) +
+  geom_rect(data = recessions, 
+            aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf),
+            inherit.aes = FALSE, fill = "#B10DC9", alpha = 0.3) +
+  geom_line(color = "#FF4136", size = 0.5) +
+  annotate(geom = "label", x = as.Date("2010-01-01"), y =-2.5, 
+           label = "The Great Recession", size = 3, family = "Roboto Condensed") +
+  annotate(geom = "label", x = as.Date("2020-01-01"), y = 15, 
+           label = "COVID-19", size = 3, family = "Roboto Condensed", hjust = 1) +
+  scale_y_continuous(labels = comma) +
+  labs(y = "Percent",
+       x = NULL,
+       title = "Inflation",
+       subtitle = "Annual data",
+       caption = "Source: World Bank") +
+  theme_bw(base_family = "Roboto Condensed") +
+  theme(plot.title = element_text(face = "bold"))
+```
+#International Trade in Goods and Services: Trade Balance
+
+```{r,warning=FALSE,message=FALSE}
+options(scipen=999)
+Trade_Balance_Good_Services_Payment_Basis <- fred_raw %>% 
+  filter(symbol == "BOPGSTB")
+
+Trade_Balance_Good_Services_Payment_Basis
+
+
+ggplot(Trade_Balance_Good_Services_Payment_Basis, aes(x = date, y = price)) +
+  geom_rect(data = recessions, 
+            aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf),
+            inherit.aes = FALSE, fill = "#B10DC9", alpha = 0.3) +
+  annotate(geom = "label", x = as.Date("2010-01-01"), y =-70000, 
+           label = "The Great Recession", size = 3, family = "Roboto Condensed") +
+  annotate(geom = "label", x = as.Date("2020-01-01"), y = 0, 
+           label = "COVID-19", size = 3, family = "Roboto Condensed", hjust = 1) +
+  
+  geom_line(color = "#FF4136", size = 0.5) +
+ 
+  scale_y_continuous(labels = comma) +
+  labs(y = "Millions of Dollars",
+       x = NULL,
+       title = "Trade_Balance:Good and Services,Balance of Payments Basis",
+       subtitle = "Monthly data",
+       caption = "Source: U.S. Bureau of Economic Analysis") +
+  theme_bw(base_family = "Roboto Condensed") +
+  theme(plot.title = element_text(face = "bold"))
+```
+#Exports of Goods and Services
+
+```{r,warning=FALSE,message=FALSE}
+options(scipen=999)
+Export_Balance_Good_Services_Payment_Basis <- fred_raw %>% 
+  filter(symbol == "BOPTEXP")
+
+Export_Balance_Good_Services_Payment_Basis
+
+
+ggplot(Export_Balance_Good_Services_Payment_Basis, aes(x = date, y = price)) +
+  geom_rect(data = recessions, 
+            aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf),
+            inherit.aes = FALSE, fill = "#B10DC9", alpha = 0.3) +
+  geom_line(color = "#FF4136", size = 0.5) +
+  
+  annotate(geom = "label", x = as.Date("2010-01-01"), y =0, 
+           label = "The Great Recession", size = 3, family = "Roboto Condensed") +
+  annotate(geom = "label", x = as.Date("2020-01-01"), y = 200000, 
+           label = "COVID-19", size = 3, family = "Roboto Condensed", hjust = 1) +
+ 
+  scale_y_continuous(labels = comma) +
+  labs(y = "Millions of Dollars",
+       x = NULL,
+       title = "Export of Good and Services,Balance of Payments Basis",
+       subtitle = "Monthly data",
+       caption = "Source: U.S. Bureau of Economic Analysis") +
+  theme_bw(base_family = "Roboto Condensed") +
+  theme(plot.title = element_text(face = "bold"))
+```
+#Import of Goods and Services
+
+```{r,warning=FALSE,message=FALSE}
+options(scipen=999)
+Import_Balance_Good_Services_Payment_Basis <- fred_raw %>% 
+  filter(symbol == "BOPTIMP")
+
+Import_Balance_Good_Services_Payment_Basis
+
+
+ggplot(Import_Balance_Good_Services_Payment_Basis, aes(x = date, y = price)) +
+  geom_rect(data = recessions, 
+            aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf),
+            inherit.aes = FALSE, fill = "#B10DC9", alpha = 0.3) +
+  geom_line(color = "#FF4136", size = 0.5) +
+  
+  annotate(geom = "label", x = as.Date("2010-01-01"), y =0, 
+           label = "The Great Recession", size = 3, family = "Roboto Condensed") +
+  annotate(geom = "label", x = as.Date("2020-01-01"), y = 300000, 
+           label = "COVID-19", size = 3, family = "Roboto Condensed", hjust = 1) +
+ 
+  scale_y_continuous(labels = comma) +
+  labs(y = "Millions of Dollars",
+       x = NULL,
+       title = "Import of Good and Services,Balance of Payments Basis",
+       subtitle = "Monthly data",
+       caption = "Source: U.S. Bureau of Economic Analysis") +
+  theme_bw(base_family = "Roboto Condensed") +
+  theme(plot.title = element_text(face = "bold"))
+```
+#Consumer Sentiment
+
+```{r,warning=FALSE,message=FALSE}
+options(scipen=999)
+Consumer_Sentiment <- fred_raw %>% 
+  filter(symbol == "UMCSENT")
+
+Consumer_Sentiment
+
+
+ggplot(Consumer_Sentiment, aes(x = date, y = price)) +
+  geom_rect(data = recessions, 
+            aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf),
+            inherit.aes = FALSE, fill = "#B10DC9", alpha = 0.3) +
+  geom_line(color = "#FF4136", size = 0.5) +
+  
+  annotate(geom = "label", x = as.Date("2010-01-01"), y =0, 
+           label = "The Great Recession", size = 3, family = "Roboto Condensed") +
+  annotate(geom = "label", x = as.Date("2020-01-01"), y = 120, 
+           label = "COVID-19", size = 3, family = "Roboto Condensed", hjust = 1) +
+ 
+  scale_y_continuous(labels = comma) +
+  labs(y = "Index 1966:Q1=100",
+       x = NULL,
+       title = "Consumer_Sentiment",
+       subtitle = "Monthly data",
+       caption = "Source: University of Michigan") +
+  theme_bw(base_family = "Roboto Condensed") +
+  theme(plot.title = element_text(face = "bold"))
+```
+
+#Housing Starts and Building Permits
+```{r,warning=FALSE,message=FALSE}
+options(scipen=999)
+PERMIT <- fred_raw %>% 
+  filter(symbol == "PERMIT")
+
+PERMIT
+
+
+ggplot(PERMIT, aes(x = date, y = price)) +
+  geom_rect(data = recessions, 
+            aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf),
+            inherit.aes = FALSE, fill = "#B10DC9", alpha = 0.3) +
+  geom_line(color = "#FF4136", size = 0.5) +
+  
+  annotate(geom = "label", x = as.Date("2010-01-01"), y =0, 
+           label = "The Great Recession", size = 3, family = "Roboto Condensed") +
+  annotate(geom = "label", x = as.Date("2020-01-01"), y = 120, 
+           label = "COVID-19", size = 3, family = "Roboto Condensed", hjust = 1) +
+ 
+  scale_y_continuous(labels = comma) +
+  labs(y = "Thousands of Units",
+       x = NULL,
+       title = "New Private Housing Units Authorized by Building Permits",
+       subtitle = "Monthly data",
+       caption = "Source: U.S. Census Bureau") +
+  theme_bw(base_family = "Roboto Condensed") +
+  theme(plot.title = element_text(face = "bold"))
+```
+#Personal Income
+
+```{r,warning=FALSE,message=FALSE}
+options(scipen=999)
+PI <- fred_raw %>% 
+  filter(symbol == "PI")
+
+PI
+
+
+ggplot(PI, aes(x = date, y = price)) +
+  geom_rect(data = recessions, 
+            aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf),
+            inherit.aes = FALSE, fill = "#B10DC9", alpha = 0.3) +
+  geom_line(color = "#FF4136", size = 0.5) +
+  
+  annotate(geom = "label", x = as.Date("2010-01-01"), y =0, 
+           label = "The Great Recession", size = 3, family = "Roboto Condensed") +
+  annotate(geom = "label", x = as.Date("2020-01-01"), y = 120, 
+           label = "COVID-19", size = 3, family = "Roboto Condensed", hjust = 1) +
+ 
+  scale_y_continuous(labels = comma) +
+  labs(y = "Billions of Dollars",
+       x = NULL,
+       title = "Personal Income",
+       subtitle = "Monthly data",
+       caption = "Source: U.S. Bureau of Economic Analysis") +
+  theme_bw(base_family = "Roboto Condensed") +
+  theme(plot.title = element_text(face = "bold"))
+```
+#Personal Consumption Expenditures
+
+```{r,warning=FALSE,message=FALSE}
+options(scipen=999)
+PCE <- fred_raw %>% 
+  filter(symbol == "PCE")
+
+PCE
+
+ggplot(PCE, aes(x = date, y = price)) +
+  geom_rect(data = recessions, 
+            aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf),
+            inherit.aes = FALSE, fill = "#B10DC9", alpha = 0.3) +
+  geom_line(color = "#FF4136", size = 0.5) +
+  
+  annotate(geom = "label", x = as.Date("2010-01-01"), y =0, 
+           label = "The Great Recession", size = 3, family = "Roboto Condensed") +
+  annotate(geom = "label", x = as.Date("2020-01-01"), y = 16000, 
+           label = "COVID-19", size = 3, family = "Roboto Condensed", hjust = 1) +
+ 
+  scale_y_continuous(labels = comma) +
+  labs(y = "Billions of Dollars",
+       x = NULL,
+       title = "Personal Consumption Expenditures",
+       subtitle = "Monthly data",
+       caption = "Source: U.S. Bureau of Economic Analysis") +
+  theme_bw(base_family = "Roboto Condensed") +
+  theme(plot.title = element_text(face = "bold"))
+```
+#Durable Goods Order
+
+```{r,warning=FALSE,message=FALSE}
+options(scipen=999)
+DGORDER <- fred_raw %>% 
+  filter(symbol == "DGORDER")
+
+DGORDER
+
+ggplot(DGORDER, aes(x = date, y = price)) +
+  geom_rect(data = recessions, 
+            aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf),
+            inherit.aes = FALSE, fill = "#B10DC9", alpha = 0.3) +
+  geom_line(color = "#FF4136", size = 0.5) +
+  
+  annotate(geom = "label", x = as.Date("2010-01-01"), y =100000, 
+           label = "The Great Recession", size = 3, family = "Roboto Condensed") +
+  annotate(geom = "label", x = as.Date("2020-01-01"), y = 300000, 
+           label = "COVID-19", size = 3, family = "Roboto Condensed", hjust = 1) +
+ 
+  scale_y_continuous(labels = comma) +
+  labs(y = "Billions of Dollars",
+       x = NULL,
+       title = "Manufacturers' New Orders: Durable Goods ",
+       subtitle = "Monthly data",
+       caption = "Source: U.S. Census Bureau") +
+  theme_bw(base_family = "Roboto Condensed") +
+  theme(plot.title = element_text(face = "bold"))
+```
+#Yield:10-Year Treasury Constant Maturity Minus 2-Year Treasury Constant Maturity
+
+```{r,warning=FALSE,message=FALSE}
+options(scipen=999)
+T10Y2Y <- fred_raw %>% 
+  filter(symbol == "T10Y2Y")
+
+T10Y2Y
+
+ggplot(T10Y2Y, aes(x = date, y = price)) +
+  geom_rect(data = recessions, 
+            aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf),
+            inherit.aes = FALSE, fill = "#B10DC9", alpha = 0.3) +
+  geom_line(color = "#FF4136", size = 0.5) +
+  
+  annotate(geom = "label", x = as.Date("2010-01-01"), y =-0.2, 
+           label = "The Great Recession", size = 3, family = "Roboto Condensed") +
+  annotate(geom = "label", x = as.Date("2020-01-01"), y = 1.8, 
+           label = "COVID-19", size = 3, family = "Roboto Condensed", hjust = 1) +
+ 
+  scale_y_continuous(labels = comma) +
+  labs(y = "Percent",
+       x = NULL,
+       title = "10-Year Treasury Constant Maturity Minus 2-Year Treasury Constant Maturity",
+       subtitle = "Monthly data",
+       caption = "Source: U.S. Census Bureau") +
+  theme_bw(base_family = "Roboto Condensed") +
+  theme(plot.title = element_text(face = "bold"))
+```
+# Capacity Utilization: Total Industry
+
+```{r,warning=FALSE,message=FALSE}
+options(scipen=999)
+TCU <- fred_raw %>% 
+  filter(symbol == "TCU")
+
+TCU
+
+ggplot(TCU, aes(x = date, y = price)) +
+  geom_rect(data = recessions, 
+            aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf),
+            inherit.aes = FALSE, fill = "#B10DC9", alpha = 0.3) +
+  geom_line(color = "#FF4136", size = 0.5) +
+  
+  annotate(geom = "label", x = as.Date("2010-01-01"), y =60, 
+           label = "The Great Recession", size = 3, family = "Roboto Condensed") +
+  annotate(geom = "label", x = as.Date("2020-01-01"), y = 80, 
+           label = "COVID-19", size = 3, family = "Roboto Condensed", hjust = 1) +
+ 
+  scale_y_continuous(labels = comma) +
+  labs(y = "Percent of Capacity",
+       x = NULL,
+       title = "Capacity Utilization: Total Industry",
+       subtitle = "Monthly data",
+       caption = "Source: Board of Governors of the Federal Reserve System (US)") +
+  theme_bw(base_family = "Roboto Condensed") +
+  theme(plot.title = element_text(face = "bold"))
+```
+# Industrial Production
+
+```{r,warning=FALSE,message=FALSE}
+options(scipen=999)
+INDPRO <- fred_raw %>% 
+  filter(symbol == "INDPRO")
+
+INDPRO
+
+ggplot(INDPRO, aes(x = date, y = price)) +
+  geom_rect(data = recessions, 
+            aes(xmin = start, xmax = end, ymin = -Inf, ymax = Inf),
+            inherit.aes = FALSE, fill = "#B10DC9", alpha = 0.3) +
+  geom_line(color = "#FF4136", size = 0.5) +
+  
+  annotate(geom = "label", x = as.Date("2010-01-01"), y =0, 
+           label = "The Great Recession", size = 3, family = "Roboto Condensed") +
+  annotate(geom = "label", x = as.Date("2020-01-01"), y = 120, 
+           label = "COVID-19", size = 3, family = "Roboto Condensed", hjust = 1) +
+ 
+  scale_y_continuous(labels = comma) +
+  labs(y = "Index 2012=100",
+       x = NULL,
+       title = "Industrial Production Index",
+       subtitle = "Monthly data",
+       caption = "Source: Board of Governors of the Federal Reserve System (US)") +
+  theme_bw(base_family = "Roboto Condensed") +
+  theme(plot.title = element_text(face = "bold"))
+
+
+
+```
+
+
+
